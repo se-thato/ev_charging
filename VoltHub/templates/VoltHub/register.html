@@ -1,0 +1,46 @@
+{% extends 'VoltHub/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <body>
+
+        <div class="container bg-light shadow-md p-5 form-layout">
+
+            <h3> Start Your Journey Here</h3>
+
+            <h5> Start Boosting Your Energy Now !</h5>
+
+            <hr>
+            <br>
+
+            <form method="POST" autocomplete="off">
+
+                {% csrf_token %}
+
+                {{form|crispy}}
+
+                <br>
+
+                <button type="submit" class="btn btn-primary w-100 btn-block p-2"> Start Your Journey </button>
+
+
+
+            </form>
+
+            <br>
+
+            <div class="text-center">
+
+                <p> Already have an account? </p> <a href="{% url 'my-login' %}"> Login </a>
+
+            </div>
+
+            <br>
+
+        </div>
+
+    </body>
+
+{% endblock %}

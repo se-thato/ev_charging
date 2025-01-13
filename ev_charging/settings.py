@@ -30,7 +30,11 @@ INSTALLED_APPS = [
     'VoltHub',
     'rest_framework',
     'corsheaders',
+    'crispy_forms',
 ]
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -72,7 +76,7 @@ WSGI_APPLICATION = 'ev_charging.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.sqlite3', 
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
@@ -113,6 +117,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 
 STATICFILES_DIR = [BASE_DIR / 'static']
