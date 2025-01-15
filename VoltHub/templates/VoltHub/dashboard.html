@@ -1,51 +1,59 @@
-{% extends 'VoltHub/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome, {{ user.username }}</h1>
+    <div id="map"></div>
 
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([0, 0], 13);
 
-{% block content %}
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
 
-        <body>
-            <h1> Hey {{ user.username }} Welcome to The VoltHub </h1>
+        // Get user's location
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                const { latitude, longitude } = position.coords;
 
-            <div id="map"></div>
-
-            <script>
-
-                //starting the map
-                const map = L.map('map').setView([0, 0], 13);
-
-                //adding the OpenStreetMap tiles
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19,}).addTo(map);
-
-                //getting the user current location
-                if (navigator.geolocation) {navigator.geolocation.getCurrentPosition((position) => { const { latitude, longitude } = position.coords; 
-
-                //center the map on the user's location
+                // Center the map on the user's location
                 map.setView([latitude, longitude], 13);
 
+                // Add a marker for the user's location
+                L.marker([latitude, longitude]).addTo(map).bindPopup('You are here').openPopup();
 
-                //adding a maker for the user's location
-                L.marker([latitude, longitude]).addTo(map).bindPopup('Hey! You are here i see you').openPopup();
-
-                //getting nearby charging points
-                fetch('/ Show_nearby_charging_points/?latitude=$ {latitude}&longitude=$ {longitude}').then((response) => {
-                    //add markers for each available charging point
-                    L.marker([point.latitude, point.longitude]) .addTo(pup('<b>${point.name}</b><br>${point.location}<br>${point.availability ? 'available' : 'Not Available'}'); 
-                
-                });
+                // Fetch nearby charging points
+                fetch(`/get_nearby_charging_points/?latitude=${latitude}&longitude=${longitude}`)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        data.charging_points.forEach((point) => {
+                            // Add markers for each charging point
+                            L.marker([point.latitude, point.longitude])
+                                .addTo(map)
+                                .bindPopup(`<b>${point.name}</b><br>${point.location}<br>${point.availability ? 'Available' : 'Not Available'}`);
+                        });
+                    });
+            }, () => {
+                alert('Unable to retrieve your location.');
             });
-        }, () => { alert('Unable to show your location.')};
-    });
-} else { alert('Geolocation is not supported by this browser')};
-
-
-
-
-        </script>
-
-
-
-
-    </body>
-
-
-{% endblock %}
+        } else {
+            alert('Geolocation is not supported by this browser.');
+        }
+    </script>
+</body>
+</html>
