@@ -8,6 +8,9 @@ class ChargingPoint(models.Model):
     capicity = models.PositiveIntegerField()
     available_slots = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
+    availability = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name

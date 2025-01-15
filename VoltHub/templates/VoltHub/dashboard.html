@@ -3,7 +3,49 @@
 
 {% block content %}
 
-    <h1> Welcome To The VoltHub !! {{user}} </h1>
+        <body>
+            <h1> Hey {{ user.username }} Welcome to The VoltHub </h1>
+
+            <div id="map"></div>
+
+            <script>
+
+                //starting the map
+                const map = L.map('map').setView([0, 0], 13);
+
+                //adding the OpenStreetMap tiles
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19,}).addTo(map);
+
+                //getting the user current location
+                if (navigator.geolocation) {navigator.geolocation.getCurrentPosition((position) => { const { latitude, longitude } = position.coords; 
+
+                //center the map on the user's location
+                map.setView([latitude, longitude], 13);
+
+
+                //adding a maker for the user's location
+                L.marker([latitude, longitude]).addTo(map).bindPopup('Hey! You are here i see you').openPopup();
+
+                //getting nearby charging points
+                fetch('/ Show_nearby_charging_points/?latitude=$ {latitude}&longitude=$ {longitude}').then((response) => {
+                    //add markers for each available charging point
+                    L.marker([point.latitude, point.longitude]) .addTo(pup('<b>${point.name}</b><br>${point.location}<br>${point.availability ? 'available' : 'Not Available'}'); 
+                
+                });
+            });
+        }, () => { alert('Unable to show your location.')};
+    });
+} else { alert('Geolocation is not supported by this browser')};
+
+
+
+
+        </script>
+
+
+
+
+    </body>
 
 
 {% endblock %}
