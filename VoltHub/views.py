@@ -5,6 +5,7 @@ from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
 
 from django.contrib.auth.decorators import login_required
+from charging_station.models import ChargingPoint, ChargingSession
 
 #Home page
 def home(request):
@@ -62,7 +63,7 @@ def dashboard(request):
     sessions = ChargingSession.objects.filter(user=request.user)
     context = {
         'stations': stations,
-        'sessions': section,
+        'sessions': sessions,
     }
 
     return render(request, 'VoltHub/dashboard.html', context)
