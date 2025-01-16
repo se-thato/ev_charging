@@ -54,11 +54,18 @@ def my_login(request):
 
 
 
+
 # Dashboard view
 @login_required(login_url='my-login')
 def dashboard(request):
+    stations = ChargingPoint.objects.all()
+    sessions = ChargingSession.objects.filter(user=request.user)
+    context = {
+        'stations': stations,
+        'sessions': section,
+    }
 
-    return render(request, 'VoltHub/dashboard.html')
+    return render(request, 'VoltHub/dashboard.html', context)
 
 
 
@@ -70,3 +77,9 @@ def user_logout(request):
     auth.logout(request)
 
     return redirect('my-login')
+
+
+#about user section
+
+def about_us(request):
+    return render(request, 'VoltHub/about_us.html')

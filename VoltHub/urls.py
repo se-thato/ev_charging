@@ -12,6 +12,7 @@ urlpatterns = [
 
     path('logout-user', views.user_logout, name="logout-user"),
 
+    path('about_us', views.about_us, name="about_us"),
 
 
 ]

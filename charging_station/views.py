@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import ChargingPoint, Reservation
-from .serializers import ChargingPointSerializer, ReservationSerializer
+from .models import ChargingPoint, Reservation, ChargingSession
+from .serializers import ChargingPointSerializer, ReservationSerializer, ChargingSessionSerializer
 
 from django.http import JsonResponse
 import geopy.distance
@@ -25,6 +25,18 @@ class ReservationListCreateView(generics.ListCreateAPIView):
 class ReserveDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Reservation.objects.all()
     serializer_class = ReservationSerializer
+
+#charging session 
+class ChargingSessionListCreateView(generics.ListCreateAPIView):
+    queryset = ChargingSession.objects.all()
+    serializer_class = ChargingSessionSerializer
+
+class ChargingSessionDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ChargingSession.objects.all()
+    serializer_class = ChargingSessionSerializer
+
+
+
 
 def show_nearby_charging_points(request):
     user_latitude = float(request.GET.get('latitude', 0))

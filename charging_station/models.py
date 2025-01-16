@@ -24,3 +24,16 @@ class Reservation(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.station.name} - {self.status}"
+
+
+
+class ChargingSession(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    station = models.ForeignKey(ChargingPoint, on_delete=models.CASCADE)
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField(null=True, blank=True)
+    energy_consumed_kwh = models.FloatField(null=True, blank=True)
+    cost = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+
+    def __str__(self):
+        return f"Session made by {self.user} at {self.charging_point}"
