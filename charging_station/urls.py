@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import ChargingPointListCreateView, ChargingPointDetailView, ReservationListCreateView, ReserveDetailView
-from . import views
+from .views import ChargingPointListCreateView, ChargingPointDetailView, ReservationListCreateView, ReserveDetailView, show_nearby_charging_points
+
 
 
 urlpatterns = [
@@ -11,6 +11,6 @@ urlpatterns = [
     path('reservations/<int:pk>/', ReserveDetailView.as_view(), name="reservations_details"),
 
     #charging points
-    #path('show_nearby_charging_points/', views.Show_nearby_charging_points(), name="show_nearby_charging_points"),
+    path('show_nearby_charging_points/', show_nearby_charging_points, name="show_nearby_charging_points"),
 
 ]
