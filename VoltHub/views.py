@@ -84,3 +84,9 @@ def user_logout(request):
 
 def about_us(request):
     return render(request, 'VoltHub/about_us.html')
+
+
+#contact us
+def contact_us(request):
+
+    return render(request, 'VoltHub/contact_us.html')

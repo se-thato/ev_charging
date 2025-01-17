@@ -47,6 +47,16 @@
               <a class="nav-link" href="{% url 'logout-user' %}">Sign out &nbsp; <i class="fa fa-sign-out" aria-hidden="true"></i> </a>
   
             </li>
+
+
+            &nbsp;     &nbsp;     &nbsp; 
+
+            <li class="nav-item">
+    
+              <a class="nav-link" href="{% url '' %}"> Charging Points </a>
+    
+            </li>
+    
   
   
         </ul>
@@ -83,18 +93,12 @@
 
         <li class="nav-item">
 
-          <a class="nav-link" href="{% url '' %}"> Contact Us </a>
+          <a class="nav-link" href="{% url 'contact_us' %}"> Contact Us </a>
 
         </li>
 
 
-        &nbsp;     &nbsp;     &nbsp; 
-
-        <li class="nav-item">
-
-          <a class="nav-link" href="{% url '' %}"> Charging Points </a>
-
-        </li>
+        
 
         {% endif %}
       
