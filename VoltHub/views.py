@@ -90,3 +90,11 @@ def about_us(request):
 def contact_us(request):
 
     return render(request, 'VoltHub/contact_us.html')
+
+
+
+def booking(request):
+
+    
+
+    return render(request, 'VoltHub/booking.html')

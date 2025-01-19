@@ -46,6 +46,19 @@ REST_FRAMEWORK = {
     ),
 }
 
+#Search Filter
+
+REST_FRAMEWORK = {
+    #search filter
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+
+        'rest_framework.filters.SearchFilter',
+    ]
+}
+
+
+
 #SimpleJWT setting
 
 SIMPLE_JWT = {

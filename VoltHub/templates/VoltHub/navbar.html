@@ -34,7 +34,7 @@
   
             <li class="nav-item">
         
-              <a class="nav-link" href="{% url 'dashboard' %}">Dashboard &nbsp; <i class="fa fa-home" aria-hidden="true"></i> </a>
+              <a class="nav-link" href="{% url 'dashboard' %}"> Dashboard &nbsp; <i class="fa fa-home" aria-hidden="true"></i> </a>
   
             </li>
   
@@ -48,17 +48,7 @@
   
             </li>
 
-
-            &nbsp;     &nbsp;     &nbsp; 
-
-            <li class="nav-item">
     
-              <a class="nav-link" href="{% url '' %}"> Charging Points </a>
-    
-            </li>
-    
-  
-  
         </ul>
   
         {% else %}
@@ -78,9 +68,17 @@
           <a class="nav-link" href="{% url 'my-login' %}">Login</a>
   
         </li>
+
   
         &nbsp; &nbsp; &nbsp;     &nbsp;  &nbsp;  &nbsp;    &nbsp; &nbsp; &nbsp;     &nbsp; &nbsp; &nbsp; 
 
+        &nbsp;     &nbsp;     &nbsp; 
+
+        <li class="nav-item">
+
+          <a class="nav-link" href="{% url '' %}"> Charging Points </a>
+
+        </li>
 
         <li class="nav-item">
 
@@ -97,7 +95,16 @@
 
         </li>
 
+        <!--Search Form-->
+        &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 
+        <form class="d-flex ms-auto" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-light" type="submit">
+            <i class="bi bi-search"></i>
+          Submit</button>
+        </form>
+      
         
 
         {% endif %}
