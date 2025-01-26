@@ -1,0 +1,47 @@
+{% extends 'VoltHub/base.html' %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+
+    <body>
+
+        <div class="container bg-light shadow-md p-5 form-layout">
+
+            
+
+            <h3> Update your Booking </h3>
+
+
+            <hr>
+            <br>
+
+            <form method="POST" autocomplete="off">
+
+                
+
+                {% csrf_token %}
+
+                {{form|crispy}}
+
+                <br>
+
+                <button type="submit" class="btn btn-primary w-100 btn-block p-2"> Update Your Booking </button>
+
+
+
+            </form>
+
+        </div>
+
+    </body>
+
+    <br>
+
+    <a href="{% url 'dashboard' %}" class="btn btn-secondary"> Back </a>
+
+
+
+{% endblock %}

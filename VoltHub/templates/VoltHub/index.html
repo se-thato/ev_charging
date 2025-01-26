@@ -2,6 +2,87 @@
 
 {% block content %}
 
+<head>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/
+    aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style type="text/css">
+
+        body
+        {
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer
+        {
+            background-color: black;
+            width: 100%;
+            left: 0;
+            position: fixed;
+            bottom: 0;
+           
+        }
+
+        .social 
+        {
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .social a
+        {
+            font-size: 20px;
+            display: inline-block;
+            border: 1px solid beige;
+            width: 25px;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .social a:hover
+        {
+            background-color: antiquewhite;
+        }
+
+
+        .footer ul
+        {
+            list-style: none;
+            text-align: center;
+            padding-bottom: 30px;
+            
+        }
+
+        .footer ul li
+        {
+            display: inline-block;
+            padding: 0px 15px;
+        }
+
+        .footer ul li a
+        {
+            text-decoration: none;
+            color: whitesmoke;
+        }
+
+        .footer ul li a:hover
+        {
+            color: skyblue;
+        }
+
+        .copy-right
+        {
+            text-align: center;
+            padding-bottom: 30px;
+            color: whitesmoke;
+        }
+
+    </style>
+</head>
+
     <body>
 
         <br>
@@ -33,6 +114,48 @@
 
         </div>
 
+        <br>
+
+        <!--creating a responsive footer-->
+        <section class="footer">
+
+            <div class="social">
+
+
+                <!--whatsapp icon-->
+                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+
+                <!--Instagram icon-->
+                <a href="#"><i class="fa-brands fa-Instagram"></i></a>
+
+                <!--facebook icon-->
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+
+                <!--X icon-->
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+
+
+            </div>
+
+            <ul>
+
+               <li>
+                    <a href="{% url '' %}">Home<a/>
+                </li>
+                
+                <li>
+                    <a href="{% url 'about_us' %}">About Us<a/>
+                </li>
+
+                <li>
+                    <a href="{% url 'contact_us' %}">Contact Us<a/>
+                </li>
+
+            </ul>
+
+            <p class="copy-right">Copyright @2025 al right reserved by TheVoltHub</p>
+
+        </section>
        
     </body>
 

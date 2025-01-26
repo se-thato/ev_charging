@@ -1,0 +1,56 @@
+{% extends 'VoltHub/base.html' %}
+
+
+{% block content %}
+
+
+    <div class="card" style="width: 18rem;">
+
+        <strong>
+
+            &nbsp;   &nbsp;
+
+            {{booking.user}}
+
+        </strong>
+
+        <hr>
+
+        <div class="card-body">
+    
+
+        <p> <strong> ID: </strong> {{booking.id}} </p>
+
+        <p> <strong> Station: </strong> {{booking.station}} </p>
+
+        <p> <strong> Location: </strong> {{booking.location}} </p>
+
+        <p> <strong> Start time: </strong> {{booking.start_time}} </p>
+
+        <p> <strong> End time: </strong> {{booking.end_time}} </p>
+
+        <p> <strong> Costs: </strong> {{booking.costs}} </p>
+
+        <p> <strong> Status: </strong> {{booking.status}} </p>
+
+        <p> <strong> Date Booked: </strong> {{booking.created_at}} </p>
+
+
+
+        </div>
+    </div>
+
+
+    <br>
+
+    <a href="{% url 'dashboard' %}" class="btn btn-secondary"> Back </a>
+
+    &nbsp;
+
+    <a href="{% url 'update_booking' booking.id %}" class="btn btn-info"> Update </a>
+
+    &nbsp;
+
+    <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger"> Delete </a>
+
+{% endblock %}

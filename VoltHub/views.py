@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect
-from .forms import CreateUserForm, LoginForm
+from .forms import CreateUserForm, LoginForm, BookingForm, UpdateBookingForm
 
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
 
 from django.contrib.auth.decorators import login_required
-from charging_station.models import ChargingPoint, ChargingSession
+from charging_station.models import ChargingPoint, ChargingSession, Booking
+
+from django.core.mail import send_mail
+from django.http import HttpResponse
 
 #Home page
 def home(request):
@@ -61,9 +64,11 @@ def my_login(request):
 def dashboard(request):
     stations = ChargingPoint.objects.all()
     sessions = ChargingSession.objects.filter(user=request.user)
+    bookings = Booking.objects.all()
     context = {
         'stations': stations,
         'sessions': sessions,
+        'bookings': bookings,
     }
 
     return render(request, 'VoltHub/dashboard.html', context)
@@ -83,18 +88,14 @@ def user_logout(request):
 #about user section
 
 def about_us(request):
+
     return render(request, 'VoltHub/about_us.html')
 
 
 #contact us
-def contact_us(request):
-
-from django.shortcuts import render
-from django.core.mail import send_mail
-from django.http import HttpResponse
 
 def contact_us(request):
-    if request.method == 'POST':
+    if request.method == 'POST': 
         name = request.POST.get('name')
         contact_number = request.POST.get('contact_number')
         email = request.POST.get('email')
@@ -105,17 +106,77 @@ def contact_us(request):
             f'Contact Us Message from {name}',
             f'Contact Number: {contact_number}\nMessage:\n{message}',
             email,
-            ['your-email@example.com'],  # Replace with your email
+            ['thatoselepe53@gmail.com'],
             fail_silently=False,
         )
         return HttpResponse("Thank you for your message!")
-    return render(request, 'contact_us.html')
+    
     return render(request, 'VoltHub/contact_us.html')
 
 
-
+@login_required(login_url='my-login')
 def booking(request):
 
-    
+    form = BookingForm()
 
-    return render(request, 'VoltHub/booking.html')
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect('dashboard')
+
+    context = {'form': form}
+
+
+    return render(request, 'VoltHub/booking.html', context=context)
+
+
+# update your bookings
+
+@login_required(login_url='my-login')
+def update_booking(request, pk):
+
+    booking = Booking.objects.get(id=pk)
+
+    form = UpdateBookingForm(instance=booking)
+
+    if request.method == 'POST':
+        form =UpdateBookingForm(request.POST, instance=booking)
+
+        if form.is_valid():
+
+            form.save()
+
+            return redirect("dashboard")
+
+    context = {'form': form}
+
+
+    return render(request, 'VoltHub/update_booking.html', context=context)
+
+
+
+# view a singular booking record
+
+@login_required(login_url='my-login')
+def view_booking(request, pk):
+
+    all_bookings = Booking.objects.get(id=pk)
+
+    context = {'booking': all_bookings}
+
+    return render(request, 'VoltHub/view_bookings.html', context=context)
+
+
+# delete booking record
+
+@login_required(login_url='my-login')
+def delete_booking(request, pk): 
+
+    booking = Booking.objects.get(id=pk)
+
+    booking.delete()
+
+    return redirect('dashboard')

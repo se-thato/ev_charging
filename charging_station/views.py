@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import ChargingPoint, ChargingSession
-from .serializers import ChargingPointSerializer, ChargingSessionSerializer
+from .models import ChargingPoint, ChargingSession, Booking
+from .serializers import ChargingPointSerializer, ChargingSessionSerializer, BookingSerializer
 
 from rest_framework.filters import SearchFilter, OrderingFilter
 
@@ -98,21 +98,19 @@ class ChargingSessionDetailView(generics.RetrieveUpdateDestroyAPIView):
         
 
 
+class BookingListCreateView(generics.ListCreateAPIView):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
 
-'''
-def show_nearby_charging_points(request):
-    user_latitude = float(request.GET.get('latitude', 0))
-    user_longitude = float(request.GET.get('longitude', 0))
-    radius = 10 
 
-    charging_points = []
-    for point in ChargingPoint.objects.all():
-        distance = geopy.distance.geodesic((user_latitude, user_longitude), (point.latitude, point.longitude)).km
+    def booking(request):
 
-        if distance <= radius:
-            charging_points.append({'name': point.name, 'location': point.location, 'latitude': point.latitude, 'longitude': point.longitude,
-            'availability': point.availability})
+        serializer = BookingSerializer()
+        if request.method == 'POST':
+            serializer = BookingSerializer(request.POST)
 
-    return JsonResponse ({'charging_points': charging_points})
+            if serializer.is_valid():
+                serializer.save()
 
-'''
+
+

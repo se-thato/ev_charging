@@ -1,16 +1,11 @@
 {% extends "VoltHub/base.html" %}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary justify-content-center"> </nav>
     
 {% block content%}
 
 
-
-<!DOCTYPE html>
-<html>
 <head>
     <title>EV Charging </title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -54,26 +49,36 @@
 
         <!-- Charging Station Availability -->
         <h3>Charging Points</h3>
-        <table class="table table-striped">
-            <thead>
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
                 <tr>
-                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Station</th>
                     <th>Location</th>
                     <th>Capicity</th>
                     <th>Latitude</th>
                     <th>Longitude</th>
                     <th>Available Slots</th>
+                    <th>Availability</th>
+                    <th>Price Per Hour</th>
                 </tr>
             </thead>
             <tbody>
                 {% for station in stations %}
                 <tr>
+                    <td>{{ station.id }}</td>
                     <td>{{ station.name }}</td>
                     <td>{{ station.location }}</td>
+                    <td>{{ station.capicity }}</td>
+                    <td>{{ station.latitude }}</td>
+                    <td>{{ station.longitude }}</td>
+                    <td>{{ station.available_slots }}</td>
+                    <td>{{ station.availability }}</td>
+                    <td>{{station.price_per_hour}}</td>
                     <td>
-                        {% if station.is_available %}
+                        {% if station.availability == 'Available' %}
                             <span class="badge bg-success">Available</span>
-                        {% else %}
+                        {% elif station.availability == 'Occupied'%}
                             <span class="badge bg-danger">Occupied</span>
                         {% endif %}
                     </td>
@@ -84,32 +89,40 @@
 
         <br>
 
+        <hr>
+
         <!-- User Charging Sessions -->
         <h3>Your Charging Sessions</h3>
-        <table class="table table-striped">
-            <thead>
+        <table class="table table-striped table-hover table-bordered">
+            <thead class="table-dark">
                 <tr>
+                    <th>ID</th>
                     <th>Station</th>
                     <th>Start Time</th>
                     <th>End Time</th>
                     <th>Energy (kWh)</th>
-                    <th>Cost</th>
+                    <th>Costs</th>
+                    <th>Status</th>
+
+                    <th> View </th>
                 </tr>
             </thead>
             <tbody>
                 {% for session in sessions %}
                 <tr>
+                    <td>{{ session.id }}</td>
                     <td>{{ session.station.name }}</td>
                     <td>{{ session.start_time }}</td>
                     <td>{{ session.end_time }}</td>
                     <td>{{ session.energy_consumed_kwh }}</td>
-                    <td>R{{ session.cost }}</td>
+                    <td>R{{ session.costs }}</td>
+                    <td>{{session.status}}</td>
                     <td>
-                    {% if reservation.status == 'Pending' %}
+                    {% if session.status == 'Pending' %}
                         <span class="badge bg-warning">Pending</span>
-                    {% elif reservation.status == 'Confirmed' %}
+                    {% elif session.status == 'Confirmed' %}
                         <span class="badge bg-success">Confirmed</span>
-                    {% elif reservation.status == 'Cancelled' %}
+                    {% elif session.status == 'Cancelled' %}
                         <span class="badge bg-danger">Cancelled</span>
                     {% endif %}
                 </td>
@@ -117,6 +130,60 @@
                 {% endfor %}
             </tbody>
         </table>
+
+        <br>
+
+        <hr>
+
+         <!-- Bookings -->
+         <h3>Your Bookings</h3>
+         <table class="table table-striped table-hover table-bordered">
+             <thead class="table-dark">
+                 <tr>
+                    <th>ID</th>
+                     <th>Station</th>
+                     <th>Location</th>
+                     <th>Start Time</th>
+                     <th>End Time</th>
+                     <th>Costs</th>
+                     <th>Status</th>
+                     <th>Date Booked</th>
+
+                     <th> View </th>
+                 </tr>
+             </thead>
+             <tbody>
+                 {% for booking in bookings %}
+                 <tr>
+                    <td>{{ booking.id}}</td>
+                     <td>{{ booking.station.name }}</td>
+                     <td>{{booking.location}}</td>
+                     <td>{{ booking.start_time }}</td>
+                     <td>{{ booking.end_time }}</td>
+                     <td>R{{ booking.costs }}</td>
+                     <td>{{booking.status}}</td>
+                     <td>{{booking.created_at}}</td>
+
+                     <td> <a href="{%url 'view_booking' booking.id %}" > Check Me <a/> </td>
+                     <td>
+
+                     {% if booking.status == 'Pending' %}
+                         <span class="badge bg-warning">Pending</span>
+                     {% elif booking.status == 'Confirmed' %}
+                         <span class="badge bg-success">Confirmed</span>
+                     {% elif booking.status == 'Cancelled' %}
+                         <span class="badge bg-danger">Cancelled</span>
+                     {% endif %}
+
+                 </td>
+                 </tr>
+                 {% endfor %}
+             </tbody>
+         </table>
+
+         <hr> 
+
+         <a class="btn btn-outline-primary btn-sm" href={% url 'book' %}>  Book Your Session </a> 
 
             <tbody>
                 

@@ -4,6 +4,7 @@ ChargingPointListCreateView,
 ChargingPointDetailView,
 ChargingSessionListCreateView,
 ChargingSessionDetailView,
+BookingListCreateView,
 #show_nearby_charging_points
 )
 
@@ -16,6 +17,8 @@ urlpatterns = [
     path('charging_sessions/', ChargingSessionListCreateView.as_view(), name ="charging_session"),
     path('charging_sessions/<int:pk>/', ChargingSessionDetailView.as_view(), name="charging_sessions_details"),
     
+    #bookings
+    path('Booking/', BookingListCreateView.as_view(), name="Booking"),
 
     #charging points
     #path('show_nearby_charging_points/', show_nearby_charging_points, name="show_nearby_charging_points"),

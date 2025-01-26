@@ -1,61 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Charging Session</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container mt-5">
-        <h1 class="text-center">Book a Charging Session</h1>
-        
-        <!-- Booking Form -->
-        <div class="card mt-4">
-            <div class="card-header bg-primary text-white">Book Your Session</div>
-            <div class="card-body">
-                <form method="POST" action="{% url 'book_charging_session' %}">
-                    {% csrf_token %}
-                    
-                    <!-- Station Selection -->
-                    <div class="mb-3">
-                        <label for="station" class="form-label">Select Charging Station</label>
-                        <select class="form-select" id="station" name="station_id" required>
-                            {% for station in stations %}
-                                <option value="{{ station.id }}">
-                                    {{ station.name }} (Location: {{ station.location }})
-                                </option>
-                            {% endfor %}
-                        </select>
-                    </div>
+{% extends 'VoltHub/base.html' %}
 
-                    <!-- Start Time -->
-                    <div class="mb-3">
-                        <label for="start_time" class="form-label">Start Time</label>
-                        <input type="datetime-local" class="form-control" id="start_time" name="start_time" required>
-                    </div>
+{% load crispy_forms_tags %}
 
-                    <!-- End Time -->
-                    <div class="mb-3">
-                        <label for="end_time" class="form-label">End Time</label>
-                        <input type="datetime-local" class="form-control" id="end_time" name="end_time" required>
-                    </div>
 
-                    <!-- Additional Info -->
-                    <p class="text-muted mt-2">
-                        Note: Off-peak hours cost less. Check station-specific off-peak hours for discounts.
-                    </p>
+{% block content %}
 
-                    <!-- Submit Button -->
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-success">Book Now</button>
-                    </div>
-                </form>
-            </div>
+
+    <body>
+
+        <div class="container bg-light shadow-md p-5 form-layout">
+
+            
+
+            <h3> Book A Charging Session Now!! </h3>
+
+
+            <hr>
+            <br>
+
+            <form method="POST" autocomplete="off">
+
+                
+
+                {% csrf_token %}
+
+                {{form|crispy}}
+
+                <br>
+
+                <button type="submit" class="btn btn-primary w-100 btn-block p-2"> Book Now </button>
+
+
+
+            </form>
+
         </div>
-    </div>
 
-    <!-- Include Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    </body>
+
+
+
+
+
+{% endblock %}

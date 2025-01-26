@@ -19,4 +19,17 @@ urlpatterns = [
 
     path('book', views.booking, name="book"),
 
+    #update your bookings
+
+    path('update_booking/<int:pk>/', views.update_booking, name="update_booking"),
+
+    #viewing a booking record
+
+    path('view_booking/<int:pk>/', views.view_booking, name="view_booking"),
+
+
+    #viewing a booking record
+
+    path('delete_booking/<int:pk>/', views.delete_booking, name="delete_booking"),
+
 ]
