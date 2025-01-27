@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ChargingPoint, ChargingSession, Booking
+from .models import ChargingPoint, ChargingSession, Booking, Profile
 
 class ChargingPointSerializer(serializers.ModelSerializer):
 
@@ -19,3 +19,9 @@ class BookingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Booking
         fields = '__all__'
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ['id', 'username', 'first_name', 'last_name']

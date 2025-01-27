@@ -8,4 +8,5 @@ urlpatterns = [
     path('', include("authentication.urls")),
     #authentication
     path('auth', include('authentication.urls')),
+
 ]

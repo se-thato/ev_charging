@@ -14,7 +14,7 @@ from django.http import HttpResponse
 def home(request):
 
 
-    return render(request, 'VoltHub/index.html')
+    return render(request, 'VoltHub/home.html')
 
 
 # Register View

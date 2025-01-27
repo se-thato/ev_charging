@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import ChargingPoint, ChargingSession, Booking
-from .serializers import ChargingPointSerializer, ChargingSessionSerializer, BookingSerializer
+from .models import ChargingPoint, ChargingSession, Booking, Profile
+from .serializers import ChargingPointSerializer, ChargingSessionSerializer, BookingSerializer, ProfileSerializer
 
 from rest_framework.filters import SearchFilter, OrderingFilter
 
@@ -21,6 +21,8 @@ class ChargingPointListCreateView(generics.ListCreateAPIView):
     #search filter
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = []
+
+    
 
 class ChargingPointDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = ChargingPoint.objects.all()
@@ -114,3 +116,8 @@ class BookingListCreateView(generics.ListCreateAPIView):
 
 
 
+
+
+class ProfileListCreateView(generics.ListCreateAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer

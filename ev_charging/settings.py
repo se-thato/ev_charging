@@ -29,9 +29,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #apps
     'charging_station',
     'VoltHub',
     'authentication',
+
+
     'rest_framework',
     'corsheaders',
     'crispy_forms',
