@@ -180,3 +180,10 @@ def delete_booking(request, pk):
     booking.delete()
 
     return redirect('dashboard')
+
+
+@login_required(login_url='my-login')
+def station_locator(request):
+    stations = ChargingStation.objects.all()
+
+    return render(request, 'stations/stations.html', {'stations': stations})

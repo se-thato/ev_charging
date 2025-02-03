@@ -25,7 +25,7 @@
                     labels: ['Session 1', 'Session 2', 'Session 3', 'Session 4'],
                     datasets: [{
                         label: 'Energy (kwh)',
-                        data: [10, 15, 8, 16],
+                        data: [8, 15, 18, 4],
                         backgroundColor:
                         'rgba(75, 91, 192, 0.2)',
                         borderColor:
@@ -164,7 +164,7 @@
                      <td>{{booking.status}}</td>
                      <td>{{booking.created_at}}</td>
 
-                     <td> <a href="{%url 'view_booking' booking.id %}" > Check Me <a/> </td>
+                     <td> <a href="{%url 'view_booking' booking.id %}" ><i class="fa fa-eye" aria-hidden="true"></i> <a/> </td>
                      <td>
 
                      {% if booking.status == 'Pending' %}

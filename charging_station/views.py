@@ -22,6 +22,13 @@ class ChargingPointListCreateView(generics.ListCreateAPIView):
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = []
 
+
+    @api_view(['GET'])
+    def charging_station_list(request):
+        #this will return list of all charging stations/points with their details
+        stations = ChargingPoint.objects.all()
+        serializer = ChargingPointSerializer(stations, many=True)
+        return Response(serializer.data)
     
 
 class ChargingPointDetailView(generics.RetrieveUpdateDestroyAPIView):
