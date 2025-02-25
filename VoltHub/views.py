@@ -182,8 +182,10 @@ def delete_booking(request, pk):
     return redirect('dashboard')
 
 
+
 @login_required(login_url='my-login')
 def station_locator(request):
-    stations = ChargingStation.objects.all()
+    stations = ChargingPoint.objects.all()
+    context = {'stations': stations, }
 
-    return render(request, 'stations/stations.html', {'stations': stations})
+    return render(request, 'VoltHub/charging_points.html', context)   

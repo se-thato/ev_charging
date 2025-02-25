@@ -111,9 +111,9 @@ class BookingListCreateView(generics.ListCreateAPIView):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
 
-
+    @api_view(['POST'])
     def booking(request):
-
+         #reserve a charging slot
         serializer = BookingSerializer()
         if request.method == 'POST':
             serializer = BookingSerializer(request.POST)
