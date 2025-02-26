@@ -22,11 +22,10 @@
             <hr>
             <br>
 
-            <form method="POST" autocomplete="off">
-
-                
+            <form method="POST" autocomplete="off" action="{% url 'my-login' %}">
 
                 {% csrf_token %}
+            
 
                 {{form|crispy}}
 

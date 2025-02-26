@@ -1,0 +1,35 @@
+{% extends 'VoltHub/base.html' %}
+
+{% block content %}
+
+    <div class="container bg-light shadow-md p-5 form-layout">
+
+        <h3> Payment Methods </h3>
+
+        <hr>
+        <br>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                    <h5 class="card-title"> Add New Card </h5>
+                    <p class="card-text"> Add a new card to your account </p>
+                    <a href="{% url 'payment' %}" class="btn btn-primary"> Add Card </a>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title"> Free Trial </h5>
+                        <p class="card-text"> Start your free trial now </p>
+                        <a href="{% url '' %}" class="btn btn-success"> Start Free Trial </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+{% endblock %}

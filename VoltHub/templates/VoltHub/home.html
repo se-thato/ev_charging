@@ -4,88 +4,60 @@
 
 <head>
     <title> Home </title>
-
-    
-
 </head>
 
-    <body>
-        
+<body>
+    <br>
+    <br>
+    
+    <div class="text-center">
+        <h3> The VoltHub... Powering the future, One charge at a time! </h3>   
         <br>
+        <h5> Boost Your Energy!!</h5>
+        <hr>
         <br>
-        
-        <div class="text-center">
+        <a class="btn btn-primary" type="button" href="{% url 'register' %}"> Sign Up &nbsp; <i class="fa fa-solid fa-user-plus" aria-hidden="true"></i></a>
+        <br>
 
-            <h3> The VoltHub... Powering the future, One charge at a time! </h3>   
+        <br>
+        <h6> Charge Up Your Drive - Book Your EV Session Now!! </h6>
+        <a class="btn btn-primary" type="button" href="{% url 'book' %}"> Book Your Session </a>
+        <br>
 
-            <br>
- 
-            <h5> Boost Your Energy!!</h5>
+        <br>
+        <h6> Manage Your Payment Methods </h6>
+        <a class="btn btn-primary" type="button" href="{% url 'payment' %}"> Make a Payment </a>
+    </div>
 
-            <hr>
+    <br>
 
-            <br>
-
-            <a class="btn btn-primary" type="button" href="{% url 'register' %}"> Sign Up &nbsp; <i class="fa fa-solid fa-user-plus" aria-hidden="true"></i></a>
-
-            <br>
-
-            <br>
-
-            <h6> Charge Up Your Drive - Book Your EV Session Now!! </h6>
-
-
-            <a class="btn btn-primary" type="button" href="{% url 'book' %}"> Book Your Session </a>
-
-
+    <!--creating a responsive footer-->
+    <section class="footer">
+        <div class="social">
+            <!--Instagram icon-->
+            <a href="#"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a>
+            <!--whatsapp icon-->
+            <a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+            <!--facebook icon-->
+            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <!--linkedin icon-->
+            <a href="#"><i class="fa fa-brands fa-linkedin" aria-hidden="true"></i></a>
         </div>
 
-        <br>
+        <ul>
+            <li>
+                <a href="{% url '' %}">Home</a>
+            </li>
+            <li>
+                <a href="{% url 'about_us' %}">About Us</a>
+            </li>
+            <li>
+                <a href="{% url 'contact_us' %}">Contact Us</a>
+            </li>
+        </ul>
 
-        <!--creating a responsive footer-->
-        <section class="footer">
-
-            <div class="social">
-
-                <!--Instagram icon-->
-                <a href="#"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a>
-
-                <!--whatsapp icon-->
-                <a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
-
-
-                <!--facebook icon-->
-                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-
-                <!--linkedin icon-->
-                <a href="#"><i class="fa fa-brands fa-linkedin" aria-hidden="true"></i></a>
-
-               
-                
-
-
-            </div>
-
-            <ul>
-
-               <li>
-                    <a href="{% url '' %}">Home</a>
-                </li>
-                
-                <li>
-                    <a href="{% url 'about_us' %}">About Us</a>
-                </li>
-
-                <li>
-                    <a href="{% url 'contact_us' %}">Contact Us</a>
-                </li>
-
-            </ul>
-
-            <p class="copy-right">Copyright @2025 al right reserved by TheVoltHub</p>
-
-        </section>
-       
-    </body>
+        <p class="copy-right">Copyright @2025 al right reserved by TheVoltHub</p>
+    </section>
+</body>
 
 {% endblock %}

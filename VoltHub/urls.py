@@ -35,4 +35,10 @@ urlpatterns = [
 
     path('stations/', views.station_locator, name="stations"),
 
+    #payment section
+    path('payment', views.payment_methods, name="payment"),
+    
+    #billing section
+    path('billing', views.billing, name="billing"),
+
 ]

@@ -189,3 +189,20 @@ def station_locator(request):
     context = {'stations': stations, }
 
     return render(request, 'VoltHub/charging_points.html', context)   
+
+
+
+def payment_methods(request):
+    payment_methods = ['Visa', 'MasterCard', 'PayPal', 'EFT', 'Cash']
+    context = {'payment_methods': payment_methods}
+
+    
+    return render(request, 'VoltHub/payment_methods.html', context)
+
+
+
+def billing(request):
+    billing = ['Monthly', 'Weekly', 'Daily', 'Hourly']
+    context = {'billing': billing}
+
+    return render(request, 'VoltHub/billing.html', context)
