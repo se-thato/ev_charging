@@ -5,7 +5,8 @@ ChargingPointDetailView,
 ChargingSessionListCreateView,
 ChargingSessionDetailView,
 BookingListCreateView,
-ProfileListCreateView
+ProfileListCreateView,
+PaymentMethods
 #show_nearby_charging_points
 )
 
@@ -23,6 +24,9 @@ urlpatterns = [
 
     #profile
     path('Profile/', ProfileListCreateView.as_view(), name="Profile"),
+
+    #payment section
+    path('Payment/', PaymentMethods.as_view(), name="Payment"),
 
     #charging points
     #path('show_nearby_charging_points', show_nearby_charging_points, name="show_nearby_charging_points"),

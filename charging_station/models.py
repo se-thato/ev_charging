@@ -10,6 +10,7 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField(max_length=100, unique=True, blank=False)
+    location = models.CharField(max_length=150, null=True, blank=True)
 
 
 
@@ -75,3 +76,13 @@ class Booking(models.Model):
         return f"Booking {self.id} made by {self.user} at {self.station}"
     
 
+class PaymentMethods(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    card_number = models.CharField(max_length=16)
+    card_holder = models.CharField(max_length=50)
+    expiration_date = models.DateField()
+    cvv = models.CharField(max_length=3)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"This payment is for {self.user}" 

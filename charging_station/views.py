@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import ChargingPoint, ChargingSession, Booking, Profile
-from .serializers import ChargingPointSerializer, ChargingSessionSerializer, BookingSerializer, ProfileSerializer
+from .models import ChargingPoint, ChargingSession, Booking, Profile, PaymentMethods
+from .serializers import ChargingPointSerializer, ChargingSessionSerializer, BookingSerializer, ProfileSerializer, PaymentMethodsSerializer
 
 from rest_framework.filters import SearchFilter, OrderingFilter
 
@@ -128,3 +128,9 @@ class BookingListCreateView(generics.ListCreateAPIView):
 class ProfileListCreateView(generics.ListCreateAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+
+
+
+class PaymentMethods(generics.ListCreateAPIView):
+    queryset = PaymentMethods.objects.all()
+    serializer_class = PaymentMethodsSerializer
