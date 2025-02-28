@@ -17,7 +17,7 @@ class Profile(models.Model):
 
 class ChargingPoint(models.Model):
     name = models.CharField(max_length=150)
-    location = models.CharField(max_length=150)
+    location = models.CharField(max_length=150, null=True, blank=True)
     capicity = models.PositiveIntegerField()
     available_slots = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
@@ -70,6 +70,7 @@ class Booking(models.Model):
     costs = models.DecimalField(max_digits=6, decimal_places=2)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
     created_at = models.DateTimeField(auto_now_add=True)
+    payment = models.ForeignKey('PaymentMethods', on_delete=models.CASCADE, null=True, blank=True)
 
 
     def __str__(self):

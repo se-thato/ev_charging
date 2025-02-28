@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django import forms
 from django.forms.widgets import PasswordInput, TextInput
 
-from charging_station.models import Booking
+from charging_station.models import Booking, Profile
 
 
 # Registration of a user 
@@ -37,3 +37,16 @@ class UpdateBookingForm(forms.ModelForm):
     class Meta:
         model = Booking
         fields = ['station', 'location', 'start_time', 'end_time','costs']
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['username', 'first_name', 'last_name', 'email', 'location']
+        widgets = {
+            'username': forms.TextInput(attrs={'readonly': 'readonly'}),
+            'first_name': forms.TextInput(attrs={'readonly': 'readonly'}),
+            'last_name': forms.TextInput(attrs={'readonly': 'readonly'}),
+            'email': forms.EmailInput(attrs={'readonly': 'readonly'}),
+            'location': forms.TextInput(attrs={'readonly': 'readonly'}),
+        }

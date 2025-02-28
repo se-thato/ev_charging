@@ -61,6 +61,7 @@
                     <th>Available Slots</th>
                     <th>Availability</th>
                     <th>Price Per Hour</th>
+                    <th>Payment</th>
                 </tr>
             </thead>
             <tbody>
@@ -117,7 +118,9 @@
                     <td>{{ session.energy_consumed_kwh }}</td>
                     <td>R{{ session.costs }}</td>
                     <td>{{session.status}}</td>
-                    <td>
+
+                    <td> <a href="{% url 'view_session' session.id %}" ><i class="fa fa-eye" aria-hidden="true"></i> </a> </td>
+                    
                     {% if session.status == 'Pending' %}
                         <span class="badge bg-warning">Pending</span>
                     {% elif session.status == 'Confirmed' %}
@@ -148,8 +151,9 @@
                      <th>Costs</th>
                      <th>Status</th>
                      <th>Date Booked</th>
-
+                     <th>Payment</th>
                      <th> View </th>
+                     <th> Payment </th>
                  </tr>
              </thead>
              <tbody>
@@ -163,9 +167,11 @@
                      <td>R{{ booking.costs }}</td>
                      <td>{{booking.status}}</td>
                      <td>{{booking.created_at}}</td>
-
-                     <td> <a href="{%url 'view_booking' booking.id %}" ><i class="fa fa-eye" aria-hidden="true"></i> <a/> </td>
-                     <td>
+                     <td>{{ booking.payment }}</td>
+                     <td> <a href="{% url 'view_booking' booking.id %}" ><i class="fa fa-eye" aria-hidden="true"></i> </a> </td>
+                     <td> <a href="{% url 'payment' %}" ><i class="fa fa-money-bill" aria-hidden="true"></i> </a> </td>
+                     
+                    
 
                      {% if booking.status == 'Pending' %}
                          <span class="badge bg-warning">Pending</span>
@@ -174,7 +180,6 @@
                      {% elif booking.status == 'Cancelled' %}
                          <span class="badge bg-danger">Cancelled</span>
                      {% endif %}
-
                  </td>
                  </tr>
                  {% endfor %}

@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
-from .forms import CreateUserForm, LoginForm, BookingForm, UpdateBookingForm
+from .forms import CreateUserForm, LoginForm, BookingForm, UpdateBookingForm, ProfileForm
 
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
 
 from django.contrib.auth.decorators import login_required
-from charging_station.models import ChargingPoint, ChargingSession, Booking
+from charging_station.models import ChargingPoint, ChargingSession, Booking, Profile
 
 from django.core.mail import send_mail
 from django.http import HttpResponse
@@ -170,6 +170,17 @@ def view_booking(request, pk):
     return render(request, 'VoltHub/view_bookings.html', context=context)
 
 
+# view a singular session record
+
+def view_session(request, pk):
+
+    sessions = ChargingSession.objects.get(id=pk)
+
+    context = {'sessions': sessions}
+
+    return render(request, 'VoltHub/view_session.html', context)
+
+
 # delete booking record
 
 @login_required(login_url='my-login')
@@ -206,3 +217,27 @@ def billing(request):
     context = {'billing': billing}
 
     return render(request, 'VoltHub/billing.html', context)
+
+
+@login_required(login_url='my-login')
+def profile(request):
+    try:
+        user_profile = Profile.objects.get(username=request.user.username)
+    except Profile.DoesNotExist:
+        user_profile = Profile.objects.create(
+            username=request.user.username,
+            first_name=request.user.first_name,
+            last_name=request.user.last_name,
+            email=request.user.email
+        )
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=user_profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ProfileForm(instance=user_profile)
+
+    context = {'form': form}
+    return render(request, 'VoltHub/profile.html', context)

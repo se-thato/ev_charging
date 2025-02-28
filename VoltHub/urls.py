@@ -27,6 +27,9 @@ urlpatterns = [
 
     path('view_booking/<int:pk>/', views.view_booking, name="view_booking"),
 
+    # view a session record
+    path('view_session/<int:pk>/', views.view_session, name="view_session"),
+
 
     #viewing a booking record
 
@@ -40,5 +43,8 @@ urlpatterns = [
     
     #billing section
     path('billing', views.billing, name="billing"),
+
+    #profile section
+    path('profile', views.profile, name="profile"),
 
 ]
