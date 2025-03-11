@@ -15,11 +15,19 @@
         .station-card {
             margin-bottom: 15px;
         }
+        #search-input {
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
     <div class="container mt-4">
         <h2 class="text-center">Find a Charging Station</h2>
+        <!-- Search Bar -->
+        <input id="search-input" type="text" placeholder="Search for a location...">
         <!-- Map Container -->
         <div id="map" class="mt-3"></div>
         <script>
@@ -27,6 +35,43 @@
                 var map = new google.maps.Map(document.getElementById("map"), {
                     zoom: 10,
                     center: {lat: -26.341069, lng: 28.132964}
+                });
+
+                var input = document.getElementById('search-input');
+                var searchBox = new google.maps.places.SearchBox(input);
+
+                map.addListener('bounds_changed', function() {
+                    searchBox.setBounds(map.getBounds());
+                });
+
+                //search bar on a map
+                searchBox.addListener('places_changed', function() {
+                    var places = searchBox.getPlaces();
+
+                    if (places.length == 0) {
+                        return;
+                    }
+
+                    var bounds = new google.maps.LatLngBounds();
+                    places.forEach(function(place) {
+                        if (!place.geometry) {
+                            console.log("Returned place contains no geometry");
+                            return;
+                        }
+
+                        var marker = new google.maps.Marker({
+                            map: map,
+                            title: place.name,
+                            position: place.geometry.location
+                        });
+
+                        if (place.geometry.viewport) {
+                            bounds.union(place.geometry.viewport);
+                        } else {
+                            bounds.extend(place.geometry.location);
+                        }
+                    });
+                    map.fitBounds(bounds);
                 });
 
                 // Show current location
@@ -92,7 +137,7 @@
                 }
             }
         </script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6RCLJT5k3SVic4HZNe0y2MumLXuLNc0M&callback=initMap"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6RCLJT5k3SVic4HZNe0y2MumLXuLNc0M&callback=initMap&libraries=places"></script>
         <!-- Station List -->
         <h4 class="mt-4">Available Charging Stations</h4>
         <div class="row">

@@ -12,6 +12,8 @@ class Profile(models.Model):
     email = models.EmailField(max_length=100, unique=True, blank=False)
     location = models.CharField(max_length=150, null=True, blank=True)
 
+    def __str__(self):
+        return self.username
 
 
 
