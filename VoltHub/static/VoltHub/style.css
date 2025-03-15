@@ -3,11 +3,12 @@
 }
 
 
-html
-body {
+html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -30,21 +31,28 @@ body {
 
 
 /* footer section */
-body
+html, body
 {
     margin: 0;
     padding: 0;
     height: 100%;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
+
+
 
 .footer
 {
     background-color: rgb(3, 12, 41);
     width: 100%;
     left: 0;
-    position: fixed;
-    bottom: 0;
-   
+    position: absolute;
+    bottom :0px;
+    margin-top: auto;
+    flex-shrink: 1;
 }
 
 .social 
@@ -103,6 +111,8 @@ body
 
 
 /* background video */
+
+
 
 
 

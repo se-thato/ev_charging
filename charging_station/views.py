@@ -30,6 +30,44 @@ class ChargingPointListCreateView(generics.ListCreateAPIView):
         serializer = ChargingPointSerializer(stations, many=True)
         return Response(serializer.data)
     
+    
+    #allowing to add a charging station
+    @api_view(['POST'])
+    def create_charging_station(request):
+        serializer = ChargingPointSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    #this will update a charging station
+    @api_view(['PUT'])
+    def update_charging_station(request, pk):
+        try:
+            station = ChargingPoint.objects.get(pk=pk)
+        except ChargingPoint.DoesNotExist:
+            return Response({"error": "Sorry!! Station Not Found"}, status=status.HTTP_404_NOT_FOUND)
+        
+        serializer = ChargingPointSerializer(station, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    #this will delete a charging station
+    @api_view(['DELETE'])
+    def delete_charging_station(request, pk):
+        try:
+            station = ChargingPoint.objects.get(pk=pk)
+        except ChargingPoint.DoesNotExist:
+            return Response({"error": "Station Not Found"}, status=status.HTTP_404_NOT_FOUND)
+        
+        station.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+
+
+
 
 class ChargingPointDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = ChargingPoint.objects.all()

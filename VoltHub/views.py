@@ -199,6 +199,7 @@ def station_locator(request):
     stations = ChargingPoint.objects.all()
     context = {'stations': stations, }
 
+
     return render(request, 'VoltHub/charging_points.html', context)   
 
 
@@ -241,3 +242,5 @@ def profile(request):
 
     context = {'form': form}
     return render(request, 'VoltHub/profile.html', context)
+
+
