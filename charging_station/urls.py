@@ -21,6 +21,7 @@ urlpatterns = [
     
     #bookings
     path('Booking/', BookingListCreateView.as_view(), name="Booking"),
+    path('Booking/<int:pk>/', BookingListCreateView.as_view(), name="Booking_details"),
 
     #profile
     path('Profile/', ProfileListCreateView.as_view(), name="Profile"),

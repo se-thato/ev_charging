@@ -5,7 +5,7 @@ class ChargingPointSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ChargingPoint
-        fields = ['__all__']
+        fields = '__all__'
 
 
 
