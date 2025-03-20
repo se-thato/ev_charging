@@ -1,61 +1,83 @@
 {% extends 'VoltHub/base.html' %}
 
+{% load static %}
+
 {% block content %}
 
+<!DOCTYPE html>
 <head>
     <title> Home </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'VoltHub/style.css' %}">
+
+ 
 </head>
 
 <body>
     <br>
     <br>
-    
-    <div class="text-center">
-        <h3> The VoltHub... Powering the future, One charge at a time! </h3>   
-        <br>
-        <h5> Boost Your Energy!!</h5>
-        <hr>
-        <br>
-        <a class="btn btn-primary" type="button" href="{% url 'register' %}"> Sign Up &nbsp; <i class="fa fa-solid fa-user-plus" aria-hidden="true"></i></a>
+
+    <video autoplay loop muted playsinline class="back-video">
+        <source src="{% static 'VoltHub/video.mp4' %}" type="video/mp4">
+    </video>
+
+   
+    <div class="content">
+        <h1> Boost Your Energy.. </h1>
         <br>
 
-        <br>
-        <h6> Charge Up Your Drive - Book Your EV Session Now!! </h6>
-        <a class="btn btn-primary" type="button" href="{% url 'book' %}"> Book Your Session </a>
-        <br>
+        <p> Our EV charging stations provide efficient and convenient charging options,
+            from home installation to public fast-charging network. Power up your EV now!! 
+            with our fast, reliable, and eco-friendly charging solutions. Find a charging stations 
+            near you!!
+        </p>
+
         
 
-       
+        <a href="{% url 'book' %}"> Book Now </a>
     </div>
 
-    <br>
+</div>
+
 
     <!--creating a responsive footer-->
     <section class="footer">
+
         <div class="social">
+
+             <!--whatsapp icon-->
+             <a href="#"><i class="fa fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+
             <!--Instagram icon-->
             <a href="#"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a>
-            <!--whatsapp icon-->
-            <a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+
             <!--facebook icon-->
-            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-brands fa-facebook" aria-hidden="true"></i></a>
+
             <!--linkedin icon-->
             <a href="#"><i class="fa fa-brands fa-linkedin" aria-hidden="true"></i></a>
+
+
+
         </div>
 
         <ul>
-            <li>
+
+           <li>
                 <a href="{% url '' %}">Home</a>
             </li>
+            
             <li>
                 <a href="{% url 'about_us' %}">About Us</a>
             </li>
+
             <li>
                 <a href="{% url 'contact_us' %}">Contact Us</a>
             </li>
+
         </ul>
 
         <p class="copy-right">Copyright ©2025 al right reserved by TheVoltHub</p>
+
     </section>
 </body>
 

@@ -2,7 +2,6 @@
     height: 100%;
 }
 
-
 html, body {
     height: 100%;
     margin: 0;
@@ -11,14 +10,11 @@ html, body {
     flex-direction: column;
 }
 
-
 .text-center h3{
     font-size: 40px;
     color: black;
     font-weight: 800;
 }
-
-
 
 /* form for login and regiter */
 .form-layout {
@@ -26,9 +22,6 @@ html, body {
     width: 500px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-
-
 
 /* footer section */
 html, body
@@ -42,12 +35,12 @@ html, body
     flex: 1;
 }
 
-
-
 .footer
 {
     background-color: rgb(3, 12, 41);
     width: 100%;
+    padding: 10px;
+    text-align: center;
     left: 0;
     position: absolute;
     bottom :0px;
@@ -74,7 +67,6 @@ html, body
 {
     background-color: skyblue;
 }
-
 
 .footer ul
 {
@@ -109,8 +101,8 @@ html, body
 }
 
 
-
 /* background video */
+
 
 
 
