@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ChargingPoint, ChargingSession, Booking, Profile, PaymentMethods
+from .models import ChargingPoint, ChargingSession, Booking, Profile, PaymentMethods, Rating, IssueReport, Comment
 
 class ChargingPointSerializer(serializers.ModelSerializer):
 
@@ -30,4 +30,22 @@ class ProfileSerializer(serializers.ModelSerializer):
 class PaymentMethodsSerializer(serializers.ModelSerializer):
     class Meta:
         model = PaymentMethods
+        fields = '__all__'
+
+
+class RatingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Rating
+        fields = '__all__'
+
+
+class IssueReportSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = IssueReport
+        fields = '__all__'
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
         fields = '__all__'

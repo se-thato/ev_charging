@@ -38,11 +38,11 @@ class ChargingPoint(models.Model):
 class ChargingSession(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     station = models.ForeignKey(ChargingPoint, on_delete=models.CASCADE)
-    location = models.CharField(max_length=150, null=True, blank=True)
+    location = models.CharField(max_length=150, null=True, blank=True, default='Unknown Location')
     start_time = models.DateTimeField(auto_now_add=True)
     end_time = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     energy_consumed_kwh = models.FloatField(null=True, blank=True)
-    costs = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, default=True)
+    costs = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, default=0.0)
     #created_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=100, choices=[
     ('Canceled', 'Canceled'),
@@ -88,4 +88,36 @@ class PaymentMethods(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"This payment is for {self.user}" 
+        return f"This payment is for {self.user}"
+
+
+class Rating(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    station = models.ForeignKey(ChargingPoint, on_delete=models.CASCADE)
+    rating = models.PositiveIntegerField()
+    comment = models.TextField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Rating by {self.user} for {self.station} - {self.rating}"
+
+
+class IssueReport(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    station = models.ForeignKey(ChargingPoint, on_delete=models.CASCADE)
+    issue_description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    resolved = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Issue reported by {self.user} for {self.station} - {'Resolved' if self.resolved else 'Unresolved'}"
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    station = models.ForeignKey(ChargingPoint, on_delete=models.CASCADE)
+    comment_text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Comment made by {self.user} for {self.station}"

@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.response import Response
 
-from .models import ChargingPoint, ChargingSession, Booking, Profile, PaymentMethods
-from .serializers import ChargingPointSerializer, ChargingSessionSerializer, BookingSerializer, ProfileSerializer, PaymentMethodsSerializer
+from .models import ChargingPoint, ChargingSession, Booking, Profile, PaymentMethods, Rating, IssueReport, Comment
+from .serializers import ChargingPointSerializer, ChargingSessionSerializer, BookingSerializer, ProfileSerializer, PaymentMethodsSerializer, RatingSerializer, IssueReportSerializer, CommentSerializer
 
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import PageNumberPagination
@@ -78,6 +78,7 @@ class ChargingPointListCreateView(generics.ListCreateAPIView):
         ChargingPoint.objects.all().delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
+
 
 
 class ChargingPointDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -286,6 +287,7 @@ class BookingListCreateView(generics.ListCreateAPIView):
     
 
 
+
 class BookingDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
@@ -307,7 +309,7 @@ class BookingDetailView(generics.RetrieveUpdateDestroyAPIView):
             if serializer.is_valid():
                 serializer.save
 
-        elif request.method == 'DELETE':
+        elif request.method == ['DELETE']:
             booking.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
         
@@ -331,3 +333,130 @@ class PaymentMethods(generics.ListCreateAPIView):
         payment_methods = PaymentMethods.objects.all()
         serializer = PaymentMethodsSerializer(payment_methods, many=True)
         return Response(serializer.data)
+
+
+
+class RatingListCreateView(generics.ListCreateAPIView):
+    queryset = Rating.objects.all()
+    serializer_class = RatingSerializer
+
+    @api_view(['GET'])
+    def list_ratings(request):
+        ratings = Rating.objects.all()
+        serializer = RatingSerializer(ratings, many=True)
+        return Response(serializer.data)
+
+    @api_view(['POST'])
+    def create_rating(request):
+        serializer = RatingSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @api_view(['PUT'])
+    def update_rating(request, pk):
+        try:
+            rating = Rating.objects.get(pk=pk)
+        except Rating.DoesNotExist:
+            return Response({"error": "Rating Not Found"}, status=status.HTTP_404_NOT_FOUND)
+        
+        serializer = RatingSerializer(rating, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @api_view(['DELETE'])
+    def delete_rating(request, pk):
+        try:
+            rating = Rating.objects.get(pk=pk)
+        except Rating.DoesNotExist:
+            return Response({"error": "Rating Not Found"}, status=status.HTTP_404_NOT_FOUND)
+        
+        rating.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class IssueReportListCreateView(generics.ListCreateAPIView):
+    queryset = IssueReport.objects.all()
+    serializer_class = IssueReportSerializer
+
+    @api_view(['GET'])
+    def list_issue_reports(request):
+        issue_reports = IssueReport.objects.all()
+        serializer = IssueReportSerializer(issue_reports, many=True)
+        return Response(serializer.data)
+
+    @api_view(['POST'])
+    def create_issue_report(request):
+        serializer = IssueReportSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @api_view(['PUT'])
+    def update_issue_report(request, pk):
+        try:
+            issue_report = IssueReport.objects.get(pk=pk)
+        except IssueReport.DoesNotExist:
+            return Response({"error": "Issue Report Not Found"}, status=status.HTTP_404_NOT_FOUND)
+        
+        serializer = IssueReportSerializer(issue_report, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @api_view(['DELETE'])
+    def delete_issue_report(request, pk):
+        try:
+            issue_report = IssueReport.objects.get(pk=pk)
+        except IssueReport.DoesNotExist:
+            return Response({"error": "Issue Report Not Found"}, status=status.HTTP_404_NOT_FOUND)
+        
+        issue_report.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class CommentListCreateView(generics.ListCreateAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+
+    @api_view(['GET'])
+    def list_comments(request):
+        comments = Comment.objects.all()
+        serializer = CommentSerializer(comments, many=True)
+        return Response(serializer.data)
+
+    @api_view(['POST'])
+    def create_comment(request):
+        serializer = CommentSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @api_view(['PUT'])
+    def update_comment(request, pk):
+        try:
+            comment = Comment.objects.get(pk=pk)
+        except Comment.DoesNotExist:
+            return Response({"error": "Comment Not Found"}, status=status.HTTP_404_NOT_FOUND)
+        
+        serializer = CommentSerializer(comment, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @api_view(['DELETE'])
+    def delete_comment(request, pk):
+        try:
+            comment = Comment.objects.get(pk=pk)
+        except Comment.DoesNotExist:
+            return Response({"error": "Comment Not Found"}, status=status.HTTP_404_NOT_FOUND)
+        
+        comment.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

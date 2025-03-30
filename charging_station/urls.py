@@ -6,8 +6,11 @@ ChargingSessionListCreateView,
 ChargingSessionDetailView,
 BookingListCreateView,
 ProfileListCreateView,
-PaymentMethods
-#show_nearby_charging_points
+PaymentMethods,
+RatingListCreateView,
+IssueReportListCreateView,
+CommentListCreateView,
+
 )
 
 
@@ -29,7 +32,13 @@ urlpatterns = [
     #payment section
     path('Payment/', PaymentMethods.as_view(), name="Payment"),
 
-    #charging points
-    #path('show_nearby_charging_points', show_nearby_charging_points, name="show_nearby_charging_points"),
-    
+    #rating
+    path('Rating/', RatingListCreateView.as_view(), name="Rating"),
+
+    #issue report
+    path('IssueReport/', IssueReportListCreateView.as_view(), name="IssueReport"),
+
+    #comments
+    path('Comments/', CommentListCreateView.as_view(), name="Comments"),
+
 ]
