@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ChargingPoint, ChargingSession, Booking, Profile, PaymentMethods, Rating, IssueReport, Comment
+from .models import ChargingPoint, ChargingSession, Booking, Profile, PaymentMethod, Rating, IssueReport, Comment, Payment
 
 
 admin.site.register(ChargingPoint)
@@ -10,10 +10,12 @@ admin.site.register(Booking)
 
 admin.site.register(Profile)
 
-admin.site.register(PaymentMethods)
+admin.site.register(PaymentMethod)
 
 admin.site.register(Rating) 
 
 admin.site.register(IssueReport)    
 
 admin.site.register(Comment)
+
+admin.site.register(Payment)

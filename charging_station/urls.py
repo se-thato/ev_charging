@@ -5,8 +5,10 @@ ChargingPointDetailView,
 ChargingSessionListCreateView,
 ChargingSessionDetailView,
 BookingListCreateView,
+BookingDetailView,
 ProfileListCreateView,
-PaymentMethods,
+PaymentMethodListCreateView,
+PaymentListCreateView,
 RatingListCreateView,
 IssueReportListCreateView,
 CommentListCreateView,
@@ -15,30 +17,31 @@ CommentListCreateView,
 
 
 urlpatterns = [
-    path('stations_list/', ChargingPointListCreateView.as_view(), name="stations_list"),
-    path('stations/<int:pk>/', ChargingPointDetailView.as_view(), name="stations_details"), 
+    path('stations-list/', ChargingPointListCreateView.as_view(), name="stations_list"),
+    path('stations-list/<int:pk>/', ChargingPointDetailView.as_view(), name="stations_list_details"), 
   
 
-    path('charging_sessions/', ChargingSessionListCreateView.as_view(), name ="charging_session"),
-    path('charging_sessions/<int:pk>/', ChargingSessionDetailView.as_view(), name="charging_sessions_details"),
+    path('charging-sessions/', ChargingSessionListCreateView.as_view(), name ="charging_session"),
+    path('charging-sessions/<int:pk>/', ChargingSessionDetailView.as_view(), name="charging_sessions_details"),
     
     #bookings
-    path('Booking/', BookingListCreateView.as_view(), name="Booking"),
-    path('Booking/<int:pk>/', BookingListCreateView.as_view(), name="Booking_details"),
+    path('bookings/', BookingListCreateView.as_view(), name="bookings"),
+    path('bookings/<int:pk>/', BookingDetailView.as_view(), name="bookings_details"),
 
     #profile
-    path('Profile/', ProfileListCreateView.as_view(), name="Profile"),
+    path('profiles/', ProfileListCreateView.as_view(), name="profiles"),
 
     #payment section
-    path('Payment/', PaymentMethods.as_view(), name="Payment"),
+    path('payment-method/', PaymentMethodListCreateView.as_view(), name="payment-method"),
+    path('payment/', PaymentListCreateView.as_view(), name="payment"),
 
     #rating
-    path('Rating/', RatingListCreateView.as_view(), name="Rating"),
+    path('ratings/', RatingListCreateView.as_view(), name="ratings"),
 
     #issue report
-    path('IssueReport/', IssueReportListCreateView.as_view(), name="IssueReport"),
+    path('issue-reports/', IssueReportListCreateView.as_view(), name="issue_reports"),
 
     #comments
-    path('Comments/', CommentListCreateView.as_view(), name="Comments"),
+    path('comments/', CommentListCreateView.as_view(), name="comments"),
 
 ]

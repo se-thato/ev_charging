@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from rest_framework import generics, status
+from rest_framework import generics, status, viewsets
 from rest_framework.response import Response
 
-from .models import ChargingPoint, ChargingSession, Booking, Profile, PaymentMethods, Rating, IssueReport, Comment
-from .serializers import ChargingPointSerializer, ChargingSessionSerializer, BookingSerializer, ProfileSerializer, PaymentMethodsSerializer, RatingSerializer, IssueReportSerializer, CommentSerializer
+from .models import ChargingPoint, ChargingSession, Booking, Profile, PaymentMethod, Payment, Rating, IssueReport, Comment
+from .serializers import ChargingPointSerializer, ChargingSessionSerializer, BookingSerializer, ProfileSerializer, PaymentMethodSerializer, PaymentSerializer, RatingSerializer, IssueReportSerializer, CommentSerializer
 
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import PageNumberPagination
@@ -12,8 +12,11 @@ from django.utils.timezone import now
 from django.http import JsonResponse
 import geopy.distance
 
+
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 
 
 
@@ -21,15 +24,18 @@ from rest_framework.response import Response
 class ChargingPointListCreateView(generics.ListCreateAPIView):
     queryset = ChargingPoint.objects.all()
     serializer_class = ChargingPointSerializer
+    permission_classes = [IsAuthenticated]
+    pagination_class = PageNumberPagination
+
 
     #search filter
     filter_backends = [SearchFilter, OrderingFilter]
-    search_fields = []
+    search_fields = ['location', 'name']
     pagination_class = PageNumberPagination
 
 
     @api_view(['GET'])
-    def charging_station_list(request):
+    def charging_points_list(request):
         #this will return list of all charging stations/points with their details
         stations = ChargingPoint.objects.all()
         serializer = ChargingPointSerializer(stations, many=True)
@@ -73,10 +79,14 @@ class ChargingPointListCreateView(generics.ListCreateAPIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-    #this will delete all charging stations available
+    
     def delete(self, request, *args, **kwargs):
+        confirmation = request.data.get('confirm', None)
+        if confirmation != 'confirm':
+            return Response({"error": "Please provide confirmation to delete all charging points."}, status=status.HTTP_400_BAD_REQUEST)
+        
         ChargingPoint.objects.all().delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response({"message": "All charging points have been deleted"}, status.HTTP_204_NO_CONTENT)
     
 
 
@@ -84,6 +94,7 @@ class ChargingPointListCreateView(generics.ListCreateAPIView):
 class ChargingPointDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = ChargingPoint.objects.all()
     serializer_class = ChargingPointSerializer
+    pagination_class = PageNumberPagination
 
     @api_view(['GET', 'PUT', 'DELETE'])
     def charging_points_detail(request, id):
@@ -114,7 +125,6 @@ class ChargingPointDetailView(generics.RetrieveUpdateDestroyAPIView):
 class ChargingSessionListCreateView(generics.ListCreateAPIView):
     queryset = ChargingSession.objects.all()
     serializer_class = ChargingSessionSerializer
-
     pagination_class = PageNumberPagination
 
 
@@ -209,6 +219,7 @@ class ChargingSessionListCreateView(generics.ListCreateAPIView):
 class ChargingSessionDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = ChargingSession.objects.all()
     serializer_class = ChargingSessionSerializer
+    pagination_class = PageNumberPagination
 
 
     @api_view(['DELETE'])
@@ -230,6 +241,7 @@ class ChargingSessionDetailView(generics.RetrieveUpdateDestroyAPIView):
 class BookingListCreateView(generics.ListCreateAPIView):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
+    pagination_class = PageNumberPagination
 
     pagination_class = PageNumberPagination
 
@@ -291,6 +303,8 @@ class BookingListCreateView(generics.ListCreateAPIView):
 class BookingDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
+    pagination_class = PageNumberPagination
+
 
     @api_view(['GET', 'PUT', 'DELETE'])
     def booking_detail(request, id):
@@ -308,8 +322,10 @@ class BookingDetailView(generics.RetrieveUpdateDestroyAPIView):
             serializer = BookingSerializer(booking, data= request.data)
             if serializer.is_valid():
                 serializer.save
-
-        elif request.method == ['DELETE']:
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                
+        elif request.method == 'DELETE':
             booking.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
         
@@ -321,17 +337,32 @@ class BookingDetailView(generics.RetrieveUpdateDestroyAPIView):
 class ProfileListCreateView(generics.ListCreateAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+    pagination_class = PageNumberPagination
 
 
 
-class PaymentMethods(generics.ListCreateAPIView):
-    queryset = PaymentMethods.objects.all()
-    serializer_class = PaymentMethodsSerializer
+class PaymentMethodListCreateView(generics.ListCreateAPIView):
+    queryset = PaymentMethod.objects.all()
+    serializer_class = PaymentMethodSerializer
+    permission_classes = [IsAuthenticated]
+    pagination_class = PageNumberPagination
 
     @api_view(['GET'])
     def list_payment_methods(request):
-        payment_methods = PaymentMethods.objects.all()
-        serializer = PaymentMethodsSerializer(payment_methods, many=True)
+        payment_methods = PaymentMethod.objects.all()
+        serializer= PaymentMethodSerializer(payment_methods, many=True)
+        return Response(serializer.data)
+    
+
+class PaymentListCreateView(generics.ListCreateAPIView):
+    queryset = Payment.objects.all()
+    serializer_class = PaymentSerializer
+    permission_classes = [IsAuthenticated]
+
+    @api_view(['GET'])
+    def payment_history(request):
+        payment = Payment.objects.all()
+        serializer= PaymentMethodSerializer(payment, many=True)
         return Response(serializer.data)
 
 
@@ -339,6 +370,7 @@ class PaymentMethods(generics.ListCreateAPIView):
 class RatingListCreateView(generics.ListCreateAPIView):
     queryset = Rating.objects.all()
     serializer_class = RatingSerializer
+    pagination_class = PageNumberPagination
 
     @api_view(['GET'])
     def list_ratings(request):
@@ -381,6 +413,8 @@ class RatingListCreateView(generics.ListCreateAPIView):
 class IssueReportListCreateView(generics.ListCreateAPIView):
     queryset = IssueReport.objects.all()
     serializer_class = IssueReportSerializer
+    pagination_class = PageNumberPagination
+
 
     @api_view(['GET'])
     def list_issue_reports(request):
@@ -423,6 +457,8 @@ class IssueReportListCreateView(generics.ListCreateAPIView):
 class CommentListCreateView(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+    pagination_class = PageNumberPagination
+
 
     @api_view(['GET'])
     def list_comments(request):

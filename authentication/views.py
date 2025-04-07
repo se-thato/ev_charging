@@ -11,4 +11,3 @@ class ProtectedView(APIView):
         return Response({"message": "This is protected"})
 
 
-
