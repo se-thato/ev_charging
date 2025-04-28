@@ -1,15 +1,26 @@
 {% extends 'VoltHub/base.html' %}
 
+{% load static %}
+
 {% load crispy_forms_tags %}
 
 {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'VoltHub/login.css' %}">
 
+
+</head>
 
 
     <body>
 
         <video autoplay muted loop >
-            <source src=" static 'VoltHub/video.mp4' " type="video/mp4">
+            <source src=" static 'VoltHub/image/video.mp4' " type="video/mp4">
         </video>
      
 
@@ -22,7 +33,7 @@
             <hr>
             <br>
 
-            <form method="POST" autocomplete="off" action="{% url 'my-login' %}">
+            <form method="POST" autocomplete="off" action="{% url 'login' %}">
 
                 {% csrf_token %}
             
@@ -51,7 +62,9 @@
 
         </div>
 
+        {% include 'VoltHub/footer.html' %}
     </body>
 
+</html>
 
 {% endblock %}

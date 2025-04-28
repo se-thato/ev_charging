@@ -6,6 +6,8 @@
 
 <!DOCTYPE html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Home </title>
     
     <link rel="stylesheet" type="text/css" href="{% static 'VoltHub/style.css' %}">
@@ -13,32 +15,50 @@
 
 </head>
 
-<body>
+<body style="background-color:#3a86ff";>
     <br>
     <br>
 
+    <!--
     <video autoplay loop muted playsinline class="back-video">
         <source src="{% static 'VoltHub/video.mp4' %}" type="video/mp4">
     </video>
-
+    -->
    
     <div class="content">
         <h1> Boost Your Energy.. </h1>
         <br>
 
-        <p> Our EV charging stations provide efficient and convenient charging options,
-            from home installation to public fast-charging network. Power up your EV now!! 
-            with our fast, reliable, and eco-friendly charging solutions. Find a charging stations 
-            near you!!
+        <p> Our EV charging stations locator provide efficient and convenient charging options,
+            from home installation to public fast-charging network. <strong>Power up your EV now!!</strong> 
+            with our fast, reliable, and eco-friendly charging solutions. <strong>Find a charging stations 
+            near you!!</strong>
         </p>
         
 
         <a href="{% url 'book' %}"> Book Now </a>
     </div>
 
-    <br>
+
+    <section class="testimonials" style="color:white; text-align:left; padding: 50px; margin-left:0px;">
+        <h2>What Our Customers Say</h2>
+        {% for comment in comments %}
+            <div class="testimonial-container">
+                <h4>- {{ comment.user.username }}</h4>
+                <p>"{{ comment.comment_text }}"</p>       
+                <small>Posted on {{ comment.created_at|date:"F j, Y, g:i a" }}</small>
+            </div>
+        {% empty %}
+            <p>No comments yet. Be the first to share your thoughts!</p>
+        {% endfor %}
+    </section>
 
 </div>
+    
+
+    <br>
+
+
 
 
     <!--creating a responsive footer-->
@@ -47,16 +67,16 @@
         <div class="social">
 
              <!--whatsapp icon-->
-             <a href="#"><i class="fa fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+             <a href="https://wa.me/27783522058?text=Hello%20Thato%2C%20I%27d%20like%20to%20chat!"><i class="fa fa-brands fa-whatsapp" aria-hidden="true"></i></a>
 
             <!--Instagram icon-->
             <a href="#"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a>
 
             <!--facebook icon-->
-            <a href="#"><i class="fa fa-brands fa-facebook" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/thato.thatoo.10"><i class="fa fa-brands fa-facebook" aria-hidden="true"></i></a>
 
             <!--linkedin icon-->
-            <a href="#"><i class="fa fa-brands fa-linkedin" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com/in/thato-selepe-231266241"><i class="fa fa-brands fa-linkedin" aria-hidden="true"></i></a>
 
 
 
@@ -78,7 +98,7 @@
 
         </ul>
 
-        <p class="copy-right">Copyright ©2025 al right reserved by TheVoltHub</p>
+        <p class="copy-right">Copyright ©2025 al right reserved by Thato_Selepe</p>
 
     </section>
 </body>

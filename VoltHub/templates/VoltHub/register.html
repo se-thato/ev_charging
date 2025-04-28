@@ -4,6 +4,33 @@
 
 {% block content %}
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color:#f7f9fc;
+        }
+        
+        .form-layout {
+            max-width: 600px;
+            margin: 100px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 16px 24px rgba(0, 0, 0, 0.2);
+        }
+        
+    </style>
+
+
+</head>
+
     <body>
 
         <div class="container bg-light shadow-md p-5 form-layout">
@@ -38,7 +65,7 @@
 
             <div class="text-center">
 
-                <p> Already have an account? </p> <a href="{% url 'my-login' %}"> Login </a>
+                <p> Already have an account? </p> <a href="{% url 'login' %}"> Login </a>
 
             </div>
 
@@ -46,6 +73,7 @@
 
         </div>
 
+        {% include 'VoltHub/footer.html' %}
     </body>
 
 {% endblock %}

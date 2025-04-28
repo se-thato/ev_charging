@@ -5,16 +5,21 @@ from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
 
 from django.contrib.auth.decorators import login_required
-from charging_station.models import ChargingPoint, ChargingSession, Booking, Profile
+from charging_station.models import ChargingPoint, ChargingSession, Booking, Profile, Comment
 
 from django.core.mail import send_mail
 from django.http import HttpResponse
 
+
+
+
 #Home page
 def home(request):
+    #this will collect all the comment related to the VoltHub app/website
+    comments = Comment.objects.filter(station__name='VoltHub').order_by('-created_at')
+    return render(request, 'VoltHub/home.html', {'comments': comments})
 
 
-    return render(request, 'VoltHub/home.html')
 
 
 # Register View
@@ -26,7 +31,7 @@ def register(request):
         if form.is_valid():
             form.save()
 
-            return redirect('my-login')
+            return redirect('login')
 
     context = {'form': form}
 
@@ -60,7 +65,7 @@ def my_login(request):
 
 
 # Dashboard view
-@login_required(login_url='my-login')
+@login_required(login_url='login')
 def dashboard(request):
     stations = ChargingPoint.objects.all()
     sessions = ChargingSession.objects.filter(user=request.user)
@@ -79,10 +84,9 @@ def dashboard(request):
 
 # Logout user
 def user_logout(request):
-
     auth.logout(request)
 
-    return redirect('my-login')
+    return redirect('login')
 
 
 #about user section
@@ -114,7 +118,7 @@ def contact_us(request):
     return render(request, 'VoltHub/contact_us.html')
 
 
-@login_required(login_url='my-login')
+@login_required(login_url='login')
 def booking(request):
 
     form = BookingForm()
@@ -135,7 +139,7 @@ def booking(request):
 
 # update your bookings
 
-@login_required(login_url='my-login')
+@login_required(login_url='login')
 def update_booking(request, pk):
 
     booking = Booking.objects.get(id=pk)
@@ -160,7 +164,7 @@ def update_booking(request, pk):
 
 # view a singular booking record
 
-@login_required(login_url='my-login')
+@login_required(login_url='login')
 def view_booking(request, pk):
 
     all_bookings = Booking.objects.get(id=pk)
@@ -183,7 +187,7 @@ def view_session(request, pk):
 
 # delete booking record
 
-@login_required(login_url='my-login')
+@login_required(login_url='login')
 def delete_booking(request, pk): 
 
     booking = Booking.objects.get(id=pk)
@@ -194,7 +198,7 @@ def delete_booking(request, pk):
 
 
 
-@login_required(login_url='my-login')
+@login_required(login_url='login')
 def station_locator(request):
     stations = ChargingPoint.objects.all()
     context = {'stations': stations, }
@@ -220,7 +224,7 @@ def billing(request):
     return render(request, 'VoltHub/billing.html', context)
 
 
-@login_required(login_url='my-login')
+@login_required(login_url='login')
 def profile(request):
     try:
         user_profile = Profile.objects.get(username=request.user.username)

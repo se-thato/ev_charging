@@ -1,0 +1,32 @@
+
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+h1 {
+    text-align: center;
+}
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+form input[type="submit"] {
+    background-color: #1b263b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+.office-info {
+    margin-bottom: 20px;
+}

@@ -2,6 +2,7 @@
 
 {% block content %}
 
+<body>
     <div class="card" style="width: 18rem;">
 
         <strong>
@@ -50,5 +51,9 @@
     &nbsp;
 
     <a href="{% url '' %}" class="btn btn-danger"> Delete </a>
-
+    <br>
+    <br>
+    
+    {% include 'VoltHub/footer.html' %}
+</body>
 {% endblock %}

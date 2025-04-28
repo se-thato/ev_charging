@@ -1,0 +1,20 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color:#f7f9fc;
+
+}
+
+.form-layout {
+    max-width: 450px;
+    margin: 100px auto;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 16px 24px rgba(0, 0, 0, 0.2);
+}
+
+h3 {
+    text-align: center;
+    color: #344039;
+}

@@ -233,7 +233,16 @@ class Comment(models.Model):
     station = models.ForeignKey(ChargingPoint, on_delete=models.CASCADE)
     comment_text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name="replies")
+    upvotes = models.IntegerField(default=0)
+    downvotes =models.IntegerField(default=0)
+    updated_at = models.DateField(auto_now=True)
 
     def __str__(self):
         return f"Comment made by {self.user} for {self.station}"
+    
+
+    @property
+    def total_votes(self):
+        return self.upvotes - self.downvotes
     

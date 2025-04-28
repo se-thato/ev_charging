@@ -2,7 +2,7 @@
 
     <a class="navbar-brand main-heading" href="{% url '' %}"> 
             
-      &nbsp; The VoltHub
+      &nbsp; VoltHub
     
     </a>
   
@@ -30,10 +30,19 @@
           &nbsp;     &nbsp;     &nbsp; 
   
           {% if user.is_authenticated %}
+
+
+          <li class="nav-item">
+  
+            <a class="nav-link" href="{% url '' %}"> Home <i class="fa fa-home" aria-hidden="true"></i></a>
+    
+          </li>
+
+          &nbsp;     &nbsp;     &nbsp; 
   
             <li class="nav-item">
         
-              <a class="nav-link" href="{% url 'dashboard' %}"> Dashboard &nbsp; <i class="fa fa-home" aria-hidden="true"></i> </a>
+              <a class="nav-link" href="{% url 'dashboard' %}"> Dashboard &nbsp; <i class="fa fa-th-large"></i></a>
   
             </li>
 
@@ -62,7 +71,7 @@
             </li>
   
             
-            &nbsp;     &nbsp;     &nbsp; 
+            &nbsp;     &nbsp;     
   
   
             <li class="nav-item">
@@ -72,45 +81,62 @@
             </li>
 
 
+            &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+
+            <form class="d-flex ms-auto" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-light" type="submit">
+                <i class="bi bi-search"></i>
+              Submit</button>
+            </form>
+
+
             
     
         </ul>
   
         {% else %}
 
+        <li class="nav-item">
+  
+          <a class="nav-link" href="{% url '' %}"> Home <i class="fa fa-home" aria-hidden="true"></i></a>
+  
+        </li>
+
+        &nbsp;     &nbsp;     &nbsp;
+
+        <li class="nav-item">
+
+          <a class="nav-link" href="{% url 'stations' %}"> Charging Points  <i class="fa fa-car" aria-hidden="true"></i> </a>
+
+        </li>
+
+
+        &nbsp;     &nbsp;     &nbsp; 
+  
+        <li class="nav-item">
+  
+          <a class="nav-link" href="{% url 'register' %}"> Register <i class="fa fa-regular fa-user-plus" aria-hidden="true"></i></a>
+  
+        </li>
+  
+  
+        &nbsp;     &nbsp;     &nbsp; 
+  
+  
+        <li class="nav-item">
+  
+          <a class="nav-link" href="{% url 'login' %}"> Login <i class="fa fa-sign-in" aria-hidden="true"></i></a>
+  
+        </li>
+
+
+        &nbsp;     &nbsp;     &nbsp; 
+  
     
         <li class="nav-item">
 
-          <a class="nav-link" href="{% url 'stations' %}"> Charging Points &nbsp; <i class="fa fa-car" aria-hidden="true"></i> </a>
-
-        </li>
-
-
-        &nbsp;     &nbsp;     &nbsp; 
-  
-        <li class="nav-item">
-  
-          <a class="nav-link" href="{% url 'register' %}"> Register </a>
-  
-        </li>
-  
-  
-        &nbsp;     &nbsp;     &nbsp; 
-  
-  
-        <li class="nav-item">
-  
-          <a class="nav-link" href="{% url 'my-login' %}"> Login </i></a>
-  
-        </li>
-
-
-
-  
-    
-        <li class="nav-item">
-
-          <a class="nav-link" href="{% url 'about_us' %}"> About Us </a>
+          <a class="nav-link" href="{% url 'about_us' %}"> About Us <i class="fa fa-info-circle"></i></a>
 
         </li>
 
@@ -119,12 +145,12 @@
 
         <li class="nav-item">
 
-          <a class="nav-link" href="{% url 'contact_us' %}"> Contact Us </a>
+          <a class="nav-link" href="{% url 'contact_us' %}"> Contact Us <i class="fa fa-solid fa-address-card" aria-hidden="true"></i></a>
 
         </li>
 
         <!--Search Form-->
-        &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+        &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 
         <form class="d-flex ms-auto" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

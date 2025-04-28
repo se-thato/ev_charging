@@ -3,7 +3,7 @@
 
 {% block content %}
 
-
+<body>
     <div class="card" style="width: 18rem;">
 
         <strong>
@@ -52,5 +52,9 @@
     &nbsp;
 
     <a href="{% url 'delete_booking' booking.id %}" class="btn btn-danger"> Delete </a>
-
+    <br>
+    <br>
+    
+    {% include 'VoltHub/footer.html' %}
+</body>
 {% endblock %}
