@@ -2,8 +2,34 @@ from django.shortcuts import render
 from rest_framework import generics, status, viewsets
 from rest_framework.response import Response
 
-from .models import ChargingPoint, ChargingSession, Booking, Profile, PaymentMethod, Payment, Rating, IssueReport, Comment
-from .serializers import ChargingPointSerializer, ChargingSessionSerializer, BookingSerializer, ProfileSerializer, PaymentMethodSerializer, PaymentSerializer, RatingSerializer, IssueReportSerializer, CommentSerializer
+from .models import (
+ChargingPoint,
+ChargingSession,
+Booking, 
+Profile, 
+PaymentMethod, 
+Payment,
+Rating,
+IssueReport, 
+Comment, SubscriptionPlan, 
+UserSubscription, 
+ChargingStationAnalitics,
+)
+
+from .serializers import (
+ChargingPointSerializer,
+ ChargingSessionSerializer,
+ BookingSerializer, 
+ ProfileSerializer, 
+ PaymentMethodSerializer, 
+ PaymentSerializer, 
+ RatingSerializer, 
+ IssueReportSerializer, 
+ CommentSerializer,
+SubscriptionPlanSerializer, 
+UserSubscriptionSerializer, 
+ChargingStationAnaliticsSerializer
+)
 
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import PageNumberPagination
@@ -235,9 +261,6 @@ class ChargingSessionDetailView(generics.RetrieveUpdateDestroyAPIView):
         
 
 
-
-
-
 class BookingListCreateView(generics.ListCreateAPIView):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
@@ -331,14 +354,11 @@ class BookingDetailView(generics.RetrieveUpdateDestroyAPIView):
         
 
 
-
-
-
 class ProfileListCreateView(generics.ListCreateAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     pagination_class = PageNumberPagination
-
+    
 
 
 class PaymentMethodListCreateView(generics.ListCreateAPIView):
@@ -408,6 +428,7 @@ class RatingListCreateView(generics.ListCreateAPIView):
         
         rating.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 
 class IssueReportListCreateView(generics.ListCreateAPIView):
@@ -496,3 +517,125 @@ class CommentListCreateView(generics.ListCreateAPIView):
         
         comment.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+#Subcribtion plan views
+class SubscriptionPlanListCreateView(generics.ListCreateAPIView):
+    queryset = SubscriptionPlan.objects.all()
+    serializer_class = SubscriptionPlanSerializer
+    permission_classes = [IsAuthenticated]
+    pagination_class = PageNumberPagination
+
+    #this will return list of all subscription plans with their details
+    @api_view(['GET'])
+    def list_subscription_plans(request):
+        subscription_plans = SubscriptionPlan.objects.all()
+        serializer = SubscriptionPlanSerializer(subscription_plans, many=True)
+        return Response(serializer.data)
+
+    #this will allow to create a subscription plan
+    @api_view(['POST'])
+    def create_subscription_plan(request):
+        serializer = SubscriptionPlanSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    #update a subscription plan
+    @api_view(['PUT'])
+    def update_subscription_plan(request, pk):
+        try:
+            subscription_plan = SubscriptionPlan.objects.get(pk=pk)
+        except SubscriptionPlan.DoesNotExist:
+            return Response({"error": "Subscription Plan Not Found"}, status=status.HTTP_404_NOT_FOUND)
+        
+        serializer = SubscriptionPlanSerializer(subscription_plan, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    #this will delete a subscription plan
+    @api_view(['DELETE'])
+    def delete_subscription_plan(request, pk):
+        try:
+            subscription_plan = SubscriptionPlan.objects.get(pk=pk)
+        except SubscriptionPlan.DoesNotExist:
+            return Response({"error": "Subscription Plan Not Found"}, status=status.HTTP_404_NOT_FOUND)
+        
+        subscription_plan.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+
+class SubscriptionPlanDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = SubscriptionPlan.objects.all()
+    serializer_class = SubscriptionPlanSerializer
+    pagination_class = PageNumberPagination
+
+    @api_view(['GET', 'PUT', 'DELETE'])
+    def subscription_plan_detail(request, id):
+
+        try:
+            subscription_plan = SubscriptionPlan.objects.get(pk=id)
+        except SubscriptionPlan.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        if request.method == 'GET':
+            serializer = SubscriptionPlanSerializer(subscription_plan)
+            return Response(serializer.data)
+
+        elif request.method == 'PUT':
+            serializer = SubscriptionPlanSerializer(subscription_plan, data= request.data)
+            if serializer.is_valid():
+                serializer.save
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+                
+        elif request.method == 'DELETE':
+            subscription_plan.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class UserSubscriptionCreateListView(generics.ListCreateAPIView):
+    queryset = UserSubscription.objects.all()
+    serializer_class = UserSubscriptionSerializer
+    permission_classes = [IsAuthenticated]
+    pagination_class = PageNumberPagination
+
+    @api_view(['GET'])
+    def list_user_subscriptions(request):
+        user_subscriptions = UserSubscription.objects.filter(user=request.user)
+        serializer = UserSubscriptionSerializer(user_subscriptions, many=True)
+        return Response(serializer.data)
+
+    @api_view(['POST'])
+    def create_user_subscription(request):
+        serializer = UserSubscriptionSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+
+
+class ChargingStationAnaliticsCreateListView(generics.ListCreateAPIView):
+    queryset = ChargingStationAnalitics.objects.all()
+    serializer_class = ChargingStationAnaliticsSerializer
+    permission_classes = [IsAuthenticated]
+
+    @api_view(['GET'])
+    def list_station_analytics(request):
+        analytics = ChargingStationAnalitics.objects.all()
+        serializer = ChargingStationAnaliticsSerializer(analytics, many=True)
+        return Response(serializer.data)
+
+    @api_view(['POST'])
+    def create_station_analytics(request):
+        serializer = ChargingStationAnaliticsSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+

@@ -12,8 +12,14 @@ PaymentListCreateView,
 RatingListCreateView,
 IssueReportListCreateView,
 CommentListCreateView,
+SubscriptionPlanListCreateView,
+SubscriptionPlanDetailView,
+UserSubscriptionCreateListView,
+ChargingStationAnaliticsCreateListView,
 
 )
+
+from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
@@ -44,4 +50,17 @@ urlpatterns = [
     #comments
     path('comments/', CommentListCreateView.as_view(), name="comments"),
 
+    #reset password
+    path('reset_password/', auth_views.PasswordResetView.as_view(), name="reset_password"),
+    path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
+    path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete"),
+
+    #subscription plan
+    path('subscription_plans/', SubscriptionPlanListCreateView.as_view(), name="subscription_plans"),
+    path('subscription_plans/<int:pk>/', SubscriptionPlanDetailView.as_view(), name="subscription_plans_details"),
+    path('user_subscription/', UserSubscriptionCreateListView.as_view(), name="user_subscription"),
+
+    #charging station analytics
+    path('charging_station_analytics/', ChargingStationAnaliticsCreateListView.as_view(), name="charging_station_analytics"),
 ]
