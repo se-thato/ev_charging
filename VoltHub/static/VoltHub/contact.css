@@ -1,4 +1,5 @@
 
+
 .container {
     max-width: 600px;
     margin: auto;
@@ -18,14 +19,14 @@ form input, form textarea {
     border-radius: 5px;
 }
 form input[type="submit"] {
-    background-color: #1b263b;
+    background-color: #0058fb;
     color: white;
     border: none;
     cursor: pointer;
     padding: 10px 20px;
 }
 form input[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #0875ea;
 }
 .office-info {
     margin-bottom: 20px;

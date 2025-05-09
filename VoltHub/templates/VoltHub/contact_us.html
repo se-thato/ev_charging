@@ -1,48 +1,16 @@
 {% extends 'VoltHub/base.html' %}
 
+{% load static %}
+
 {% block content %}
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-        }
-        h1 {
-            text-align: center;
-        }
-        form label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        form input, form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        form input[type="submit"] {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-            padding: 10px 20px;
-        }
-        form input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-        .office-info {
-            margin-bottom: 20px;
-        }
+    <link rel="stylesheet" href="{% static 'VoltHub/contact.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     </style>
 </head>
 <body>

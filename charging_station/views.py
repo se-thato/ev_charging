@@ -358,6 +358,15 @@ class ProfileListCreateView(generics.ListCreateAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     pagination_class = PageNumberPagination
+    permission_classes = [IsAuthenticated]
+
+    @api_view(['GET'])
+    def list_profiles(request):
+        profiles = Profile.objects.all()
+        serializer = ProfileSerializer(profiles, many=True)
+        return Response(serializer.data)
+    
+    
     
 
 

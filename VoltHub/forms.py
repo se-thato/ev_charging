@@ -10,10 +10,11 @@ from charging_station.models import Booking, Profile
 # Registration of a user 
 
 class CreateUserForm(UserCreationForm):
+    profile_picture = forms.ImageField(required=False, label="Profile Picture")
 
     class Meta:
         model = User
-        fields = ['username', 'password1', 'password2', 'email']
+        fields = ['username', 'password1', 'password2', 'email', 'profile_picture']
 
 
 # Login a user

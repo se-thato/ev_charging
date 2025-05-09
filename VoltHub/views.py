@@ -27,9 +27,18 @@ def register(request):
     form = CreateUserForm()
 
     if request.method == "POST":
-        form = CreateUserForm(request.POST)
+        form = CreateUserForm(request.POST, request.FILES)  # Include request.FILES to handle file uploads
         if form.is_valid():
-            form.save()
+            user = form.save()
+
+            
+            Profile.objects.create(
+                username=user.username,
+                first_name=user.first_name,
+                last_name=user.last_name,
+                email=user.email,
+                profile_picture=form.cleaned_data.get('profile_picture')  # Save the uploaded profile picture
+            )
 
             return redirect('login')
 

@@ -3,17 +3,28 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="container bg-light shadow-md p-5 form-layout">
-    <h3>Profile</h3>
-    <h5>Update Your Profile Here!</h5>
-    <hr>
-    <br>
-    <form method="POST" autocomplete="off">
-        {% csrf_token %}
-        {{ form|crispy }}
+<body>
+
+    <div class="container bg-light shadow-md p-5 form-layout">
+        <h3>Your Profile</h3>
+
+        <hr>
         <br>
-        <button type="submit" class="btn btn-primary w-100 btn-block p-2">Update Profile &nbsp; <i class="fa fa-solid fa-user-plus" aria-hidden="true"></i></button>
-    </form>
-    <br>
-</div>
+        <!-- Display user profile picture -->
+        <div class="text-center mb-4">
+            <img src="{{ user.profile.profile_picture.url }}" alt="Profile Picture" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+        </div>
+
+        <form method="POST" enctype="multipart/form-data" autocomplete="off">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <br>
+            <button type="submit" class="btn btn-primary w-100 btn-block p-2">Update Profile &nbsp; <i class="fa fa-solid fa-user-plus" aria-hidden="true"></i></button>
+        </form>
+        <br>
+
+    </div>
+    
+    {% include 'VoltHub/footer.html' %}
+</body>
 {% endblock %}

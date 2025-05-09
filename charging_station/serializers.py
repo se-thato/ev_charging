@@ -24,7 +24,7 @@ class BookingSerializer(serializers.ModelSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ['id', 'username', 'first_name', 'last_name']
+        fields = ['id', 'username', 'first_name', 'last_name', 'email', 'location', 'profile_picture']
 
 
 class PaymentMethodSerializer(serializers.ModelSerializer):
@@ -74,4 +74,4 @@ class UserSubscriptionSerializer(serializers.ModelSerializer):
 class ChargingStationAnaliticsSerializer(serializers.ModelSerializer):
     class Meta:
         model = ChargingPoint
-        fields = ['__all__'] 
+        fields = '__all__'
