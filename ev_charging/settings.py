@@ -34,12 +34,15 @@ INSTALLED_APPS = [
     'charging_station',
     'VoltHub',
     'authentication',
+    'ecommerce',
 
 
     'rest_framework',
     'corsheaders',
     'crispy_forms',
     'crispy_bootstrap4',
+    'channels',
+
 
 ]
 
@@ -121,18 +124,37 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ev_charging.wsgi.application'
+ASGI_APPLICATION = 'ev_charging.asgi.application'
 
+# Channels layer configuration
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', 
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ev_charging',
+        'USER': 'root',
+        'PASSWORD': 'theplanetisflat',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

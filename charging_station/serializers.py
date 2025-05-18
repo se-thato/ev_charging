@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ChargingPoint, ChargingSession, Booking, Profile, PaymentMethod, Payment, Rating, IssueReport, Comment, SubscriptionPlan, UserSubscription
+from .models import ChargingPoint, ChargingSession, Booking, Profile, PaymentMethod, Payment, Rating, IssueReport, Comment, SubscriptionPlan, UserSubscription, ChargingStationAnalitics
 
 class ChargingPointSerializer(serializers.ModelSerializer):
 
@@ -73,5 +73,5 @@ class UserSubscriptionSerializer(serializers.ModelSerializer):
 
 class ChargingStationAnaliticsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ChargingPoint
-        fields = '__all__'
+        model = ChargingStationAnalitics
+        fields = ['station', 'total_sessions', 'total_energy_consumed', 'total_revenue']

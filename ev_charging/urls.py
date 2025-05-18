@@ -10,6 +10,8 @@ urlpatterns = [
     path('', include("authentication.urls")),
     #authentication
     path('auth', include('authentication.urls')),
+    #ecommerce
+    path('ecommerce/', include('ecommerce.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

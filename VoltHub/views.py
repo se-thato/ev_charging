@@ -7,6 +7,9 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from charging_station.models import ChargingPoint, ChargingSession, Booking, Profile, Comment
 
+
+from ecommerce.models import Product
+
 from django.core.mail import send_mail
 from django.http import HttpResponse
 
@@ -18,6 +21,7 @@ def home(request):
     #this will collect all the comment related to the VoltHub app/website
     comments = Comment.objects.filter(station__name='VoltHub').order_by('-created_at')
     return render(request, 'VoltHub/home.html', {'comments': comments})
+
 
 
 
@@ -76,17 +80,21 @@ def my_login(request):
 # Dashboard view
 @login_required(login_url='login')
 def dashboard(request):
-    stations = ChargingPoint.objects.all()
-    sessions = ChargingSession.objects.filter(user=request.user)
-    bookings = Booking.objects.all()
-    context = {
-        'stations': stations,
-        'sessions': sessions,
-        'bookings': bookings,
-    }
+    try:
+        stations = ChargingPoint.objects.filter(is_active=True)  # olny active stations
+        sessions = ChargingSession.objects.filter(user=request.user).select_related('station')
+        bookings = Booking.objects.filter(user=request.user).select_related('station')  # This will fetch user-specific bookings
 
-    return render(request, 'VoltHub/dashboard.html', context)
+        context = {
+            'stations': stations,
+            'sessions': sessions,
+            'bookings': bookings,
+        }
+        return render(request, 'VoltHub/dashboard.html', context)
 
+    except Exception as e:
+        # Log the error (optional) and return an error message
+        return HttpResponse(f"An error occurred: {str(e)}", status=500)
 
 
 
@@ -255,5 +263,15 @@ def profile(request):
 
     context = {'form': form}
     return render(request, 'VoltHub/profile.html', context)
+
+
+
+#ecommerce views
+
+#Home page for ecommerce
+def home_ecommerce(request):
+    products = Product.objects.all()
+    return render(request,'VoltHub/shop_home.html', {'products': products})
+
 
 

@@ -17,76 +17,60 @@
 
         <canvas id="energyChart" width="235" height="75"></canvas>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script>
-            const ctx = document.getElementById('energyChart').getContext('2d');
-            const chart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Session 1', 'Session 2', 'Session 3', 'Session 4'],
-                    datasets: [{
-                        label: 'Energy (kwh)',
-                        data: [8, 15, 18, 4],
-                        backgroundColor:
-                        'rgba(75, 91, 192, 0.2)',
-                        borderColor:
-                        'rgb(87, 75, 192)',
-                        borderWidth: 1
-                    
-                    }]
-                },
-                Options: {
-                    scales:{
-                        y:{
-                            beginAtZero: true
-                        }
-                    }
-                }
-            })
-        </script>
-
+      
+        <br>
+        <br>
 
 
 
         <!-- Charging Station Availability -->
         <h3>Charging Points</h3>
-        <table class="table table-striped table-hover table-bordered">
-            <thead class="table-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Station</th>
-                    <th>Location</th>
-                    <th>Capicity</th>
-                    <th>Latitude</th>
-                    <th>Longitude</th>
-                    <th>Available Slots</th>
-                    <th>Availability</th>
-                    <th>Price Per Hour</th>
-                    <th>Payment</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for station in stations %}
-                <tr>
-                    <td>{{ station.id }}</td>
-                    <td>{{ station.name }}</td>
-                    <td>{{ station.location }}</td>
-                    <td>{{ station.capicity }}</td>
-                    <td>{{ station.latitude }}</td>
-                    <td>{{ station.longitude }}</td>
-                    <td>{{ station.available_slots }}</td>
-                    <td>{{ station.availability }}</td>
-                    <td>{{station.price_per_hour}}</td>
-                    <td>
-                        {% if station.availability == 'Available' %}
-                            <span class="badge bg-success">Available</span>
-                        {% elif station.availability == 'Occupied'%}
-                            <span class="badge bg-danger">Occupied</span>
-                        {% endif %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Station</th>
+                        <th>Location</th>
+                        <th>Capicity</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Available Slots</th>
+                        <th>Availability</th>
+                        <th>Price Per Hour</th>
+                        <th>Payment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if stations|length == 0 %}
+                        <tr>
+                            <td colspan="10" class="text-center">No charging points available.</td>
+                        </tr>
+                    {% else %}
+                        {% for station in stations %}
+                        <tr>
+                            <td>{{ station.id }}</td>
+                            <td>{{ station.name }}</td>
+                            <td>{{ station.location }}</td>
+                            <td>{{ station.capicity }}</td>
+                            <td>{{ station.latitude }}</td>
+                            <td>{{ station.longitude }}</td>
+                            <td>{{ station.available_slots }}</td>
+                            <td>{{ station.availability }}</td>
+                            <td>{{station.price_per_hour}}</td>
+                            <td>
+                                {% if station.availability == 'Available' %}
+                                    <span class="badge bg-success">Available</span>
+                                {% elif station.availability == 'Occupied'%}
+                                    <span class="badge bg-danger">Occupied</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
 
         <br>
 
@@ -94,45 +78,52 @@
 
         <!-- User Charging Sessions -->
         <h3>Your Charging Sessions</h3>
-        <table class="table table-striped table-hover table-bordered">
-            <thead class="table-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Station</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                    <th>Energy (kWh)</th>
-                    <th>Costs</th>
-                    <th>Status</th>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Station</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Energy (kWh)</th>
+                        <th>Costs</th>
+                        <th>Status</th>
 
-                    <th> View </th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for session in sessions %}
-                <tr>
-                    <td>{{ session.id }}</td>
-                    <td>{{ session.station.name }}</td>
-                    <td>{{ session.start_time }}</td>
-                    <td>{{ session.end_time }}</td>
-                    <td>{{ session.energy_consumed_kwh }}</td>
-                    <td>R{{ session.costs }}</td>
-                    <td>{{session.status}}</td>
+                        <th> View </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if sessions|length == 0 %}
+                        <tr>
+                            <td colspan="8" class="text-center">No charging sessions found.</td>
+                        </tr>
+                    {% else %}
+                        {% for session in sessions %}
+                        <tr>
+                            <td>{{ session.id }}</td>
+                            <td>{{ session.station.name }}</td>
+                            <td>{{ session.start_time }}</td>
+                            <td>{{ session.end_time }}</td>
+                            <td>{{ session.energy_consumed_kwh }}</td>
+                            <td>R{{ session.costs }}</td>
+                            <td>
+                                {% if session.status == 'Pending' %}
+                                    <span class="badge bg-warning">Pending</span>
+                                {% elif session.status == 'Confirmed' %}
+                                    <span class="badge bg-success">Confirmed</span>
+                                {% elif session.status == 'Cancelled' %}
+                                    <span class="badge bg-danger">Cancelled</span>
+                                {% endif %}
+                            </td>
 
-                    <td> <a href="{% url 'view_session' session.id %}" ><i class="fa fa-eye" aria-hidden="true"></i> </a> </td>
-                    
-                    {% if session.status == 'Pending' %}
-                        <span class="badge bg-warning">Pending</span>
-                    {% elif session.status == 'Confirmed' %}
-                        <span class="badge bg-success">Confirmed</span>
-                    {% elif session.status == 'Cancelled' %}
-                        <span class="badge bg-danger">Cancelled</span>
+                            <td> <a href="{% url 'view_session' session.id %}" ><i class="fa fa-eye" aria-hidden="true"></i> </a> </td>
+                        </tr>
+                        {% endfor %}
                     {% endif %}
-                </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
 
         <br>
 
@@ -140,51 +131,58 @@
 
          <!-- Bookings -->
          <h3>Your Bookings</h3>
-         <table class="table table-striped table-hover table-bordered">
-             <thead class="table-dark">
-                 <tr>
-                    <th>ID</th>
-                     <th>Station</th>
-                     <th>Location</th>
-                     <th>Start Time</th>
-                     <th>End Time</th>
-                     <th>Costs</th>
-                     <th>Status</th>
-                     <th>Date Booked</th>
-                     <th>Payment</th>
-                     <th> View </th>
-                     <th> Payment </th>
-                 </tr>
-             </thead>
-             <tbody>
-                 {% for booking in bookings %}
-                 <tr>
-                    <td>{{ booking.id}}</td>
-                     <td>{{ booking.station.name }}</td>
-                     <td>{{booking.location}}</td>
-                     <td>{{ booking.start_time }}</td>
-                     <td>{{ booking.end_time }}</td>
-                     <td>R{{ booking.costs }}</td>
-                     <td>{{booking.status}}</td>
-                     <td>{{booking.created_at}}</td>
-                     <td>{{ booking.payment }}</td>
-                     <td> <a href="{% url 'view_booking' booking.id %}" ><i class="fa fa-eye" aria-hidden="true"></i> </a> </td>
-                     <td> <a href="{% url 'payment' %}" ><i class="fa fa-money-bill" aria-hidden="true"></i> </a> </td>
-                     
-                    
+         <div class="table-responsive">
+             <table class="table table-striped table-hover table-bordered">
+                 <thead class="table-dark">
+                     <tr>
+                        <th>ID</th>
+                         <th>Station</th>
+                         <th>Location</th>
+                         <th>Start Time</th>
+                         <th>End Time</th>
+                         <th>Costs</th>
+                         <th>Status</th>
+                         <th>Date Booked</th>
+                         <th>Payment</th>
+                         <th> View </th>
+                         <th> Payment </th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     {% if bookings|length == 0 %}
+                         <tr>
+                             <td colspan="11" class="text-center">No bookings available.</td>
+                         </tr>
+                     {% else %}
+                         {% for booking in bookings %}
+                         <tr>
+                            <td>{{ booking.id}}</td>
+                             <td>{{ booking.station.name }}</td>
+                             <td>{{booking.location}}</td>
+                             <td>{{ booking.start_time }}</td>
+                             <td>{{ booking.end_time }}</td>
+                             <td>R{{ booking.costs }}</td>
+                             <td>{{booking.status}}</td>
+                             <td>{{booking.created_at}}</td>
+                             <td>{{ booking.payment }}</td>
+                             <td> <a href="{% url 'view_booking' booking.id %}" ><i class="fa fa-eye" aria-hidden="true"></i> </a> </td>
+                             <td> <a href="{% url 'payment' %}" ><i class="fa fa-money-bill" aria-hidden="true"></i> </a> </td>
+                             
+                            
 
-                     {% if booking.status == 'Pending' %}
-                         <span class="badge bg-warning">Pending</span>
-                     {% elif booking.status == 'Confirmed' %}
-                         <span class="badge bg-success">Confirmed</span>
-                     {% elif booking.status == 'Cancelled' %}
-                         <span class="badge bg-danger">Cancelled</span>
+                             {% if booking.status == 'Pending' %}
+                                 <span class="badge bg-warning">Pending</span>
+                             {% elif booking.status == 'Confirmed' %}
+                                 <span class="badge bg-success">Confirmed</span>
+                             {% elif booking.status == 'Cancelled' %}
+                                 <span class="badge bg-danger">Cancelled</span>
+                             {% endif %}
+                         </tr>
+                         {% endfor %}
                      {% endif %}
-                 </td>
-                 </tr>
-                 {% endfor %}
-             </tbody>
-         </table>
+                 </tbody>
+             </table>
+         </div>
 
          <hr> 
 

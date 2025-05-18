@@ -226,9 +226,8 @@ class IssueReport(models.Model):
 
 
 class Comment(models.Model):
-    #users should not be able to duplicate their comments
     class Meta:
-        unique_together = ('user', 'station', 'comment_text')
+        unique_together = ('user', 'station')
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     station = models.ForeignKey(ChargingPoint, on_delete=models.CASCADE)
@@ -236,17 +235,23 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name="replies")
     upvotes = models.IntegerField(default=0)
-    downvotes =models.IntegerField(default=0)
+    downvotes = models.IntegerField(default=0)
     updated_at = models.DateField(auto_now=True)
 
     def __str__(self):
         return f"Comment made by {self.user} for {self.station}"
-    
 
     @property
     def total_votes(self):
         return self.upvotes - self.downvotes
+
+    #this will prevent a user from commenting the same station multiple times
+    def save(self, *args, **kwargs):
+        if Comment.objects.filter(user=self.user, station=self.station, comment_text=self.comment_text).exists():
+            raise ValidationError("Duplicate comment is not allowed.")
+        super().save(*args, **kwargs)
     
+
 #managing subscription plans for users
 #this will help in managing the subscription plans for users
 class SubscriptionPlan(models.Model):
@@ -291,3 +296,6 @@ class ChargingStationAnalitics(models.Model):
 
     def __str__(self):
         return f"Analytics for {self.station} - {self.total_sessions} sessions"
+
+
+

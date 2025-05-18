@@ -47,4 +47,8 @@ urlpatterns = [
     #profile section
     path('profile', views.profile, name="profile"),
 
+
+    #ecommerce section
+    path('shop_home', views.home_ecommerce, name='shop_home'),
+
 ]
