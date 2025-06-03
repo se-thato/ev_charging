@@ -25,11 +25,12 @@
     <!-- Map Container -->
     <div id="map" class="mt-3"></div>
 
+   
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6RCLJT5k3SVic4HZNe0y2MumLXuLNc0M&callback=initMap&libraries=places"></script>
     <script src="{% static 'VoltHub/map.js' %}"></script>
     
-    <!-- Station List -->
+     <!-- Info Panel -->
     <h4 class="mt-4">Available Charging Stations</h4>
     <div class="row">
     {% for station in stations %}

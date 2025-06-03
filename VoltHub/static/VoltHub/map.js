@@ -37,15 +37,21 @@ function initMap() {
         });
     });
 
+    var directionsService = new google.maps.DirectionsService();
+    var directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(map);
+
+    var userPosition = null;
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
+            userPosition = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
 
             var currentLocationMarker = new google.maps.Marker({
-                position: pos,
+                position: userPosition,
                 map: map,
                 title: "Your Location",
                 icon: {
@@ -54,9 +60,9 @@ function initMap() {
                 animation: google.maps.Animation.BOUNCE
             });
 
-            map.setCenter(pos);
+            map.setCenter(userPosition);
 
-            fetch(`https://api.openchargemap.io/v3/poi/?output=json&latitude=${pos.lat}&longitude=${pos.lng}&distance=10&distanceunit=KM&key=59fb39de-df2a-492f-9409-f048cce0e051`)
+            fetch(`https://api.openchargemap.io/v3/poi/?output=json&latitude=${userPosition.lat}&longitude=${userPosition.lng}&distance=10&distanceunit=KM&key=59fb39de-df2a-492f-9409-f048cce0e051`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -67,21 +73,42 @@ function initMap() {
                     if (data.length === 0) {
                         console.warn('No charging stations found.');
                     }
+
+
                     data.forEach(station => {
                         var marker = new google.maps.Marker({
                             position: { lat: station.AddressInfo.Latitude, lng: station.AddressInfo.Longitude },
                             map: map,
                             title: station.AddressInfo.Title
                         });
+                        
 
+                        // InfoWindow for marker
                         var infoWindow = new google.maps.InfoWindow({
                             content: `<h5>${station.AddressInfo.Title}</h5>
                                       <p>${station.AddressInfo.AddressLine1}</p>
-                                      <p>Price: ${station.UsageCost || 'N/A'}</p>`
+                                      <p>Price: ${station.UsageCost || 'N/A'}</p>
+                                      <button id="dir-btn-${station.ID}" style="background-color:green">Get Directions</button>`
                         });
 
                         marker.addListener('click', function() {
                             infoWindow.open(map, marker);
+                            
+
+                            // Wait for the DOM to render the button, then add click event
+                            google.maps.event.addListenerOnce(infoWindow, 'domready', function() {
+                                var btn = document.getElementById(`dir-btn-${station.ID}`);
+                                if (btn) {
+                                    btn.onclick = function() {
+                                        calculateAndDisplayRoute(
+                                            directionsService,
+                                            directionsRenderer,
+                                            userPosition,
+                                            marker.getPosition()
+                                        );
+                                    };
+                                }
+                            });
                         });
                     });
                 })
@@ -91,6 +118,23 @@ function initMap() {
         });
     } else {
         handleLocationError(false, map.getCenter());
+    }
+
+    function calculateAndDisplayRoute(directionsService, directionsRenderer, origin, destination) {
+        directionsService.route(
+            {
+                origin: origin,
+                destination: destination,
+                travelMode: google.maps.TravelMode.DRIVING
+            },
+            function(response, status) {
+                if (status === 'OK') {
+                    directionsRenderer.setDirections(response);
+                } else {
+                    window.alert('Directions request failed due to ' + status);
+                }
+            }
+        );
     }
 
     function handleLocationError(browserHasGeolocation, pos) {
@@ -104,4 +148,3 @@ function initMap() {
         infoWindow.open(map);
     }
 }
-

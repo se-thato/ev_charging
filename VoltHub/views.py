@@ -8,8 +8,6 @@ from django.contrib.auth.decorators import login_required
 from charging_station.models import ChargingPoint, ChargingSession, Booking, Profile, Comment
 
 
-from ecommerce.models import Product
-
 from django.core.mail import send_mail
 from django.http import HttpResponse
 
@@ -266,12 +264,8 @@ def profile(request):
 
 
 
-#ecommerce views
 
-#Home page for ecommerce
-def home_ecommerce(request):
-    products = Product.objects.all()
-    return render(request,'VoltHub/shop_home.html', {'products': products})
+
 
 
 

@@ -8,37 +8,30 @@ from django.core.exceptions import ValidationError
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    description = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
+    
+    class Meta:
+        verbose_name_plural = "Categories"
 
 
 class Product(models.Model):
     name = models.CharField(max_length=150)
     description = models.TextField()
-    old_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    stock = models.PositiveIntegerField()
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
-    discount = models.BooleanField(default=False)
-    top_deals = models.BooleanField(default=False)
-    sales = models.BooleanField(default=False)
-    image = models.ImageField(upload_to='product_images/', null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    image = models.ImageField(upload_to='product_images/',  blank=True)
+    #sales
+    on_sale = models.BooleanField(default=False)
+    sale_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
 
-    @property
-    def price(self):
-        if self.discount:
-            new_price = self.old_price - (self.old_price * 0.1)  # Assuming a 10% discount
-        else:
-            new_price = self.old_price
-        return new_price
 
     def __str__(self):
         return self.name
+
+  
 
 
 class Order(models.Model):

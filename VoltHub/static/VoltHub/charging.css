@@ -3,13 +3,23 @@
     width: 100%;
     }
     
-    .station-card {
+.station-card {
     margin-bottom: 15px;
     }
 
-    #search-input {
+#search-input {
     margin-bottom: 10px;
     width: 100%;
     padding: 10px;
     font-size: 16px;
     }
+
+#station-info-panel {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px;
+}
+.station-list-item:hover {
+    background: #f1f1f1;
+}
