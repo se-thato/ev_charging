@@ -85,9 +85,6 @@ SIMPLE_JWT = {
 
 
 
-
-
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [

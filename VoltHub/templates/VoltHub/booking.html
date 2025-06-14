@@ -2,41 +2,39 @@
 
 {% load crispy_forms_tags %}
 
-
 {% block content %}
+<body>
+    <div class="container bg-light shadow-md p-5 form-layout">
+        <h3> Book A Charging Session Now!! </h3>
+        <hr>
+        <br>
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
 
+            {{ form.email|as_crispy_field }}
+            {{ form.station|as_crispy_field }}
+            {{ form.booking_date|as_crispy_field }}
 
-    <body>
+            <div class="form-group">
+                <label for="{{ form.duration.id_for_label }}">Duration (in hours)</label>
+                <div style="display: flex; align-items: center;">
+                    {{ form.duration }}
+                    <span style="margin-left: 8px;">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    </span>
+                </div>
+            </div>
 
-        <div class="container bg-light shadow-md p-5 form-layout">
+            {{ form.payment_method|as_crispy_field }}
+            {{ form.status|as_crispy_field }}
 
-            
-
-            <h3> Book A Charging Session Now!! </h3>
-
-
-            <hr>
             <br>
-
-            <form method="POST" autocomplete="off">
-
-                
-
-                {% csrf_token %}
-
-                {{form|crispy}}
-
-                <br>
-
-                <button type="submit" class="btn btn-primary w-100 btn-block p-2"> Book Now <i class=" fa fa-solid fa-calendar-days" arie-hidden="true"></i></button>
-
-
-
-            </form>
-
-        </div>
-
-        {% include 'VoltHub/footer.html' %}
-    </body>
-
+            <button type="submit" class="btn btn-primary w-100 btn-block p-2">
+                Book Now <i class="fa fa-solid fa-calendar-days" aria-hidden="true"></i>
+            </button>
+        </form>
+    </div>
+    
+    {% include 'VoltHub/footer.html' %}
+</body>
 {% endblock %}

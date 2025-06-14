@@ -1,33 +1,88 @@
+/* General page styles */
+body {
+    background: #0375e7;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
 
+/* Card styling */
+.card {
+    background: #0a23e1;
+    border-radius: 1rem;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    border: 1px solid #dee2e6;
+}
 
-.container {
-    max-width: 600px;
-    margin: auto;
+/* Overlay image section */
+.bsb-overlay {
+    position: relative;
+    min-height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
-h1 {
-    text-align: center;
+.bsb-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(44, 62, 80, 0.7);
+    z-index: 1;
 }
-form label {
-    display: block;
-    margin-bottom: 5px;
+.bsb-overlay > * {
+    position: relative;
+    z-index: 2;
 }
-form input, form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+
+/* Contact info section */
+.contact-info-wrapper {
+    color: #fff;
 }
-form input[type="submit"] {
-    background-color: #0058fb;
-    color: white;
+.contact-info-wrapper h2,
+.contact-info-wrapper h4 {
+    color: #fff;
+}
+.contact-info-wrapper address,
+.contact-info-wrapper p {
+    color: #e0e0e0;
+}
+
+/* Form styling */
+form {
+    background: #f7f7f7;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.form-label {
+    font-weight: 500;
+}
+.form-control, .input-group-text {
+    border-radius: 0.5rem;
+}
+.input-group-text {
+    background: #e9ecef;
     border: none;
-    cursor: pointer;
-    padding: 10px 20px;
 }
-form input[type="submit"]:hover {
-    background-color: #0875ea;
+.btn-secondary {
+    background: #2c3e50;
+    border: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: background 0.2s;
 }
-.office-info {
-    margin-bottom: 20px;
+.btn-secondary:hover {
+    background: #1a242f;
+}
+
+/* Responsive tweaks */
+@media (max-width: 991.98px) {
+    .bsb-overlay {
+        min-height: 300px;
+    }
+}
+@media (max-width: 767.98px) {
+    .card {
+        margin-bottom: 2rem;
+    }
+    .contact-info-wrapper {
+        padding-bottom: 2rem;
+    }
 }

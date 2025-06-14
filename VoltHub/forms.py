@@ -26,10 +26,15 @@ class LoginForm(AuthenticationForm):
 
 #making your bookings
 class BookingForm(forms.ModelForm):
+    booking_date = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+        label='Booking Date'
+    )
+
 
     class Meta:
         model = Booking
-        fields = ['station', 'location', 'start_time', 'end_time', 'costs']
+        fields = ['email', 'station', 'booking_date', 'duration', 'payment_method', 'status']
 
 
 #updating your bookings
@@ -37,7 +42,7 @@ class UpdateBookingForm(forms.ModelForm):
 
     class Meta:
         model = Booking
-        fields = ['station', 'location', 'start_time', 'end_time','costs']
+        fields = ['email', 'station', 'booking_date', 'duration', 'payment_method', 'status']
 
 
 class ProfileForm(forms.ModelForm):

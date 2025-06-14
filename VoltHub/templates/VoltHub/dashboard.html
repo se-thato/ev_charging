@@ -136,16 +136,15 @@
                  <thead class="table-dark">
                      <tr>
                         <th>ID</th>
-                         <th>Station</th>
-                         <th>Location</th>
-                         <th>Start Time</th>
-                         <th>End Time</th>
-                         <th>Costs</th>
-                         <th>Status</th>
-                         <th>Date Booked</th>
-                         <th>Payment</th>
-                         <th> View </th>
-                         <th> Payment </th>
+                        <th>Station</th>
+                        <th>Booking Date</th>
+                        <th>Status</th>
+                        <th>Date Booked</th>
+                        <th>Payment Method</th>
+                        <th>Duration</th>
+                        <th>Costs</th>
+                        <th> Payment </th>
+                        <th> View </th>
                      </tr>
                  </thead>
                  <tbody>
@@ -157,16 +156,16 @@
                          {% for booking in bookings %}
                          <tr>
                             <td>{{ booking.id}}</td>
-                             <td>{{ booking.station.name }}</td>
-                             <td>{{booking.location}}</td>
-                             <td>{{ booking.start_time }}</td>
-                             <td>{{ booking.end_time }}</td>
-                             <td>R{{ booking.costs }}</td>
-                             <td>{{booking.status}}</td>
-                             <td>{{booking.created_at}}</td>
-                             <td>{{ booking.payment }}</td>
-                             <td> <a href="{% url 'view_booking' booking.id %}" ><i class="fa fa-eye" aria-hidden="true"></i> </a> </td>
-                             <td> <a href="{% url 'payment' %}" ><i class="fa fa-money-bill" aria-hidden="true"></i> </a> </td>
+                            <td>{{ booking.station.name }}</td>
+                            <td>{{ booking.booking_date }}</td>
+                            <td>{{booking.status}}</td>
+                            <td>{{booking.created_at}}</td>
+                            <td>{{ booking.payment_method }}</td>
+                            <td>{{ booking.duration }} hours</td>
+                            <td>R{{ booking.costs }}</td>
+                            <td> <a href="{% url 'payment' %}" ><i class="fa fa-money-bill" aria-hidden="true"></i> </a> </td>
+                            <td> <a href="{% url 'view_booking' booking.id %}" ><i class="fa fa-eye" aria-hidden="true"></i> </a> </td>
+                             
                              
                             
 

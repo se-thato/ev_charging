@@ -22,8 +22,6 @@ def home(request):
 
 
 
-
-
 # Register View
 def register(request):
     form = CreateUserForm()
@@ -74,7 +72,6 @@ def my_login(request):
 
 
 
-
 # Dashboard view
 @login_required(login_url='login')
 def dashboard(request):
@@ -93,8 +90,6 @@ def dashboard(request):
     except Exception as e:
         # Log the error (optional) and return an error message
         return HttpResponse(f"An error occurred: {str(e)}", status=500)
-
-
 
 
 # Logout user
@@ -153,7 +148,6 @@ def booking(request):
 
 
 # update your bookings
-
 @login_required(login_url='login')
 def update_booking(request, pk):
 
@@ -178,7 +172,6 @@ def update_booking(request, pk):
 
 
 # view a singular booking record
-
 @login_required(login_url='login')
 def view_booking(request, pk):
 
@@ -261,11 +254,5 @@ def profile(request):
 
     context = {'form': form}
     return render(request, 'VoltHub/profile.html', context)
-
-
-
-
-
-
 
 

@@ -369,8 +369,6 @@ class ProfileListCreateView(generics.ListCreateAPIView):
         return Response(serializer.data)
     
     
-    
-
 
 class PaymentMethodListCreateView(generics.ListCreateAPIView):
     queryset = PaymentMethod.objects.all()

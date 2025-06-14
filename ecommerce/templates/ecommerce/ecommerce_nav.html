@@ -3,6 +3,7 @@
   .custom-navbar .navbar-brand {
     color: #fff !important;
   }
+
 </style>
 
 
@@ -37,12 +38,12 @@
   
           &nbsp;     &nbsp;     &nbsp; 
   
-          {% if user.is_authenticated %}
+          
 
 
           <li class="nav-item">
   
-            <a class="nav-link" href="{% url '' %}"> Home <i class="fa fa-home" aria-hidden="true"></i></a>
+            <a class="nav-link" href="{% url 'shop_home' %}"> Home <i class="fa fa-home" aria-hidden="true"></i></a>
     
           </li>
 
@@ -68,13 +69,16 @@
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Profile &nbsp; <i class="fa fa-solid fa-user" aria-hidden="true"></i>
+                    Categories &nbsp; <i class="fa fa-solid fa-list"></i>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
-                    <a class="dropdown-item" href="{% url '' %}">Edit Profile</a>
+                    <a class="dropdown-item" href="{% url 'shop_home' %}">All Products</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'logout-user' %}">Sign out</a>
+                    <a class="dropdown-item" href="{% url 'category' 'Charging-&-Power' %}">Charging & Power</a>
+                    <a class="dropdown-item" href="{% url 'category' 'EV-Accessories'  %}">EV Accessories</a>
+                    <a class="dropdown-item" href="{% url 'category' 'Smart Tech-&-IoT Devices' %}">Smart Tech & IoT Devices</a>
+                    <a class="dropdown-item" href="{% url 'category' 'EV Maintenance-&-Care' %}">EV Maintenance & Care</a>
+                    <a class="dropdown-item" href="{% url 'category' 'EV Parts-&-Upgrades'  %}">EV Parts & Upgrades</a>
                 </div>
             </li>
 
@@ -82,7 +86,7 @@
               &nbsp;     &nbsp;     &nbsp; 
             <li class="nav-item">
       
-              <a class="nav-link" href="{% url 'shop_home' %}"> Shop <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+              <a class="nav-link" href="{% url 'shop_home' %}"> Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
       
             </li>
   
@@ -111,81 +115,8 @@
     
         </ul>
   
-        {% else %}
-
-        <li class="nav-item">
-  
-          <a class="nav-link" href="{% url '' %}"> Home <i class="fa fa-home" aria-hidden="true"></i></a>
-  
-        </li>
-
-        &nbsp;     &nbsp;     &nbsp;
-
-        <li class="nav-item">
-
-          <a class="nav-link" href="{% url 'stations' %}"> Charging Points  <i class="fa fa-car" aria-hidden="true"></i> </a>
-
-        </li>
-
-
-        &nbsp;     &nbsp;     &nbsp; 
-  
-        <li class="nav-item">
-  
-          <a class="nav-link" href="{% url 'register' %}"> Register <i class="fa fa-regular fa-user-plus" aria-hidden="true"></i></a>
-  
-        </li>
-  
-  
-        &nbsp;     &nbsp;     &nbsp; 
-  
-  
-        <li class="nav-item">
-  
-          <a class="nav-link" href="{% url 'login' %}"> Login <i class="fa fa-sign-in" aria-hidden="true"></i></a>
-  
-        </li>
-
-
-        &nbsp;     &nbsp;     &nbsp; 
-  
-    
-        <li class="nav-item">
-
-          <a class="nav-link" href="{% url 'about_us' %}"> About Us <i class="fa fa-info-circle"></i></a>
-
-        </li>
-
-
-        &nbsp;     &nbsp;     &nbsp; 
-
-        <li class="nav-item">
-
-          <a class="nav-link" href="{% url 'contact_us' %}"> Contact Us <i class="fa fa-solid fa-address-card" aria-hidden="true"></i></a>
-
-        </li>
-
-         &nbsp;     &nbsp;     &nbsp; 
-        <li class="nav-item">
-  
-          <a class="nav-link" href="{% url 'shop_home' %}"> Shop <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-  
-        </li>
-
-        <!--Search Form-->
-         &nbsp; &nbsp; &nbsp; &nbsp; 
-
-        <form class="d-flex ms-auto" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-light" type="submit">
-            <i class="bi bi-search"></i>
-          Submit</button>
-        </form>
-        
-      
         
 
-        {% endif %}
 
 
       </div>

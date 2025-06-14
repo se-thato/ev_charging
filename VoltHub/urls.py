@@ -57,5 +57,6 @@ urlpatterns = [
     #profile section
     path('profile', views.profile, name="profile"),
 
+    
 
 ]

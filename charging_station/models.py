@@ -92,14 +92,15 @@ class Booking(models.Model):
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    email = models.EmailField(max_length=100, null=True, blank=True)
+    start_time = models.DateTimeField(auto_now_add=True)
     station = models.ForeignKey(ChargingPoint, on_delete=models.CASCADE)
-    location = models.CharField(max_length=150)
-    start_time = models.DateField()
+    booking_date = models.DateField(null=True, blank=True)
+    duration = models.DurationField(null=True, blank=True)
     end_time = models.DateField(null=True, blank=True)
-    costs = models.DecimalField(max_digits=6, decimal_places=2)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
-    created_at = models.DateTimeField(auto_now_add=True)
-    payment = models.ForeignKey('PaymentMethod', on_delete=models.CASCADE, null=True, blank=True)
+    created_at = models.DateTimeField(default=timezone.now)
+    payment_method = models.ForeignKey('PaymentMethod', on_delete=models.CASCADE, null=True, blank=True)
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='bookings_created')
     updated_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='bookings_updated')
 
@@ -231,7 +232,7 @@ class Comment(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     station = models.ForeignKey(ChargingPoint, on_delete=models.CASCADE)
-    comment_text = models.TextField()
+    comment_text = models.CharField(max_length=1000)
     created_at = models.DateTimeField(auto_now_add=True)
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name="replies")
     upvotes = models.IntegerField(default=0)
