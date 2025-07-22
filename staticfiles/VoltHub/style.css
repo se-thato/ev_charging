@@ -6,18 +6,13 @@
     font-family: 'Poppins', 'sans-serif';
 }
 
-html{
-    scroll-behavior: smooth;
+html, body {
     height: 100%;
-}
-
-
-body {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    
 }
+
 
 .container {
     flex: 1;
@@ -43,6 +38,7 @@ nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: hsl(237, 87%, 9%);
 }
 nav .logo{
     width: 100px;
@@ -114,7 +110,37 @@ nav ul li a{
     z-index: -1;
 }
 
-            
+
+
+.testimonial-container {
+    background-color: #3a86ff;
+    padding: 20px;
+    border-radius: 30px;
+    margin: 20px auto;
+    max-width: 550px;
+    box-shadow: 0 8px 10px hsl(237, 87%, 9%);
+    float: left;
+}
+
+.testimonial-container {
+    margin-bottom: 15px;
+}
+
+.testimonial-container p {
+    font-style: italic;
+    color: #03071e;
+}
+
+.testimonial-container h4 {
+    margin-top: 5px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.testimonial-container small {
+    color: #ffffff;
+}
+        
 
 /* footer section */
 
@@ -185,3 +211,5 @@ nav ul li a{
     padding-bottom: 30px;
     color: whitesmoke;
 }
+
+
