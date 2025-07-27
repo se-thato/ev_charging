@@ -30,7 +30,6 @@ VoltHub is a web-based platform designed to provide efficient and accessible sol
 
 - Python 3.8+
 - pip
-- Node.js (for frontend dependencies, if any)
 
 ### Installation
 
