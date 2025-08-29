@@ -158,10 +158,10 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ev_charging',
+        'NAME': 'railway',
         'USER': 'root',
-        'PASSWORD': 'theplanetisflat',
-        'HOST': 'localhost',
+        'PASSWORD': 'lYBDkESTOOsaPwlwPFqxtnAeoVOaXqEP',
+        'HOST': 'mysql.railway.internal',
         'PORT': '3306',
     }
 }
