@@ -163,6 +163,7 @@ DATABASES = {
         'PASSWORD': 'lYBDkESTOOsaPwlwPFqxtnAeoVOaXqEP',
         'HOST': 'mysql.railway.internal',
         'PORT': '3306',
+        'MYSQL_URL': 'mysql://root:lYBDkESTOOsaPwlwPFqxtnAeoVOaXqEP@mysql.railway.internal:3306/railway',
     }
 }
 
