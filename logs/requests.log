@@ -1,0 +1,2413 @@
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 7774
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 7449
+Not Found: /static 'VoltHub/image/video.mp4'
+"GET /static%20'VoltHub/image/video.mp4' HTTP/1.1" 404 15635
+"GET / HTTP/1.1" 200 7215
+"GET /ecommerce/shop_home HTTP/1.1" 200 30757
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET /ecommerce/product/15/ HTTP/1.1" 200 9285
+- Broken pipe from ('127.0.0.1', 54752)
+"GET /ecommerce/shop_home HTTP/1.1" 200 30757
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET / HTTP/1.1" 200 7215
+"GET /static/VoltHub/image/video.mp4 HTTP/1.1" 200 24106993
+"GET /login HTTP/1.1" 200 7449
+Not Found: /static 'VoltHub/image/video.mp4'
+"GET /static%20'VoltHub/image/video.mp4' HTTP/1.1" 404 15635
+"GET /reset_password/ HTTP/1.1" 200 10068
+C:\Users\Thato\charging\ev_charging\ev_charging\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /reset_password/ HTTP/1.1" 200 10068
+"GET /reset_password/ HTTP/1.1" 200 10068
+"GET /reset_password_sent/ HTTP/1.1" 200 4829
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 11627
+"GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+"GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3426
+"GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+"GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+"GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+"GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+"GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+"GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 200 87533
+"GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+"GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+"GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+"GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+Forbidden: /profiles/
+"GET /profiles/ HTTP/1.1" 403 9803
+C:\Users\Thato\charging\ev_charging\charging_station\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 7215
+"GET /stations/ HTTP/1.1" 302 0
+"GET /login?next=/stations/ HTTP/1.1" 200 7449
+Not Found: /static 'VoltHub/image/video.mp4'
+"GET /static%20'VoltHub/image/video.mp4' HTTP/1.1" 404 15635
+"GET / HTTP/1.1" 200 7215
+C:\Users\Thato\charging\ev_charging\charging_station\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 7215
+"GET / HTTP/1.1" 200 7215
+"GET /ecommerce/shop_home HTTP/1.1" 200 30757
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+C:\Users\Thato\charging\ev_charging\charging_station\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /ecommerce/shop_home HTTP/1.1" 200 30757
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET /ecommerce/shop_home HTTP/1.1" 200 30757
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET / HTTP/1.1" 200 7215
+"GET / HTTP/1.1" 200 7215
+"GET /ecommerce/shop_home HTTP/1.1" 200 30757
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET / HTTP/1.1" 200 7215
+"GET /ecommerce/shop_home HTTP/1.1" 200 30757
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET /ecommerce/product/21/ HTTP/1.1" 200 8552
+"GET /ecommerce/shop_home HTTP/1.1" 200 30757
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET /ecommerce/shop_home HTTP/1.1" 200 30757
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET / HTTP/1.1" 200 7215
+C:\Users\Thato\charging\ev_charging\ecommerce\models.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /static/VoltHub/image/video.mp4 HTTP/1.1" 200 24106993
+C:\Users\Thato\charging\ev_charging\ecommerce\models.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /swagger/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+  File "C:\Users\Thato\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\response.py", line 74, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "C:\Users\Thato\Lib\site-packages\drf_yasg\renderers.py", line 79, in render
+    return render_to_string(self.template, renderer_context, renderer_context['request'])
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: drf-yasg/swagger-ui.html
+"GET /swagger/ HTTP/1.1" 500 95146
+C:\Users\Thato\charging\ev_charging\ecommerce\models.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /contact_us HTTP/1.1" 200 18887
+"GET /static/VoltHub/css/contact.css HTTP/1.1" 404 1883
+Not Found: /assets/img/contact-img-1.webp
+"GET /assets/img/contact-img-1.webp HTTP/1.1" 404 15594
+Internal Server Error: /contact_us
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\VoltHub\views.py", line 128, in contact_us
+    return render(request, 'VoltHub/contact_us.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'contact' not found. 'contact' is not a valid view function or pattern name.
+"GET /contact_us HTTP/1.1" 500 154262
+Internal Server Error: /contact_us
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\VoltHub\views.py", line 128, in contact_us
+    return render(request, 'VoltHub/contact_us.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'contact' not found. 'contact' is not a valid view function or pattern name.
+"GET /contact_us HTTP/1.1" 500 154262
+C:\Users\Thato\charging\ev_charging\VoltHub\forms.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /contact_us
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\VoltHub\views.py", line 128, in contact_us
+    return render(request, 'VoltHub/contact_us.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'contact' not found. 'contact' is not a valid view function or pattern name.
+"GET /contact_us HTTP/1.1" 500 154262
+Internal Server Error: /contact_us
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\VoltHub\views.py", line 128, in contact_us
+    return render(request, 'VoltHub/contact_us.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'contact' not found. 'contact' is not a valid view function or pattern name.
+"GET /contact_us HTTP/1.1" 500 154262
+Internal Server Error: /contact_us
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\VoltHub\views.py", line 128, in contact_us
+    return render(request, 'VoltHub/contact_us.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'contact' not found. 'contact' is not a valid view function or pattern name.
+"GET /contact_us HTTP/1.1" 500 154262
+Internal Server Error: /contact_us
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\VoltHub\views.py", line 128, in contact_us
+    return render(request, 'VoltHub/contact_us.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'contact' not found. 'contact' is not a valid view function or pattern name.
+"GET /contact_us HTTP/1.1" 500 154262
+C:\Users\Thato\charging\ev_charging\VoltHub\forms.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /contact_us
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\VoltHub\views.py", line 128, in contact_us
+    return render(request, 'VoltHub/contact_us.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'contact' not found. 'contact' is not a valid view function or pattern name.
+"GET /contact_us HTTP/1.1" 500 154216
+Internal Server Error: /contact_us
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\VoltHub\views.py", line 128, in contact_us
+    return render(request, 'VoltHub/contact_us.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'contact' not found. 'contact' is not a valid view function or pattern name.
+"GET /contact_us HTTP/1.1" 500 154216
+Internal Server Error: /contact_us
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\VoltHub\views.py", line 128, in contact_us
+    return render(request, 'VoltHub/contact_us.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'contact' not found. 'contact' is not a valid view function or pattern name.
+"GET /contact_us HTTP/1.1" 500 154079
+"GET /contact_us HTTP/1.1" 200 18887
+"GET /static/VoltHub/css/contact.css HTTP/1.1" 404 1883
+Not Found: /assets/img/contact-img-1.webp
+"GET /assets/img/contact-img-1.webp HTTP/1.1" 404 15594
+"GET /contact_us HTTP/1.1" 200 18887
+"GET /static/VoltHub/css/contact.css HTTP/1.1" 404 1883
+Not Found: /assets/img/contact-img-1.webp
+"GET /assets/img/contact-img-1.webp HTTP/1.1" 404 15594
+"GET /about_us HTTP/1.1" 200 4744
+"GET /about_us HTTP/1.1" 200 4744
+"GET /login HTTP/1.1" 200 7449
+Not Found: /static 'VoltHub/image/video.mp4'
+"GET /static%20'VoltHub/image/video.mp4' HTTP/1.1" 404 15635
+"GET /about_us HTTP/1.1" 200 4744
+"GET /about_us HTTP/1.1" 200 5899
+"GET /about_us HTTP/1.1" 200 5899
+"GET /about_us HTTP/1.1" 200 5913
+"GET /about_us HTTP/1.1" 200 5913
+"GET /about_us HTTP/1.1" 200 5913
+"GET /about_us HTTP/1.1" 200 5913
+"GET /about_us HTTP/1.1" 200 5913
+"GET /about_us HTTP/1.1" 200 5899
+"GET /about_us HTTP/1.1" 200 5899
+"GET /about_us HTTP/1.1" 200 5899
+"GET /about_us HTTP/1.1" 200 5899
+"GET /contact_us HTTP/1.1" 200 18887
+"GET /static/VoltHub/css/contact.css HTTP/1.1" 404 1883
+Not Found: /assets/img/contact-img-1.webp
+"GET /assets/img/contact-img-1.webp HTTP/1.1" 404 15594
+"GET /register HTTP/1.1" 200 9482
+"GET / HTTP/1.1" 200 7215
+"GET / HTTP/1.1" 200 7215
+"GET /register HTTP/1.1" 200 9482
+"GET /stations/ HTTP/1.1" 302 0
+"GET /login?next=/stations/ HTTP/1.1" 200 7449
+Not Found: /static 'VoltHub/image/video.mp4'
+"GET /static%20'VoltHub/image/video.mp4' HTTP/1.1" 404 15635
+"GET / HTTP/1.1" 200 7215
+C:\Users\Thato\charging\ev_charging\charging_station\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /about_us HTTP/1.1" 200 5899
+"GET /contact_us HTTP/1.1" 200 18887
+"GET /static/VoltHub/css/contact.css HTTP/1.1" 404 1883
+Not Found: /assets/img/contact-img-1.webp
+"GET /assets/img/contact-img-1.webp HTTP/1.1" 404 15594
+"GET /ecommerce/shop_home HTTP/1.1" 200 30757
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET / HTTP/1.1" 200 7215
+"GET /book HTTP/1.1" 302 0
+"GET /login?next=/book HTTP/1.1" 200 7449
+Not Found: /static 'VoltHub/image/video.mp4'
+"GET /static%20'VoltHub/image/video.mp4' HTTP/1.1" 404 15635
+"GET /login HTTP/1.1" 200 7449
+Not Found: /static 'VoltHub/image/video.mp4'
+"GET /static%20'VoltHub/image/video.mp4' HTTP/1.1" 404 15635
+Internal Server Error: /login
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: axes_accessattempt
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\VoltHub\views.py", line 65, in my_login
+    auth.login(request, user)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\auth\__init__.py", line 152, in login
+    user_logged_in.send(sender=user.__class__, request=request, user=user)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\dispatch\dispatcher.py", line 189, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "C:\Users\Thato\Lib\site-packages\axes\signals.py", line 33, in handle_user_logged_in
+    AxesProxyHandler.user_logged_in(*args, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\axes\helpers.py", line 617, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\axes\handlers\proxy.py", line 127, in user_logged_in
+    return cls.get_implementation().user_logged_in(sender, request, user, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\axes\handlers\database.py", line 275, in user_logged_in
+    self.clean_expired_user_attempts(request, credentials)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\axes\handlers\database.py", line 386, in clean_expired_user_attempts
+    count, _ = AccessAttempt.objects.filter(attempt_time__lt=threshold).delete()
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\query.py", line 1187, in delete
+    collector.collect(del_query)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\deletion.py", line 282, in collect
+    new_objs = self.add(
+        objs, source, nullable, reverse_dependency=reverse_dependency
+    )
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\deletion.py", line 124, in add
+    if not objs:
+           ^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\query.py", line 414, in __bool__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: axes_accessattempt
+"POST /login HTTP/1.1" 500 186832
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Forbidden (CSRF token from POST incorrect.): /login
+"POST /login HTTP/1.1" 403 2503
+"GET /login HTTP/1.1" 200 7449
+Not Found: /static 'VoltHub/image/video.mp4'
+"GET /static%20'VoltHub/image/video.mp4' HTTP/1.1" 404 15635
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 12170
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /dashboard HTTP/1.1" 200 12170
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /stations/ HTTP/1.1" 200 7963
+"GET /stations/ HTTP/1.1" 302 0
+"GET /login?next=/stations/ HTTP/1.1" 200 7449
+"GET /static/VoltHub/style.css HTTP/1.1" 200 3152
+"GET /static/VoltHub/charging.css HTTP/1.1" 200 401
+"GET /static/VoltHub/app.js HTTP/1.1" 200 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 200 366
+"GET /static/VoltHub/login.css HTTP/1.1" 200 305
+"GET /static/VoltHub/chart.js HTTP/1.1" 200 1401
+"GET /static/VoltHub/map.js HTTP/1.1" 200 6027
+Not Found: /static 'VoltHub/image/video.mp4'
+"GET /static%20'VoltHub/image/video.mp4' HTTP/1.1" 404 15635
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 15540
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 12170
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /stations/ HTTP/1.1" 200 7963
+"GET / HTTP/1.1" 200 7774
+"GET /static/VoltHub/image/video.mp4 HTTP/1.1" 200 24106993
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 7449
+Not Found: /static 'VoltHub/image/video.mp4'
+"GET /static%20'VoltHub/image/video.mp4' HTTP/1.1" 404 15635
+Watching for file changes with StatReloader
+Internal Server Error: /redoc/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 414, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 324, in perform_authentication
+    request.user
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\request.py", line 231, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "C:\Users\Thato\Lib\site-packages\oauth2_provider\contrib\rest_framework\authentication.py", line 29, in authenticate
+    oauthlib_core = get_oauthlib_core()
+  File "C:\Users\Thato\Lib\site-packages\oauth2_provider\oauth2_backends.py", line 246, in get_oauthlib_core
+    validator_class = oauth2_settings.OAUTH2_VALIDATOR_CLASS
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\oauth2_provider\settings.py", line 219, in __getattr__
+    val = perform_import(val, attr)
+  File "C:\Users\Thato\Lib\site-packages\oauth2_provider\settings.py", line 157, in perform_import
+    return import_from_string(val, setting_name)
+  File "C:\Users\Thato\Lib\site-packages\oauth2_provider\settings.py", line 168, in import_from_string
+    return import_string(val)
+  File "C:\Users\Thato\Lib\site-packages\django\utils\module_loading.py", line 30, in import_string
+    return cached_import(module_path, class_name)
+  File "C:\Users\Thato\Lib\site-packages\django\utils\module_loading.py", line 15, in cached_import
+    module = import_module(module_path)
+  File "C:\Users\Thato\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\Thato\Lib\site-packages\oauth2_provider\oauth2_validators.py", line 31, in <module>
+    from .models import (
+    ...<6 lines>...
+    )
+  File "C:\Users\Thato\Lib\site-packages\oauth2_provider\models.py", line 284, in <module>
+    class Application(AbstractApplication):
+    ...<6 lines>...
+            return (self.client_id,)
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\base.py", line 134, in __new__
+    raise RuntimeError(
+    ...<3 lines>...
+    )
+RuntimeError: Model class oauth2_provider.models.Application doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+"GET /redoc/ HTTP/1.1" 500 204966
+Internal Server Error: /redoc/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 414, in initial
+    self.perform_authentication(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 324, in perform_authentication
+    request.user
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\request.py", line 231, in user
+    self._authenticate()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\request.py", line 384, in _authenticate
+    user_auth_tuple = authenticator.authenticate(self)
+  File "C:\Users\Thato\Lib\site-packages\oauth2_provider\contrib\rest_framework\authentication.py", line 29, in authenticate
+    oauthlib_core = get_oauthlib_core()
+  File "C:\Users\Thato\Lib\site-packages\oauth2_provider\oauth2_backends.py", line 246, in get_oauthlib_core
+    validator_class = oauth2_settings.OAUTH2_VALIDATOR_CLASS
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\oauth2_provider\settings.py", line 219, in __getattr__
+    val = perform_import(val, attr)
+  File "C:\Users\Thato\Lib\site-packages\oauth2_provider\settings.py", line 157, in perform_import
+    return import_from_string(val, setting_name)
+  File "C:\Users\Thato\Lib\site-packages\oauth2_provider\settings.py", line 168, in import_from_string
+    return import_string(val)
+  File "C:\Users\Thato\Lib\site-packages\django\utils\module_loading.py", line 30, in import_string
+    return cached_import(module_path, class_name)
+  File "C:\Users\Thato\Lib\site-packages\django\utils\module_loading.py", line 15, in cached_import
+    module = import_module(module_path)
+  File "C:\Users\Thato\Lib\importlib\__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\Thato\Lib\site-packages\oauth2_provider\oauth2_validators.py", line 31, in <module>
+    from .models import (
+    ...<6 lines>...
+    )
+  File "C:\Users\Thato\Lib\site-packages\oauth2_provider\models.py", line 284, in <module>
+    class Application(AbstractApplication):
+    ...<6 lines>...
+            return (self.client_id,)
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\base.py", line 134, in __new__
+    raise RuntimeError(
+    ...<3 lines>...
+    )
+RuntimeError: Model class oauth2_provider.models.Application doesn't declare an explicit app_label and isn't in an application in INSTALLED_APPS.
+"GET /redoc/ HTTP/1.1" 500 204673
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\VoltHub\views.py", line 21, in home
+    return render(request, 'VoltHub/home.html', {'comments': comments})
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 199, in render
+    template = context.template.engine.select_template(template_name)
+  File "C:\Users\Thato\Lib\site-packages\django\template\engine.py", line 208, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 489, in parse
+    raise self.error(token, e)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 605, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 706, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: ': -100' from 'y: -100'
+"GET / HTTP/1.1" 500 202484
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 11690
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/login.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 11690
+"GET /static/VoltHub/image/video.mp4 HTTP/1.1" 304 0
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 15540
+"GET /login HTTP/1.1" 200 11924
+Not Found: /static 'VoltHub/image/video.mp4'
+"GET /static%20'VoltHub/image/video.mp4' HTTP/1.1" 404 15635
+"GET /login HTTP/1.1" 200 16714
+"GET /login HTTP/1.1" 200 16962
+"GET / HTTP/1.1" 200 11938
+"GET /ecommerce/shop_home HTTP/1.1" 200 30757
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET /media/product_images/EVC-Charging-Cable-5m_rXly5KX.jpg HTTP/1.1" 200 102854
+"GET /media/product_images/Portable_Level_2_Home_Charger.jpg HTTP/1.1" 200 208506
+"GET /media/product_images/Suntree-Portable-EV-Charger.jpg HTTP/1.1" 200 179945
+"GET /media/product_images/Cable_Holder.jpg HTTP/1.1" 200 140555
+"GET /media/product_images/ZENCAR_E_Portable_EV_Charger_74kW.jpg HTTP/1.1" 200 246788
+"GET /media/product_images/12V_Car_Heating_Cup_Car_Heated_Mug_450ml_Stainless_Steel.jpg HTTP/1.1" 200 37267
+"GET /media/product_images/Workersbee_Gen2.0_Type_2_AC_Outlet_Socket_for_AC_charging_pile.png HTTP/1.1" 200 116940
+"GET /media/product_images/OEM_ODM_5m_10m_20m_30m_Factory_Directly_EV_Type_2_Extension_Cable.jpg HTTP/1.1" 200 75826
+"GET /media/product_images/European_standard_Combo_2_EV_DC_AC_Charging_CCS2_Sockets_Car_Side_Female_EV_Inlet.png HTTP/1.1" 200 108709
+"GET /media/product_images/Perfect_Dealz_Multifunction_Electric_Cleaning_Brush_Waxing_Brush_Handheld_0PCUBiO.jpg HTTP/1.1" 200 25330
+"GET /media/product_images/IEC_62196_3_Phase_11kw_22kw_16A_32A_Type_2_EVSE_Portable_EV_Charger.jpg HTTP/1.1" 200 73985
+"GET /media/product_images/PHRX_200W_Electric_Car_Heater_DC_12V_Heating_Fan_Defogger_Defroster_Demis_nGh1bdU.jpg HTTP/1.1" 200 17564
+"GET /media/product_images/Perfect_Dealz_Electric_Vibration_Seat_Comfort_Cushion.jpg HTTP/1.1" 200 17468
+"GET /media/product_images/HX-T201_Dual_Head_Car_Cigarette_Lighter_Fan_4.5.jpg HTTP/1.1" 200 18856
+"GET /media/product_images/Vehicle_Car_Cigarette_Light_Fan_With_Clip_Holder_8_-_PM-036.jpg HTTP/1.1" 200 38386
+"GET /media/product_images/Tire_Inflator_Portable_Air_Compressor_150_PSI_Bike_Pump_12V_Electric_Air__2Fq9OSO.jpg HTTP/1.1" 200 144969
+"GET /ecommerce/shop_home HTTP/1.1" 200 30757
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET / HTTP/1.1" 200 11938
+"GET /login HTTP/1.1" 200 16962
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 16643
+"GET /analytics/ HTTP/1.1" 200 52
+- Broken pipe from ('127.0.0.1', 50270)
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 16962
+"GET /register HTTP/1.1" 200 14206
+"GET /ecommerce/shop_home HTTP/1.1" 200 30757
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET /ecommerce/shop_home HTTP/1.1" 200 34445
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET /ecommerce/shop_home HTTP/1.1" 200 30757
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET /ecommerce/shop_home HTTP/1.1" 200 34987
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET /ecommerce/shop_home HTTP/1.1" 200 34987
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 16963
+"GET /register HTTP/1.1" 200 19484
+"POST /register HTTP/1.1" 200 19665
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15651
+"GET / HTTP/1.1" 200 11939
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15651
+- Broken pipe from ('127.0.0.1', 64707)
+"GET /ecommerce/shop_home HTTP/1.1" 200 34987
+Not Found: /ecommerce/js/scripts.js
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15651
+- Broken pipe from ('127.0.0.1', 64615)
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 16963
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15651
+"GET /login HTTP/1.1" 200 16963
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15651
+"GET /register HTTP/1.1" 200 19484
+"GET / HTTP/1.1" 200 11939
+"GET /ecommerce/shop_home HTTP/1.1" 200 34987
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+- Broken pipe from ('127.0.0.1', 51616)
+"GET /ecommerce/shop_home HTTP/1.1" 200 34987
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET / HTTP/1.1" 200 11939
+"GET /register HTTP/1.1" 200 19484
+"GET / HTTP/1.1" 200 11939
+- Broken pipe from ('127.0.0.1', 57724)
+"GET /login HTTP/1.1" 200 16963
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 20565
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+- Broken pipe from ('127.0.0.1', 59357)
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /dashboard HTTP/1.1" 200 20665
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /view_booking/1/ HTTP/1.1" 200 11609
+"GET /dashboard HTTP/1.1" 200 20665
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /dashboard HTTP/1.1" 200 21083
+"GET /analytics/ HTTP/1.1" 200 52
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15651
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /dashboard HTTP/1.1" 200 21083
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET / HTTP/1.1" 200 12248
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 16963
+- Broken pipe from ('127.0.0.1', 62243)
+"GET /register HTTP/1.1" 200 19484
+"GET / HTTP/1.1" 200 11939
+"GET /static/VoltHub/image/video.mp4 HTTP/1.1" 200 24106993
+"GET /login HTTP/1.1" 200 16963
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 21083
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /dashboard HTTP/1.1" 200 21106
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /dashboard HTTP/1.1" 200 21106
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /dashboard HTTP/1.1" 200 20565
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /dashboard HTTP/1.1" 200 20561
+"GET /analytics/ HTTP/1.1" 200 52
+"GET / HTTP/1.1" 200 12248
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 16963
+"GET /login HTTP/1.1" 200 16976
+"GET /login HTTP/1.1" 200 16963
+"GET /register HTTP/1.1" 200 19484
+"GET /login HTTP/1.1" 200 16963
+"GET /login HTTP/1.1" 200 17590
+"GET /login HTTP/1.1" 200 17751
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15651
+"GET /login HTTP/1.1" 200 17751
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 21191
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /dashboard HTTP/1.1" 200 21510
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /dashboard HTTP/1.1" 200 21694
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET / HTTP/1.1" 200 12248
+"GET /ecommerce/shop_home HTTP/1.1" 200 34987
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET /ecommerce/shop_home HTTP/1.1" 200 34987
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET /ecommerce/shop_home HTTP/1.1" 200 34987
+Not Found: /ecommerce/js/scripts.js
+- Broken pipe from ('127.0.0.1', 61257)
+"GET / HTTP/1.1" 200 12248
+"GET /static/VoltHub/image/video.mp4 HTTP/1.1" 200 24106993
+"GET / HTTP/1.1" 200 12248
+"GET / HTTP/1.1" 200 12248
+- Broken pipe from ('127.0.0.1', 57762)
+"GET /static/VoltHub/image/video.mp4 HTTP/1.1" 200 24106993
+"GET / HTTP/1.1" 200 12248
+"GET /dashboard HTTP/1.1" 200 25434
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 21491
+"GET / HTTP/1.1" 200 11939
+"GET /login HTTP/1.1" 200 21491
+"GET /register HTTP/1.1" 200 23224
+- Broken pipe from ('127.0.0.1', 57086)
+"GET / HTTP/1.1" 200 15681
+"GET /static/VoltHub/image/video.mp4 HTTP/1.1" 200 24106993
+"GET /login HTTP/1.1" 200 21491
+"GET / HTTP/1.1" 200 15681
+"GET /about_us HTTP/1.1" 200 14363
+"GET /contact_us HTTP/1.1" 200 27351
+"GET /static/VoltHub/css/contact.css HTTP/1.1" 404 1883
+Not Found: /assets/img/contact-img-1.webp
+"GET /assets/img/contact-img-1.webp HTTP/1.1" 404 15594
+"GET / HTTP/1.1" 200 15681
+"GET /ecommerce/shop_home HTTP/1.1" 200 38727
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET /ecommerce/product/4/ HTTP/1.1" 200 15960
+"GET /ecommerce/shop_home HTTP/1.1" 200 38727
+Not Found: /ecommerce/js/scripts.js
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET / HTTP/1.1" 200 15681
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 15681
+"GET /static/VoltHub/charging.css HTTP/1.1" 200 401
+"GET /static/VoltHub/style.css HTTP/1.1" 200 3152
+"GET /static/VoltHub/app.js HTTP/1.1" 200 0
+"GET /static/VoltHub/login.css HTTP/1.1" 200 305
+"GET /static/VoltHub/footer.css HTTP/1.1" 200 366
+"GET /static/VoltHub/chart.js HTTP/1.1" 200 1401
+"GET /static/VoltHub/map.js HTTP/1.1" 200 6027
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 15540
+"GET /static/VoltHub/image/video.mp4 HTTP/1.1" 200 24106993
+"GET /stations/ HTTP/1.1" 302 0
+"GET /login?next=/stations/ HTTP/1.1" 200 21491
+"GET /register HTTP/1.1" 200 23224
+"GET /login HTTP/1.1" 200 21491
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 25434
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /profile HTTP/1.1" 200 16795
+"GET / HTTP/1.1" 200 15990
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 21491
+"GET /register HTTP/1.1" 200 23231
+"GET /login HTTP/1.1" 200 21491
+"GET /register HTTP/1.1" 200 23231
+"GET /login HTTP/1.1" 200 20709
+"GET /register HTTP/1.1" 200 23231
+"GET /login HTTP/1.1" 200 20709
+"GET /register HTTP/1.1" 200 23231
+"GET / HTTP/1.1" 200 15681
+"GET /login HTTP/1.1" 200 20709
+"GET /ecommerce/shop_home HTTP/1.1" 200 38727
+"GET /media/product_images/EVC-Charging-Cable-5m_rXly5KX.jpg HTTP/1.1" 200 102854
+"GET /media/product_images/Portable_Level_2_Home_Charger.jpg HTTP/1.1" 200 208506
+"GET /media/product_images/Suntree-Portable-EV-Charger.jpg HTTP/1.1" 200 179945
+"GET /media/product_images/ZENCAR_E_Portable_EV_Charger_74kW.jpg HTTP/1.1" 200 246788
+Not Found: /ecommerce/js/scripts.js
+"GET /media/product_images/Cable_Holder.jpg HTTP/1.1" 200 140555
+"GET /ecommerce/js/scripts.js HTTP/1.1" 404 17396
+"GET /media/product_images/IEC_62196_3_Phase_11kw_22kw_16A_32A_Type_2_EVSE_Portable_EV_Charger.jpg HTTP/1.1" 200 73985
+"GET /media/product_images/OEM_ODM_5m_10m_20m_30m_Factory_Directly_EV_Type_2_Extension_Cable.jpg HTTP/1.1" 200 75826
+"GET /media/product_images/European_standard_Combo_2_EV_DC_AC_Charging_CCS2_Sockets_Car_Side_Female_EV_Inlet.png HTTP/1.1" 200 108709
+"GET /media/product_images/12V_Car_Heating_Cup_Car_Heated_Mug_450ml_Stainless_Steel.jpg HTTP/1.1" 200 37267
+"GET /media/product_images/Workersbee_Gen2.0_Type_2_AC_Outlet_Socket_for_AC_charging_pile.png HTTP/1.1" 200 116940
+"GET /media/product_images/PHRX_200W_Electric_Car_Heater_DC_12V_Heating_Fan_Defogger_Defroster_Demis_nGh1bdU.jpg HTTP/1.1" 200 17564
+"GET /media/product_images/Perfect_Dealz_Multifunction_Electric_Cleaning_Brush_Waxing_Brush_Handheld_0PCUBiO.jpg HTTP/1.1" 200 25330
+"GET /media/product_images/Perfect_Dealz_Electric_Vibration_Seat_Comfort_Cushion.jpg HTTP/1.1" 200 17468
+"GET /media/product_images/Vehicle_Car_Cigarette_Light_Fan_With_Clip_Holder_8_-_PM-036.jpg HTTP/1.1" 200 38386
+"GET /media/product_images/HX-T201_Dual_Head_Car_Cigarette_Lighter_Fan_4.5.jpg HTTP/1.1" 200 18856
+"GET /media/product_images/Tire_Inflator_Portable_Air_Compressor_150_PSI_Bike_Pump_12V_Electric_Air__2Fq9OSO.jpg HTTP/1.1" 200 144969
+"GET /ecommerce/shop_home HTTP/1.1" 200 32675
+"GET /ecommerce/shop_home HTTP/1.1" 200 32675
+"GET /ecommerce/shop_home HTTP/1.1" 200 32675
+"GET /ecommerce/product/20/ HTTP/1.1" 200 16107
+"GET /ecommerce/shop_home HTTP/1.1" 200 32675
+"GET /ecommerce/product/1/ HTTP/1.1" 200 20673
+"GET /ecommerce/shop_home HTTP/1.1" 200 32675
+"GET /ecommerce/product/10/ HTTP/1.1" 200 20759
+"GET /ecommerce/shop_home HTTP/1.1" 200 32675
+"GET /ecommerce/product/4/ HTTP/1.1" 200 20836
+"GET /ecommerce/shop_home HTTP/1.1" 200 32675
+"GET /ecommerce/product/14/ HTTP/1.1" 200 20913
+"GET /ecommerce/product/14/ HTTP/1.1" 200 20916
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /ecommerce/product/12/ HTTP/1.1" 200 20988
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET / HTTP/1.1" 200 15681
+"GET /login HTTP/1.1" 200 20709
+"GET /register HTTP/1.1" 200 23231
+"GET /login HTTP/1.1" 200 20709
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 25434
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /stations/ HTTP/1.1" 200 16177
+"GET /stations/ HTTP/1.1" 200 22065
+"GET /stations/ HTTP/1.1" 302 0
+"GET /login?next=/stations/ HTTP/1.1" 200 20709
+"GET /static/VoltHub/style.css HTTP/1.1" 200 3083
+"GET /static/VoltHub/login.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 15540
+"GET /login HTTP/1.1" 200 20709
+- Broken pipe from ('127.0.0.1', 60446)
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 25434
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /stations/ HTTP/1.1" 200 22065
+"GET /stations/ HTTP/1.1" 200 22065
+"GET /stations/ HTTP/1.1" 200 22065
+"GET /stations/ HTTP/1.1" 200 22065
+"GET /dashboard HTTP/1.1" 200 25434
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /stations/ HTTP/1.1" 200 22065
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /ecommerce/category/EV-Accessories/ HTTP/1.1" 302 0
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET / HTTP/1.1" 200 15990
+"GET / HTTP/1.1" 200 21104
+"GET / HTTP/1.1" 200 21401
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15651
+"GET /stations/ HTTP/1.1" 200 22065
+"GET /dashboard HTTP/1.1" 200 25434
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET / HTTP/1.1" 200 21401
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 20709
+"GET / HTTP/1.1" 200 21092
+"GET /register HTTP/1.1" 200 23231
+"GET /register HTTP/1.1" 200 23231
+"GET /login HTTP/1.1" 200 20709
+"GET /about_us HTTP/1.1" 200 14363
+"GET /contact_us HTTP/1.1" 200 27351
+"GET /static/VoltHub/css/contact.css HTTP/1.1" 404 1883
+Not Found: /assets/img/contact-img-1.webp
+"GET /assets/img/contact-img-1.webp HTTP/1.1" 404 15594
+"GET /register HTTP/1.1" 200 23231
+"GET /about_us HTTP/1.1" 200 14363
+"GET /contact_us HTTP/1.1" 200 27351
+"GET /static/VoltHub/css/contact.css HTTP/1.1" 404 1883
+Not Found: /assets/img/contact-img-1.webp
+"GET /assets/img/contact-img-1.webp HTTP/1.1" 404 15594
+"GET /contact_us HTTP/1.1" 200 27351
+"GET /static/VoltHub/css/contact.css HTTP/1.1" 404 1883
+Not Found: /assets/img/contact-img-1.webp
+"GET /assets/img/contact-img-1.webp HTTP/1.1" 404 15594
+"GET /contact_us HTTP/1.1" 200 23249
+"GET /contact_us?fullname=Thato+Selepe&email=thatoselepe53%40gmail.com&phone=0783522058&subject=Assist+with+booking&message=when+will+you+be+available+for+assisting+me+ HTTP/1.1" 200 23249
+"GET /about_us HTTP/1.1" 200 14363
+Internal Server Error: /about_us
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\VoltHub\views.py", line 106, in about_us
+    return render(request, 'VoltHub/about_us.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'charging_points' not found. 'charging_points' is not a valid view function or pattern name.
+"GET /about_us HTTP/1.1" 500 151044
+"GET / HTTP/1.1" 200 21401
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/image/video.mp4 HTTP/1.1" 304 0
+"GET /logout-user HTTP/1.1" 302 0
+- Broken pipe from ('127.0.0.1', 65366)
+"GET /login HTTP/1.1" 200 20709
+Internal Server Error: /about_us
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\VoltHub\views.py", line 106, in about_us
+    return render(request, 'VoltHub/about_us.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'charging_points' not found. 'charging_points' is not a valid view function or pattern name.
+"GET /about_us HTTP/1.1" 500 150516
+"GET /about_us HTTP/1.1" 200 21401
+"GET /stations/ HTTP/1.1" 302 0
+"GET /login?next=/stations/ HTTP/1.1" 200 20709
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 25434
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 20709
+"GET /analytics/ HTTP/1.1" 200 52
+"GET / HTTP/1.1" 200 21092
+"GET /about_us HTTP/1.1" 200 21401
+"GET /contact_us HTTP/1.1" 200 23249
+"GET /contact_us HTTP/1.1" 200 23249
+"GET /about_us HTTP/1.1" 200 21401
+"GET /register HTTP/1.1" 200 23231
+"GET /login HTTP/1.1" 200 20709
+"GET /register HTTP/1.1" 200 23231
+"GET /login HTTP/1.1" 200 20709
+"GET /contact_us HTTP/1.1" 200 23249
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /ecommerce/product/18/ HTTP/1.1" 200 20765
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /stations/ HTTP/1.1" 302 0
+"GET /login?next=/stations/ HTTP/1.1" 200 20709
+"GET / HTTP/1.1" 200 21092
+"GET /login HTTP/1.1" 200 20709
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 25434
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /profile HTTP/1.1" 200 16795
+"GET /profile HTTP/1.1" 200 22588
+Not Found: /media/profile_pictures/boat.jpg
+"GET /media/profile_pictures/boat.jpg HTTP/1.1" 404 15829
+"GET /admin/ HTTP/1.1" 200 25922
+"GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2804
+"GET /static/admin/css/base.css HTTP/1.1" 200 22092
+"GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+"GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+"GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+"GET /static/admin/css/responsive.css HTTP/1.1" 200 17972
+"GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+"GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+"GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+"GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 20752
+"GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+"GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+"GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+"GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+"GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+"GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9097
+"GET /static/admin/js/core.js HTTP/1.1" 200 6208
+"GET /static/admin/js/filters.js HTTP/1.1" 200 978
+"GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+"GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+"GET /admin/charging_station/profile/1/change/ HTTP/1.1" 200 22885
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /static/admin/css/forms.css HTTP/1.1" 200 8794
+"GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+"GET /static/admin/css/widgets.css HTTP/1.1" 200 11564
+"GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+"POST /admin/charging_station/profile/1/change/ HTTP/1.1" 302 0
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 20963
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 25695
+"GET / HTTP/1.1" 200 21401
+"GET /profile HTTP/1.1" 200 22588
+"GET /media/profile_pictures/city.jpg HTTP/1.1" 200 324561
+"GET / HTTP/1.1" 200 21401
+"GET /profile HTTP/1.1" 200 22588
+"GET /media/profile_pictures/city.jpg HTTP/1.1" 304 0
+"GET /profile HTTP/1.1" 200 23625
+"GET /media/profile_pictures/city.jpg HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 22438
+"GET /dashboard HTTP/1.1" 200 26471
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /profile HTTP/1.1" 200 23625
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 21746
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 26471
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET / HTTP/1.1" 200 22438
+"GET /profile HTTP/1.1" 200 23625
+"GET /media/profile_pictures/city.jpg HTTP/1.1" 304 0
+"GET /stations/ HTTP/1.1" 200 23102
+"GET / HTTP/1.1" 200 22438
+"GET /contact_us HTTP/1.1" 200 24595
+"GET /about_us HTTP/1.1" 200 22747
+"GET / HTTP/1.1" 200 22438
+"GET /dashboard HTTP/1.1" 200 26471
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /dashboard HTTP/1.1" 200 26471
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 21746
+"GET / HTTP/1.1" 200 22129
+"GET /login HTTP/1.1" 200 21746
+"GET /reset_password/ HTTP/1.1" 200 19569
+"GET /reset_password/ HTTP/1.1" 200 20670
+"GET / HTTP/1.1" 200 22129
+"GET /book HTTP/1.1" 302 0
+"GET /login?next=/book HTTP/1.1" 200 21746
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 26471
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /view_booking/1/ HTTP/1.1" 200 16386
+"GET / HTTP/1.1" 200 22438
+"GET /book HTTP/1.1" 200 19779
+"GET /book HTTP/1.1" 200 24109
+"GET /stations/ HTTP/1.1" 200 23102
+"GET /dashboard HTTP/1.1" 200 26471
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /view_session/2/ HTTP/1.1" 200 21612
+"GET /dashboard HTTP/1.1" 200 26471
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET / HTTP/1.1" 200 22438
+"GET /profile HTTP/1.1" 200 23625
+"GET /media/profile_pictures/city.jpg HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 22438
+"GET /stations/ HTTP/1.1" 200 23102
+"GET /dashboard HTTP/1.1" 200 21423
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /dashboard HTTP/1.1" 200 25984
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /dashboard HTTP/1.1" 200 26330
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /dashboard HTTP/1.1" 200 26535
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /dashboard HTTP/1.1" 200 26541
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /view_session/1/ HTTP/1.1" 200 21610
+"GET /dashboard HTTP/1.1" 200 26541
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /view_booking/1/ HTTP/1.1" 200 16386
+"GET /view_booking/1/ HTTP/1.1" 200 22189
+"GET /update_booking/1/ HTTP/1.1" 200 17947
+"GET /dashboard HTTP/1.1" 200 26541
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /view_booking/1/ HTTP/1.1" 200 22189
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 21746
+"GET /contact_us HTTP/1.1" 200 19245
+"GET /contact_us HTTP/1.1" 200 19324
+"GET /static/VoltHub/contact.css HTTP/1.1" 200 5122
+"GET /contact_us HTTP/1.1" 200 24365
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /contact_us HTTP/1.1" 200 24366
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET / HTTP/1.1" 200 17129
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /contact_us HTTP/1.1" 200 24366
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET / HTTP/1.1" 200 17129
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET / HTTP/1.1" 200 17206
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/home.css HTTP/1.1" 200 5161
+"GET /contact_us HTTP/1.1" 200 24443
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /contact_us HTTP/1.1" 200 24443
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /contact_us HTTP/1.1" 200 24523
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/contact.css HTTP/1.1" 200 5122
+"GET /contact_us HTTP/1.1" 200 24523
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /contact_us HTTP/1.1" 200 24523
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /contact_us HTTP/1.1" 200 19482
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /contact_us HTTP/1.1" 200 19482
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /contact_us HTTP/1.1" 200 19482
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /contact_us HTTP/1.1" 200 19482
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /contact_us HTTP/1.1" 200 19482
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /contact_us HTTP/1.1" 200 19482
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /contact_us HTTP/1.1" 200 19482
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /about_us HTTP/1.1" 200 22675
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /contact_us HTTP/1.1" 200 19482
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /login HTTP/1.1" 200 21983
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 26778
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /profile HTTP/1.1" 200 23862
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /media/profile_pictures/city.jpg HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /profile? HTTP/1.1" 200 23862
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 21983
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET / HTTP/1.1" 200 17286
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /about_us HTTP/1.1" 200 22675
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /stations/ HTTP/1.1" 302 0
+"GET /login?next=/stations/ HTTP/1.1" 200 21983
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET / HTTP/1.1" 200 17286
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /contact_us HTTP/1.1" 200 19482
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /ecommerce/product/20/ HTTP/1.1" 200 21018
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /ecommerce/product/13/ HTTP/1.1" 200 21032
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /ecommerce/product/2/ HTTP/1.1" 200 20815
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /dashboard HTTP/1.1" 302 0
+"GET /login?next=/dashboard HTTP/1.1" 200 22061
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/booking.css HTTP/1.1" 200 4466
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 17364
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/booking.css HTTP/1.1" 304 0
+"GET /book HTTP/1.1" 302 0
+"GET /login?next=/book HTTP/1.1" 200 22061
+"GET /static/VoltHub/booking.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 26856
+"GET /static/VoltHub/booking.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /view_booking/1/ HTTP/1.1" 200 22504
+"GET /static/VoltHub/booking.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /view_booking/1/ HTTP/1.1" 200 22504
+"GET /static/VoltHub/booking.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /view_booking/1/ HTTP/1.1" 200 22504
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /view_booking/1/ HTTP/1.1" 200 22504
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /view_booking/1/ HTTP/1.1" 200 22504
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/booking.css HTTP/1.1" 200 0
+"GET / HTTP/1.1" 200 22681
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /dashboard HTTP/1.1" 200 26784
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /dashboard HTTP/1.1" 200 26784
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /stations/ HTTP/1.1" 200 23345
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /book?station_id=2 HTTP/1.1" 200 24352
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15651
+"GET /profile HTTP/1.1" 200 23868
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 15651
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /media/profile_pictures/city.jpg HTTP/1.1" 304 0
+"GET /dashboard HTTP/1.1" 200 26784
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /ecommerce/product/3/ HTTP/1.1" 200 20797
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET / HTTP/1.1" 200 22681
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 21989
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /reset_password/ HTTP/1.1" 200 20913
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /register HTTP/1.1" 200 24511
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET / HTTP/1.1" 200 22372
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+C:\Users\Thato\charging\ev_charging\charging_station\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\charging_station\models.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /about_us HTTP/1.1" 200 22680
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 22371
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET / HTTP/1.1" 200 22372
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /about_us HTTP/1.1" 200 22680
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /contact_us HTTP/1.1" 200 19487
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 22377
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /contact_us HTTP/1.1" 200 19492
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 200 4922
+"GET /login HTTP/1.1" 200 21993
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 26788
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /profile HTTP/1.1" 200 23872
+"GET /media/profile_pictures/city.jpg HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /stations/ HTTP/1.1" 200 23349
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /dashboard HTTP/1.1" 200 26788
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /view_booking/1/ HTTP/1.1" 200 22436
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /dashboard HTTP/1.1" 200 26788
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 21993
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /contact_us HTTP/1.1" 200 19492
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET / HTTP/1.1" 200 17352
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /about_us HTTP/1.1" 200 22685
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET / HTTP/1.1" 200 17352
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 17352
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/style.css HTTP/1.1" 200 3083
+"GET /static/VoltHub/app.js HTTP/1.1" 200 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 200 401
+"GET /static/VoltHub/chart.js HTTP/1.1" 200 1401
+"GET /static/VoltHub/home.css HTTP/1.1" 200 4922
+"GET /static/VoltHub/login.css HTTP/1.1" 200 305
+"GET /static/VoltHub/footer.css HTTP/1.1" 200 366
+"GET /static/VoltHub/contact.css HTTP/1.1" 200 5122
+"GET /static/VoltHub/map.js HTTP/1.1" 200 6075
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 15540
+"GET /static/VoltHub/image/video.mp4 HTTP/1.1" 200 24106993
+"GET /about_us HTTP/1.1" 200 22685
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /contact_us HTTP/1.1" 200 19492
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /media/product_images/EVC-Charging-Cable-5m_rXly5KX.jpg HTTP/1.1" 200 102854
+"GET /media/product_images/ZENCAR_E_Portable_EV_Charger_74kW.jpg HTTP/1.1" 200 246788
+"GET /media/product_images/Portable_Level_2_Home_Charger.jpg HTTP/1.1" 200 208506
+"GET /media/product_images/IEC_62196_3_Phase_11kw_22kw_16A_32A_Type_2_EVSE_Portable_EV_Charger.jpg HTTP/1.1" 200 73985
+"GET /media/product_images/Cable_Holder.jpg HTTP/1.1" 200 140555
+"GET /media/product_images/Suntree-Portable-EV-Charger.jpg HTTP/1.1" 200 179945
+"GET /media/product_images/12V_Car_Heating_Cup_Car_Heated_Mug_450ml_Stainless_Steel.jpg HTTP/1.1" 200 37267
+"GET /media/product_images/PHRX_200W_Electric_Car_Heater_DC_12V_Heating_Fan_Defogger_Defroster_Demis_nGh1bdU.jpg HTTP/1.1" 200 17564
+"GET /media/product_images/Perfect_Dealz_Electric_Vibration_Seat_Comfort_Cushion.jpg HTTP/1.1" 200 17468
+"GET /media/product_images/Perfect_Dealz_Multifunction_Electric_Cleaning_Brush_Waxing_Brush_Handheld_0PCUBiO.jpg HTTP/1.1" 200 25330
+"GET /media/product_images/European_standard_Combo_2_EV_DC_AC_Charging_CCS2_Sockets_Car_Side_Female_EV_Inlet.png HTTP/1.1" 200 108709
+"GET /media/product_images/Tire_Inflator_Portable_Air_Compressor_150_PSI_Bike_Pump_12V_Electric_Air__2Fq9OSO.jpg HTTP/1.1" 200 144969
+"GET /media/product_images/Workersbee_Gen2.0_Type_2_AC_Outlet_Socket_for_AC_charging_pile.png HTTP/1.1" 200 116940
+"GET /media/product_images/Vehicle_Car_Cigarette_Light_Fan_With_Clip_Holder_8_-_PM-036.jpg HTTP/1.1" 200 38386
+"GET /media/product_images/HX-T201_Dual_Head_Car_Cigarette_Lighter_Fan_4.5.jpg HTTP/1.1" 200 18856
+"GET /media/product_images/OEM_ODM_5m_10m_20m_30m_Factory_Directly_EV_Type_2_Extension_Cable.jpg HTTP/1.1" 200 75826
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET / HTTP/1.1" 200 17352
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET / HTTP/1.1" 200 17352
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /login HTTP/1.1" 200 21993
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 26788
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /stations/ HTTP/1.1" 200 23349
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET / HTTP/1.1" 200 17661
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /profile HTTP/1.1" 200 23872
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /media/profile_pictures/city.jpg HTTP/1.1" 200 324561
+"GET / HTTP/1.1" 200 17661
+- Broken pipe from ('127.0.0.1', 62453)
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+- Broken pipe from ('127.0.0.1', 60510)
+"GET /stations/ HTTP/1.1" 200 23349
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /dashboard HTTP/1.1" 200 26788
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET / HTTP/1.1" 200 17661
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET / HTTP/1.1" 200 17661
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/image/video.mp4 HTTP/1.1" 200 24106993
+- Broken pipe from ('127.0.0.1', 60245)
+"GET / HTTP/1.1" 200 11202
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 11263
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/navbar.css HTTP/1.1" 200 6654
+"GET / HTTP/1.1" 200 11263
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /profile HTTP/1.1" 200 17474
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /media/profile_pictures/city.jpg HTTP/1.1" 304 0
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 15595
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /about_us HTTP/1.1" 200 16287
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /contact_us HTTP/1.1" 200 13094
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /stations/ HTTP/1.1" 302 0
+"GET /login?next=/stations/ HTTP/1.1" 200 15595
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /stations/ HTTP/1.1" 302 0
+"GET /login?next=/stations/ HTTP/1.1" 200 15595
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /login?next=/stations/ HTTP/1.1" 200 15435
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET / HTTP/1.1" 200 10794
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /login HTTP/1.1" 200 15435
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+C:\Users\Thato\charging\ev_charging\VoltHub\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\VoltHub\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 10951
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 15592
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET / HTTP/1.1" 200 10951
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+C:\Users\Thato\charging\ev_charging\VoltHub\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 10794
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /login HTTP/1.1" 200 15435
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 20387
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /ecommerce/shop_home HTTP/1.1" 200 32677
+C:\Users\Thato\charging\ev_charging\ecommerce\models.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /ecommerce/shop_home HTTP/1.1" 200 33471
+"GET /ecommerce/shop_home HTTP/1.1" 200 33471
+"GET /ecommerce/shop_home HTTP/1.1" 200 33471
+"GET /ecommerce/shop_home HTTP/1.1" 200 34804
+"GET /profile HTTP/1.1" 200 17471
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /ecommerce/shop_home HTTP/1.1" 200 34804
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 15435
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+- Broken pipe from ('127.0.0.1', 51472)
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 20387
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /ecommerce/shop_home HTTP/1.1" 200 34804
+"GET /ecommerce/shop_home HTTP/1.1" 200 34804
+"GET / HTTP/1.1" 200 11260
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /ecommerce/shop_home HTTP/1.1" 200 34804
+"GET /dashboard HTTP/1.1" 200 20387
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /ecommerce/shop_home HTTP/1.1" 200 34804
+"GET /ecommerce/shop_home HTTP/1.1" 200 34673
+"GET /dashboard HTTP/1.1" 200 20387
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /ecommerce/shop_home HTTP/1.1" 200 35027
+"GET /dashboard HTTP/1.1" 200 20387
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /dashboard HTTP/1.1" 200 20387
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /dashboard HTTP/1.1" 200 20387
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /profile HTTP/1.1" 200 17471
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET / HTTP/1.1" 200 11260
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /ecommerce/shop_home HTTP/1.1" 200 35027
+"GET /ecommerce/shop_home HTTP/1.1" 200 35027
+"GET /ecommerce/shop_home HTTP/1.1" 200 35027
+"GET / HTTP/1.1" 200 11260
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /stations/ HTTP/1.1" 200 16948
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+- Broken pipe from ('127.0.0.1', 64268)
+"GET /stations/ HTTP/1.1" 200 16948
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /book?station_id=2 HTTP/1.1" 200 17955
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /stations/ HTTP/1.1" 200 16948
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /dashboard HTTP/1.1" 200 20387
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /dashboard HTTP/1.1" 200 20387
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /stations/ HTTP/1.1" 200 16948
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /about_us HTTP/1.1" 200 16127
+"GET /static/VoltHub/charging.css HTTP/1.1" 200 401
+"GET /static/VoltHub/style.css HTTP/1.1" 200 3083
+"GET /static/VoltHub/contact.css HTTP/1.1" 200 5122
+"GET /static/VoltHub/footer.css HTTP/1.1" 200 366
+"GET /static/VoltHub/navbar.css HTTP/1.1" 200 6654
+"GET /static/VoltHub/login.css HTTP/1.1" 200 305
+"GET /static/VoltHub/home.css HTTP/1.1" 200 4922
+"GET /static/VoltHub/app.js HTTP/1.1" 200 0
+"GET /static/VoltHub/map.js HTTP/1.1" 200 6075
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/chart.js HTTP/1.1" 200 1401
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 15540
+"GET /stations/ HTTP/1.1" 302 0
+"GET /login?next=/stations/ HTTP/1.1" 200 15435
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 20387
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /stations/ HTTP/1.1" 200 16948
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /stations/ HTTP/1.1" 200 16948
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /stations/ HTTP/1.1" 200 16948
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET / HTTP/1.1" 200 11260
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /stations/ HTTP/1.1" 200 16948
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /stations/ HTTP/1.1" 200 16948
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET / HTTP/1.1" 200 11260
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /stations/ HTTP/1.1" 200 16948
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+- Broken pipe from ('127.0.0.1', 50838)
+- Broken pipe from ('127.0.0.1', 53601)
+"GET /stations/ HTTP/1.1" 200 10854
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /stations/ HTTP/1.1" 200 10854
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /stations/ HTTP/1.1" 200 10854
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /stations/ HTTP/1.1" 200 10854
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /stations/ HTTP/1.1" 200 16948
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /ecommerce/shop_home HTTP/1.1" 200 35027
+"GET /stations/ HTTP/1.1" 200 16948
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET / HTTP/1.1" 200 11260
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Thato\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Thato\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+MySQLdb.OperationalError: (1054, "Unknown column 'charging_station_comment.upvotes' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\VoltHub\views.py", line 21, in home
+    return render(request, 'VoltHub/home.html', {'comments': comments})
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 199, in render
+    len_values = len(values)
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "C:\Users\Thato\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+    ~~~~~~~~^^^
+  File "C:\Users\Thato\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: (1054, "Unknown column 'charging_station_comment.upvotes' in 'field list'")
+"GET / HTTP/1.1" 500 237755
+- Broken pipe from ('127.0.0.1', 59007)

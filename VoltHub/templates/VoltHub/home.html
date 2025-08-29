@@ -1,112 +1,70 @@
 {% extends 'VoltHub/base.html' %}
-
 {% load static %}
+
+{% block container_classes %}container-fluid p-0{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'VoltHub/home.css' %}">
+{% endblock %}
 
 {% block content %}
 
-    <!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Home </title>
-    
-    <link rel="stylesheet" type="text/css" href="{% static 'VoltHub/style.css' %}">
+<video autoplay loop muted playsinline class="back-video">
+  <source src="{% static 'VoltHub/image/video.mp4' %}" type="video/mp4">
+</video>
+<div class="video-overlay"></div>
 
-
-</head>
-
-<body>
-    <br>
-    <br>
-
-    
-    <video autoplay loop muted playsinline class="back-video">
-        <source src="{% static 'VoltHub/image/video.mp4' %}" type="video/mp4">
-    </video>
-    
-    
-   
-    <div class="content">
-        <h1> Boost Your Energy.. </h1>
-        <br>
-
-        <p> Our EV charging stations locator provide efficient and convenient charging options,
-            from home installation to public fast-charging network. <strong>Power up your EV now!!</strong> 
-            with our fast, reliable, and eco-friendly charging solutions. <strong>Find a charging stations 
-            near you!!</strong>
-        </p>
-        
-
-        <a href="{% url 'book' %}"> Book Now </a>
+<section class="home-hero">
+  <div class="hero-inner">
+    <h1 class="hero-title">Boost Your Energy!</h1>
+    <div class="accent-line"></div>
+    <p class="hero-text">
+      Our EV charging station locator provides efficient and convenient options, from home installation to public fast-charging networks. Power up your EV now with fast, reliable, and eco-friendly charging solutions. Find a station near you.
+    </p>
+    <div class="hero-actions">
+      <a href="{% url 'book' %}" class="btn-neon">Book Now</a>
     </div>
+  </div>
+</section>
 
-    
+<section class="highlights">
+  <div class="highlights-inner">
+    <div class="highlights-grid">
+      <div class="hl-card">
+        <h4><i class="fa fa-bolt"></i> Fast & Reliable</h4>
+        <p>Access high-speed chargers with real-time availability.</p>
+      </div>
+      <div class="hl-card">
+        <h4><i class="fa fa-globe"></i> Nationwide Coverage</h4>
+        <p>Find stations across cities and highways wherever you go.</p>
+      </div>
+      <div class="hl-card">
+        <h4><i class="fa fa-leaf"></i> Eco-Friendly</h4>
+        <p>Reduce your footprint with clean, sustainable energy.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-
-    <section class="testimonials" style="color:white; text-align:left; padding: 50px; margin-left:0px;">
-        <h2>What Our Customers Say</h2>
-        {% for comment in comments %}
-            <div class="testimonial-container">
-                <h4>- {{ comment.user.username }}</h4>
-                <p>"{{ comment.comment_text }}"</p>       
-                <small>Posted on {{ comment.created_at|date:"F j, Y, g:i a" }}</small>
-            </div>
-        {% empty %}
-            <p>No comments yet. Be the first to share your thoughts!</p>
-        {% endfor %}
-    </section>
-
-
-    
-
-</div>
-    
-
-    <br>
-
-
-
-
-    <!--creating a responsive footer-->
-    <section class="footer">
-
-        <div class="social">
-
-             <!--whatsapp icon-->
-             <a href="https://wa.me/27783522058?text=Hello%20Thato%2C%20I%27d%20like%20to%20chat!"><i class="fa fa-brands fa-whatsapp" aria-hidden="true"></i></a>
-
-            <!--Instagram icon-->
-            <a href="#"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a>
-
-            <!--facebook icon-->
-            <a href="https://www.facebook.com/thato.thatoo.10"><i class="fa fa-brands fa-facebook" aria-hidden="true"></i></a>
-
-            <!--linkedin icon-->
-            <a href="https://www.linkedin.com/in/thato-selepe-231266241"><i class="fa fa-brands fa-linkedin" aria-hidden="true"></i></a>
-
-
-
+<section class="home-testimonials">
+  <div class="testimonials-inner">
+    <h2 class="testimonials-title">What Our Customers Say</h2>
+    <div class="testimonial-grid">
+      {% for comment in comments %}
+        <div class="testimonial-card">
+          <h4>- {{ comment.user.username }}</h4>
+          <p>"{{ comment.comment_text }}"</p>
+          <small>Posted on {{ comment.created_at|date:"F j, Y, g:i a" }}</small>
         </div>
+      {% empty %}
+        <div class="testimonial-card">
+          <p>No comments yet. Be the first to share your thoughts!</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
-        <ul>
-
-           <li>
-                <a href="{% url '' %}">Home</a>
-            </li>
-            
-            <li>
-                <a href="{% url 'about_us' %}">About Us</a>
-            </li>
-
-            <li>
-                <a href="{% url 'contact_us' %}">Contact Us</a>
-            </li>
-
-        </ul>
-
-        <p class="copy-right">Copyright ©2025 al right reserved by Thato_Selepe</p>
-
-    </section>
-</body>
+{% include 'VoltHub/footer.html' %}
 
 {% endblock %}

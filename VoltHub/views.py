@@ -14,7 +14,7 @@ from django.http import HttpResponse
 
 
 
-#Home page
+#The main Home page
 def home(request):
     #this will collect all the comment related to the VoltHub app/website
     comments = Comment.objects.filter(station__name='VoltHub').order_by('-created_at')
@@ -254,5 +254,3 @@ def profile(request):
 
     context = {'form': form}
     return render(request, 'VoltHub/profile.html', context)
-
-

@@ -10,6 +10,7 @@ html, body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
     
 }
 
@@ -147,11 +148,12 @@ nav ul li a{
 .footer
 {
     background-color: rgb(1, 1, 17);
-    width: 100%;
-    left: 0;
     position: relative;
     margin-top: auto;
-   
+    /* Full-bleed edge-to-edge even inside Bootstrap containers */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
 }
 
 .social 

@@ -1,40 +1,145 @@
+<style>
+  :root {
+    --vh-bg: #050512;
+    --vh-surface: rgba(13, 13, 30, 0.55);
+    --vh-primary: #7a7cff; /* electric violet */
+    --vh-accent: #00e5ff;  /* neon cyan */
+    --vh-accent-2: #45ffbc; /* mint */
+    --vh-border: rgba(122, 124, 255, 0.35);
+    --vh-text: #e6e9ff;
+    --vh-muted: #a9b1ff;
+    --vh-glow: rgba(0, 229, 255, 0.5);
+  }
 
-    <section class="footer">
+  /* Neon/Glass footer aligned to navbar style */
+  .neon-footer {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a1f 0%, #06061a 50%, #0a0a1f 100%);
+    color: var(--vh-text);
+    border-top: 1px solid var(--vh-border);
+    box-shadow: 0 -10px 30px rgba(10, 12, 45, 0.55), inset 0 0 20px rgba(0, 229, 255, 0.05);
+    backdrop-filter: saturate(160%) blur(10px);
+    -webkit-backdrop-filter: saturate(160%) blur(10px);
+    width: 100%;
+    z-index: 1;
+  }
 
-        <div class="social">
+  /* Top neon accent line */
+  .neon-footer::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--vh-accent), var(--vh-primary), var(--vh-accent-2), transparent);
+    background-size: 200% 100%;
+    animation: footerLine 8s linear infinite;
+    opacity: 0.9;
+  }
+  @keyframes footerLine { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
 
-             <!--whatsapp icon-->
-             <a href="https://wa.me/27783522058?text=Hello%20Thato%2C%20I%27d%20like%20to%20chat!"><i class="fa fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+  .neon-footer .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.25rem 1rem;
+  }
 
-            <!--Instagram icon-->
-            <a href="#"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a>
+  .neon-footer .social {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .neon-footer .social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    color: var(--vh-text);
+    text-decoration: none;
+    border: 1px solid var(--vh-border);
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    box-shadow: 0 0 0 1px rgba(122, 124, 255, 0.25);
+    transition: transform .1s ease, box-shadow .2s ease, border-color .2s ease, color .2s ease, background .2s ease;
+  }
+  .neon-footer .social a:hover {
+    color: #fff;
+    transform: translateY(-1px);
+    border-color: rgba(0, 229, 255, 0.65);
+    background: linear-gradient(180deg, rgba(0,229,255,0.18), rgba(122,124,255,0.12));
+    box-shadow: 0 0 0 2px rgba(0,229,255,0.24), 0 10px 26px rgba(0,229,255,0.16);
+  }
 
-            <!--facebook icon-->
-            <a href="https://www.facebook.com/thato.thatoo.10"><i class="fa fa-brands fa-facebook" aria-hidden="true"></i></a>
+  .neon-footer ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 1.5rem;
+    padding: 0;
+    margin: 0.5rem 0 0.75rem;
+  }
+  .neon-footer ul li a {
+    position: relative;
+    color: var(--vh-text);
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    padding: 0.65rem 0.95rem;
+    transition: color .2s ease, text-shadow .2s ease;
+  }
+  .neon-footer ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0.9rem; right: 0.9rem; bottom: 0.35rem;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, transparent, var(--vh-accent), var(--vh-primary), transparent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .25s ease;
+  }
+  .neon-footer ul li a:hover,
+  .neon-footer ul li a:focus {
+    color: #fff;
+    text-shadow: 0 0 8px var(--vh-glow), 0 0 18px rgba(122, 124, 255, 0.35);
+  }
+  .neon-footer ul li a:hover::after,
+  .neon-footer ul li a:focus::after { transform: scaleX(1); }
 
-            <!--linkedin icon-->
-            <a href="https://www.linkedin.com/in/thato-selepe-231266241"><i class="fa fa-brands fa-linkedin" aria-hidden="true"></i></a>
+  .neon-footer .copy-right {
+    color: var(--vh-muted);
+    text-align: center;
+    margin: 0.25rem 0 0;
+    font-size: 0.95rem;
+  }
 
+  /* Responsive tweaks */
+  @media (max-width: 480px) {
+    .neon-footer .social a { width: 40px; height: 40px; }
+    .neon-footer .copy-right { font-size: 0.88rem; }
+  }
+</style>
 
+<section class="footer neon-footer site-footer">
+  <div class="footer-container">
+    <div class="social" aria-label="Social media links">
+      <!--whatsapp icon-->
+      <a href="https://wa.me/27783522058?text=Hello%20Thato%2C%20I%27d%20like%20to%20chat!" aria-label="WhatsApp"><i class="fa fa-brands fa-whatsapp" aria-hidden="true"></i></a>
+      <!--Instagram icon-->
+      <a href="#" aria-label="Instagram"><i class="fa fa-brands fa-instagram" aria-hidden="true"></i></a>
+      <!--facebook icon-->
+      <a href="https://www.facebook.com/thato.thatoo.10" aria-label="Facebook"><i class="fa fa-brands fa-facebook" aria-hidden="true"></i></a>
+      <!--linkedin icon-->
+      <a href="https://www.linkedin.com/in/thato-selepe-231266241" aria-label="LinkedIn"><i class="fa fa-brands fa-linkedin" aria-hidden="true"></i></a>
+    </div>
 
-        </div>
+    <ul class="footer-links" aria-label="Footer navigation">
+      <li><a href="{% url '' %}">Home</a></li>
+      <li><a href="{% url 'about_us' %}">About Us</a></li>
+      <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+    </ul>
 
-        <ul>
-
-           <li>
-                <a href="{% url '' %}">Home</a>
-            </li>
-            
-            <li>
-                <a href="{% url 'about_us' %}">About Us</a>
-            </li>
-
-            <li>
-                <a href="{% url 'contact_us' %}">Contact Us</a>
-            </li>
-
-        </ul>
-
-        <p class="copy-right">Copyright ©2025 al right reserved by Thato_Selepe</p>
-
-    </section>
+    <p class="copy-right">Copyright ©2025 al right reserved by Thato_Selepe</p>
+  </div>
+</section>

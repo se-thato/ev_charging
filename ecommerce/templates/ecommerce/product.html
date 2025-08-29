@@ -1,68 +1,137 @@
 {% extends 'ecommerce/base.html' %}
-
-
 {% load static %}
 
-
-
-<body>
-
-{% include 'ecommerce/ecommerce_nav.html' %}
-
 {% block content %}
+<style>
+  :root {
+    --vh-bg: #050512;
+    --vh-surface: rgba(13, 13, 30, 0.55);
+    --vh-primary: #7a7cff; /* electric violet */
+    --vh-accent: #00e5ff;  /* neon cyan */
+    --vh-accent-2: #45ffbc; /* mint */
+    --vh-border: rgba(122, 124, 255, 0.35);
+    --vh-text: #e6e9ff;
+    --vh-muted: #a9b1ff;
+  }
 
- <header 
-class="bg-dark py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Power Your Drive, Shop Premium EV Essentials</h1>
-            <p class="lead fw-normal text-white-50 mb-0">With The VoltHub</p>
+  /* Full-bleed product section (removes side gaps) */
+  .product-wrap {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    background: radial-gradient(1200px 600px at 10% -20%, rgba(122,124,255,0.22), transparent 60%),
+                radial-gradient(1000px 800px at 120% 10%, rgba(0,229,255,0.18), transparent 50%),
+                linear-gradient(135deg, #070718 0%, #040414 45%, #09091f 100%);
+    overflow: hidden;
+  }
+  .product-wrap::before,
+  .product-wrap::after {
+    content: "";
+    position: absolute;
+    width: 60vmax; height: 60vmax; border-radius: 50%; filter: blur(60px); opacity: .25; z-index: 0;
+    animation: floaty 18s ease-in-out infinite;
+  }
+  .product-wrap::before { background: radial-gradient(circle, rgba(122,124,255,0.45), transparent 60%); left: -20vmax; top: -15vmax; animation-delay: -4s; }
+  .product-wrap::after  { background: radial-gradient(circle, rgba(0,229,255,0.40), transparent 60%); right: -25vmax; bottom: -20vmax; }
+  @keyframes floaty { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-20px) } }
+
+  .product-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+
+  .product-hero { text-align: center; color: var(--vh-text); padding: 7vh 0 3vh; }
+  .product-title-hero {
+    margin: 0 0 .5rem; font-weight: 800; letter-spacing: .4px; font-size: clamp(1.8rem, 4vw, 3rem);
+    background: linear-gradient(90deg, var(--vh-primary), var(--vh-accent) 60%, var(--vh-accent-2));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 12px rgba(122,124,255,0.25), 0 0 26px rgba(0,229,255,0.15);
+  }
+  .product-subtitle { color: var(--vh-muted); }
+
+  .accent-line { position: relative; height: 2px; margin: 1rem auto 2rem; max-width: 520px; }
+  .accent-line::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 2px; border-radius: 2px;
+    background: linear-gradient(90deg, transparent, var(--vh-accent), var(--vh-primary), transparent);
+    background-size: 200% 100%; animation: lineFlow 8s linear infinite;
+  }
+  @keyframes lineFlow { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+
+  /* Product card */
+  .product-card {
+    position: relative; display: flex; flex-direction: column; gap: 1rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    border: 1px solid var(--vh-border); border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(12, 16, 50, 0.65), inset 0 0 24px rgba(0, 229, 255, 0.08);
+    backdrop-filter: blur(10px) saturate(160%); -webkit-backdrop-filter: blur(10px) saturate(160%);
+    padding: 1rem; color: var(--vh-text);
+  }
+  .product-card:hover { border-color: rgba(0,229,255,0.55); box-shadow: 0 30px 70px rgba(0, 229, 255, 0.18), 0 10px 26px rgba(122,124,255,0.16); }
+
+  .product-media { position: relative; }
+  .product-img {
+    width: 100%; height: 100%; max-height: 480px; object-fit: cover; border-radius: 14px;
+  }
+  .sale-badge { position: absolute; top: .6rem; right: .6rem; background: linear-gradient(90deg, var(--vh-accent), var(--vh-primary)); color: #fff; padding: .25rem .6rem; border-radius: 999px; font-size: .75rem; box-shadow: 0 6px 14px rgba(0,0,0,0.25); }
+
+  .product-body { padding: .5rem 0; }
+  .product-title { font-weight: 700; margin-bottom: .5rem; }
+  .product-desc { color: var(--vh-muted); }
+  .product-price { margin-top: .75rem; font-size: 1.1rem; }
+  .product-price del { color: #e6e9ff90; }
+
+  .actions { display: flex; gap: .75rem; margin-top: 1rem; flex-wrap: wrap; }
+  .btn-neon {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    border: 1px solid var(--vh-border); color: var(--vh-text);
+    border-radius: 14px; padding: .65rem 1rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+    box-shadow: 0 0 0 1px rgba(122,124,255,0.25);
+    transition: transform .08s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
+    text-decoration: none;
+  }
+  .btn-neon:hover { color: #fff; border-color: rgba(0,229,255,0.65); background: linear-gradient(180deg, rgba(0,229,255,0.18), rgba(122,124,255,0.12)); box-shadow: 0 0 0 2px rgba(0,229,255,0.24), 0 10px 26px rgba(0,229,255,0.16); transform: translateY(-1px); }
+
+  .spacer-bottom { padding-bottom: 6vh; }
+</style>
+
+<section class="product-wrap">
+  <div class="product-inner product-hero">
+    <h1 class="product-title-hero">{{ product.name }}</h1>
+    <p class="product-subtitle">Discover the details of your premium EV accessory</p>
+    <div class="accent-line"></div>
+  </div>
+
+  <div class="product-inner spacer-bottom">
+    <div class="row g-4 align-items-start">
+      <div class="col-12 col-lg-6">
+        <div class="product-media">
+          {% if product.on_sale %}<div class="sale-badge">Sale</div>{% endif %}
+          <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-img" />
         </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="product-card">
+          <div class="product-body">
+            <h4 class="product-title">{{ product.name }}</h4>
+            <p class="product-desc">{{ product.description }}</p>
+            <div class="product-price">
+              {% if product.on_sale %}
+                <del>R{{ product.price }}</del>
+                &nbsp;
+                <strong>R{{ product.sale_price }}</strong>
+              {% else %}
+                <strong>R{{ product.price }}</strong>
+              {% endif %}
+            </div>
+            <div class="actions">
+              <a href="{% url 'shop_home' %}" class="btn-neon">Back to Shop</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</header>
-<br>
-<br>
-<br>
+  </div>
+  {% include 'VoltHub/footer.html' %}
+</section>
 
-<div class="container">
-    <div class="card mb-3">
-    <div class="row g-0">
-        <div class="col-md-4">
-        <img src="{{ product.image.url }}" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-        <div class="card-body">
-            <center>
-            <h5 class="card-title">{{product.name}}</h5>
-            <p class="card-text">{{product.description}}</p><br>
-            {% if product.on_sale %}
-            <!-- Sale badge-->
-            <div class="badge bg-primary text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-            <strike>
-                R{{ product.price }}
-            </strike>
-            &nbsp;
-            R{{ product.sale_price }}
-            {% else %}
-            R{{ product.price }}
-            {% endif %}
-            <br>
-            <br>
-            <a href="{% url 'shop_home' %}" class="btn btn-primary">Back</a>
-            </center>
-        </div>
-        </div>
-    </div>
-    </div>
-</div>
-<br>
-<br>
-<br>
-
-
- <!-- Footer-->
-{% include 'VoltHub/footer.html' %}
 
 {% endblock %}
-</body>
-

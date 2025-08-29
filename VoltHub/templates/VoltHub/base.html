@@ -16,11 +16,14 @@
     
     <link rel="stylesheet" type="text/css" href="{% static 'VoltHub/footer.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'VoltHub/login.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'VoltHub/register.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'VoltHub/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'VoltHub/contact.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'VoltHub/navbar.css' %}">
 
-    
-    
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% block extra_css %}{% endblock %}
     </head>
 
     <body>
@@ -32,7 +35,7 @@
         
 
 
-        <div class="container">
+        <div class="{% block container_classes %}container{% endblock %}">
 
 
             <br>

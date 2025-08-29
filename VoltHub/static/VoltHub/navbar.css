@@ -1,4 +1,4 @@
-<style>
+
   :root {
     --vh-bg: #050512;
     --vh-surface: rgba(13, 13, 30, 0.55);
@@ -178,126 +178,33 @@
   /* Spacing and alignment */
   .navbar-nav .nav-item { margin: 0 0.6rem; }
   .navbar .navbar-nav { align-items: center; }
+  /* Additional spacing between nav and search */
   .navbar .neon-search { margin-left: 1.25rem; }
+  /* Ensure spacing between search input and button (works regardless of Bootstrap version) */
   .neon-search .form-control { margin-right: 0.5rem; }
-/* User dropdown */
-  .user-dropdown { margin-left: 0.75rem; }
-  .user-dropdown .nav-link { padding: 0 !important; }
-  .user-dropdown .nav-link::after { display: none; }
-  .user-dropdown .user-chip {
+
+  /* User avatar chip */
+  .user-dropdown { margin-left: 1rem; }
+  .user-chip {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.15rem 0.6rem 0.15rem 0.15rem;
-    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-    border: 1px solid var(--vh-border);
+    gap: 8px;
+    padding: 6px 10px;
     border-radius: 999px;
-    box-shadow: 0 0 0 1px rgba(122,124,255,0.2);
-  }
-  .user-dropdown .user-chip:hover {
-    box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.25), 0 0 18px rgba(0, 229, 255, 0.18);
-    border-color: rgba(0, 229, 255, 0.55);
+    border: 1px solid var(--vh-border);
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    box-shadow: 0 0 0 1px rgba(122,124,255,0.25);
   }
   .user-avatar {
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid var(--vh-border);
+    width: 30px; height: 30px; border-radius: 50%; object-fit: cover;
+    border: 1px solid rgba(0,229,255,0.45);
     box-shadow: 0 0 10px rgba(0,229,255,0.15);
   }
   .user-initials {
-    width: 30px; height: 30px;
-    display: inline-flex; align-items: center; justify-content: center;
-    border-radius: 50%;
-    background: radial-gradient(85% 85% at 30% 30%, var(--vh-primary) 0%, var(--vh-accent) 100%);
-    color: #fff;
-    font-weight: 700;
-    letter-spacing: 0.4px;
-    text-shadow: 0 0 6px rgba(0,229,255,0.4);
-    box-shadow: 0 0 12px rgba(122,124,255,0.25);
+    width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
+    color: #00111a; font-weight: 700;
+    background: linear-gradient(90deg, var(--vh-accent), var(--vh-accent-2));
+    border: 1px solid rgba(0,229,255,0.45);
+    box-shadow: 0 0 10px rgba(0,229,255,0.15);
   }
-  .user-name { color: var(--vh-text); font-weight: 600; letter-spacing: 0.3px; }
-  .user-dropdown .dropdown-menu { min-width: 220px; }
-  /* Ensure dropdown caret is visible and spaced */
-  .user-dropdown .dropdown-toggle { padding-right: .45rem !important; }
-  .user-dropdown .dropdown-toggle::after {
-    display: inline-block !important;
-    margin-left: .35rem;
-    vertical-align: .15em;
-    border-top-color: var(--vh-text);
-    filter: drop-shadow(0 0 4px rgba(0,229,255,0.35));
-  }
-</style>
-
-<nav class="navbar navbar-expand-lg navbar-dark justify-content-center custom-navbar neon-navbar">
-  <a class="navbar-brand main-heading" href="{% url '' %}">VoltHub</a>
-
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarNavDropdown"
-    aria-controls="navbarNavDropdown"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse text-center" id="navbarNavDropdown">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'shop_home' %}">Home <i class="fa fa-home" aria-hidden="true"></i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'stations' %}">Charging Points <i class="fa fa-car" aria-hidden="true"></i></a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Categories <i class="fa fa-solid fa-list"></i>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{% url 'shop_home' %}">All Products</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="{% url 'category' 'Charging-&-Power' %}">Charging & Power</a>
-          <a class="dropdown-item" href="{% url 'category' 'EV-Accessories'  %}">EV Accessories</a>
-          <a class="dropdown-item" href="{% url 'category' 'Smart Tech-&-IoT Devices' %}">Smart Tech & IoT Devices</a>
-          <a class="dropdown-item" href="{% url 'category' 'EV Maintenance-&-Care' %}">EV Maintenance & Care</a>
-          <a class="dropdown-item" href="{% url 'category' 'EV Parts-&-Upgrades'  %}">EV Parts & Upgrades</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'cart' %}">Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-      </li>
-          </ul>
-
-    <div class="d-flex align-items-center ms-auto">
-      <form class="d-flex neon-search" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-light" type="submit">
-          <i class="bi bi-search"></i>
-          Submit
-        </button>
-      </form>
-      {% if user.is_authenticated %}
-      <div class="nav-item dropdown user-dropdown">
-        <a class="nav-link dropdown-toggle p-0" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="User menu">
-          <span class="user-chip">
-            {% if user.profile and user.profile.profile_photo %}
-              <img src="{{ user.profile.profile_photo.url }}" alt="User avatar" width="30" height="30" class="user-avatar" />
-            {% else %}
-              <span class="user-initials">{{ user.username|slice:':1'|upper }}</span>
-            {% endif %}
-            <span class="d-none d-md-inline user-name">{{ user.username }}</span>
-          </span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
-          <a class="dropdown-item" href="{% url 'dashboard' %}">Dashboard</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="{% url 'logout-user' %}">Sign out</a>
-        </div>
-      </div>
-      {% endif %}
-    </div>
-  </div>
-</nav>
+  .user-name { color: var(--vh-text); max-width: 140px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

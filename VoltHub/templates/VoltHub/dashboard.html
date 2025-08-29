@@ -1,203 +1,297 @@
 {% extends "VoltHub/base.html" %}
 
-    
-{% block content%}
+{% block container_classes %}container-fluid p-0{% endblock %}
 
+{% block content %}
+<style>
+  :root {
+    --vh-bg: #050512;
+    --vh-surface: rgba(13, 13, 30, 0.55);
+    --vh-primary: #7a7cff; /* electric violet */
+    --vh-accent: #00e5ff;  /* neon cyan */
+    --vh-accent-2: #45ffbc; /* mint */
+    --vh-border: rgba(122, 124, 255, 0.35);
+    --vh-text: #e6e9ff;
+    --vh-text-strong: #ffffff;
+    --vh-muted: #c5cdfa;
+    --vh-glow: rgba(0, 229, 255, 0.5);
+  }
 
-<head>
-    <title>EV Charging </title>
-</head>
-<body>
+  .dash-wrap {
+    position: relative;
+    padding: 4vh 0 8vh;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    background: radial-gradient(1200px 600px at 10% -20%, rgba(122,124,255,0.22), transparent 60%),
+                radial-gradient(1000px 800px at 120% 10%, rgba(0,229,255,0.18), transparent 50%),
+                linear-gradient(135deg, #070718 0%, #040414 45%, #09091f 100%);
+    overflow: visible;
+  }
+  .dash-wrap::before,
+  .dash-wrap::after { content: ""; position: absolute; width: 60vmax; height: 60vmax; border-radius: 50%; filter: blur(60px); opacity: 0.25; z-index: 0; animation: floaty 18s ease-in-out infinite; }
+  .dash-wrap::before { background: radial-gradient(circle, rgba(122,124,255,0.45), transparent 60%); left: -20vmax; top: -15vmax; animation-delay: -4s; }
+  .dash-wrap::after  { background: radial-gradient(circle, rgba(0,229,255,0.40), transparent 60%); right: -25vmax; bottom: -20vmax; }
+  @keyframes floaty { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-20px) } }
 
-    <div class="container mt-4">
-        <h1 class="text-center"> Welcome to The VoltHub {{user.username}} </h1> 
-        <hr>
-        
-        <!-- Styling and charts -->
+  .dash-header { position: relative; z-index: 1; text-align: center; margin-bottom: 1.5rem; }
+  .dash-header h1 { color: var(--vh-text-strong); font-weight: 800; letter-spacing: .3px; margin-bottom: .25rem; }
+  .dash-header .subtitle { color: var(--vh-muted); margin: 0 auto .75rem; }
+  .accent-line { position: relative; height: 2px; margin: .75rem auto 0; max-width: 420px; }
+  .accent-line::after { content: ""; position: absolute; left: 0; right: 0; height: 2px; border-radius: 2px; background: linear-gradient(90deg, transparent, var(--vh-accent), var(--vh-primary), transparent); background-size: 200% 100%; animation: lineFlow 8s linear infinite; }
+  @keyframes lineFlow { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
 
-        <canvas id="energyChart" width="235" height="75"></canvas>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      
-        <br>
-        <br>
+  .glass-card {
+    position: relative; z-index: 1;
+    border: 1px solid var(--vh-border);
+    background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(12, 16, 50, 0.65), inset 0 0 24px rgba(0, 229, 255, 0.08);
+    color: var(--vh-text);
+    margin: 0 1rem 1.25rem;
+  }
+  .glass-card .card-header { padding: .85rem 1rem; border-bottom: 1px solid var(--vh-border); font-weight: 700; letter-spacing: .3px; color: var(--vh-text-strong); }
+  .glass-card .card-body { padding: 1rem; }
 
+  /* Chart sizing */
+  #energyChart { max-width: 100%; }
+  .chart-wrap { padding: 1rem; }
 
+  /* Neon table styling */
+  .neon-table .table {
+    color: var(--vh-text-strong) !important;
+    margin: 0;
+    font-size: 0.95rem;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.35);
+  }
+  .neon-table .table thead {
+    background: linear-gradient(90deg, rgba(122,124,255,0.45), rgba(0,229,255,0.30)) !important;
+    color: #000000 !important;
+  }
+  .neon-table .table thead th {
+    border-color: var(--vh-border) !important;
+    color: #000000 !important;
+    text-shadow: none !important;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .neon-table .table tbody tr { background-color: rgba(255,255,255,0.92) !important; }
+  .neon-table .table tbody tr:nth-child(even) { background-color: rgba(255,255,255,0.98) !important; }
+  .neon-table .table tbody tr:hover { background-color: rgba(240,248,255,0.95) !important; }
+  .neon-table .table td, .neon-table .table th { border-color: var(--vh-border) !important; color: var(--vh-text-strong) !important; vertical-align: middle; }
+  .neon-table .table.table-bordered { border-color: var(--vh-border); }
+  .neon-table a { color: #000000 !important; text-decoration: none; }
+  .neon-table a:hover { color: #333333 !important; text-shadow: none; }
 
-        <!-- Charging Station Availability -->
-        <h3>Charging Points</h3>
-        <div class="table-responsive">
-            <table class="table table-striped table-hover table-bordered">
-                <thead class="table-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Station</th>
-                        <th>Location</th>
-                        <th>Capicity</th>
-                        <th>Latitude</th>
-                        <th>Longitude</th>
-                        <th>Available Slots</th>
-                        <th>Availability</th>
-                        <th>Price Per Hour</th>
-                        <th>Payment</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% if stations|length == 0 %}
-                        <tr>
-                            <td colspan="10" class="text-center">No charging points available.</td>
-                        </tr>
-                    {% else %}
-                        {% for station in stations %}
-                        <tr>
-                            <td>{{ station.id }}</td>
-                            <td>{{ station.name }}</td>
-                            <td>{{ station.location }}</td>
-                            <td>{{ station.capicity }}</td>
-                            <td>{{ station.latitude }}</td>
-                            <td>{{ station.longitude }}</td>
-                            <td>{{ station.available_slots }}</td>
-                            <td>{{ station.availability }}</td>
-                            <td>{{station.price_per_hour}}</td>
-                            <td>
-                                {% if station.availability == 'Available' %}
-                                    <span class="badge bg-success">Available</span>
-                                {% elif station.availability == 'Occupied'%}
-                                    <span class="badge bg-danger">Occupied</span>
-                                {% endif %}
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    {% endif %}
-                </tbody>
-            </table>
-        </div>
+  /* Force black text for table body content */
+  .neon-table .table tbody td,
+  .neon-table .table tbody th {
+    color: #000000 !important;
+    text-shadow: none !important;
+  }
+  .neon-table .table tbody a {
+    color: #000000 !important;
+  }
 
-        <br>
+  .cell-mono { color: #000000 !important; }
 
-        <hr>
+  /* Badges */
+  .badge-success { background-color: #28a745 !important; color: #eafff3; box-shadow: 0 0 0 1px rgba(40,167,69,0.5), 0 0 16px rgba(40,167,69,0.25); }
+  .badge-danger { background-color: #dc3545 !important; color: #ffecec; box-shadow: 0 0 0 1px rgba(220,53,69,0.5), 0 0 16px rgba(220,53,69,0.25); }
+  .badge-warning { background-color: #ffc107 !important; color: #2d2d2d; box-shadow: 0 0 0 1px rgba(255,193,7,0.5), 0 0 16px rgba(255,193,7,0.25); }
+  .badge-info { background-color: #17a2b8 !important; color: #eafaff; box-shadow: 0 0 0 1px rgba(23,162,184,0.5), 0 0 16px rgba(23,162,184,0.25); }
 
-        <!-- User Charging Sessions -->
-        <h3>Your Charging Sessions</h3>
-        <div class="table-responsive">
-            <table class="table table-striped table-hover table-bordered">
-                <thead class="table-dark">
-                    <tr>
-                        <th>ID</th>
-                        <th>Station</th>
-                        <th>Start Time</th>
-                        <th>End Time</th>
-                        <th>Energy (kWh)</th>
-                        <th>Costs</th>
-                        <th>Status</th>
+  /* CTA button */
+  .neon-cta.btn, .btn.btn-outline-primary { border: 1px solid var(--vh-border); color: var(--vh-text); border-radius: 14px; background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)); box-shadow: 0 0 0 1px rgba(122,124,255,0.25); }
+  .neon-cta.btn:hover, .btn.btn-outline-primary:hover { color: #fff; border-color: rgba(0,229,255,0.65); background: linear-gradient(180deg, rgba(0,229,255,0.18), rgba(122,124,255,0.12)); box-shadow: 0 0 0 2px rgba(0,229,255,0.24), 0 10px 26px rgba(0,229,255,0.16); }
 
-                        <th> View </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% if sessions|length == 0 %}
-                        <tr>
-                            <td colspan="8" class="text-center">No charging sessions found.</td>
-                        </tr>
-                    {% else %}
-                        {% for session in sessions %}
-                        <tr>
-                            <td>{{ session.id }}</td>
-                            <td>{{ session.station.name }}</td>
-                            <td>{{ session.start_time }}</td>
-                            <td>{{ session.end_time }}</td>
-                            <td>{{ session.energy_consumed_kwh }}</td>
-                            <td>R{{ session.costs }}</td>
-                            <td>
-                                {% if session.status == 'Pending' %}
-                                    <span class="badge bg-warning">Pending</span>
-                                {% elif session.status == 'Confirmed' %}
-                                    <span class="badge bg-success">Confirmed</span>
-                                {% elif session.status == 'Cancelled' %}
-                                    <span class="badge bg-danger">Cancelled</span>
-                                {% endif %}
-                            </td>
+  .cta { text-align: right; margin: .5rem 1rem 0; }
 
-                            <td> <a href="{% url 'view_session' session.id %}" ><i class="fa fa-eye" aria-hidden="true"></i> </a> </td>
-                        </tr>
-                        {% endfor %}
-                    {% endif %}
-                </tbody>
-            </table>
-        </div>
+  /* Remove side gutters on this page */
+  html, body { margin: 0; background-color: #070718; overflow-x: hidden; }
+  .neon-navbar { position: sticky; top: 0; z-index: 2040; }
+  .site-footer, footer { position: relative; z-index: 1; }
+</style>
 
-        <br>
+<section class="dash-wrap">
+  <div class="dash-header">
+    <h1>Welcome to The VoltHub {{ user.username }}</h1>
+    <p class="subtitle">Your EV charging overview</p>
+    <div class="accent-line"></div>
+  </div>
 
-        <hr>
-
-         <!-- Bookings -->
-         <h3>Your Bookings</h3>
-         <div class="table-responsive">
-             <table class="table table-striped table-hover table-bordered">
-                 <thead class="table-dark">
-                     <tr>
-                        <th>ID</th>
-                        <th>Station</th>
-                        <th>Booking Date</th>
-                        <th>Status</th>
-                        <th>Date Booked</th>
-                        <th>Payment Method</th>
-                        <th>Duration</th>
-                        <th>Costs</th>
-                        <th> Payment </th>
-                        <th> View </th>
-                     </tr>
-                 </thead>
-                 <tbody>
-                     {% if bookings|length == 0 %}
-                         <tr>
-                             <td colspan="11" class="text-center">No bookings available.</td>
-                         </tr>
-                     {% else %}
-                         {% for booking in bookings %}
-                         <tr>
-                            <td>{{ booking.id}}</td>
-                            <td>{{ booking.station.name }}</td>
-                            <td>{{ booking.booking_date }}</td>
-                            <td>{{booking.status}}</td>
-                            <td>{{booking.created_at}}</td>
-                            <td>{{ booking.payment_method }}</td>
-                            <td>{{ booking.duration }} hours</td>
-                            <td>R{{ booking.costs }}</td>
-                            <td> <a href="{% url 'payment' %}" ><i class="fa fa-money-bill" aria-hidden="true"></i> </a> </td>
-                            <td> <a href="{% url 'view_booking' booking.id %}" ><i class="fa fa-eye" aria-hidden="true"></i> </a> </td>
-                             
-                             
-                            
-
-                             {% if booking.status == 'Pending' %}
-                                 <span class="badge bg-warning">Pending</span>
-                             {% elif booking.status == 'Confirmed' %}
-                                 <span class="badge bg-success">Confirmed</span>
-                             {% elif booking.status == 'Cancelled' %}
-                                 <span class="badge bg-danger">Cancelled</span>
-                             {% endif %}
-                         </tr>
-                         {% endfor %}
-                     {% endif %}
-                 </tbody>
-             </table>
-         </div>
-
-         <hr> 
-
-         <a class="btn btn-outline-primary btn-sm" href={% url 'book' %}>  Book Your Session </a> <br>
-
-            <tbody>
-                
-            </tbody>
-        </table>
+  <div class="glass-card">
+    <div class="card-header">Energy Overview</div>
+    <div class="card-body chart-wrap">
+      <canvas id="energyChart"></canvas>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </div>
-    <br><br>
-    
-    {% include 'VoltHub/footer.html' %}
-</body>
-</html>
+  </div>
 
+  <div class="glass-card">
+    <div class="card-header">Charging Points</div>
+    <div class="card-body">
+      <div class="table-responsive neon-table">
+        <table class="table table-striped table-hover table-bordered align-middle">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Station</th>
+              <th>Location</th>
+              <th>Capacity</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
+              <th>Available Slots</th>
+              <th>Price Per Hour</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if stations|length == 0 %}
+              <tr>
+                <td colspan="9" class="text-center">No charging points available.</td>
+              </tr>
+            {% else %}
+              {% for station in stations %}
+                <tr>
+                  <td class="cell-mono">{{ station.id }}</td>
+                  <td>{{ station.name }}</td>
+                  <td class="cell-mono">{{ station.location }}</td>
+                  <td>{{ station.capicity }}</td>
+                  <td class="cell-mono">{{ station.latitude }}</td>
+                  <td class="cell-mono">{{ station.longitude }}</td>
+                  <td>{{ station.available_slots }}</td>
+                  <td>R{{ station.price_per_hour }}</td>
+                  <td>
+                    {% if station.availability %}
+                      <span class="badge badge-success">Available</span>
+                    {% else %}
+                      <span class="badge badge-danger">Unavailable</span>
+                    {% endif %}
+                  </td>
+                </tr>
+              {% endfor %}
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
+  <div class="glass-card">
+    <div class="card-header">Your Charging Sessions</div>
+    <div class="card-body">
+      <div class="table-responsive neon-table">
+        <table class="table table-striped table-hover table-bordered align-middle">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Station</th>
+              <th>Start Time</th>
+              <th>End Time</th>
+              <th>Energy (kWh)</th>
+              <th>Costs</th>
+              <th>Status</th>
+              <th>View</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if sessions|length == 0 %}
+              <tr>
+                <td colspan="8" class="text-center">No charging sessions found.</td>
+              </tr>
+            {% else %}
+              {% for session in sessions %}
+                <tr>
+                  <td class="cell-mono">{{ session.id }}</td>
+                  <td>{{ session.station.name }}</td>
+                  <td class="cell-mono">{{ session.start_time }}</td>
+                  <td class="cell-mono">{{ session.end_time|default:'—' }}</td>
+                  <td>{{ session.energy_consumed_kwh|default:'—' }}</td>
+                  <td>R{{ session.costs|default:'—' }}</td>
+                  <td>
+                    {% if session.status == 'Pending' %}
+                      <span class="badge badge-warning">Pending</span>
+                    {% elif session.status == 'Confirmed' %}
+                      <span class="badge badge-success">Confirmed</span>
+                    {% elif session.status == 'Canceled' %}
+                      <span class="badge badge-danger">Canceled</span>
+                    {% elif session.status == 'Scheduled' %}
+                      <span class="badge badge-info">Scheduled</span>
+                    {% else %}
+                      {{ session.status }}
+                    {% endif %}
+                  </td>
+                  <td><a href="{% url 'view_session' session.id %}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                </tr>
+              {% endfor %}
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
+  <div class="glass-card">
+    <div class="card-header">Your Bookings</div>
+    <div class="card-body">
+      <div class="table-responsive neon-table">
+        <table class="table table-striped table-hover table-bordered align-middle">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Station</th>
+              <th>Booking Date</th>
+              <th>Status</th>
+              <th>Date Booked</th>
+              <th>Payment Method</th>
+              <th>Duration</th>
+              <th>View</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if bookings|length == 0 %}
+              <tr>
+                <td colspan="8" class="text-center">No bookings available.</td>
+              </tr>
+            {% else %}
+              {% for booking in bookings %}
+                <tr>
+                  <td class="cell-mono">{{ booking.id }}</td>
+                  <td>{{ booking.station.name }}</td>
+                  <td class="cell-mono">{{ booking.booking_date }}</td>
+                  <td>
+                    {% if booking.status|lower == 'pending' %}
+                      <span class="badge badge-warning">Pending</span>
+                    {% elif booking.status|lower == 'confirmed' %}
+                      <span class="badge badge-success">Confirmed</span>
+                    {% elif booking.status|lower == 'cancelled' %}
+                      <span class="badge badge-danger">Cancelled</span>
+                    {% else %}
+                      {{ booking.status }}
+                    {% endif %}
+                  </td>
+                  <td class="cell-mono">{{ booking.created_at }}</td>
+                  <td class="cell-mono">{{ booking.payment_method }}</td>
+                  <td>{{ booking.duration|default:'—' }}</td>
+                  <td><a href="{% url 'view_booking' booking.id %}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                </tr>
+              {% endfor %}
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <a class="btn btn-outline-primary btn-sm neon-cta" href={% url 'book' %}>Book Your Session</a>
+  </div>
+</section>
+{% include 'VoltHub/footer.html' %}
 {% endblock %}

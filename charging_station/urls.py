@@ -1,73 +1,148 @@
 from django.contrib.auth import views as auth_views
-from django.shortcuts import render
-
 from django.urls import path
-from .views import ( 
-ChargingPointListCreateView,
-ChargingPointDetailView,
-ChargingSessionListCreateView,
-ChargingSessionDetailView,
-BookingListCreateView,
-BookingDetailView,
-ProfileListCreateView,
-PaymentMethodListCreateView,
-PaymentListCreateView,
-RatingListCreateView,
-IssueReportListCreateView,
-CommentListCreateView,
-SubscriptionPlanListCreateView,
-SubscriptionPlanDetailView,
-UserSubscriptionCreateListView,
-ChargingStationAnaliticsCreateListView,
-ChargingStationAnalyticsView,
+
+from .views import (
+    ChargingPointViewSet,
+    ChargingSessionViewSet,
+    BookingViewSet,
+    ProfileViewSet,
+    PaymentMethodViewSet,
+    PaymentViewSet,
+    RatingViewSet,
+    IssueReportViewSet,
+    CommentViewSet,
+    SubscriptionPlanViewSet,
+    UserSubscriptionViewSet,
+    ChargingStationAnaliticsViewSet,
 )
 
-
-
-
-
 urlpatterns = [
-    path('stations-list/', ChargingPointListCreateView.as_view(), name="stations-list"),
-    path('stations_list_details/<int:pk>/', ChargingPointDetailView.as_view(), name="stations_list_details"), 
-  
+    # charging points
+    path(
+        "stations-list/",
+        ChargingPointViewSet.as_view({"get": "list", "post": "create"}),
+        name="stations-list",
+    ),
+    path("stations_list_details/<int:pk>/",ChargingPointViewSet.as_view(
+            {"get": "retrieve", "put": "update", "patch": "partial_update", "delete": "destroy"}
+        ),
+        name="stations_list_details",
+    ),
 
-    path('charging-sessions/', ChargingSessionListCreateView.as_view(), name ="charging_session"),
-    path('charging-sessions/<int:pk>/', ChargingSessionDetailView.as_view(), name="charging_sessions_details"),
-    
-    #bookings
-    path('bookings/', BookingListCreateView.as_view(), name="bookings"),
-    path('bookings/<int:pk>/', BookingDetailView.as_view(), name="bookings_details"),
+    # charging sessions
+    path(
+        "charging-sessions/",
+        ChargingSessionViewSet.as_view({"get": "list", "post": "create"}),
+        name="charging_session",
+    ),
+    path(
+        "charging-sessions/<int:pk>/",
+        ChargingSessionViewSet.as_view(
+            {"get": "retrieve", "put": "update", "patch": "partial_update", "delete": "destroy"}
+        ),
+        name="charging_sessions_details",
+    ),
 
-    #profile
-    path('profiles/', ProfileListCreateView.as_view(), name="profiles"),
+    # bookings
+    path(
+        "bookings/",
+        BookingViewSet.as_view({"get": "list", "post": "create"}),
+        name="bookings",
+    ),
+    path(
+        "bookings/<int:pk>/",
+        BookingViewSet.as_view(
+            {"get": "retrieve", "put": "update", "patch": "partial_update", "delete": "destroy"}
+        ),
+        name="bookings_details",
+    ),
 
-    #payment section
-    path('payment-method/', PaymentMethodListCreateView.as_view(), name="payment-method"),
-    path('payment/', PaymentListCreateView.as_view(), name="payment"),
+    # profile (collection only per original urls)
+    path(
+        "profiles/",
+        ProfileViewSet.as_view({"get": "list", "post": "create"}),
+        name="profiles",
+    ),
 
-    #rating
-    path('ratings/', RatingListCreateView.as_view(), name="ratings"),
+    # payment section (collection only per original urls)
+    path(
+        "payment-method/",
+        PaymentMethodViewSet.as_view({"get": "list", "post": "create"}),
+        name="payment-method",
+    ),
+    path(
+        "payment/",
+        PaymentViewSet.as_view({"get": "list", "post": "create"}),
+        name="payment",
+    ),
 
-    #issue report
-    path('issue-reports/', IssueReportListCreateView.as_view(), name="issue_reports"),
+    # rating (collection only)
+    path(
+        "ratings/",
+        RatingViewSet.as_view({"get": "list", "post": "create"}),
+        name="ratings",
+    ),
 
-    #comments
-    path('comments/', CommentListCreateView.as_view(), name="comments"),
+    # issue report (collection only)
+    path(
+        "issue-reports/",
+        IssueReportViewSet.as_view({"get": "list", "post": "create"}),
+        name="issue_reports",
+    ),
 
-    #reset password
-    path('reset_password/', auth_views.PasswordResetView.as_view(template_name="VoltHub/password_reset.html"), name="reset_password"),
-    path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(template_name="VoltHub/password_reset_sent.html"), name="password_reset_done"),
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="VoltHub/password_reset_form.html"), name="password_reset_confirm"),
-    path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name="VoltHub/password_reset_done.html"), name="password_reset_complete"),
+    # comments (collection only)
+    path(
+        "comments/",
+        CommentViewSet.as_view({"get": "list", "post": "create"}),
+        name="comments",
+    ),
 
-    #subscription plan
-    path('subscription_plans/', SubscriptionPlanListCreateView.as_view(), name="subscription_plans"),
-    path('subscription_plans/<int:pk>/', SubscriptionPlanDetailView.as_view(), name="subscription_plans_details"),
-    path('user_subscription/', UserSubscriptionCreateListView.as_view(), name="user_subscription"),
+    # reset password (unchanged)
+    path(
+        "reset_password/",
+        auth_views.PasswordResetView.as_view(template_name="VoltHub/password_reset.html"),
+        name="reset_password",
+    ),
+    path(
+        "reset_password_sent/",
+        auth_views.PasswordResetDoneView.as_view(template_name="VoltHub/password_reset_sent.html"),
+        name="password_reset_done",
+    ),
+    path(
+        "reset/<uidb64>/<token>/",
+        auth_views.PasswordResetConfirmView.as_view(template_name="VoltHub/password_reset_form.html"),
+        name="password_reset_confirm",
+    ),
+    path(
+        "reset_password_complete/",
+        auth_views.PasswordResetCompleteView.as_view(template_name="VoltHub/password_reset_done.html"),
+        name="password_reset_complete",
+    ),
 
-    #charging station analytics
-    path('charging_station_analytics/', ChargingStationAnaliticsCreateListView.as_view(), name="charging_station_analytics"),
-    path('analytics/', ChargingStationAnalyticsView.as_view(), name='charging-station-analytics'),
+    # subscription plan
+    path(
+        "subscription_plans/",
+        SubscriptionPlanViewSet.as_view({"get": "list", "post": "create"}),
+        name="subscription_plans",
+    ),
+    path(
+        "subscription_plans/<int:pk>/",
+        SubscriptionPlanViewSet.as_view(
+            {"get": "retrieve", "put": "update", "patch": "partial_update", "delete": "destroy"}
+        ),
+        name="subscription_plans_details",
+    ),
+    path(
+        "user_subscription/",
+        UserSubscriptionViewSet.as_view({"get": "list", "post": "create"}),
+        name="user_subscription",
+    ),
 
-   
+    # charging station analytics
+    path("charging_station_analytics/",
+        ChargingStationAnaliticsViewSet.as_view({"get": "list", "post": "create"}),
+        name="charging_station_analytics",
+    ),
+    # Keep the extra analytics alias, mapped to the same list action
+    path("analytics/",ChargingStationAnaliticsViewSet.as_view({"get": "list"}),name="charging-station-analytics",),
 ]
