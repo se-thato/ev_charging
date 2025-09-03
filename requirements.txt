@@ -57,6 +57,7 @@ psycopg2-binary==2.9.10
 pycparser==2.22
 Pygments==2.19.1
 PyJWT==2.9.0
+PyMySQL==1.1.2
 pytest==8.3.5
 python-dateutil==2.9.0.post0
 python-decouple==3.8
