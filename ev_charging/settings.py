@@ -4,6 +4,10 @@ from datetime import timedelta
 import os
 from pathlib import Path
 from decouple import config
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,6 +28,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sites',  # Required for allauth
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,13 +44,23 @@ INSTALLED_APPS = [
 
 
     'rest_framework',
+    'rest_framework.authtoken',  
     'corsheaders',
     'crispy_forms',
     'crispy_bootstrap4',
     'channels',
-    #'axes' # For brute-force protection
+    'oauth2_provider',
+    'axes' # For brute-force protection
+    ,'drf_yasg', #swagger
 
-
+    # Email verification
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
 ]
 
 
@@ -103,14 +118,15 @@ MIDDLEWARE = [
     'charging_station.middleware.RequestLoggingMiddleware',
     'charging_station.middleware.PerformanceMonitoringMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    #'axes.middleware.AxesMiddleware',
+    'axes.middleware.AxesMiddleware',
+    # allauth
+    'allauth.account.middleware.AccountMiddleware',
     
 ]
 
 
-
-#AXES_FAILURE_LIMIT = 3 # Maximum number of login attempts before lockout
-#AXES_COOLOFF_TIME = 60  # This is the time (in minutes) that a user will be locked out after exceeding the failure limit
+AXES_FAILURE_LIMIT = 3 # Maximum number of login attempts before lockout
+AXES_COOLOFF_TIME = 60  # This is the time (in minutes) that a user will be locked out after exceeding the failure limit
 
 
 
@@ -147,23 +163,25 @@ CHANNEL_LAYERS = {
 
 # Database
 """
+DB_LIVE = os.environ.get("DB_LIVE", "").lower() in ("1", "true", "yes")
+if DB_LIVE:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ.get('DB_NAME'),
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
+            'HOST': os.environ.get('DB_HOST', 'localhost'),
+            'PORT': int(os.environ.get('DB_PORT', 3306)),
+            'OPTIONS': {},
+        }
+    }
+else:
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-"""
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'railway',
-        'USER': 'root',
-        'PASSWORD': 'lYBDkESTOOsaPwlwPFqxtnAeoVOaXqEP',
-        'HOST': 'mysql.railway.internal',
-        'PORT': '3306',
-        'MYSQL_URL': 'mysql://root:lYBDkESTOOsaPwlwPFqxtnAeoVOaXqEP@mysql.railway.internal:3306/railway',
     }
 }
 
@@ -186,6 +204,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesStandaloneBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -193,11 +216,8 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -274,3 +294,14 @@ EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool, default=False)
 EMAIL_HOST_USER = config("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
+
+
+# Allauth
+SITE_ID = 1
+
+ACCOUNT_LOGIN_METHODS = {'email'}
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+
+REST_USE_JWT = True

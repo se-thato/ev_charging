@@ -23,6 +23,13 @@ urlpatterns = [
     path('', include("authentication.urls")),
     #authentication
     path('auth', include('authentication.urls')),
+
+    # dj-rest-auth (API-based auth and registration)
+    path('dj-rest-auth/', include('dj_rest_auth.urls')),
+    path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
+    
+    # allauth (for social authentication)
+    path('accounts/', include('allauth.urls')),
     
     #ecommerce
     path('ecommerce/', include('ecommerce.urls')),

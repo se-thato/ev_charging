@@ -7,9 +7,9 @@ from django.core.exceptions import ValidationError
 
 class Profile(models.Model):
     username = models.CharField(max_length=50, unique=True, null=True, blank=True)
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=100, unique=True, blank=False)
+    first_name = models.CharField(max_length=50, null=True, blank=True)
+    last_name = models.CharField(max_length=50, null=True, blank=True)
+    email = models.EmailField(max_length=100, unique=True, null=True, blank=True)
     location = models.CharField(max_length=150, null=True, blank=True)
     profile_picture = models.ImageField(upload_to='profile_pictures/', null=True, blank=True)
 
