@@ -163,6 +163,14 @@ REDIS_URL = os.environ.get("REDIS_URL")
 
 CORS_ALLOW_ALL_ORIGINS = True #Adjusting for production
 
+# CORS settings
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+]
+
+
 ROOT_URLCONF = 'ev_charging.urls'
 
 TEMPLATES = [
