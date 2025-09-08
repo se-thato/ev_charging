@@ -193,15 +193,30 @@ CHANNEL_LAYERS = {
 # Database
 DB_LIVE = os.environ.get("DB_LIVE", "").lower() in ("1", "true", "yes")
 if DB_LIVE:
+    # Support Railway/MySQL environment variables as fallbacks
+    db_name = os.environ.get('DB_NAME') or os.environ.get('MYSQLDATABASE') or os.environ.get('MYSQL_DATABASE')
+    db_user = os.environ.get('DB_USER') or os.environ.get('MYSQLUSER') or os.environ.get('MYSQL_USER')
+    db_password = os.environ.get('DB_PASSWORD') or os.environ.get('MYSQLPASSWORD') or os.environ.get('MYSQL_PASSWORD')
+    db_host = os.environ.get('DB_HOST') or os.environ.get('MYSQLHOST') or os.environ.get('MYSQL_HOST') or 'localhost'
+    db_port = int(os.environ.get('DB_PORT') or os.environ.get('MYSQLPORT') or os.environ.get('MYSQL_PORT') or 3306)
+
+    db_options = {}
+    # Optional SSL configuration for hosted MySQL providers
+    mysql_ssl = os.environ.get('MYSQL_SSL') or os.environ.get('DB_SSL')
+    if mysql_ssl and mysql_ssl.lower() in ('1', 'true', 'yes', 'required'):
+        db_options['ssl'] = {}
+        if os.environ.get('MYSQL_SSL_CA'):
+            db_options['ssl']['ca'] = os.environ.get('MYSQL_SSL_CA')
+
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': os.environ.get('DB_NAME'),
-            'USER': os.environ.get('DB_USER'),
-            'PASSWORD': os.environ.get('DB_PASSWORD'),
-            'HOST': os.environ.get('DB_HOST', 'localhost'),
-            'PORT': int(os.environ.get('DB_PORT', 3306)),
-            'OPTIONS': {},
+            'NAME': db_name,
+            'USER': db_user,
+            'PASSWORD': db_password,
+            'HOST': db_host,
+            'PORT': db_port,
+            'OPTIONS': db_options,
         }
     }
 else:
