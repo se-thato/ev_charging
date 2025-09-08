@@ -26,7 +26,6 @@ ALLOWED_HOSTS = ["evcharging-production-c179.up.railway.app", "localhost", "127.
 
 CSRF_TRUSTED_ORIGINS = [
     "https://evcharging-production-c179.up.railway.app",
-    "https://*.railway.app",
     "http://127.0.0.1:8000",
     "http://localhost:8000",
 ]
