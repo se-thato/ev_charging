@@ -1,0 +1,162 @@
+{% extends 'ecommerce/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  :root {
+    --vh-bg: #050512;
+    --vh-surface: rgba(13, 13, 30, 0.55);
+    --vh-primary: #7a7cff; /* electric violet */
+    --vh-accent: #00e5ff;  /* neon cyan */
+    --vh-accent-2: #45ffbc; /* mint */
+    --vh-border: rgba(122, 124, 255, 0.35);
+    --vh-text: #e6e9ff;
+    --vh-muted: #a9b1ff;
+    --vh-glow: rgba(0, 229, 255, 0.5);
+  }
+
+  /* Full-bleed section to eliminate side gaps */
+  .shop-wrap {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    background: radial-gradient(1200px 600px at 10% -20%, rgba(122,124,255,0.22), transparent 60%),
+                radial-gradient(1000px 800px at 120% 10%, rgba(0,229,255,0.18), transparent 50%),
+                linear-gradient(135deg, #070718 0%, #040414 45%, #09091f 100%);
+    overflow: hidden;
+  }
+
+  .shop-wrap::before,
+  .shop-wrap::after {
+    content: "";
+    position: absolute;
+    width: 60vmax;
+    height: 60vmax;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.25;
+    z-index: 0;
+    animation: floaty 18s ease-in-out infinite;
+  }
+  .shop-wrap::before { background: radial-gradient(circle, rgba(122,124,255,0.45), transparent 60%); left: -20vmax; top: -15vmax; animation-delay: -4s; }
+  .shop-wrap::after  { background: radial-gradient(circle, rgba(0,229,255,0.40), transparent 60%); right: -25vmax; bottom: -20vmax; }
+  @keyframes floaty { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-20px) } }
+
+  /* Inner width constraint for content readability */
+  .shop-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  /* Hero */
+  .shop-hero {
+    padding: 8vh 0 4vh;
+    text-align: center;
+    color: var(--vh-text);
+  }
+  .shop-title {
+    margin: 0 0 .5rem;
+    font-weight: 800;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    background: linear-gradient(90deg, var(--vh-primary), var(--vh-accent) 60%, var(--vh-accent-2));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 12px rgba(122,124,255,0.25), 0 0 26px rgba(0,229,255,0.15);
+    letter-spacing: .4px;
+  }
+  .shop-subtitle { color: var(--vh-muted); }
+
+  .accent-line { position: relative; height: 2px; margin: 1rem auto 2rem; max-width: 520px; }
+  .accent-line::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 2px; border-radius: 2px;
+    background: linear-gradient(90deg, transparent, var(--vh-accent), var(--vh-primary), transparent);
+    background-size: 200% 100%; animation: lineFlow 8s linear infinite;
+  }
+  @keyframes lineFlow { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+
+  /* Product cards (glassmorphism) */
+  .product-card {
+    position: relative;
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    border: 1px solid var(--vh-border);
+    border-radius: 18px;
+    backdrop-filter: blur(10px) saturate(160%);
+    -webkit-backdrop-filter: blur(10px) saturate(160%);
+    box-shadow: 0 20px 50px rgba(12, 16, 50, 0.45), inset 0 0 24px rgba(0, 229, 255, 0.06);
+    color: var(--vh-text);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+  }
+  .product-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0,229,255,0.55);
+    box-shadow: 0 30px 70px rgba(0, 229, 255, 0.18), 0 10px 26px rgba(122,124,255,0.16);
+  }
+
+  .product-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+  }
+
+  .product-body { padding: 1rem 1rem .5rem; text-align: center; }
+  .product-title { font-weight: 700; margin-bottom: .25rem; }
+  .product-price { color: var(--vh-text); }
+  .product-price del { color: #e6e9ff90; }
+
+  .product-actions { padding: 0 1rem 1rem; margin-top: auto; }
+  .btn-neon {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    width: 100%;
+    border: 1px solid var(--vh-border);
+    color: var(--vh-text);
+    border-radius: 14px;
+    padding: .65rem 1rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+    box-shadow: 0 0 0 1px rgba(122,124,255,0.25);
+    transition: transform .08s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
+    text-decoration: none;
+  }
+  .btn-neon:hover {
+    color: #fff;
+    border-color: rgba(0,229,255,0.65);
+    background: linear-gradient(180deg, rgba(0,229,255,0.18), rgba(122,124,255,0.12));
+    box-shadow: 0 0 0 2px rgba(0,229,255,0.24), 0 10px 26px rgba(0,229,255,0.16);
+    transform: translateY(-1px);
+  }
+
+  .sale-badge {
+    position: absolute;
+    top: .6rem;
+    right: .6rem;
+    background: linear-gradient(90deg, var(--vh-accent), var(--vh-primary));
+    color: white;
+    padding: .25rem .6rem;
+    border-radius: 999px;
+    font-size: .75rem;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  }
+</style>
+
+<section class="shop-wrap">
+  <div class="shop-inner shop-hero">
+    <h1 class="shop-title">Shopping Cart</h1>
+    <p class="shop-subtitle">View Your Items</p>
+    <div class="accent-line"></div>
+  </div>
+
+  
+      {% endfor %}
+    </div>
+  </div>
+  {% include 'VoltHub/footer.html' %}
+</section>
+
+{% endblock %}

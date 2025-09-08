@@ -3749,3 +3749,1456 @@ Watching for file changes with StatReloader
 "GET /static/VoltHub/register.css HTTP/1.1" 404 1874
 "GET /stations/ HTTP/1.1" 200 16948
 "GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 11260
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 16017
+"GET /static/VoltHub/image/video.mp4 HTTP/1.1" 200 24106993
+"GET /stations/ HTTP/1.1" 200 16948
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /dashboard HTTP/1.1" 200 20387
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /ecommerce/shop_home HTTP/1.1" 200 35027
+"GET /media/product_images/EVC-Charging-Cable-5m_rXly5KX.jpg HTTP/1.1" 304 0
+"GET /media/product_images/Portable_Level_2_Home_Charger.jpg HTTP/1.1" 304 0
+"GET /media/product_images/Suntree-Portable-EV-Charger.jpg HTTP/1.1" 304 0
+"GET /media/product_images/ZENCAR_E_Portable_EV_Charger_74kW.jpg HTTP/1.1" 304 0
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 15435
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /register HTTP/1.1" 200 17957
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 10794
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /book HTTP/1.1" 302 0
+"GET /login?next=/book HTTP/1.1" 200 15435
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 20387
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /analytics/ HTTP/1.1" 200 52
+"GET /ecommerce/shop_home HTTP/1.1" 200 35027
+"GET /ecommerce/cart/ HTTP/1.1" 200 23
+"GET /ecommerce/cart/ HTTP/1.1" 200 23
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\Cart\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\Cart\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /ecommerce/cart/ HTTP/1.1" 200 23
+Internal Server Error: /ecommerce/shop_home
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 71, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'Cart'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\ecommerce\views.py", line 11, in home_ecommerce
+    return render(request,'ecommerce/shop_home.html', {'products': products, 'show_categories': True,})
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 82, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'Cart' is not a registered namespace
+"GET /ecommerce/shop_home HTTP/1.1" 500 199841
+Internal Server Error: /ecommerce/shop_home
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\ecommerce\views.py", line 11, in home_ecommerce
+    return render(request,'ecommerce/shop_home.html', {'products': products, 'show_categories': True,})
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'Cart/cart_home' not found. 'Cart/cart_home' is not a valid view function or pattern name.
+"GET /ecommerce/shop_home HTTP/1.1" 500 197920
+C:\Users\Thato\charging\ev_charging\ecommerce\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ecommerce\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /ecommerce/shop_home
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\ecommerce\views.py", line 11, in home_ecommerce
+    return render(request,'ecommerce/shop_home.html', {'products': products, 'show_categories': True,})
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'Cart/cart_home' not found. 'Cart/cart_home' is not a valid view function or pattern name.
+"GET /ecommerce/shop_home HTTP/1.1" 500 197920
+Internal Server Error: /ecommerce/shop_home
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\ecommerce\views.py", line 11, in home_ecommerce
+    return render(request,'ecommerce/shop_home.html', {'products': products, 'show_categories': True,})
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'Cart/cart_home' not found. 'Cart/cart_home' is not a valid view function or pattern name.
+"GET /ecommerce/shop_home HTTP/1.1" 500 197920
+C:\Users\Thato\charging\ev_charging\ecommerce\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ecommerce\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /ecommerce/shop_home
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\ecommerce\views.py", line 11, in home_ecommerce
+    return render(request,'ecommerce/shop_home.html', {'products': products, 'show_categories': True,})
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'Cart/cart_home' not found. 'Cart/cart_home' is not a valid view function or pattern name.
+"GET /ecommerce/shop_home HTTP/1.1" 500 197920
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+Internal Server Error: /ecommerce/shop_home
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\ecommerce\views.py", line 11, in home_ecommerce
+    return render(request,'ecommerce/shop_home.html', {'products': products, 'show_categories': True,})
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'Cart/cart_home' not found. 'Cart/cart_home' is not a valid view function or pattern name.
+"GET /ecommerce/shop_home HTTP/1.1" 500 197783
+"GET /ecommerce/shop_home HTTP/1.1" 200 35027
+"GET /ecommerce/shop_home HTTP/1.1" 200 35027
+"GET /ecommerce/cart/ HTTP/1.1" 200 9
+C:\Users\Thato\charging\ev_charging\ecommerce\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /ecommerce/cart/ HTTP/1.1" 200 23
+C:\Users\Thato\charging\ev_charging\ecommerce\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+"GET /ecommerce/cart/ HTTP/1.1" 302 0
+C:\Users\Thato\charging\ev_charging\ecommerce\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /ecommerce/cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endfor'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\ecommerce\views.py", line 41, in cart
+    return render(request, 'ecommerce/cart_home.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 563, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 156: 'endfor', expected 'endblock'. Did you forget to register or load this tag?
+"GET /ecommerce/cart/ HTTP/1.1" 500 188643
+"GET /ecommerce/cart/ HTTP/1.1" 200 22283
+"GET /ecommerce/cart/ HTTP/1.1" 200 22283
+"GET /ecommerce/shop_home HTTP/1.1" 200 35027
+"GET /ecommerce/cart/ HTTP/1.1" 200 22283
+"GET /ecommerce/shop_home HTTP/1.1" 200 35027
+"GET /ecommerce/shop_home HTTP/1.1" 200 35027
+"GET / HTTP/1.1" 200 11260
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /ecommerce/shop_home HTTP/1.1" 200 35027
+"GET /ecommerce/shop_home HTTP/1.1" 200 35027
+"GET / HTTP/1.1" 200 11260
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /ecommerce/shop_home HTTP/1.1" 200 35027
+- Broken pipe from ('127.0.0.1', 62984)
+"GET /ecommerce/shop_home HTTP/1.1" 200 35018
+"GET /ecommerce/shop_home HTTP/1.1" 200 35114
+"GET /ecommerce/shop_home HTTP/1.1" 200 35114
+Internal Server Error: /Cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 4, in cart_home
+    return render(request, "cart_home.html", {})
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: cart_home.html
+"GET /Cart/ HTTP/1.1" 500 94904
+Internal Server Error: /Cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 4, in cart_home
+    return render(request, "cart_home.html", {})
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: cart_home.html
+"GET /Cart/ HTTP/1.1" 500 95041
+Internal Server Error: /Cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 4, in cart_home
+    return render(request, "cart_home.html", {})
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: cart_home.html
+"GET /Cart/ HTTP/1.1" 500 95041
+Internal Server Error: /Cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 4, in cart_home
+    return render(request, "cart_home.html", {})
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: cart_home.html
+"GET /Cart/ HTTP/1.1" 500 95041
+Internal Server Error: /Cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 4, in cart_home
+    return render(request, "cart_home.html", {})
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: cart_home.html
+"GET /Cart/ HTTP/1.1" 500 95041
+Internal Server Error: /Cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 4, in cart_home
+    return render(request, "cart_home.html", {})
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: cart_home.html
+"GET /Cart/ HTTP/1.1" 500 95041
+Internal Server Error: /Cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 4, in cart_home
+    return render(request, "cart_home.html", {})
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: cart_home.html
+"GET /Cart/ HTTP/1.1" 500 95041
+C:\Users\Thato\charging\ev_charging\ecommerce\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /Cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 4, in cart_home
+    return render(request, "cart_home.html", {})
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: cart_home.html
+"GET /Cart/ HTTP/1.1" 500 94904
+C:\Users\Thato\charging\ev_charging\ecommerce\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ecommerce\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ecommerce\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ecommerce\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\Cart\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\Cart\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\Cart\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\Cart\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\Cart\views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /Cart/
+"GET /Cart/ HTTP/1.1" 404 17047
+"GET / HTTP/1.1" 200 11260
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+Internal Server Error: /ecommerce/shop_home
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\ecommerce\views.py", line 11, in home_ecommerce
+    return render(request,'ecommerce/shop_home.html', {'products': products, 'show_categories': True,})
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'Cart/cart' not found. 'Cart/cart' is not a valid view function or pattern name.
+"GET /ecommerce/shop_home HTTP/1.1" 500 197345
+- Broken pipe from ('127.0.0.1', 56455)
+C:\Users\Thato\charging\ev_charging\Cart\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ev_charging\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ev_charging\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /ecommerce/shop_home HTTP/1.1" 200 35135
+Internal Server Error: /Cart/cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 5, in cart
+    return render(request, 'Cart/cart_home.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: Cart/cart_home.html
+"GET /Cart/cart/ HTTP/1.1" 500 95233
+C:\Users\Thato\charging\ev_charging\Cart\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /Cart/cart/ HTTP/1.1" 200 22391
+C:\Users\Thato\charging\ev_charging\Cart\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /Cart/cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 5, in cart
+    return render(request, 'cart_home.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: cart_home.html
+"GET /Cart/cart/ HTTP/1.1" 500 95200
+C:\Users\Thato\charging\ev_charging\Cart\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\Cart\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /Cart/cart/
+"GET /Cart/cart/ HTTP/1.1" 404 17078
+Not Found: /Cart/cart/
+"GET /Cart/cart/ HTTP/1.1" 404 17078
+Not Found: /Cart/cart/
+"GET /Cart/cart/ HTTP/1.1" 404 17078
+Not Found: /Cart/cart/
+"GET /Cart/cart/ HTTP/1.1" 404 17078
+Not Found: /Cart/cart/
+"GET /Cart/cart/ HTTP/1.1" 404 17078
+C:\Users\Thato\charging\ev_charging\Cart\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\Cart\views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /Cart/cart/
+"GET /Cart/cart/ HTTP/1.1" 404 17078
+Not Found: /Cart/cart/
+"GET /Cart/cart/ HTTP/1.1" 404 17078
+C:\Users\Thato\charging\ev_charging\Cart\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\Cart\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /Cart/cart/ HTTP/1.1" 200 22391
+"GET /Cart/cart/ HTTP/1.1" 200 22391
+C:\Users\Thato\charging\ev_charging\Cart\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 11260
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /ecommerce/shop_home HTTP/1.1" 200 35135
+- Broken pipe from ('127.0.0.1', 57233)
+"GET /Cart/cart/ HTTP/1.1" 200 22391
+"GET /ecommerce/shop_home HTTP/1.1" 200 35135
+"GET / HTTP/1.1" 200 11260
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/image/video.mp4 HTTP/1.1" 200 24106993
+"GET / HTTP/1.1" 200 11260
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /ecommerce/shop_home HTTP/1.1" 200 35135
+"GET /stations/ HTTP/1.1" 200 16948
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /Cart/cart/ HTTP/1.1" 200 22391
+"GET /ecommerce/shop_home HTTP/1.1" 200 35135
+"GET /Cart/cart/ HTTP/1.1" 200 22391
+"GET /ecommerce/shop_home HTTP/1.1" 200 35135
+"GET / HTTP/1.1" 200 11260
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /ecommerce/shop_home HTTP/1.1" 200 35135
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /media/product_images/EVC-Charging-Cable-5m_rXly5KX.jpg HTTP/1.1" 200 102854
+"GET /media/product_images/Portable_Level_2_Home_Charger.jpg HTTP/1.1" 200 208506
+"GET /media/product_images/Suntree-Portable-EV-Charger.jpg HTTP/1.1" 200 179945
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /media/product_images/IEC_62196_3_Phase_11kw_22kw_16A_32A_Type_2_EVSE_Portable_EV_Charger.jpg HTTP/1.1" 200 73985
+"GET /media/product_images/Cable_Holder.jpg HTTP/1.1" 200 140555
+"GET /media/product_images/ZENCAR_E_Portable_EV_Charger_74kW.jpg HTTP/1.1" 200 246788
+"GET /media/product_images/OEM_ODM_5m_10m_20m_30m_Factory_Directly_EV_Type_2_Extension_Cable.jpg HTTP/1.1" 200 75826
+"GET /media/product_images/European_standard_Combo_2_EV_DC_AC_Charging_CCS2_Sockets_Car_Side_Female_EV_Inlet.png HTTP/1.1" 200 108709
+"GET /media/product_images/Workersbee_Gen2.0_Type_2_AC_Outlet_Socket_for_AC_charging_pile.png HTTP/1.1" 200 116940
+"GET /media/product_images/12V_Car_Heating_Cup_Car_Heated_Mug_450ml_Stainless_Steel.jpg HTTP/1.1" 200 37267
+"GET /media/product_images/PHRX_200W_Electric_Car_Heater_DC_12V_Heating_Fan_Defogger_Defroster_Demis_nGh1bdU.jpg HTTP/1.1" 200 17564
+"GET /media/product_images/Perfect_Dealz_Multifunction_Electric_Cleaning_Brush_Waxing_Brush_Handheld_0PCUBiO.jpg HTTP/1.1" 200 25330
+"GET /media/product_images/Perfect_Dealz_Electric_Vibration_Seat_Comfort_Cushion.jpg HTTP/1.1" 200 17468
+"GET /media/product_images/Vehicle_Car_Cigarette_Light_Fan_With_Clip_Holder_8_-_PM-036.jpg HTTP/1.1" 200 38386
+"GET /media/product_images/HX-T201_Dual_Head_Car_Cigarette_Lighter_Fan_4.5.jpg HTTP/1.1" 200 18856
+"GET /media/product_images/Tire_Inflator_Portable_Air_Compressor_150_PSI_Bike_Pump_12V_Electric_Air__2Fq9OSO.jpg HTTP/1.1" 200 144969
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 16165
+Watching for file changes with StatReloader
+"GET /stations/ HTTP/1.1" 200 16948
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/login.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /static/VoltHub/charging.css HTTP/1.1" 200 6194
+"GET / HTTP/1.1" 200 11260
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /ecommerce/shop_home HTTP/1.1" 200 35139
+Internal Server Error: /Cart/cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 5, in cart
+    return render(request, 'ecommerce/cart_home.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: ecommerce/cart_home.html
+"GET /Cart/cart/ HTTP/1.1" 500 95403
+C:\Users\Thato\charging\ev_charging\Cart\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\Cart\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /Cart/cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 5, in cart
+    return render(request, 'cart_home.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: cart_home.html
+"GET /Cart/cart/ HTTP/1.1" 500 95063
+Internal Server Error: /Cart/cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 5, in cart
+    return render(request, 'cart_home.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: cart_home.html
+"GET /Cart/cart/ HTTP/1.1" 500 95200
+Internal Server Error: /Cart/cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 5, in cart
+    return render(request, 'cart_home.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: cart_home.html
+"GET /Cart/cart/ HTTP/1.1" 500 95063
+Watching for file changes with StatReloader
+Internal Server Error: /Cart/cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 5, in cart
+    return render(request, 'cart_home.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: cart_home.html
+"GET /Cart/cart/ HTTP/1.1" 500 95200
+Internal Server Error: /Cart/cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 5, in cart
+    return render(request, 'cart_home.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: cart_home.html
+"GET /Cart/cart/ HTTP/1.1" 500 95063
+Watching for file changes with StatReloader
+Internal Server Error: /Cart/cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 5, in cart
+    return render(request, 'cart_home.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: cart_home.html
+"GET /Cart/cart/ HTTP/1.1" 500 95200
+Internal Server Error: /Cart/cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 5, in cart
+    return render(request, 'cart_home.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: cart_home.html
+"GET /Cart/cart/ HTTP/1.1" 500 95063
+C:\Users\Thato\charging\ev_charging\Cart\views.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /Cart/cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endfor'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 5, in cart
+    return render(request, 'ecommerce/cart_home.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 563, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 156: 'endfor', expected 'endblock'. Did you forget to register or load this tag?
+"GET /Cart/cart/ HTTP/1.1" 500 188242
+Internal Server Error: /Cart/cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endfor'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\Cart\views.py", line 5, in cart
+    return render(request, 'ecommerce/cart_home.html')
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 563, in invalid_block_tag
+    raise self.error(
+    ...<8 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 156: 'endfor', expected 'endblock'. Did you forget to register or load this tag?
+"GET /Cart/cart/ HTTP/1.1" 500 188105
+"GET /Cart/cart/ HTTP/1.1" 200 22393
+"GET / HTTP/1.1" 200 11260
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /ecommerce/shop_home HTTP/1.1" 200 35139
+"GET /media/product_images/12V_Car_Heating_Cup_Car_Heated_Mug_450ml_Stainless_Steel.jpg HTTP/1.1" 304 0
+"GET /media/product_images/PHRX_200W_Electric_Car_Heater_DC_12V_Heating_Fan_Defogger_Defroster_Demis_nGh1bdU.jpg HTTP/1.1" 304 0
+"GET /media/product_images/Perfect_Dealz_Multifunction_Electric_Cleaning_Brush_Waxing_Brush_Handheld_0PCUBiO.jpg HTTP/1.1" 304 0
+"GET /media/product_images/Tire_Inflator_Portable_Air_Compressor_150_PSI_Bike_Pump_12V_Electric_Air__2Fq9OSO.jpg HTTP/1.1" 304 0
+"GET /media/product_images/Perfect_Dealz_Electric_Vibration_Seat_Comfort_Cushion.jpg HTTP/1.1" 304 0
+"GET /media/product_images/Vehicle_Car_Cigarette_Light_Fan_With_Clip_Holder_8_-_PM-036.jpg HTTP/1.1" 304 0
+"GET /media/product_images/HX-T201_Dual_Head_Car_Cigarette_Lighter_Fan_4.5.jpg HTTP/1.1" 304 0
+"GET /Cart/cart/ HTTP/1.1" 200 22393
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET / HTTP/1.1" 200 11260
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /Cart/cart/ HTTP/1.1" 200 22393
+"GET / HTTP/1.1" 200 11260
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /dashboard HTTP/1.1" 200 20387
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /ecommerce/shop_home HTTP/1.1" 200 35139
+"GET /media/product_images/Cable_Holder.jpg HTTP/1.1" 304 0
+"GET /media/product_images/OEM_ODM_5m_10m_20m_30m_Factory_Directly_EV_Type_2_Extension_Cable.jpg HTTP/1.1" 304 0
+"GET /media/product_images/European_standard_Combo_2_EV_DC_AC_Charging_CCS2_Sockets_Car_Side_Female_EV_Inlet.png HTTP/1.1" 304 0
+"GET /media/product_images/IEC_62196_3_Phase_11kw_22kw_16A_32A_Type_2_EVSE_Portable_EV_Charger.jpg HTTP/1.1" 304 0
+"GET /media/product_images/Workersbee_Gen2.0_Type_2_AC_Outlet_Socket_for_AC_charging_pile.png HTTP/1.1" 304 0
+"GET /Cart/cart/ HTTP/1.1" 200 22393
+Internal Server Error: /analytics/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 29, in _decorator
+    return method(self, *args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 99, in _get
+    return self.client.get(key, default=default, version=version, client=client)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\client\default.py", line 300, in get
+    raise ConnectionInterrupted(connection=client) from e
+django_redis.exceptions.ConnectionInterrupted: Redis ConnectionError: Error 11001 connecting to redis.railway.internal:6379. getaddrinfo failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 416, in initial
+    self.check_throttles(request)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 359, in check_throttles
+    if not throttle.allow_request(request, self):
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\throttling.py", line 123, in allow_request
+    self.history = self.cache.get(self.key, [])
+                   ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 92, in get
+    value = self._get(key, default, version, client)
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 36, in _decorator
+    raise e.__cause__  # noqa: B904
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\client\default.py", line 298, in get
+    value = client.get(key)
+  File "C:\Users\Thato\Lib\site-packages\redis\commands\core.py", line 1829, in get
+    return self.execute_command("GET", name, keys=[name])
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\client.py", line 621, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\client.py", line 627, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\redis\utils.py", line 195, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 1533, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 380, in connect
+    self.connect_check_health(check_health=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 397, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 11001 connecting to redis.railway.internal:6379. getaddrinfo failed.
+"GET /logout-user HTTP/1.1" 302 0
+"GET /login HTTP/1.1" 200 15435
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /analytics/ HTTP/1.1" 500 174449
+"GET /register HTTP/1.1" 200 17957
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET / HTTP/1.1" 200 10794
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET / HTTP/1.1" 200 10794
+- Broken pipe from ('127.0.0.1', 55315)
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+"GET /login HTTP/1.1" 200 15435
+- Broken pipe from ('127.0.0.1', 62230)
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+- Broken pipe from ('127.0.0.1', 63607)
+"POST /login HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 20387
+"GET /static/VoltHub/register.css HTTP/1.1" 404 1874
+Internal Server Error: /analytics/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 29, in _decorator
+    return method(self, *args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 99, in _get
+    return self.client.get(key, default=default, version=version, client=client)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\client\default.py", line 300, in get
+    raise ConnectionInterrupted(connection=client) from e
+django_redis.exceptions.ConnectionInterrupted: Redis ConnectionError: Error 11001 connecting to redis.railway.internal:6379. getaddrinfo failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 416, in initial
+    self.check_throttles(request)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 359, in check_throttles
+    if not throttle.allow_request(request, self):
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\throttling.py", line 123, in allow_request
+    self.history = self.cache.get(self.key, [])
+                   ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 92, in get
+    value = self._get(key, default, version, client)
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 36, in _decorator
+    raise e.__cause__  # noqa: B904
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\client\default.py", line 298, in get
+    value = client.get(key)
+  File "C:\Users\Thato\Lib\site-packages\redis\commands\core.py", line 1829, in get
+    return self.execute_command("GET", name, keys=[name])
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\client.py", line 621, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\client.py", line 627, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\redis\utils.py", line 195, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 1533, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 380, in connect
+    self.connect_check_health(check_health=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 397, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 11001 connecting to redis.railway.internal:6379. getaddrinfo failed.
+"GET /analytics/ HTTP/1.1" 500 174449
+Watching for file changes with StatReloader

@@ -37,3 +37,12 @@
 [2025-09-03 12:29:04,205] WARNING SLOW REQUEST: /ecommerce/shop_home took 20.081 seconds!
 [2025-09-03 12:29:06,340] WARNING SLOW REQUEST: /stations/ took 21.217 seconds!
 [2025-09-03 14:23:01,763] WARNING SLOW REQUEST: /stations/ took 5.391 seconds!
+[2025-09-07 01:32:30,296] WARNING SLOW REQUEST: /login took 19.623 seconds!
+[2025-09-07 02:35:20,749] WARNING SLOW REQUEST: /ecommerce/shop_home took 8.103 seconds!
+[2025-09-07 02:44:57,748] WARNING SLOW REQUEST: /ecommerce/shop_home took 5.036 seconds!
+[2025-09-07 03:42:24,838] WARNING SLOW REQUEST: /ecommerce/shop_home took 20.101 seconds!
+[2025-09-07 04:02:02,172] WARNING SLOW REQUEST: / took 9.129 seconds!
+[2025-09-07 04:04:36,223] WARNING SLOW REQUEST: /ecommerce/shop_home took 6.521 seconds!
+[2025-09-08 12:26:43,648] WARNING SLOW REQUEST: /analytics/ took 15.475 seconds!
+[2025-09-08 12:28:13,511] WARNING SLOW REQUEST: /login took 16.835 seconds!
+[2025-09-08 12:28:30,656] WARNING SLOW REQUEST: /analytics/ took 6.900 seconds!

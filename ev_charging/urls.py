@@ -31,8 +31,9 @@ urlpatterns = [
     # allauth (for social authentication)
     path('accounts/', include('allauth.urls')),
     
-    #ecommerce
+    #ecommerce platform
     path('ecommerce/', include('ecommerce.urls')),
+    path('Cart/', include('Cart.urls')),
 
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),

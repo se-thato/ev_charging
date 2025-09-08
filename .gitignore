@@ -1,1 +1,9 @@
 .env
+
+# Django
+*.log 
+logs/        
+db.sqlite3   
+media/ 
+staticfiles/  
+static/    

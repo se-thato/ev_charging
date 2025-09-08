@@ -32,23 +32,14 @@ def category(request, foo):
         return redirect('shop_home')
 
 
-# --- Minimal placeholders for cart flow to satisfy URL imports ---
-
-def cart(request):
-    # This will display the cart contents
-    return HttpResponse("Cart page (placeholder)")
 
 
-def add_to_cart(request, product_id):
-    # This will add the item to the cart
-    messages.success(request, 'Added to cart.')
-    return redirect('shop_home')
+
+#Cart Section
 
 
-def remove_from_cart(request, product_id):
-    # This will remove the item from the cart
-    messages.info(request, 'Removed from cart.')
-    return redirect('shop_home')
+
+
 
 
 def checkout(request):

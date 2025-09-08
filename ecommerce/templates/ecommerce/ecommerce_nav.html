@@ -194,16 +194,19 @@
     border-radius: 999px;
     box-shadow: 0 0 0 1px rgba(122,124,255,0.2);
   }
+
   .user-dropdown .user-chip:hover {
     box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.25), 0 0 18px rgba(0, 229, 255, 0.18);
     border-color: rgba(0, 229, 255, 0.55);
   }
+
   .user-avatar {
     border-radius: 50%;
     object-fit: cover;
     border: 1px solid var(--vh-border);
     box-shadow: 0 0 10px rgba(0,229,255,0.15);
   }
+
   .user-initials {
     width: 30px; height: 30px;
     display: inline-flex; align-items: center; justify-content: center;
@@ -215,6 +218,7 @@
     text-shadow: 0 0 6px rgba(0,229,255,0.4);
     box-shadow: 0 0 12px rgba(122,124,255,0.25);
   }
+
   .user-name { color: var(--vh-text); font-weight: 600; letter-spacing: 0.3px; }
   .user-dropdown .dropdown-menu { min-width: 220px; }
   /* Ensure dropdown caret is visible and spaced */
@@ -266,7 +270,13 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'cart' %}">Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+        <a class="nav-link" href="{% url 'Cart:cart' %}">Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        <span class="badge badge-pill badge-light">
+          {% with request.session.cart|length as cart_count %}
+            {{ cart_count }}
+          {% endwith %}
+        </span>
+        </a>
       </li>
           </ul>
 

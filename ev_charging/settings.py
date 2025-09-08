@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'VoltHub',
     'authentication',
     'ecommerce',
+    'Cart',
 
 
     'rest_framework',
@@ -129,6 +130,33 @@ AXES_FAILURE_LIMIT = 3 # Maximum number of login attempts before lockout
 AXES_COOLOFF_TIME = 60  # This is the time (in minutes) that a user will be locked out after exceeding the failure limit
 
 
+# Celery
+CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL")
+CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND")
+
+
+# Redis cache
+try:
+    import django_redis  # noqa: F401
+    CACHES = {
+        "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": os.environ.get("REDIS_URL", "redis://127.0.0.1:6379/1"),
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            },
+        }
+    }
+except ModuleNotFoundError:
+    # Fallback for development when django-redis isn't installed
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+            "LOCATION": "dev-local-cache",
+        }
+    }
+
+REDIS_URL = os.environ.get("REDIS_URL")
 
 
 CORS_ALLOW_ALL_ORIGINS = True #Adjusting for production
@@ -278,7 +306,6 @@ LOGGING = {
 }
 
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -303,5 +330,6 @@ ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+
 
 REST_USE_JWT = True
