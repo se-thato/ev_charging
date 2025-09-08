@@ -22,9 +22,17 @@ SECRET_KEY = 'django-insecure-i9r%i5hq%av96r_&&%(qa2fto$bwx-1ka2u__7b8!@z40f#1t!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["https://evcharging-production-c179.up.railway.app"]
+ALLOWED_HOSTS = ["evcharging-production-c179.up.railway.app", "localhost", "127.0.0.1"]
 
-CSRF_TRUSTED_ORIGINS = ["https://evcharging-production-c179.up.railway.app", "http://127.0.0.1:8000"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://evcharging-production-c179.up.railway.app",
+    "https://*.railway.app",
+    "http://127.0.0.1:8000",
+    "http://localhost:8000",
+]
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 # Application definition
 
