@@ -24,7 +24,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['https://evcharging-production-c179.up.railway.app']
 
-CSRF_TRUSTED_ORIGINS = ['https://evcharging-production-c179.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://evcharging-production-c179.up.railway.app', "http://127.0.0.1:8000"]
 
 # Application definition
 
