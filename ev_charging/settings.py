@@ -191,6 +191,7 @@ CHANNEL_LAYERS = {
 }
 
 # Database
+"""
 DB_LIVE = os.environ.get("DB_LIVE", "").lower() in ("1", "true", "yes")
 if DB_LIVE:
     # Support Railway/MySQL environment variables as fallbacks
@@ -220,12 +221,13 @@ if DB_LIVE:
         }
     }
 else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+    """
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
 
 
 # Password validation
