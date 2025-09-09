@@ -13,10 +13,10 @@ User = get_user_model()
 
 
 class Profile(models.Model):
-    username = models.CharField(max_length=50, unique=True, null=True, blank=True)
+    username = models.CharField(max_length=50, null=True, blank=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=100, unique=True, null=True, blank=True)  # <-- changed here
+    email = models.EmailField(max_length=100, null=True, blank=True)
     location = models.CharField(max_length=150, null=True, blank=True)
     profile_picture = models.ImageField(upload_to='profile_pictures/', null=True, blank=True)
     def __str__(self):
@@ -260,7 +260,7 @@ class SubscriptionPlan(models.Model):
         ('enterprise', 'Enterprise'),
     ]
 
-    name = models.CharField(max_length=50, choices=PLAN_CHOICES, unique=True)
+    name = models.CharField(max_length=50, choices=PLAN_CHOICES)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     duration_in_days = models.DurationField()
     features = models.TextField()

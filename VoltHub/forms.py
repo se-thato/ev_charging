@@ -48,11 +48,12 @@ class UpdateBookingForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['username', 'first_name', 'last_name', 'email', 'location']
+        fields = ['username', 'first_name', 'last_name', 'email', 'location', 'profile_picture']
         widgets = {
             'username': forms.TextInput(attrs={'readonly': 'readonly'}),
             'first_name': forms.TextInput(attrs={'readonly': 'readonly'}),
             'last_name': forms.TextInput(attrs={'readonly': 'readonly'}),
             'email': forms.EmailInput(attrs={'readonly': 'readonly'}),
             'location': forms.TextInput(attrs={'readonly': 'readonly'}),
+            'profile_picture': forms.ClearableFileInput(attrs={'class': 'form-control-file', 'accept': 'image/*'}),
         }
