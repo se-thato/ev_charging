@@ -151,10 +151,14 @@
     <p class="shop-subtitle">View Your Items</p>
     <div class="accent-line"></div>
   </div>
+<br>
+<div>
+  {% for product in cart_products %}
+      {{ product }}
+  {% endfor %}
+</div>
 
   
-    
-    </div>
   </div>
   {% include 'VoltHub/footer.html' %}
 </section>

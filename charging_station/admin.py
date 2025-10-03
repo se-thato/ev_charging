@@ -23,3 +23,4 @@ admin.site.register(Payment)
 admin.site.register(SubscriptionPlan)   
 
 admin.site.register(UserSubscription)
+

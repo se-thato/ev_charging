@@ -51,10 +51,9 @@ INSTALLED_APPS = [
     'ecommerce',
     'Cart',
 
-
     'rest_framework',
     'rest_framework.authtoken',  
-    'corsheaders',
+    'corsheaders',   
     'crispy_forms',
     'crispy_bootstrap4',
     'channels',
@@ -99,6 +98,11 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 1,
 }
 
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'charging_station.serializers.CustomRegisterSerializer',
+}
+
 #SimpleJWT setting
 
 SIMPLE_JWT = {
@@ -135,6 +139,7 @@ MIDDLEWARE = [
 ]
 
 
+
 AXES_FAILURE_LIMIT = 3 # Maximum number of login attempts before lockout
 AXES_COOLOFF_TIME = 60  # This is the time (in minutes) that a user will be locked out after exceeding the failure limit
 
@@ -142,6 +147,10 @@ AXES_COOLOFF_TIME = 60  # This is the time (in minutes) that a user will be lock
 # Celery
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL")
 CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND")
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
 
 
 # Redis cache
@@ -191,10 +200,12 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'Cart.context_processors.cart_contents',  # Make cart available in all templates
             ],
         },
     },
-]
+]#'Cart.context_processors.cart',
+
 
 WSGI_APPLICATION = 'ev_charging.wsgi.application'
 ASGI_APPLICATION = 'ev_charging.asgi.application'
@@ -240,7 +251,7 @@ else:
     
 
 """
-"""
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -251,13 +262,15 @@ DATABASES = {
         'PORT': os.environ.get("DB_PORT"),
     }
 }
-"""
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -359,6 +372,7 @@ LOGGING = {
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+
 #smtp settings(email)
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -367,7 +381,7 @@ EMAIL_PORT = config("EMAIL_PORT", cast=int, default=587)
 EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool, default=True)
 EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="")
-DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL", default="")
+DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL", default="noreply@volthub.com")
 
 
 # Allauth

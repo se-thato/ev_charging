@@ -19,12 +19,14 @@ class Profile(models.Model):
     email = models.EmailField(max_length=100, null=True, blank=True)
     location = models.CharField(max_length=150, null=True, blank=True)
     profile_picture = models.ImageField(upload_to='profile_pictures/', null=True, blank=True)
+
     def __str__(self):
         return self.username
 
 
 
 class ChargingPoint(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     name = models.CharField(max_length=150)
     location = models.CharField(max_length=150, null=True, blank=True)
     capicity = models.PositiveIntegerField()
@@ -32,6 +34,7 @@ class ChargingPoint(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     latitude = models.FloatField(null=True, blank=True)
     longitude = models.FloatField(null=True, blank=True)
+    address = models.CharField(max_length=255, default="Unknown address")
     availability = models.BooleanField(null=True, blank=True)
     price_per_hour = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
     is_active = models.BooleanField(default=True)
@@ -39,10 +42,12 @@ class ChargingPoint(models.Model):
     off_peak_end = models.TimeField(null=True, blank=True)
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='charging_points_created')
     updated_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='charging_points_updated')
+    is_verified = models.BooleanField(default=False) #Only the admin can verify a charging point
 
 
     def __str__(self):
-        return self.name
+        return f"{self.name} ({self.address})"
+
 
 
 
@@ -69,8 +74,9 @@ class ChargingSession(models.Model):
         if self.start_time and self.end_time:
             if self.end_time < self.start_time:
                 raise ValidationError("Opps!! end time cannot be before start time.")
-            self.duration = self.end_time - self.start_time   
-        super().save(*args, **kwargs) 
+            self.duration = self.end_time - self.start_time
+        super().save(*args, **kwargs)
+
 
 
     def __str__(self):
@@ -294,6 +300,3 @@ class ChargingStationAnalitics(models.Model):
 
     def __str__(self):
         return f"Analytics for {self.station} - {self.total_sessions} sessions"
-
-
-

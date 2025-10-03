@@ -120,10 +120,16 @@
                 <strong>R{{ product.sale_price }}</strong>
               {% else %}
                 <strong>R{{ product.price }}</strong>
+              
               {% endif %}
             </div>
             <div class="actions">
               <a href="{% url 'shop_home' %}" class="btn-neon">Back to Shop</a>
+              <a href="{% url 'Cart:add-cart' product.id %}" class="btn-neon" id="add-to-cart" value="{{ product.id }}">Add to Cart</a>
+          
+
+
+
             </div>
           </div>
         </div>
@@ -133,5 +139,37 @@
   {% include 'VoltHub/footer.html' %}
 </section>
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script>
+//Check if button is clicked
+$(document).on('click', '#add-to-cart', function(e) {
+  e.preventDefault();
+  $.ajax({
+    type: 'POST',
+    url: "{% url 'Cart:add-cart' product.id %}",
+      data: {
+        product_id: $('#add-to-cart').val(),
+        //this is to prevent csrf attacks
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+        action: 'post'
+      },
+      // If the request is successful
+      success: function(json) {
+        //console.log(json)
+        document.getElementById('cart-quantity').textContent = json.qty;
+
+
+      }, 
+      // If there is an error
+      error: function(xhr, status, error) {
+        
+      }
+
+    });
+    
+  });
+
+</script>
 
 {% endblock %}

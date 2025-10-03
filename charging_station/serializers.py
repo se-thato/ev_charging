@@ -1,11 +1,24 @@
 from rest_framework import serializers
 from .models import ChargingPoint, ChargingSession, Booking, Profile, PaymentMethod, Payment, Rating, IssueReport, Comment, SubscriptionPlan, UserSubscription, ChargingStationAnalitics
+from dj_rest_auth.registration.serializers import RegisterSerializer
+from allauth.account import app_settings as allauth_account_settings
+
+
+# Custom serializer for user registration
+class CustomRegisterSerializer(RegisterSerializer):
+    email = serializers.EmailField(
+        required=True
+    )
+
 
 class ChargingPointSerializer(serializers.ModelSerializer):
+     # This field will be populated with the distance from the user to the charging point
+    distance = serializers.FloatField(read_only=True)
 
     class Meta:
         model = ChargingPoint
         fields = '__all__'
+        read_only_fields = ["owner", "is_verified", "created_at", "distance"]
 
 
 

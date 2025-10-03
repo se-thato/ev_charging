@@ -4,6 +4,8 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from django.db.models import F
+from django.db.models.functions import ACos, Cos, Radians, Sin
 
 from .models import (
     ChargingPoint,
@@ -51,7 +53,7 @@ class ChargingPointViewSet(viewsets.ModelViewSet):
     filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ["location", "name"]
 
-    # Map DELETE on the collection path to this action to preserve existing behavior.
+    # This will allow ordering by fields and distance if provided
     @action(detail=False, methods=["delete"], url_path="", url_name="bulk-delete")
     def bulk_delete(self, request, *args, **kwargs):
         confirmation = request.data.get("confirm")
@@ -60,9 +62,45 @@ class ChargingPointViewSet(viewsets.ModelViewSet):
                 {"error": "Please provide confirmation to delete all charging points."},
                 status=status.HTTP_400_BAD_REQUEST,
             )
-        # Mimic original response (204 with a JSON body, even though 204 usually has no content)
+        # Delete all charging points
         ChargingPoint.objects.all().delete()
         return Response({"message": "All charging points have been deleted"}, status=status.HTTP_204_NO_CONTENT)
+    
+
+    def get_queryset(self):
+        return ChargingPoint.objects.filter(is_verified=True)  # Only show verified
+    
+    # This function will set the owner to the logged in user when creating a charging point
+    # Only the owner can update or delete their charging points
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user, is_verified=False)  # the owner will add and the admin verify
+
+    # This custom action will return nearby charging points based on lat/lng and radius
+    @action(detail=False, methods=["get"])
+    def nearby(self, request):
+        """Return stations within X km of given lat/lng"""
+        try:
+            lat = float(request.query_params.get("lat"))
+            lng = float(request.query_params.get("lng"))
+            radius_km = float(request.query_params.get("radius", 5))
+        except (TypeError, ValueError):
+            return Response({"error": "lat, lng, and optional radius are required."}, status=400)
+
+        # Calculate distance using Haversine formula
+        qs = ChargingPoint.objects.filter(is_verified=True).annotate(
+            distance=6371 * ACos(
+                Cos(Radians(lat)) *  # the radius of the Earth in kilometers
+                Cos(Radians(F('latitude'))) * # the latitude of the charging point, converted to radians
+                Cos(Radians(F('longitude')) - Radians(lng)) +  # the longitude of the charging point, converted to radians
+                Sin(Radians(lat)) * # the latitude of the user, converted to radians
+                Sin(Radians(F('latitude')))
+            )
+        ).filter(distance__lte=radius_km).order_by("distance")
+
+
+        serializer = self.get_serializer(qs, many=True)  # Serialize the queryset
+        return Response(serializer.data)
+
 
 
 

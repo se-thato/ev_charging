@@ -269,13 +269,13 @@
           <a class="dropdown-item" href="{% url 'category' 'EV Parts-&-Upgrades'  %}">EV Parts & Upgrades</a>
         </div>
       </li>
+      
       <li class="nav-item">
         <a class="nav-link" href="{% url 'Cart:cart' %}">Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-        <span class="badge badge-pill badge-light">
-          {% with request.session.cart|length as cart_count %}
-            {{ cart_count }}
-          {% endwith %}
+        <span class="badge badge-pill badge-light" id="cart-quantity">
+          {{ cart|length }}
         </span>
+
         </a>
       </li>
           </ul>
