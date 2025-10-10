@@ -71,13 +71,14 @@
 }
 @keyframes lineFlow { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
 
-.hero-actions { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; margin-top: .5rem; }
+.hero-actions { display: flex; gap: .5rem; justify-content: center; flex-wrap: wrap; margin-top: .5rem; }
 .btn-neon {
-  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  display: inline-flex; align-items: center; justify-content: center; gap: .3rem;
   border: 1px solid var(--vh-border);
   color: var(--vh-text);
-  border-radius: 14px;
-  padding: .75rem 1.1rem;
+  border-radius: 8px;
+  padding: .35rem .65rem;
+  flex: 0 0 auto; width: auto; min-width: 0; white-space: nowrap;
   background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
   box-shadow: 0 0 0 1px rgba(122,124,255,0.25);
   transition: transform .08s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease, color .2s ease;

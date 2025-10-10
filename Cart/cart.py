@@ -12,29 +12,25 @@ class Cart():
         # now making sure cart is available is available in all pages
         self.cart = cart
 
-
     def add(self, product, quantity=1):
         product_id = str(product.id)
-        # Check if the product is already in the cart
+        # Add new item or increment quantity for existing item
         if product_id not in self.cart:
             self.cart[product_id] = {
                 'price': str(product.price),
-                'quantity': quantity
+                'quantity': quantity,
             }
         else:
-            self.cart[product_id] = {'price': str(product.price)}
-            
-            # Increase quantity if it already exists
-            self.cart[product_id]['quantity'] += 1
+            self.cart[product_id]['quantity'] += quantity
 
-            self.session.modified = True
+        # Persist changes to the session and mark as modified
+        self.session['session_key'] = self.cart
+        self.session.modified = True
 
 
     def __len__(self):
-        return len(self.cart)
-
         # Return total quantity of items in cart
-        #return sum(item['quantity'] for item in self.cart.values())
+        return sum(item.get('quantity', 0) for item in self.cart.values())
 
 
     def get_products(self):

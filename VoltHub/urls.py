@@ -47,6 +47,8 @@ urlpatterns = [
 
 
     path('stations/', views.station_locator, name="stations"),
+    path('stations/submit', views.submit_station, name="submit_station"),
+    path('stations/verify', views.verify_stations, name="verify_stations"),
 
     #payment section
     path('payments', views.payment_methods, name="payments"),

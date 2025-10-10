@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
-from .forms import CreateUserForm, LoginForm, BookingForm, UpdateBookingForm, ProfileForm
+from .forms import CreateUserForm, LoginForm, BookingForm, UpdateBookingForm, ProfileForm, ChargingPointForm
 
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
 
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from charging_station.models import ChargingPoint, ChargingSession, Booking, Profile, Comment
 
 
@@ -208,10 +208,9 @@ def delete_booking(request, pk):
 
 @login_required(login_url='login')
 def station_locator(request):
-    stations = ChargingPoint.objects.all()
-    context = {'stations': stations, }
-
-
+    # Only verified stations should be listed and mapped
+    stations = ChargingPoint.objects.filter(is_verified=True, is_active=True)
+    context = {'stations': stations}
     return render(request, 'VoltHub/charging_points.html', context)   
 
 
@@ -254,3 +253,46 @@ def profile(request):
 
     context = {'form': form}
     return render(request, 'VoltHub/profile.html', context)
+
+
+# Helper to restrict to admins
+is_admin = user_passes_test(lambda u: u.is_superuser)
+
+
+# Authenticated users submit a charging station; defaults to unverified
+@login_required(login_url='login')
+def submit_station(request):
+    if request.method == 'POST':
+        form = ChargingPointForm(request.POST)
+        if form.is_valid():
+            station = form.save(commit=False)
+            station.owner = request.user
+            station.created_by = request.user
+            station.is_verified = False
+            station.save()
+            return redirect('stations')
+    else:
+        form = ChargingPointForm()
+    return render(request, 'VoltHub/submit_station.html', {'form': form})
+
+
+# Admin view: list pending stations and verify
+@is_admin
+def verify_stations(request):
+    if request.method == 'POST':
+        station_id = request.POST.get('station_id')
+        action = request.POST.get('action')
+        try:
+            station = ChargingPoint.objects.get(id=station_id)
+            if action == 'approve':
+                station.is_verified = True
+                station.updated_by = request.user
+                station.save()
+            elif action == 'reject':
+                station.delete()
+        except ChargingPoint.DoesNotExist:
+            pass
+        return redirect('verify_stations')
+
+    pending = ChargingPoint.objects.filter(is_verified=False)
+    return render(request, 'VoltHub/verify_stations.html', {'pending': pending})

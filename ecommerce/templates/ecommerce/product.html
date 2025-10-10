@@ -78,11 +78,13 @@
   .product-price { margin-top: .75rem; font-size: 1.1rem; }
   .product-price del { color: #e6e9ff90; }
 
-  .actions { display: flex; gap: .75rem; margin-top: 1rem; flex-wrap: wrap; }
+  .actions { display: flex; gap: .5rem; margin-top: 1rem; flex-wrap: wrap; }
   .btn-neon {
-    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    display: inline-flex; align-items: center; justify-content: center; gap: .3rem;
     border: 1px solid var(--vh-border); color: var(--vh-text);
-    border-radius: 14px; padding: .65rem 1rem;
+    font-size: 0.95rem;
+    border-radius: 8px; padding: .35rem .65rem;
+    flex: 0 0 auto; width: auto; min-width: 0; white-space: nowrap;
     background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
     box-shadow: 0 0 0 1px rgba(122,124,255,0.25);
     transition: transform .08s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
@@ -127,8 +129,6 @@
               <a href="{% url 'shop_home' %}" class="btn-neon">Back to Shop</a>
               <a href="{% url 'Cart:add-cart' product.id %}" class="btn-neon" id="add-to-cart" value="{{ product.id }}">Add to Cart</a>
           
-
-
 
             </div>
           </div>

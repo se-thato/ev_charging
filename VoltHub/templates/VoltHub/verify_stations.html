@@ -1,0 +1,53 @@
+{% extends 'VoltHub/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-4">
+  <h2 class="text-light mb-3">Pending Charging Stations</h2>
+  <p class="text-muted">Approve or reject new submissions. Approved stations will appear on the map.</p>
+
+  {% if pending %}
+  <div class="table-responsive">
+    <table class="table table-dark table-striped align-middle">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Address</th>
+          <th>Owner</th>
+          <th>Created</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for s in pending %}
+          <tr>
+            <td>{{ s.name }}</td>
+            <td>{{ s.location }}</td>
+            <td>{{ s.address }}</td>
+            <td>{{ s.owner }}</td>
+            <td>{{ s.created_at|date:'Y-m-d H:i' }}</td>
+            <td>
+              <form method="post" class="d-inline">
+                {% csrf_token %}
+                <input type="hidden" name="station_id" value="{{ s.id }}">
+                <input type="hidden" name="action" value="approve">
+                <button type="submit" class="btn btn-success btn-sm">Approve</button>
+              </form>
+              <form method="post" class="d-inline ms-2">
+                {% csrf_token %}
+                <input type="hidden" name="station_id" value="{{ s.id }}">
+                <input type="hidden" name="action" value="reject">
+                <button type="submit" class="btn btn-danger btn-sm">Reject</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+    <div class="alert alert-secondary">No pending stations.</div>
+  {% endif %}
+</div>
+{% endblock %}

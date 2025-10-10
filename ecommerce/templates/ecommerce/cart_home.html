@@ -151,15 +151,37 @@
     <p class="shop-subtitle">View Your Items</p>
     <div class="accent-line"></div>
   </div>
-<br>
-<div>
-  {% for product in cart_products %}
-      {{ product }}
-  {% endfor %}
-</div>
 
-  
+  <div class="shop-inner" style="padding-bottom: 6vh;">
+    <div class="row gx-4 gy-4 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+      {% for product in cart_products %}
+        <div class="col">
+          <div class="product-card">
+            {% if product.on_sale %}<div class="sale-badge">Sale</div>{% endif %}
+            <img class="product-img" src="{{ product.image.url }}" alt="{{ product.name }}" />
+            <div class="product-body">
+              <h5 class="product-title">{{ product.name }}</h5>
+              <div class="product-price">
+                {% if product.on_sale %}
+                  <del>R{{ product.price }}</del>
+                  &nbsp;
+                  <strong>R{{ product.sale_price }}</strong>
+                {% else %}
+                  <strong>R{{ product.price }}</strong>
+                {% endif %}
+              </div>
+            </div>
+            <div class="product-actions">
+              <a class="btn-neon" href="{% url 'shop_home' %}">Home</a>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <div class="col-12 text-center text-muted">Your cart is empty.</div>
+      {% endfor %}
+    </div>
   </div>
+
   {% include 'VoltHub/footer.html' %}
 </section>
 

@@ -1,0 +1,184 @@
+{% extends 'VoltHub/base.html' %}
+{% load static %}
+
+{% block container_classes %}container-fluid p-0{% endblock %}
+
+{% block content %}
+<style>
+  :root {
+    --vh-bg: #050512;
+    --vh-surface: rgba(13, 13, 30, 0.55);
+    --vh-primary: #7a7cff; /* electric violet */
+    --vh-accent: #00e5ff;  /* neon cyan */
+    --vh-accent-2: #45ffbc; /* mint */
+    --vh-border: rgba(122, 124, 255, 0.35);
+    --vh-text: #e6e9ff;
+    --vh-muted: #a9b1ff;
+  }
+
+  .submit-wrap {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    background: radial-gradient(1200px 600px at 10% -20%, rgba(122,124,255,0.22), transparent 60%),
+                radial-gradient(1000px 800px at 120% 10%, rgba(0,229,255,0.18), transparent 50%),
+                linear-gradient(135deg, #070718 0%, #040414 45%, #09091f 100%);
+    overflow: hidden;
+    min-height: 100vh;
+  }
+  .submit-wrap::before,
+  .submit-wrap::after {
+    content: "";
+    position: absolute;
+    width: 60vmax; height: 60vmax; border-radius: 50%; filter: blur(60px); opacity: .25; z-index: 0;
+    animation: floaty 18s ease-in-out infinite;
+  }
+  .submit-wrap::before { background: radial-gradient(circle, rgba(122,124,255,0.45), transparent 60%); left: -20vmax; top: -15vmax; animation-delay: -4s; }
+  .submit-wrap::after  { background: radial-gradient(circle, rgba(0,229,255,0.40), transparent 60%); right: -25vmax; bottom: -20vmax; }
+  @keyframes floaty { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-20px) } }
+
+  .submit-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 1rem 8vh; }
+
+  /* Hero */
+  .submit-hero { text-align: center; color: var(--vh-text); padding: 7vh 0 2vh; }
+  .submit-title {
+    margin: 0 0 .5rem; font-weight: 800; letter-spacing: .4px; font-size: clamp(1.8rem, 4vw, 3rem);
+    background: linear-gradient(90deg, var(--vh-primary), var(--vh-accent) 60%, var(--vh-accent-2));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 12px rgba(122,124,255,0.25), 0 0 26px rgba(0,229,255,0.15);
+  }
+  .submit-subtitle { color: var(--vh-muted); }
+  .accent-line { position: relative; height: 2px; margin: 1rem auto 2rem; max-width: 520px; }
+  .accent-line::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 2px; border-radius: 2px;
+    background: linear-gradient(90deg, transparent, var(--vh-accent), var(--vh-primary), transparent);
+    background-size: 200% 100%; animation: lineFlow 8s linear infinite;
+  }
+  @keyframes lineFlow { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+
+  /* Card */
+  .glass-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    border: 1px solid var(--vh-border);
+    border-radius: 18px;
+    backdrop-filter: blur(10px) saturate(160%);
+    -webkit-backdrop-filter: blur(10px) saturate(160%);
+    box-shadow: 0 20px 50px rgba(12, 16, 50, 0.45), inset 0 0 24px rgba(0, 229, 255, 0.06);
+    color: var(--vh-text);
+  }
+
+  .form-header { padding: 1.25rem 1.25rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .form-header .hint { color: var(--vh-muted); font-size: .95rem; }
+  .form-body { padding: 1.25rem; }
+  .form-footer { padding: 0 1.25rem 1.25rem; }
+
+  /* Grid */
+  .grid-form { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+  @media (min-width: 768px) {
+    .grid-form { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .field { display: flex; flex-direction: column; gap: .35rem; }
+  .field label { color: var(--vh-text); font-weight: 600; font-size: .95rem; }
+  .field .help { color: var(--vh-muted); font-size: .85rem; }
+  .err { color: #ff8a8a; font-size: .85rem; }
+
+  .checkbox-field { display: flex; align-items: center; gap: .6rem; padding-top: .6rem; }
+
+  /* Inputs override to match theme */
+  .form-control, input[type="number"], input[type="time"], input[type="text"], input[type="email"] {
+    background: rgba(255,255,255,0.06) !important;
+    border: 1px solid var(--vh-border) !important;
+    color: var(--vh-text) !important;
+    border-radius: 12px !important;
+  }
+  .form-control:focus, input:focus {
+    border-color: rgba(0,229,255,0.55) !important;
+    box-shadow: 0 0 0 3px rgba(0,229,255,0.18), 0 0 24px rgba(0,229,255,0.12) !important;
+    outline: none !important;
+  }
+  .form-check-input {
+    border: 1px solid var(--vh-border) !important;
+    background: rgba(255,255,255,0.08) !important;
+  }
+  .form-check-input:checked {
+    background-color: #25d6ff !important;
+    border-color: #25d6ff !important;
+  }
+
+  /* Buttons */
+  .btn-neon {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    border: 1px solid var(--vh-border);
+    color: var(--vh-text);
+    border-radius: 14px;
+    padding: .7rem 1.15rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+    box-shadow: 0 0 0 1px rgba(122,124,255,0.25);
+    transition: transform .08s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
+    text-decoration: none;
+  }
+  .btn-neon:hover { color: #fff; border-color: rgba(0,229,255,0.65); background: linear-gradient(180deg, rgba(0,229,255,0.18), rgba(122,124,255,0.12)); box-shadow: 0 0 0 2px rgba(0,229,255,0.24), 0 10px 26px rgba(0,229,255,0.16); transform: translateY(-1px); }
+  .btn-neon.btn-compact { padding: .45rem .85rem; font-size: .9rem; border-radius: 12px; }
+  .btn-ghost { width: auto; padding: .65rem 1rem; background: transparent; border: 1px dashed var(--vh-border); color: var(--vh-muted); border-radius: 12px; text-decoration: none; display: inline-flex; align-items: center; gap: .5rem; }
+  .btn-ghost:hover { color: #fff; border-color: rgba(0,229,255,0.65); box-shadow: 0 0 0 2px rgba(0,229,255,0.18); }
+</style>
+
+<section class="submit-wrap">
+  <div class="submit-inner submit-hero">
+    <h1 class="submit-title">Add Your Charging Station</h1>
+    <p class="submit-subtitle">Submit your station details for admin approval. Approved stations appear on the map.</p>
+    <div class="accent-line"></div>
+  </div>
+
+  <div class="submit-inner">
+    <div class="glass-card">
+      <div class="form-header">
+        <h5 class="m-0">Station Details</h5>
+        <span class="hint">Please provide accurate location and pricing</span>
+      </div>
+      <div class="form-body">
+        <form method="post">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+
+          <div class="grid-form">
+            {% for field in form %}
+              {% if field.field.widget.input_type == 'checkbox' %}
+                <div class="checkbox-field">
+                  {{ field }}
+                  <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                </div>
+                {% for error in field.errors %}
+                  <div class="err">{{ error }}</div>
+                {% endfor %}
+              {% else %}
+                <div class="field">
+                  <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                  {{ field }}
+                  {% if field.help_text %}
+                    <div class="help">{{ field.help_text }}</div>
+                  {% endif %}
+                  {% for error in field.errors %}
+                    <div class="err">{{ error }}</div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          <div class="d-flex gap-2 mt-3">
+            <button type="submit" class="btn-neon btn-compact">Submit Station</button>
+            <a href="{% url 'stations' %}" class="btn-ghost"><i class="fa fa-arrow-left"></i> Back</a>
+          </div>
+        </form>
+      </div>
+      <div class="form-footer">
+        <small class="text-muted">Submissions are reviewed by the admin team. You’ll see your station once it’s approved.</small>
+      </div>
+    </div>
+  </div>
+</section>
+{% include 'VoltHub/footer.html' %}
+{% endblock %}

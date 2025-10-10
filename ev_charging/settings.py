@@ -30,8 +30,13 @@ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
 ]
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# Use secure cookies only in production; disable for local HTTP development so session persists
+if DEBUG:
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+else:
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
 
 # Application definition
 
@@ -393,3 +398,6 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 
 
 REST_USE_JWT = True
+
+
+OPEN_CHARGE_API_KEY = os.environ.get("OPEN_CHARGE_API_KEY")

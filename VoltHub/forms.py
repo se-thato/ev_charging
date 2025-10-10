@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django import forms
 from django.forms.widgets import PasswordInput, TextInput
 
-from charging_station.models import Booking, Profile
+from charging_station.models import Booking, Profile, ChargingPoint
 
 
 # Registration of a user 
@@ -56,4 +56,38 @@ class ProfileForm(forms.ModelForm):
             'email': forms.EmailInput(attrs={'readonly': 'readonly'}),
             'location': forms.TextInput(attrs={'readonly': 'readonly'}),
             'profile_picture': forms.ClearableFileInput(attrs={'class': 'form-control-file', 'accept': 'image/*'}),
+        }
+
+# this form is for adding a new charging station
+class ChargingPointForm(forms.ModelForm):
+    class Meta:
+        model = ChargingPoint
+        fields = [
+            'name',
+            'location',
+            'address',
+            'latitude',
+            'longitude',
+            'capicity',
+            'available_slots',
+            'availability',
+            'price_per_hour',
+            'off_peak_start',
+            'off_peak_end',
+            'is_active',
+        ]
+        
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'location': forms.TextInput(attrs={'class': 'form-control'}),
+            'address': forms.TextInput(attrs={'class': 'form-control'}),
+            'latitude': forms.NumberInput(attrs={'class': 'form-control', 'step': 'any'}),
+            'longitude': forms.NumberInput(attrs={'class': 'form-control', 'step': 'any'}),
+            'capicity': forms.NumberInput(attrs={'class': 'form-control', 'min': 0}),
+            'available_slots': forms.NumberInput(attrs={'class': 'form-control', 'min': 0}),
+            'availability': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'price_per_hour': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01', 'min': 0}),
+            'off_peak_start': forms.TimeInput(attrs={'class': 'form-control', 'type': 'time'}),
+            'off_peak_end': forms.TimeInput(attrs={'class': 'form-control', 'type': 'time'}),
+            'is_active': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }
