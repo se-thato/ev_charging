@@ -27,6 +27,8 @@ RUN apt-get update \
 
 # Setting workdir
 WORKDIR /app
+# Ensure expected runtime directories exist
+RUN mkdir -p /app/static /app/media
 
 # Install Python dependencies first (better layer caching)
 COPY requirements.txt ./
@@ -42,4 +44,4 @@ EXPOSE 8000
 # Default command: run migrations, collect static, then start Gunicorn
 # For Channels (ASGI) you may swap gunicorn with daphne:
 #   daphne -b 0.0.0.0 -p 8000 ev_charging.asgi:application
-CMD ["sh", "-c", "python manage.py migrate --noinput && python manage.py collectstatic --noinput && gunicorn ev_charging.wsgi:application --bind 0.0.0.0:8000 --workers 3"]
+CMD ["sh", "-c", "python manage.py migrate --noinput && python manage.py collectstatic --noinput && gunicorn ev_charging.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers ${WEB_CONCURRENCY:-3}"]

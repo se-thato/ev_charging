@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 from decouple import config
 from dotenv import load_dotenv
+import warnings
 
 # Load environment variables from .env file
 load_dotenv()
@@ -318,7 +319,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATIC_DIR = BASE_DIR / 'static'
+STATICFILES_DIRS = [STATIC_DIR] if STATIC_DIR.exists() else []
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
@@ -398,6 +400,13 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 
 
 REST_USE_JWT = True
+
+# Suppress noisy third-party deprecation warnings in runtime logs
+warnings.filterwarnings(
+    "ignore",
+    category=UserWarning,
+    module="dj_rest_auth.registration.serializers",
+)
 
 
 OPEN_CHARGE_API_KEY = os.environ.get("OPEN_CHARGE_API_KEY")
