@@ -255,7 +255,7 @@ if DB_LIVE:
 else:
 
 """
-"""
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -266,7 +266,7 @@ DATABASES = {
         'PORT': os.environ.get("DB_PORT"),
     }
 }
-"""
+
 
 DATABASES = {
     'default': {
