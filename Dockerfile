@@ -13,8 +13,10 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
        build-essential \
        gcc \
+       pkg-config \
        libpq-dev \
-       default-libmysqlclient-dev \
+       libmariadb-dev \
+       libmariadb-dev-compat \
        libssl-dev \
        libffi-dev \
        libxml2-dev \
