@@ -161,7 +161,7 @@ CELERY_RESULT_SERIALIZER = 'json'
 
 # Redis cache
 try:
-    import django_redis  # noqa: F401
+    import django_redis
     CACHES = {
         "default": {
             "BACKEND": "django_redis.cache.RedisCache",

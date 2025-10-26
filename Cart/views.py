@@ -7,7 +7,7 @@ def cart(request):
     # Get the cart
     cart = Cart(request)
     cart_products = cart.get_products()
-    return render(request, 'ecommerce/cart_home.html', {'cart_products': cart_products})
+    return render(request, 'Cart/cart_home.html', {'cart_products': cart_products})
 
 """
 def add_to_cart(request, product_id):

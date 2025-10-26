@@ -14,6 +14,7 @@ from .views import (
     SubscriptionPlanViewSet,
     UserSubscriptionViewSet,
     ChargingStationAnaliticsViewSet,
+    PostViewSet,
 )
 
 urlpatterns = [
@@ -89,6 +90,7 @@ urlpatterns = [
         IssueReportViewSet.as_view({"get": "list", "post": "create"}),
         name="issue_reports",
     ),
+    
 
     # comments (collection only)
     path(
@@ -96,27 +98,18 @@ urlpatterns = [
         CommentViewSet.as_view({"get": "list", "post": "create"}),
         name="comments",
     ),
+     
+     path(
+        "comments/<int:pk>",
+        CommentViewSet.as_view({"get": "list", "post": "create"}),
+        name="comments_details",
+    ),
 
-    # reset password (unchanged)
+    # post
     path(
-        "reset_password/",
-        auth_views.PasswordResetView.as_view(template_name="VoltHub/password_reset.html"),
-        name="reset_password",
-    ),
-    path(
-        "reset_password_sent/",
-        auth_views.PasswordResetDoneView.as_view(template_name="VoltHub/password_reset_sent.html"),
-        name="password_reset_done",
-    ),
-    path(
-        "reset/<uidb64>/<token>/",
-        auth_views.PasswordResetConfirmView.as_view(template_name="VoltHub/password_reset_form.html"),
-        name="password_reset_confirm",
-    ),
-    path(
-        "reset_password_complete/",
-        auth_views.PasswordResetCompleteView.as_view(template_name="VoltHub/password_reset_done.html"),
-        name="password_reset_complete",
+        "posts/<int:pk>/",
+        PostViewSet.as_view({"get": "retrieve"}),
+        name="posts_details",
     ),
 
     # subscription plan

@@ -146,15 +146,20 @@
   </div>
 </section>
 
+
 <section class="home-testimonials">
   <div class="testimonials-inner">
-    <h2 class="testimonials-title">What Our Customers Say</h2>
+    <h2 class="testimonials-title">What Our Customers Say</h2>%
     <div class="testimonial-grid">
+      
       {% for comment in comments %}
         <div class="testimonial-card">
           <h4>- {{ comment.user.username }}</h4>
           <p>"{{ comment.comment_text }}"</p>
           <small>Posted on {{ comment.created_at|date:"F j, Y, g:i a" }}</small>
+          <br/><br/>
+          <a href="{% url 'post_detail' %}" class="btn-neon">View Post</a>
+
         </div>
       {% empty %}
         <div class="testimonial-card">

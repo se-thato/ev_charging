@@ -254,6 +254,16 @@ class Comment(models.Model):
         if Comment.objects.filter(user=self.user, station=self.station, comment_text=self.comment_text).exists():
             raise ValidationError("Duplicate comment is not allowed.")
         super().save(*args, **kwargs)
+
+
+class Post(models.Model):
+    title = models.CharField(max_length=100)
+    content = models.TextField()
+    created_at = models.DateTimeField(default=timezone.now)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Post: {self.title} by {self.author}"
     
 
 #managing subscription plans for users

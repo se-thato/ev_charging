@@ -20,9 +20,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("charging_station.urls")),
     path('', include("VoltHub.urls")),
-    path('', include("authentication.urls")),
+    
     #authentication
-    path('auth', include('authentication.urls')),
+    path('', include("authentication.urls")),
+    #path('auth/', include('authentication.urls')),
 
     # dj-rest-auth (API-based auth and registration)
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
@@ -30,6 +31,9 @@ urlpatterns = [
     
     # allauth (for social authentication)
     path('accounts/', include('allauth.urls')),
+
+   # this is for django's built-in auth views
+    path('accounts/', include('django.contrib.auth.urls')),
     
     #ecommerce platform
     path('ecommerce/', include('ecommerce.urls')),

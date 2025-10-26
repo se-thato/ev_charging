@@ -61,7 +61,8 @@
       <!-- Contact Form -->
       <div class="card-glass form-card">
         <div class="card-body">
-          <form action="#!">
+          <form action="#" method="POST">
+            {% csrf_token %}
             <div class="row gy-3">
               <div class="col-12">
                 <label for="fullname" class="form-label">Full Name <span class="text-danger">*</span></label>

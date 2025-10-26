@@ -1,14 +1,14 @@
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+#from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User 
 
 from django import forms
-from django.forms.widgets import PasswordInput, TextInput
+#from django.forms.widgets import PasswordInput, TextInput
 
-from charging_station.models import Booking, Profile, ChargingPoint
+from charging_station.models import Booking, Profile, ChargingPoint, Comment
 
 
 # Registration of a user 
-
+"""
 class CreateUserForm(UserCreationForm):
     profile_picture = forms.ImageField(required=False, label="Profile Picture")
 
@@ -22,7 +22,7 @@ class CreateUserForm(UserCreationForm):
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=TextInput())
     password = forms.CharField(widget=PasswordInput())
-
+"""
 
 #making your bookings
 class BookingForm(forms.ModelForm):
@@ -91,3 +91,15 @@ class ChargingPointForm(forms.ModelForm):
             'off_peak_end': forms.TimeInput(attrs={'class': 'form-control', 'type': 'time'}),
             'is_active': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }
+
+class CommentForm(forms.ModelForm):
+    content = forms.CharField(
+        label='',
+        widget=forms.Textarea(attrs={
+            'rows': 3,
+            'placeholder': 'Write your comment here...',
+        })
+    )
+    class Meta:
+        model = Comment
+        fields = ['content']

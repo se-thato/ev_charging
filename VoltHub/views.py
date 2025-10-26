@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect
-from .forms import CreateUserForm, LoginForm, BookingForm, UpdateBookingForm, ProfileForm, ChargingPointForm
+from .forms import BookingForm, UpdateBookingForm, ProfileForm, ChargingPointForm, CommentForm
 
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
 
 from django.contrib.auth.decorators import login_required, user_passes_test
-from charging_station.models import ChargingPoint, ChargingSession, Booking, Profile, Comment
+from charging_station.models import ChargingPoint, ChargingSession, Booking, Profile, Comment, Post
+from django.shortcuts import get_object_or_404
 
+from django.conf import settings
+import logging
 
 from django.core.mail import send_mail
 from django.http import HttpResponse
@@ -21,7 +24,7 @@ def home(request):
     return render(request, 'VoltHub/home.html', {'comments': comments})
 
 
-
+"""
 # Register View
 def register(request):
     form = CreateUserForm()
@@ -69,7 +72,7 @@ def my_login(request):
     context = {'form': form}
 
     return render(request, 'VoltHub/login.html', context=context)
-
+"""
 
 
 # Dashboard view
@@ -92,11 +95,6 @@ def dashboard(request):
         return HttpResponse(f"An error occurred: {str(e)}", status=500)
 
 
-# Logout user
-def user_logout(request):
-    auth.logout(request)
-
-    return redirect('login')
 
 
 #about user section
@@ -107,25 +105,34 @@ def about_us(request):
 
 
 #contact us
-
 def contact_us(request):
-    if request.method == 'POST': 
-        name = request.POST.get('name')
-        contact_number = request.POST.get('contact_number')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
+    if request.method == 'POST':
+        fullname = request.POST.get('fullname', '').strip()
+        phone = request.POST.get('phone', '').strip()
+        message_email = request.POST.get('email', '').strip()
+        subject = request.POST.get('subject', '').strip() or f'Contact from {fullname}'
+        message = request.POST.get('message', '').strip()
 
-        # Process or send the email
-        send_mail(
-            f'Contact Us Message from {name}',
-            f'Contact Number: {contact_number}\nMessage:\n{message}',
-            email,
-            ['thatoselepe53@gmail.com'],
-            fail_silently=False,
-        )
-        return HttpResponse("Thank you for your message!")
-    
-    return render(request, 'VoltHub/contact_us.html')
+        # Build email body
+        body = f"Name: {fullname}\nEmail: {message_email}\nPhone: {phone}\n\nMessage:\n{message}"
+
+        try:
+            send_mail(
+                subject,
+                body,
+                settings.DEFAULT_FROM_EMAIL,            # sender configured in settings
+                [settings.DEFAULT_FROM_EMAIL],          # recipient list (site owner)
+                fail_silently=False,
+                reply_to=[message_email] if message_email else None
+            )
+            return render(request, 'VoltHub/contact_us.html', {'success': True})
+        except Exception as e:
+            logging.exception("Contact form email failed")
+            return render(request, 'VoltHub/contact_us.html', {'error': 'Failed to send message. Please try again later.'})
+    else:
+        return render(request, 'VoltHub/contact_us.html')
+
+
 
 
 @login_required(login_url='login')
@@ -296,3 +303,24 @@ def verify_stations(request):
 
     pending = ChargingPoint.objects.filter(is_verified=False)
     return render(request, 'VoltHub/verify_stations.html', {'pending': pending})
+
+
+
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    comments = Comment.objects.filter(post=post).order_by('-created_at')
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.user = request.user
+            comment.save()
+            return redirect('post_detail', pk=post.pk)
+
+    else:
+        form = CommentForm()
+        
+        return render(request, 'VoltHub/post_details.html', {'post': post, 'comments': comments, 'form': form})
+        

@@ -20,12 +20,14 @@ from .models import (
     SubscriptionPlan,
     UserSubscription,
     ChargingStationAnalitics,
+    Post,
 )
 
 from .serializers import (
     ChargingPointSerializer,
     ChargingSessionSerializer,
     BookingSerializer,
+    PostSerializer,
     ProfileSerializer,
     PaymentMethodSerializer,
     PaymentSerializer,
@@ -178,7 +180,13 @@ class CommentViewSet(viewsets.ModelViewSet):
     filter_backends = [OrderingFilter, SearchFilter]
     ordering_fields = ["created_at", "upvotes", "downvotes"]
 
-
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    permission_classes = [IsAuthenticated]
+    pagination_class = DefaultPageNumberPagination
+    filter_backends = [OrderingFilter, SearchFilter]
+    ordering_fields = ["created_at", "title"]
 
 class SubscriptionPlanViewSet(viewsets.ModelViewSet):
     queryset = SubscriptionPlan.objects.all()

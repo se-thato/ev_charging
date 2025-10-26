@@ -23,30 +23,28 @@
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    
     {% block extra_css %}{% endblock %}
     </head>
 
+
     <body>
+        {% include 'VoltHub/messaging.html' %}
 
         <!--Navbar Section here-->
 
         {% include 'VoltHub/navbar.html' %}
-
         
-
 
         <div class="{% block container_classes %}container{% endblock %}">
 
 
             <br>
 
-
             <!--notification messages-->
+            {% include 'VoltHub/messaging.html' %}
             
-
-
-
-
             {% block content %}
             {% endblock %}
 
@@ -75,6 +73,6 @@
 
     </body>
 
-
+    
 
 </html>

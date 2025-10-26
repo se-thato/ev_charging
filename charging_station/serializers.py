@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ChargingPoint, ChargingSession, Booking, Profile, PaymentMethod, Payment, Rating, IssueReport, Comment, SubscriptionPlan, UserSubscription, ChargingStationAnalitics
+from .models import ChargingPoint, ChargingSession, Booking, Profile, PaymentMethod, Payment, Rating, IssueReport, Comment, SubscriptionPlan, UserSubscription, ChargingStationAnalitics, Post
 from dj_rest_auth.registration.serializers import RegisterSerializer
 from allauth.account import app_settings as allauth_account_settings
 
@@ -71,6 +71,10 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comment
         fields = '__all__'
 
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ['__all__']
 
 class SubscriptionPlanSerializer(serializers.ModelSerializer):
     class Meta:
