@@ -55564,3 +55564,9 @@ Watching for file changes with StatReloader
 "GET /login/ HTTP/1.1" 200 22912
 "POST /login/ HTTP/1.1" 200 22687
 "POST /login/ HTTP/1.1" 200 22687
+Watching for file changes with StatReloader
+"GET /register/ HTTP/1.1" 200 25010
+"POST /register/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 22910
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.

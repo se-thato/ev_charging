@@ -311,3 +311,4 @@
 [2025-10-27 11:51:46,649] WARNING SLOW REQUEST: /register/ took 19.330 seconds!
 [2025-10-27 11:52:42,730] WARNING SLOW REQUEST: /login/ took 17.552 seconds!
 [2025-10-27 11:53:14,030] WARNING SLOW REQUEST: /login/ took 9.755 seconds!
+[2025-10-27 12:06:14,160] WARNING SLOW REQUEST: /register/ took 8.248 seconds!
