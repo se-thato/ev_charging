@@ -298,3 +298,16 @@
 [2025-10-25 20:08:08,856] WARNING SLOW REQUEST: /analytics/ took 28.687 seconds!
 [2025-10-25 20:08:08,876] WARNING SLOW REQUEST: /analytics/ took 60.524 seconds!
 [2025-10-26 09:48:32,802] WARNING SLOW REQUEST: /analytics/ took 11.372 seconds!
+[2025-10-27 08:58:30,592] WARNING SLOW REQUEST: /reset_password/ took 6.444 seconds!
+[2025-10-27 10:03:38,294] WARNING SLOW REQUEST: /register/ took 5.294 seconds!
+[2025-10-27 10:08:00,866] WARNING SLOW REQUEST: /login/ took 8.468 seconds!
+[2025-10-27 10:08:00,881] WARNING SLOW REQUEST: /login/ took 8.430 seconds!
+[2025-10-27 10:09:59,718] WARNING SLOW REQUEST: /login/ took 64.338 seconds!
+[2025-10-27 10:10:38,082] WARNING SLOW REQUEST: /analytics/ took 12.789 seconds!
+[2025-10-27 10:11:07,122] WARNING SLOW REQUEST: /analytics/ took 10.605 seconds!
+[2025-10-27 10:19:35,534] WARNING SLOW REQUEST: /register/ took 46.972 seconds!
+[2025-10-27 10:35:42,189] WARNING SLOW REQUEST: /register/ took 8.218 seconds!
+[2025-10-27 11:36:39,033] WARNING SLOW REQUEST: /register/ took 8.579 seconds!
+[2025-10-27 11:51:46,649] WARNING SLOW REQUEST: /register/ took 19.330 seconds!
+[2025-10-27 11:52:42,730] WARNING SLOW REQUEST: /login/ took 17.552 seconds!
+[2025-10-27 11:53:14,030] WARNING SLOW REQUEST: /login/ took 9.755 seconds!

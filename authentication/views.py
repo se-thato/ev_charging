@@ -9,39 +9,83 @@ from .forms import UserRegisterForm, LoginForm
 from charging_station.models import Profile
 from django.contrib import messages as messages 
 
+from django.contrib.sites.shortcuts import get_current_site
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes, force_str
+from django.core.mail import EmailMessage
+from .tokens import account_activation_token
+from django.contrib.auth import get_user_model
+from django.utils.http import urlsafe_base64_decode
+
+
+
+def activate(request, uidb64, token):
+    User = get_user_model()
+    try:
+        uidb64_str = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uidb64_str)
+    except:
+        user = None
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+        messages.success(request, 'Thank you for confirming your email address. You can now log in to your account.')
+        return redirect('authentication:login')
+    else:
+        messages.error(request, 'Activation link is invalid!')
+        return redirect('VoltHub:home')
 
 
 def activateEmail(request, user, to_email):
-    messages.success(request, f'Dear <b>{user.username}</b>, please go to your email <b>{to_email}</b> inbox and click the verification link to verify your account!/<b>Note:</b> If you don\'t see the email, please check your spam folder.')
+    mail_subject = "Activate your account"
+    message = render_to_string("authentication/activate_account.html", {
+        "user": user.username,
+        "domain": get_current_site(request).domain,
+        "uid": urlsafe_base64_encode(force_bytes(user.pk)),
+        "token": account_activation_token.make_token(user),
+        "protocol": "https" if request.is_secure() else "http",
+    })
+    email = EmailMessage(mail_subject, message, to=[to_email])
+    if email.send():
+        messages.success(request, f'Dear <b>{user.username}</b>, please go to your email <b>{to_email}</b> inbox and click the verification link to verify your account!/<b>Note:</b> If you don\'t see the email, please check your spam folder.')
+    else:
+        messages.error(request, f'Dear <b>{user.username}</b>, there was an error sending the verification email. Please try again later.')
+
 
 
 def register(request):
     form = UserRegisterForm()
 
     if request.method == "POST":
-        form = UserRegisterForm(request.POST, request.FILES)  # Include request.FILES to handle file uploads
+        form = UserRegisterForm(request.POST, request.FILES)  # Include request.FILES for file uploads
         if form.is_valid():
-            user = form.save()
-             
-            messages.success(request, f"Account created for {user.username}!")
+            user = form.save(commit=False)  # Don't save yet
+            user.is_active = False  # Deactivate account till it is confirmed
+            user.save()  # Now we will save the user
+            activateEmail(request, user, form.cleaned_data.get('email'))
 
-        else:
-            for error in list(form.errors.values()):
-                messages.error(request, error)
             
+
+            # Create Profile only after the user has been successfully created
             Profile.objects.create(
                 username=user.username,
                 first_name=user.first_name,
                 last_name=user.last_name,
                 email=user.email,
-                profile_picture=form.cleaned_data.get('profile_picture')  # Save the uploaded profile picture
+                profile_picture=form.cleaned_data.get('profile_picture')
             )
- 
+
+            messages.success(request, f"Account created for {user.username}!")
             return redirect('authentication:login')
 
-    context = {'form': form}
+        else:
+            for error in list(form.errors.values()):
+                messages.error(request, error)
 
+    context = {'form': form}
     return render(request, 'authentication/register.html', context=context)
+
 
 
 

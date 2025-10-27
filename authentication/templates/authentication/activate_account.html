@@ -1,0 +1,9 @@
+{% autoescape off %}
+Hi {{ user }},
+Please click the link below to activate your account:
+
+https://{{ domain }}/activate/{{ uid }}/{{ token }}
+If you did not make this request, please ignore this email.
+Thanks,
+The VoltHub Team
+{% endautoescape %}
