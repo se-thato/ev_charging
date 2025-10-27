@@ -55570,3 +55570,11 @@ Watching for file changes with StatReloader
 "GET /login/ HTTP/1.1" 200 22910
 Watching for file changes with StatReloader
 C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /login/ HTTP/1.1" 200 22498
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 16950
+"GET / HTTP/1.1" 200 23405
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
