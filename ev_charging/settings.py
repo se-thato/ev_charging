@@ -378,6 +378,10 @@ LOGGING = {
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+#AUTH_USER_MODEL = 'auth.User' # Using default User model
+
+#AUTH_USER_MODEL = 'charging_station.CustomUser'
+
 
 #smtp settings(email)
 # Email
