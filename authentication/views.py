@@ -62,7 +62,7 @@ def register(request):
         if form.is_valid():
             user = form.save(commit=False)  # Don't save yet
             user.is_active = False  # Deactivate account till it is confirmed
-            #user.save()  # Now we will save the user
+            user.save()  # Now we will save the user
             #activateEmail(request, user, form.cleaned_data.get('email'))
 
             
