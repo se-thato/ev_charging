@@ -14,7 +14,12 @@ import logging
 from django.core.mail import send_mail
 from django.http import HttpResponse
 
+from django.core.mail import BadHeaderError
+from django.contrib import messages
+import logging
 
+# Configure logging
+logger = logging.getLogger(__name__)
 
 
 #The main Home page
@@ -24,59 +29,8 @@ def home(request):
     return render(request, 'VoltHub/home.html', {'comments': comments})
 
 
-"""
-# Register View
-def register(request):
-    form = CreateUserForm()
-
-    if request.method == "POST":
-        form = CreateUserForm(request.POST, request.FILES)  # Include request.FILES to handle file uploads
-        if form.is_valid():
-            user = form.save()
-
-            
-            Profile.objects.create(
-                username=user.username,
-                first_name=user.first_name,
-                last_name=user.last_name,
-                email=user.email,
-                profile_picture=form.cleaned_data.get('profile_picture')  # Save the uploaded profile picture
-            )
-
-            return redirect('login')
-
-    context = {'form': form}
-
-    return render(request, 'VoltHub/register.html', context=context)
-
-
-
-# Login View
-def my_login(request):
-    form = LoginForm()
-
-    if request.method == "POST":
-        form = LoginForm(request,data=request.POST)
-        if form.is_valid():
-            
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-
-            user = authenticate(request, username=username, password=password)
-            
-            if user is not None:
-                auth.login(request, user)
-
-                return redirect('dashboard')
-
-    context = {'form': form}
-
-    return render(request, 'VoltHub/login.html', context=context)
-"""
-
-
 # Dashboard view
-@login_required(login_url='login')
+@login_required(login_url='authentication:login')
 def dashboard(request):
     try:
         stations = ChargingPoint.objects.filter(is_active=True)  # olny active stations
@@ -106,6 +60,7 @@ def about_us(request):
 
 #contact us
 def contact_us(request):
+    # Handle contact form submission
     if request.method == 'POST':
         fullname = request.POST.get('fullname', '').strip()
         phone = request.POST.get('phone', '').strip()
@@ -113,29 +68,47 @@ def contact_us(request):
         subject = request.POST.get('subject', '').strip() or f'Contact from {fullname}'
         message = request.POST.get('message', '').strip()
 
-        # Build email body
-        body = f"Name: {fullname}\nEmail: {message_email}\nPhone: {phone}\n\nMessage:\n{message}"
+        # this part checks if all required fields are filled
+        if not fullname or not message_email or not message:
+            messages.error(request, "Please fill in all required fields.")
+            return render(request, 'VoltHub/contact_us.html', {'error': 'Missing required fields.'})
 
+        # Build email body
+        body = (
+            f"Name: {fullname}\n"
+            f"Email: {message_email}\n"
+            f"Phone: {phone}\n\n"
+            f"Message:\n{message}"
+        )
+
+        #This part sends the email
         try:
             send_mail(
-                subject,
-                body,
-                settings.DEFAULT_FROM_EMAIL,            # sender configured in settings
-                [settings.DEFAULT_FROM_EMAIL],          # recipient list (site owner)
+                subject=subject,
+                message=body,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[settings.CONTACT_RECEIVER_EMAIL], 
                 fail_silently=False,
-                reply_to=[message_email] if message_email else None
+                #reply_to=[message_email] if message_email else None
             )
+            #This part shows success message when the email is sent
+            messages.success(request, "Your message was sent successfully! We'll get back to you soon.")
             return render(request, 'VoltHub/contact_us.html', {'success': True})
+        
+        #This part handles email sending errors
+        except BadHeaderError:
+            logger.error("Invalid header found when sending email.")
+            messages.error(request, "Invalid header found.")
+
         except Exception as e:
-            logging.exception("Contact form email failed")
-            return render(request, 'VoltHub/contact_us.html', {'error': 'Failed to send message. Please try again later.'})
-    else:
-        return render(request, 'VoltHub/contact_us.html')
+            logger.exception("Error sending contact form email")
+            messages.error(request, "Failed to send your message. Please try again later.")
+
+    return render(request, 'VoltHub/contact_us.html')
 
 
 
-
-@login_required(login_url='login')
+@login_required(login_url='authentication:login')
 def booking(request):
 
     form = BookingForm()
@@ -155,7 +128,7 @@ def booking(request):
 
 
 # update your bookings
-@login_required(login_url='login')
+@login_required(login_url='authentication:login')
 def update_booking(request, pk):
 
     booking = Booking.objects.get(id=pk)
@@ -179,7 +152,7 @@ def update_booking(request, pk):
 
 
 # view a singular booking record
-@login_required(login_url='login')
+@login_required(login_url='authentication:login')
 def view_booking(request, pk):
 
     all_bookings = Booking.objects.get(id=pk)
@@ -202,8 +175,8 @@ def view_session(request, pk):
 
 # delete booking record
 
-@login_required(login_url='login')
-def delete_booking(request, pk): 
+@login_required(login_url='authentication:login')
+def delete_booking(request, pk):
 
     booking = Booking.objects.get(id=pk)
 
@@ -213,7 +186,7 @@ def delete_booking(request, pk):
 
 
 
-@login_required(login_url='login')
+@login_required(login_url='authentication:login')
 def station_locator(request):
     # Only verified stations should be listed and mapped
     stations = ChargingPoint.objects.filter(is_verified=True, is_active=True)
@@ -238,7 +211,7 @@ def billing(request):
     return render(request, 'VoltHub/billing.html', context)
 
 
-@login_required(login_url='login')
+@login_required(login_url='authentication:login')
 def profile(request):
     try:
         user_profile = Profile.objects.get(username=request.user.username)
@@ -267,7 +240,7 @@ is_admin = user_passes_test(lambda u: u.is_superuser)
 
 
 # Authenticated users submit a charging station; defaults to unverified
-@login_required(login_url='login')
+@login_required(login_url='authentication:login')
 def submit_station(request):
     if request.method == 'POST':
         form = ChargingPointForm(request.POST)

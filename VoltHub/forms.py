@@ -7,23 +7,6 @@ from django import forms
 from charging_station.models import Booking, Profile, ChargingPoint, Comment
 
 
-# Registration of a user 
-"""
-class CreateUserForm(UserCreationForm):
-    profile_picture = forms.ImageField(required=False, label="Profile Picture")
-
-    class Meta:
-        model = User
-        fields = ['username', 'password1', 'password2', 'email', 'profile_picture']
-
-
-# Login a user
-
-class LoginForm(AuthenticationForm):
-    username = forms.CharField(widget=TextInput())
-    password = forms.CharField(widget=PasswordInput())
-"""
-
 #making your bookings
 class BookingForm(forms.ModelForm):
     booking_date = forms.DateField(

@@ -55702,3 +55702,28 @@ Too Many Requests: /admin/login/
 - Broken pipe from ('127.0.0.1', 51660)
 "POST /register/ HTTP/1.1" 302 0
 "GET /login/ HTTP/1.1" 200 23012
+Watching for file changes with StatReloader
+"GET /login/ HTTP/1.1" 200 22498
+Watching for file changes with StatReloader
+"GET /contact_us HTTP/1.1" 200 20145
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"POST /contact_us HTTP/1.1" 200 20288
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /contact_us HTTP/1.1" 200 20288
+C:\Users\Thato\charging\ev_charging\VoltHub\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /contact_us HTTP/1.1" 200 20306
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /contact_us HTTP/1.1" 200 20306
+"GET / HTTP/1.1" 200 23405
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4160
+"GET / HTTP/1.1" 200 23405
+C:\Users\Thato\charging\ev_charging\VoltHub\views.py changed, reloading.
+Watching for file changes with StatReloader
