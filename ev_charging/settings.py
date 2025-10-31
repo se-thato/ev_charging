@@ -427,7 +427,7 @@ ANYMAIL = {
 DEFAULT_FROM_EMAIL = "thatoselepe80@gmail.com"
 
 # Who receives contact messages
-CONTACT_RECEIVER_EMAIL = 'thatoselepe53@gmail.com'
+CONTACT_RECEIVER_EMAIL = 'thatoselepe80@gmail.com'
 
 # Open Charge Map API Key
 OPEN_CHARGE_API_KEY = os.environ.get("OPEN_CHARGE_API_KEY")
