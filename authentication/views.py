@@ -17,6 +17,8 @@ from django.core.mail import EmailMessage
 from .tokens import account_activation_token
 from django.contrib.auth import get_user_model
 from django.utils.http import urlsafe_base64_decode
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 
@@ -84,6 +86,17 @@ def register(request):
             )
 
             messages.success(request, f"Account created for {user.username}!")
+
+            #sending a welcome email
+            send_mail(
+                'Welcome to VoltHub!',
+                'Thank you for registering at VoltHub. We are excited to have you on board!',
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[form.cleaned_data['email']],
+                fail_silently=False,
+            )
+            
+
             return redirect('authentication:login')
         
         else:

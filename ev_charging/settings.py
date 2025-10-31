@@ -64,8 +64,9 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     'channels',
     'oauth2_provider',
-    'axes' # For brute-force protection
-    ,'drf_yasg', #swagger
+    'axes', # For brute-force protection
+    'drf_yasg', #swagger
+    'anymail', # For email backend
 
     # Email verification
     'dj_rest_auth',
@@ -382,7 +383,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #AUTH_USER_MODEL = 'charging_station.CustomUser'
 
-
+"""
 #smtp settings(email)
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -393,9 +394,8 @@ EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool, default=True)
 EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="")
 DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL", default="noreply@volthub.com")
+"""
 
-# Who receives contact messages
-CONTACT_RECEIVER_EMAIL = 'thatoselepe53@gmail.com'
 
 
 # Allauth
@@ -417,4 +417,17 @@ warnings.filterwarnings(
 )
 
 
+# Anymail configuration for email backend
+EMAIL_BACKEND = "anymail.backends.brevo.EmailBackend"
+
+ANYMAIL = {
+    "BREVO_API_KEY": os.environ.get("BREVO_API_KEY"),
+}
+
+DEFAULT_FROM_EMAIL = "thatoselepe80@gmail.com"
+
+# Who receives contact messages
+CONTACT_RECEIVER_EMAIL = 'thatoselepe53@gmail.com'
+
+# Open Charge Map API Key
 OPEN_CHARGE_API_KEY = os.environ.get("OPEN_CHARGE_API_KEY")

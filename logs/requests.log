@@ -55727,3 +55727,299 @@ Watching for file changes with StatReloader
 "GET / HTTP/1.1" 200 23405
 C:\Users\Thato\charging\ev_charging\VoltHub\views.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /login/ HTTP/1.1" 200 22498
+C:\Users\Thato\charging\ev_charging\ev_charging\urls.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /register/
+"GET /register/ HTTP/1.1" 404 13561
+Not Found: /login/
+"GET /login/ HTTP/1.1" 404 13552
+C:\Users\Thato\charging\ev_charging\ev_charging\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /login/ HTTP/1.1" 200 22498
+"GET /register/ HTTP/1.1" 200 25010
+"GET /login/ HTTP/1.1" 200 22498
+"GET /about_us HTTP/1.1" 200 23188
+"GET / HTTP/1.1" 200 23405
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 23413
+"GET /login/ HTTP/1.1" 200 22498
+"GET /register/ HTTP/1.1" 200 25010
+"GET / HTTP/1.1" 200 23413
+"GET / HTTP/1.1" 200 23412
+"GET / HTTP/1.1" 200 23412
+"GET /login/ HTTP/1.1" 200 22498
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /register/ HTTP/1.1" 200 25010
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 16950
+"GET /contact_us HTTP/1.1" 200 20145
+"POST /contact_us HTTP/1.1" 200 20306
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /contact_us HTTP/1.1" 200 20306
+C:\Users\Thato\charging\ev_charging\authentication\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /register/ HTTP/1.1" 200 25010
+"POST /register/ HTTP/1.1" 200 25369
+"GET / HTTP/1.1" 200 23412
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4160
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35694
+"GET /admin/auth/user/ HTTP/1.1" 200 34521
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/13/change/ HTTP/1.1" 200 54464
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/ HTTP/1.1" 200 34521
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/13/change/ HTTP/1.1" 200 54464
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/13/delete/ HTTP/1.1" 200 26291
+"POST /admin/auth/user/13/delete/ HTTP/1.1" 302 0
+"GET /admin/auth/user/ HTTP/1.1" 200 34208
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/10/change/ HTTP/1.1" 200 54472
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/10/delete/ HTTP/1.1" 200 26297
+"POST /admin/auth/user/10/delete/ HTTP/1.1" 302 0
+"GET /admin/auth/user/ HTTP/1.1" 200 33746
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/11/change/ HTTP/1.1" 200 54468
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/11/delete/ HTTP/1.1" 200 26294
+"POST /admin/auth/user/11/delete/ HTTP/1.1" 302 0
+"GET /admin/auth/user/ HTTP/1.1" 200 33283
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/12/change/ HTTP/1.1" 200 54492
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/12/delete/ HTTP/1.1" 200 26312
+"POST /admin/auth/user/12/delete/ HTTP/1.1" 302 0
+"GET /admin/auth/user/ HTTP/1.1" 200 32815
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 35365
+"GET / HTTP/1.1" 200 23877
+"GET /register HTTP/1.1" 301 0
+"GET /register/ HTTP/1.1" 200 25475
+"POST /register/ HTTP/1.1" 302 0
+"GET /register/ HTTP/1.1" 200 25607
+- Broken pipe from ('127.0.0.1', 57089)
+"GET /admin/ HTTP/1.1" 200 35365
+"GET /admin/auth/user/ HTTP/1.1" 200 32658
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/ HTTP/1.1" 200 32658
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/14/change/ HTTP/1.1" 200 54480
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/14/delete/ HTTP/1.1" 200 26303
+"POST /admin/auth/user/14/delete/ HTTP/1.1" 302 0
+"GET /admin/auth/user/ HTTP/1.1" 200 32344
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 35334
+"GET / HTTP/1.1" 200 23877
+"GET /register/ HTTP/1.1" 200 25475
+"POST /register/ HTTP/1.1" 302 0
+"GET /register/ HTTP/1.1" 200 25607
+"GET / HTTP/1.1" 200 23877
+"GET /admin/ HTTP/1.1" 200 35334
+"GET /admin/auth/user/ HTTP/1.1" 200 32190
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/ HTTP/1.1" 200 32190
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29373
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/6/change/ HTTP/1.1" 200 30589
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29373
+"GET /admin/charging_station/profile/6/change/ HTTP/1.1" 200 30589
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29373
+"GET /admin/charging_station/profile/7/change/ HTTP/1.1" 200 30597
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/7/delete/ HTTP/1.1" 200 26369
+"POST /admin/charging_station/profile/7/delete/ HTTP/1.1" 302 0
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29256
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/7/delete/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35469
+"GET /static/admin/img/icon-alert.svg HTTP/1.1" 200 504
+"GET /admin/charging_station/profile/7/change/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35469
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29099
+"GET /admin/auth/user/ HTTP/1.1" 200 32190
+"GET /admin/ HTTP/1.1" 200 35299
+Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\authentication\views.py", line 90, in register
+    send_mail(
+    ~~~~~~~~~^
+        'Welcome to VoltHub!',
+        ^^^^^^^^^^^^^^^^^^^^^^
+        'Thank you for registering at VoltHub. We are excited to have you on board!',
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        [form.cleaned_data['email']],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+TypeError: send_mail() missing 1 required positional argument: 'recipient_list'
+"POST /register/ HTTP/1.1" 500 84152
+C:\Users\Thato\charging\ev_charging\authentication\views.py changed, reloading.
+Watching for file changes with StatReloader
+"POST /register/ HTTP/1.1" 200 26306
+"GET / HTTP/1.1" 200 23877
+"GET /admin/ HTTP/1.1" 200 35299
+"GET /admin/auth/user/ HTTP/1.1" 200 32658
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/15/change/ HTTP/1.1" 200 54480
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/15/delete/ HTTP/1.1" 200 26303
+"POST /admin/auth/user/15/delete/ HTTP/1.1" 302 0
+"GET /admin/auth/user/ HTTP/1.1" 200 32344
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29373
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29373
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/8/change/ HTTP/1.1" 200 30597
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/8/delete/ HTTP/1.1" 200 26369
+"POST /admin/charging_station/profile/8/delete/ HTTP/1.1" 302 0
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29256
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 35306
+"GET / HTTP/1.1" 200 23877
+"GET /register/ HTTP/1.1" 200 25475
+"POST /register/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 23477
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 23877
+"GET /admin/ HTTP/1.1" 200 35306
+"GET /admin/auth/user/ HTTP/1.1" 200 32658
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/16/change/ HTTP/1.1" 200 54480
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/16/delete/ HTTP/1.1" 200 26303
+"POST /admin/auth/user/16/delete/ HTTP/1.1" 302 0
+"GET /admin/auth/user/ HTTP/1.1" 200 32344
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29373
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/9/change/ HTTP/1.1" 200 30597
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/9/delete/ HTTP/1.1" 200 26369
+"POST /admin/charging_station/profile/9/delete/ HTTP/1.1" 302 0
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29256
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /admin/charging_station/profile/9/delete/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35483
+"GET / HTTP/1.1" 200 23877
+"GET /register/ HTTP/1.1" 200 25475
+Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\authentication\views.py", line 76, in register
+    activateEmail(request, user, form.cleaned_data.get('email'))  # Send activation email
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\charging\ev_charging\authentication\views.py", line 52, in activateEmail
+    if email.send():
+       ~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\core\mail\message.py", line 301, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\anymail\backends\base.py", line 117, in send_messages
+    sent = self._send(message)
+  File "C:\Users\Thato\Lib\site-packages\anymail\backends\base_requests.py", line 51, in _send
+    return super()._send(message)
+           ~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\anymail\backends\base.py", line 147, in _send
+    response = self.post_to_esp(payload, message)
+  File "C:\Users\Thato\Lib\site-packages\anymail\backends\base_requests.py", line 108, in post_to_esp
+    self.raise_for_status(response, payload, message)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\anymail\backends\base_requests.py", line 119, in raise_for_status
+    raise AnymailRequestsAPIError(
+        email_message=message, payload=payload, response=response, backend=self
+    )
+anymail.exceptions.AnymailRequestsAPIError: Brevo API response 401 (Unauthorized):
+{
+  "message": "authentication not found in headers",
+  "code": "unauthorized"
+}
+"POST /register/ HTTP/1.1" 500 116937
+Watching for file changes with StatReloader
+"POST /register/ HTTP/1.1" 200 25838
+"GET /admin/ HTTP/1.1" 200 35313
+"GET /admin/auth/user/ HTTP/1.1" 200 32658
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/17/change/ HTTP/1.1" 200 54480
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/17/delete/ HTTP/1.1" 200 26303
+"POST /admin/auth/user/17/delete/ HTTP/1.1" 302 0
+"GET /admin/auth/user/ HTTP/1.1" 200 32344
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29099
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/ HTTP/1.1" 200 32190
+"GET /admin/auth/user/17/delete/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35485
+"GET /admin/auth/user/17/change/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35485
+"GET /admin/auth/user/ HTTP/1.1" 200 32190
+"GET /admin/ HTTP/1.1" 200 35317
+"POST /register/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 23477
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 23877
+"GET /admin/ HTTP/1.1" 200 35317
+"GET /admin/auth/user/ HTTP/1.1" 200 32658
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/18/change/ HTTP/1.1" 200 54480
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/18/delete/ HTTP/1.1" 200 26303
+"POST /admin/auth/user/18/delete/ HTTP/1.1" 302 0
+"GET /admin/auth/user/ HTTP/1.1" 200 32344
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 35319
+"GET /register/ HTTP/1.1" 200 25475
+"POST /register/ HTTP/1.1" 302 0
+"GET /register/ HTTP/1.1" 200 25607
+"GET /admin/ HTTP/1.1" 200 35319
+"GET /admin/auth/user/ HTTP/1.1" 200 32190
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/ HTTP/1.1" 200 32190
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29375
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/10/change/ HTTP/1.1" 200 30599
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/10/delete/ HTTP/1.1" 200 26371
+"POST /admin/charging_station/profile/10/delete/ HTTP/1.1" 302 0
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29256
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/10/delete/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35496
+"GET /admin/charging_station/profile/10/change/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35496
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29099
+"GET /admin/auth/user/ HTTP/1.1" 200 32190
+"GET /admin/ HTTP/1.1" 200 35325
+"POST /register/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 23473
