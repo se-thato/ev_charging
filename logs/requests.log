@@ -56023,3 +56023,8 @@ Watching for file changes with StatReloader
 "GET /admin/ HTTP/1.1" 200 35325
 "POST /register/ HTTP/1.1" 302 0
 "GET /login/ HTTP/1.1" 200 23473
+Watching for file changes with StatReloader
+"GET /logout-user/ HTTP/1.1" 302 0
+"GET /login/ HTTP/1.1" 200 22498
+"GET /contact_us HTTP/1.1" 200 20145
+"POST /contact_us HTTP/1.1" 200 20306
