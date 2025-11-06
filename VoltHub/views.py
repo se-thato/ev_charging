@@ -224,9 +224,24 @@ def profile(request):
         )
 
     if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=user_profile)
+        form = ProfileForm(request.POST, request.FILES, instance=user_profile)
         if form.is_valid():
-            form.save()
+            profile_obj = form.save()
+            # Sync selected Profile fields back to Djangos built in User model
+            try:
+                user = request.user
+                # Only update if values differ to avoid unnecessary writes
+                if hasattr(profile_obj, 'first_name'):
+                    user.first_name = profile_obj.first_name or ''
+                if hasattr(profile_obj, 'last_name'):
+                    user.last_name = profile_obj.last_name or ''
+                if hasattr(profile_obj, 'email') and profile_obj.email:
+                    user.email = profile_obj.email
+                user.save(update_fields=['first_name', 'last_name', 'email'])
+            except Exception:
+                # this will ensure we don't break user flow if sync fails
+                pass
+            messages.success(request, "Profile updated successfully.")
             return redirect('profile')
     else:
         form = ProfileForm(instance=user_profile)
@@ -256,7 +271,7 @@ def submit_station(request):
     return render(request, 'VoltHub/submit_station.html', {'form': form})
 
 
-# Admin view: list pending stations and verify
+# listing pending stations and verify
 @is_admin
 def verify_stations(request):
     if request.method == 'POST':

@@ -129,10 +129,11 @@
       <div class="card-glass form-card">
         <div class="card-body">
           <h3 class="form-title">Account Details</h3>
-          <p class="form-note">These fields are currently read-only. Contact support to update your account details.</p>
-          <form method="POST" autocomplete="off">
+          <p class="form-note">Update your account details and click Save.</p>
+          <form method="POST" enctype="multipart/form-data" autocomplete="off">
             {% csrf_token %}
             {{ form|crispy }}
+            <br><br>
             <button type="submit" class="btn-neon">Save</button>
           </form>
         </div>

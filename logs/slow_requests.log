@@ -325,3 +325,14 @@
 [2025-11-03 10:24:54,385] WARNING SLOW REQUEST: /analytics/ took 48.775 seconds!
 [2025-11-03 10:26:14,348] WARNING SLOW REQUEST: /login/ took 11.457 seconds!
 [2025-11-03 11:57:16,600] WARNING SLOW REQUEST: /analytics/ took 9.634 seconds!
+[2025-11-06 11:40:01,431] WARNING SLOW REQUEST: /login/ took 5.728 seconds!
+[2025-11-06 11:40:11,144] WARNING SLOW REQUEST: /analytics/ took 6.153 seconds!
+[2025-11-06 11:58:31,735] WARNING SLOW REQUEST: /login/ took 6.135 seconds!
+[2025-11-06 12:12:26,743] WARNING SLOW REQUEST: /analytics/ took 11.928 seconds!
+[2025-11-06 12:12:44,935] WARNING SLOW REQUEST: /ecommerce/shop_home took 12.211 seconds!
+[2025-11-06 12:12:58,830] WARNING SLOW REQUEST: /media/product_images/Workersbee_Gen2.0_Type_2_AC_Outlet_Socket_for_AC_charging_pile.png took 6.188 seconds!
+[2025-11-06 12:12:59,996] WARNING SLOW REQUEST: /media/product_images/European_standard_Combo_2_EV_DC_AC_Charging_CCS2_Sockets_Car_Side_Female_EV_Inlet.png took 7.439 seconds!
+[2025-11-06 12:22:19,818] WARNING SLOW REQUEST: /admin/ took 15.107 seconds!
+[2025-11-06 12:31:11,010] WARNING SLOW REQUEST: /login/ took 5.154 seconds!
+[2025-11-06 12:35:45,571] WARNING SLOW REQUEST: /login/ took 7.369 seconds!
+[2025-11-06 12:55:05,197] WARNING SLOW REQUEST: /admin/ took 9.529 seconds!

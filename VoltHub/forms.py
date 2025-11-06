@@ -33,12 +33,13 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ['username', 'first_name', 'last_name', 'email', 'location', 'profile_picture']
         widgets = {
-            'username': forms.TextInput(attrs={'readonly': 'readonly'}),
-            'first_name': forms.TextInput(attrs={'readonly': 'readonly'}),
-            'last_name': forms.TextInput(attrs={'readonly': 'readonly'}),
-            'email': forms.EmailInput(attrs={'readonly': 'readonly'}),
-            'location': forms.TextInput(attrs={'readonly': 'readonly'}),
-            'profile_picture': forms.ClearableFileInput(attrs={'class': 'form-control-file', 'accept': 'image/*'}),
+            
+            'username': forms.TextInput(attrs={'class': 'form-control', 'readonly': 'readonly'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'location': forms.TextInput(attrs={'class': 'form-control'}),
+            'profile_picture': forms.ClearableFileInput(attrs={'class': 'form-control', 'accept': 'image/*'}),
         }
 
 # this form is for adding a new charging station
