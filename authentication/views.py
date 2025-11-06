@@ -50,9 +50,9 @@ def activateEmail(request, user, to_email):
     })
     email = EmailMessage(mail_subject, message, to=[to_email])
     if email.send():
-        messages.success(request, f'Dear <b>{user.username}</b>, please go to your email <b>{to_email}</b> inbox and click the verification link to verify your account!/<b>Note:</b> If you don\'t see the email, please check your spam folder.')
+        messages.success(request, f'Dear {user.username}, please go to your email {to_email} inbox and click the verification link to verify your account!Note: If you don\'t see the email, please check your spam folder.')
     else:
-        messages.error(request, f'Dear <b>{user.username}</b>, there was an error sending the verification email. Please try again later.')
+        messages.error(request, f'Dear {user.username}, there was an error sending the verification email. Please try again later.')
 
 
 
