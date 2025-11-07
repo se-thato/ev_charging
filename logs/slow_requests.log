@@ -337,3 +337,7 @@
 [2025-11-06 12:35:45,571] WARNING SLOW REQUEST: /login/ took 7.369 seconds!
 [2025-11-06 12:55:05,197] WARNING SLOW REQUEST: /admin/ took 9.529 seconds!
 [2025-11-06 17:03:58,071] WARNING SLOW REQUEST: /register/ took 9.453 seconds!
+[2025-11-07 20:33:44,219] WARNING SLOW REQUEST: /register/ took 6.842 seconds!
+[2025-11-07 20:55:21,749] WARNING SLOW REQUEST: /register/ took 22.766 seconds!
+[2025-11-07 21:30:23,077] WARNING SLOW REQUEST: /authentication/register/ took 5.423 seconds!
+[2025-11-07 21:51:24,194] WARNING SLOW REQUEST: /analytics/ took 12.034 seconds!

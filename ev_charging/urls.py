@@ -22,8 +22,9 @@ urlpatterns = [
     path('', include("VoltHub.urls")),
     
     #authentication
-    path('', include("authentication.urls")),
-    #path('auth/', include('authentication.urls')),
+    #path('authentication/', include('authentication.urls', namespace='authentication')),
+    #path('', include("authentication.urls")),
+    path('auth/', include('authentication.urls')),
 
     # dj-rest-auth (API-based auth and registration)
     path('dj-rest-auth/', include('dj_rest_auth.urls')),

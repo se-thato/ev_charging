@@ -18,6 +18,7 @@ urlpatterns = [
 
     # Account activation
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
+    
 
     # Password reset
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name="authentication/password_reset.html"), name="reset_password"),

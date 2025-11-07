@@ -19,24 +19,31 @@ from django.contrib.auth import get_user_model
 from django.utils.http import urlsafe_base64_decode
 from django.core.mail import send_mail
 from django.conf import settings
+from django.contrib.auth.tokens import default_token_generator
+from django.contrib import messages
+from django.shortcuts import redirect
+from django.contrib.auth.models import User
 
 
 
+
+# Single activation view that matches the token generator used in emails
 def activate(request, uidb64, token):
-    User = get_user_model()
+    UserModel = get_user_model()
     try:
-        uidb64_str = force_str(urlsafe_base64_decode(uidb64))
-        user = User.objects.get(pk=uidb64_str)
-    except:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = UserModel.objects.get(pk=uid)
+    except Exception:
         user = None
+
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
         user.save()
-        messages.success(request, 'Thank you for confirming your email address. You can now log in to your account.')
+        messages.success(request, 'Your account has been activated successfully. Please log in.')
         return redirect('authentication:login')
     else:
         messages.error(request, 'Activation link is invalid!')
-        return redirect('VoltHub:home')
+        return redirect('authentication:login')
 
 
 def activateEmail(request, user, to_email):
@@ -49,11 +56,16 @@ def activateEmail(request, user, to_email):
         "protocol": "https" if request.is_secure() else "http",
     })
     email = EmailMessage(mail_subject, message, to=[to_email])
+
+    email.content_subtype = "html"
+
     if email.send():
         messages.success(request, f'Dear {user.username}, please go to your email {to_email} inbox and click the verification link to verify your account!Note: If you don\'t see the email, please check your spam folder.')
     else:
         messages.error(request, f'Dear {user.username}, there was an error sending the verification email. Please try again later.')
 
+
+# (Removed duplicate activate view that used default_token_generator to avoid mismatch)
 
 
 def register(request):
