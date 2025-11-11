@@ -23,6 +23,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 
@@ -47,10 +48,17 @@ def activate(request, uidb64, token):
 
 
 def activateEmail(request, user, to_email):
+
+    if settings.DEBUG:
+        domain = get_current_site(request).domain 
+    else:
+        domain = "evcharging-production-c179.up.railway.app" 
+
     mail_subject = "Activate your account"
+    
     message = render_to_string("authentication/activate_account.html", {
         "user": user.username,
-        "domain": get_current_site(request).domain,
+        "domain": domain,
         "uid": urlsafe_base64_encode(force_bytes(user.pk)),
         "token": account_activation_token.make_token(user),
         "protocol": "https" if request.is_secure() else "http",
@@ -65,8 +73,11 @@ def activateEmail(request, user, to_email):
         messages.error(request, f'Dear {user.username}, there was an error sending the verification email. Please try again later.')
 
 
-# (Removed duplicate activate view that used default_token_generator to avoid mismatch)
+def activation_success(request):
+    return render(request, 'authentication/activation_success.html')
 
+def activation_failed(request):
+    return render(request, 'authentication/activation_failed.html')
 
 def register(request):
     form = UserRegisterForm()

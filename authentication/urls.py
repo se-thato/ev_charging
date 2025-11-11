@@ -18,7 +18,11 @@ urlpatterns = [
 
     # Account activation
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
-    
+
+    # Email verification
+    path('activate_email/<uidb64>/<token>/', views.activateEmail, name='activate_email'),
+    path('activation-success/', views.activation_success, name='activation_success'),
+    path('activation-failed/', views.activation_failed, name='activation_failed'),
 
     # Password reset
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name="authentication/password_reset.html"), name="reset_password"),

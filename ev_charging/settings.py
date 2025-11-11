@@ -416,15 +416,16 @@ warnings.filterwarnings(
     module="dj_rest_auth.registration.serializers",
 )
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 # Anymail configuration for email backend
 EMAIL_BACKEND = "anymail.backends.brevo.EmailBackend"
-
 ANYMAIL = {
     "BREVO_API_KEY": os.environ.get("BREVO_API_KEY"),
 }
-
 DEFAULT_FROM_EMAIL = "thatoselepe80@gmail.com"
+
 
 # Who receives contact messages
 CONTACT_RECEIVER_EMAIL = 'thatoselepe80@gmail.com'

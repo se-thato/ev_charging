@@ -66382,3 +66382,634 @@ redis.exceptions.ConnectionError: Error 11001 connecting to redis.railway.intern
 "GET /ecommerce/shop_home HTTP/1.1" 200 35233
 "GET /ecommerce/shop_home HTTP/1.1" 200 35233
 "GET / HTTP/1.1" 200 23590
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 23590
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET / HTTP/1.1" 200 24084
+"GET /static/VoltHub/image/volthub_background_image.jpg HTTP/1.1" 200 71444
+"GET /dashboard HTTP/1.1" 200 27618
+Internal Server Error: /analytics/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 29, in _decorator
+    return method(self, *args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 99, in _get
+    return self.client.get(key, default=default, version=version, client=client)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\client\default.py", line 300, in get
+    raise ConnectionInterrupted(connection=client) from e
+django_redis.exceptions.ConnectionInterrupted: Redis ConnectionError: Error 11001 connecting to redis.railway.internal:6379. getaddrinfo failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 416, in initial
+    self.check_throttles(request)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 359, in check_throttles
+    if not throttle.allow_request(request, self):
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\throttling.py", line 123, in allow_request
+    self.history = self.cache.get(self.key, [])
+                   ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 92, in get
+    value = self._get(key, default, version, client)
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 36, in _decorator
+    raise e.__cause__  # noqa: B904
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\client\default.py", line 298, in get
+    value = client.get(key)
+  File "C:\Users\Thato\Lib\site-packages\redis\commands\core.py", line 1829, in get
+    return self.execute_command("GET", name, keys=[name])
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\client.py", line 621, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\client.py", line 627, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\redis\utils.py", line 195, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 1533, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 380, in connect
+    self.connect_check_health(check_health=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 397, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 11001 connecting to redis.railway.internal:6379. getaddrinfo failed.
+"GET /analytics/ HTTP/1.1" 500 177467
+Internal Server Error: /analytics/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 29, in _decorator
+    return method(self, *args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 99, in _get
+    return self.client.get(key, default=default, version=version, client=client)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\client\default.py", line 300, in get
+    raise ConnectionInterrupted(connection=client) from e
+django_redis.exceptions.ConnectionInterrupted: Redis ConnectionError: Error 11001 connecting to redis.railway.internal:6379. getaddrinfo failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 416, in initial
+    self.check_throttles(request)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 359, in check_throttles
+    if not throttle.allow_request(request, self):
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\throttling.py", line 123, in allow_request
+    self.history = self.cache.get(self.key, [])
+                   ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 92, in get
+    value = self._get(key, default, version, client)
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 36, in _decorator
+    raise e.__cause__  # noqa: B904
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\client\default.py", line 298, in get
+    value = client.get(key)
+  File "C:\Users\Thato\Lib\site-packages\redis\commands\core.py", line 1829, in get
+    return self.execute_command("GET", name, keys=[name])
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\client.py", line 621, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\client.py", line 627, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\redis\utils.py", line 195, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 1533, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 380, in connect
+    self.connect_check_health(check_health=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 397, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 11001 connecting to redis.railway.internal:6379. getaddrinfo failed.
+"GET /analytics/ HTTP/1.1" 500 177467
+Internal Server Error: /analytics/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 29, in _decorator
+    return method(self, *args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 99, in _get
+    return self.client.get(key, default=default, version=version, client=client)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\client\default.py", line 300, in get
+    raise ConnectionInterrupted(connection=client) from e
+django_redis.exceptions.ConnectionInterrupted: Redis ConnectionError: Error 11001 connecting to redis.railway.internal:6379. getaddrinfo failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 416, in initial
+    self.check_throttles(request)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 359, in check_throttles
+    if not throttle.allow_request(request, self):
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\throttling.py", line 123, in allow_request
+    self.history = self.cache.get(self.key, [])
+                   ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 92, in get
+    value = self._get(key, default, version, client)
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 36, in _decorator
+    raise e.__cause__  # noqa: B904
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\client\default.py", line 298, in get
+    value = client.get(key)
+  File "C:\Users\Thato\Lib\site-packages\redis\commands\core.py", line 1829, in get
+    return self.execute_command("GET", name, keys=[name])
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\client.py", line 621, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\client.py", line 627, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\redis\utils.py", line 195, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 1533, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 380, in connect
+    self.connect_check_health(check_health=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 397, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 11001 connecting to redis.railway.internal:6379. getaddrinfo failed.
+"GET /analytics/ HTTP/1.1" 500 177467
+Internal Server Error: /analytics/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 29, in _decorator
+    return method(self, *args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 99, in _get
+    return self.client.get(key, default=default, version=version, client=client)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\client\default.py", line 300, in get
+    raise ConnectionInterrupted(connection=client) from e
+django_redis.exceptions.ConnectionInterrupted: Redis ConnectionError: Error 11001 connecting to redis.railway.internal:6379. getaddrinfo failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 416, in initial
+    self.check_throttles(request)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 359, in check_throttles
+    if not throttle.allow_request(request, self):
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\throttling.py", line 123, in allow_request
+    self.history = self.cache.get(self.key, [])
+                   ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 92, in get
+    value = self._get(key, default, version, client)
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 36, in _decorator
+    raise e.__cause__  # noqa: B904
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\client\default.py", line 298, in get
+    value = client.get(key)
+  File "C:\Users\Thato\Lib\site-packages\redis\commands\core.py", line 1829, in get
+    return self.execute_command("GET", name, keys=[name])
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\client.py", line 621, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\client.py", line 627, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\redis\utils.py", line 195, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 1533, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 380, in connect
+    self.connect_check_health(check_health=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 397, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 11001 connecting to redis.railway.internal:6379. getaddrinfo failed.
+"GET /analytics/ HTTP/1.1" 500 177467
+Internal Server Error: /dashboard
+"GET /dashboard HTTP/1.1" 500 125
+Internal Server Error: /analytics/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 29, in _decorator
+    return method(self, *args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 99, in _get
+    return self.client.get(key, default=default, version=version, client=client)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\client\default.py", line 300, in get
+    raise ConnectionInterrupted(connection=client) from e
+django_redis.exceptions.ConnectionInterrupted: Redis ConnectionError: Error 11001 connecting to redis.railway.internal:6379. getaddrinfo failed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\viewsets.py", line 124, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 497, in dispatch
+    self.initial(request, *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 416, in initial
+    self.check_throttles(request)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\views.py", line 359, in check_throttles
+    if not throttle.allow_request(request, self):
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\rest_framework\throttling.py", line 123, in allow_request
+    self.history = self.cache.get(self.key, [])
+                   ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 92, in get
+    value = self._get(key, default, version, client)
+  File "C:\Users\Thato\Lib\site-packages\django_redis\cache.py", line 36, in _decorator
+    raise e.__cause__  # noqa: B904
+    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django_redis\client\default.py", line 298, in get
+    value = client.get(key)
+  File "C:\Users\Thato\Lib\site-packages\redis\commands\core.py", line 1829, in get
+    return self.execute_command("GET", name, keys=[name])
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\client.py", line 621, in execute_command
+    return self._execute_command(*args, **options)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\client.py", line 627, in _execute_command
+    conn = self.connection or pool.get_connection()
+                              ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\redis\utils.py", line 195, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 1533, in get_connection
+    connection.connect()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 380, in connect
+    self.connect_check_health(check_health=True)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\redis\connection.py", line 397, in connect_check_health
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 11001 connecting to redis.railway.internal:6379. getaddrinfo failed.
+- Broken pipe from ('127.0.0.1', 65398)
+Internal Server Error: /dashboard
+"GET /dashboard HTTP/1.1" 500 125
+"GET / HTTP/1.1" 200 23590
+"GET / HTTP/1.1" 200 23590
+"GET / HTTP/1.1" 200 23590
+"GET / HTTP/1.1" 200 23590
+C:\Users\Thato\charging\ev_charging\ev_charging\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\authentication\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /auth/logout-user/ HTTP/1.1" 302 0
+"GET /auth/login/ HTTP/1.1" 200 22063
+"GET /static/VoltHub/register.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /auth/register/ HTTP/1.1" 200 24918
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4160
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35305
+"GET /admin/auth/user/ HTTP/1.1" 200 32654
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29101
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/11/change/ HTTP/1.1" 200 30591
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/11/delete/ HTTP/1.1" 200 26365
+"POST /admin/charging_station/profile/11/delete/ HTTP/1.1" 302 0
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 28984
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/ HTTP/1.1" 200 32654
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/19/change/ HTTP/1.1" 200 54472
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/19/delete/ HTTP/1.1" 200 26297
+"POST /admin/auth/user/19/delete/ HTTP/1.1" 302 0
+"GET /admin/auth/user/ HTTP/1.1" 200 32342
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 35305
+"GET / HTTP/1.1" 200 23590
+"GET /auth/logout-user/ HTTP/1.1" 302 0
+"GET /auth/login/ HTTP/1.1" 200 22063
+"GET /auth/register/ HTTP/1.1" 200 24918
+"POST /auth/register/ HTTP/1.1" 500 152537
+C:\Users\Thato\charging\ev_charging\authentication\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4160
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35305
+"GET /admin/auth/user/ HTTP/1.1" 200 32654
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/26/change/ HTTP/1.1" 200 54472
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/26/delete/ HTTP/1.1" 200 26297
+"POST /admin/auth/user/26/delete/ HTTP/1.1" 302 0
+"GET /admin/auth/user/ HTTP/1.1" 200 32342
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 28829
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/ HTTP/1.1" 200 32190
+"GET /admin/auth/user/26/delete/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35473
+"GET /admin/auth/user/26/change/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35473
+"GET /admin/auth/user/ HTTP/1.1" 200 32190
+"GET /admin/ HTTP/1.1" 200 35305
+"GET /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35305
+"GET /auth/register/ HTTP/1.1" 200 25381
+"POST /auth/register/ HTTP/1.1" 500 152532
+"POST /auth/register/ HTTP/1.1" 200 25742
+"GET /admin/ HTTP/1.1" 200 35305
+"GET /admin/auth/user/ HTTP/1.1" 200 32654
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/27/change/ HTTP/1.1" 200 54472
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/27/delete/ HTTP/1.1" 200 26297
+"POST /admin/auth/user/27/delete/ HTTP/1.1" 302 0
+"GET /admin/auth/user/ HTTP/1.1" 200 32342
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 28829
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 35302
+"GET / HTTP/1.1" 200 23590
+"GET /auth/logout-user/ HTTP/1.1" 302 0
+"GET /auth/login/ HTTP/1.1" 200 22063
+"GET /auth/register/ HTTP/1.1" 200 24918
+"POST /auth/register/ HTTP/1.1" 302 0
+"GET /auth/login/ HTTP/1.1" 200 22409
+C:\Users\Thato\charging\ev_charging\authentication\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /auth/login/ HTTP/1.1" 200 22063
+"GET /auth/register/ HTTP/1.1" 200 24918
+"GET /auth/register/ HTTP/1.1" 200 24918
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4160
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35302
+"GET /admin/auth/user/ HTTP/1.1" 200 32654
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/28/change/ HTTP/1.1" 200 54472
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/28/delete/ HTTP/1.1" 200 26297
+"POST /admin/auth/user/28/delete/ HTTP/1.1" 302 0
+"GET /admin/auth/user/ HTTP/1.1" 200 32342
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 35302
+"GET / HTTP/1.1" 200 23590
+"GET /auth/logout-user/ HTTP/1.1" 302 0
+"GET /auth/login/ HTTP/1.1" 200 22063
+- Broken pipe from ('127.0.0.1', 64123)
+Watching for file changes with StatReloader
+"GET /auth/register/ HTTP/1.1" 200 24918
+"POST /auth/register/ HTTP/1.1" 302 0
+"GET /auth/register/ HTTP/1.1" 200 25050
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4160
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35302
+"GET /admin/auth/user/ HTTP/1.1" 200 32190
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29101
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/17/change/ HTTP/1.1" 200 30591
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/17/delete/ HTTP/1.1" 200 26365
+"POST /admin/charging_station/profile/17/delete/ HTTP/1.1" 302 0
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 28984
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/17/delete/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35473
+"GET /admin/charging_station/profile/17/change/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35473
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 28829
+"GET /admin/auth/user/ HTTP/1.1" 200 32190
+"GET /admin/ HTTP/1.1" 200 35302
+"GET /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35302
+"GET /auth/register/ HTTP/1.1" 200 25381
+Internal Server Error: /auth/register/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\authentication\views.py", line 107, in register
+    activateEmail(request, user, form.cleaned_data.get('email'))  # Send activation email
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\charging\ev_charging\authentication\views.py", line 78, in activateEmail
+    activation_link = f"{scheme}://{domain}{reverse('authentication:activate', kwargs={'uidb64': uidb64, 'token': token})}"
+                                            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'activate' not found. 'activate' is not a valid view function or pattern name.
+"POST /auth/register/ HTTP/1.1" 500 101308
+C:\Users\Thato\charging\ev_charging\authentication\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /admin/ HTTP/1.1" 200 35302
+"GET /admin/auth/user/ HTTP/1.1" 200 32654
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/29/change/ HTTP/1.1" 200 54472
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/29/delete/ HTTP/1.1" 200 26297
+"POST /admin/auth/user/29/delete/ HTTP/1.1" 302 0
+"GET /admin/auth/user/ HTTP/1.1" 200 32342
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 28829
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 35302
+"GET / HTTP/1.1" 200 23590
+"GET /auth/logout-user/ HTTP/1.1" 302 0
+"GET /auth/login/ HTTP/1.1" 200 22063
+"GET /auth/register/ HTTP/1.1" 200 24918
+"POST /auth/register/ HTTP/1.1" 302 0
+"GET /auth/login/ HTTP/1.1" 200 22409
+C:\Users\Thato\charging\ev_charging\authentication\urls.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\authentication\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /auth/login/ HTTP/1.1" 200 22063
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 13568
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4160
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35302
+"GET /admin/auth/user/ HTTP/1.1" 200 32654
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/30/change/ HTTP/1.1" 200 54472
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/30/delete/ HTTP/1.1" 200 26297
+"POST /admin/auth/user/30/delete/ HTTP/1.1" 302 0
+"GET /admin/auth/user/ HTTP/1.1" 200 32342
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29101
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/18/change/ HTTP/1.1" 200 30591
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/18/delete/ HTTP/1.1" 200 26365
+"POST /admin/charging_station/profile/18/delete/ HTTP/1.1" 302 0
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 28984
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/18/delete/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35473
+"GET /admin/charging_station/profile/18/change/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35473
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 28829
+"GET /admin/ HTTP/1.1" 200 35302
+"GET / HTTP/1.1" 200 23590
+"GET /auth/logout-user/ HTTP/1.1" 302 0
+"GET /auth/login/ HTTP/1.1" 200 22063
+"GET /auth/register/ HTTP/1.1" 200 24918
+"POST /auth/register/ HTTP/1.1" 302 0
+"GET /auth/login/ HTTP/1.1" 200 22409
+"GET / HTTP/1.1" 200 23127
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4160
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35302
+"GET /admin/auth/user/ HTTP/1.1" 200 32654
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/31/change/ HTTP/1.1" 200 54472
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/31/delete/ HTTP/1.1" 200 26297
+"POST /admin/auth/user/31/delete/ HTTP/1.1" 302 0
+"GET /admin/auth/user/ HTTP/1.1" 200 32342
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29101
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/19/change/ HTTP/1.1" 200 30591
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/19/delete/ HTTP/1.1" 200 26365
+"POST /admin/charging_station/profile/19/delete/ HTTP/1.1" 302 0
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 28984
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 35299
+"GET / HTTP/1.1" 200 23590
+"GET /auth/logout-user/ HTTP/1.1" 302 0
+"GET /auth/login/ HTTP/1.1" 200 22063
+"GET /auth/register/ HTTP/1.1" 200 24918
+"POST /auth/register/ HTTP/1.1" 500 152021
+C:\Users\Thato\charging\ev_charging\authentication\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /admin/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/ HTTP/1.1" 200 4160
+"POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+"GET /admin/ HTTP/1.1" 200 35299
+"GET /admin/auth/user/ HTTP/1.1" 200 32654
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/32/change/ HTTP/1.1" 200 54472
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/auth/user/32/delete/ HTTP/1.1" 200 26297
+"POST /admin/auth/user/32/delete/ HTTP/1.1" 302 0
+"GET /admin/auth/user/ HTTP/1.1" 200 32342
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 28829
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 35299
+"GET / HTTP/1.1" 200 23590
+"GET /auth/logout-user/ HTTP/1.1" 302 0
+"GET /auth/login/ HTTP/1.1" 200 22063
+"GET /auth/register/ HTTP/1.1" 200 24918
+"POST /auth/register/ HTTP/1.1" 302 0
+"GET /auth/login/ HTTP/1.1" 200 22519
+C:\Users\Thato\charging\ev_charging\authentication\views.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\authentication\views.py changed, reloading.
+Watching for file changes with StatReloader
