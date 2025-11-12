@@ -79,6 +79,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
+
+    #aws s3 storage
+    'storages',
 ]
 
 
@@ -432,6 +435,18 @@ DEFAULT_FROM_EMAIL = "thatoselepe80@gmail.com"
 
 # Who receives contact messages
 CONTACT_RECEIVER_EMAIL = 'thatoselepe80@gmail.com'
+
+# AWS S3 Cloud Storage
+AWS_ACCESS_KEY_ID= os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY= os.environ.get("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME= os.environ.get("AWS_STORAGE_BUCKET_NAME")
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
+
 
 # Open Charge Map API Key
 OPEN_CHARGE_API_KEY = os.environ.get("OPEN_CHARGE_API_KEY")
