@@ -7,6 +7,7 @@ from decouple import config
 from dotenv import load_dotenv
 import warnings
 
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -449,13 +450,20 @@ AWS_S3_OBJECT_PARAMETERS = {
     "CacheControl": "max-age=86400",
 }
 
+STATIC_LOCATION = "static"
+MEDIA_LOCATION = "media"
+
 # Static files
 STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
 STATICFILES_STORAGE = "storages.backends.s3boto3.S3StaticStorage"
+STATIC_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/{STATIC_LOCATION}/"
+STATICFILES_STORAGE = "custom_storages.StaticStorage"
 
 # Media files
 MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+DEFAULT_FILE_STORAGE = "custom_storages.MediaStorage"
+MEDIA_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/{MEDIA_LOCATION}/"
 
 
 AWS_S3_FILE_OVERWRITE = False
