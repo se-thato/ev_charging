@@ -67091,3 +67091,85 @@ redis.exceptions.ConnectionError: Error 11001 connecting to redis.railway.intern
 C:\Users\Thato\charging\ev_charging\ev_charging\urls.py changed, reloading.
 Watching for file changes with StatReloader
 "GET /ecommerce/product/1/ HTTP/1.1" 200 24205
+Watching for file changes with StatReloader
+- Broken pipe from ('127.0.0.1', 62683)
+"GET / HTTP/1.1" 200 23590
+"GET /static/VoltHub/style.css HTTP/1.1" 200 984
+"GET /static/VoltHub/charging.css HTTP/1.1" 200 1840
+"GET /static/VoltHub/contact.css HTTP/1.1" 200 1659
+"GET /static/VoltHub/map.js HTTP/1.1" 200 2190
+"GET /static/VoltHub/navbar.css HTTP/1.1" 200 1784
+"GET /profile HTTP/1.1" 200 24578
+Not Found: /media/profile_pictures/city.jpg
+"GET /media/profile_pictures/city.jpg HTTP/1.1" 404 179
+"GET /ecommerce/shop_home HTTP/1.1" 200 35233
+Not Found: /media/product_images/EVC-Charging-Cable-5m_rXly5KX.jpg
+Not Found: /media/product_images/Portable_Level_2_Home_Charger.jpg
+"GET /media/product_images/EVC-Charging-Cable-5m_rXly5KX.jpg HTTP/1.1" 404 179
+"GET /media/product_images/Portable_Level_2_Home_Charger.jpg HTTP/1.1" 404 179
+Not Found: /media/product_images/Suntree-Portable-EV-Charger.jpg
+Not Found: /media/product_images/ZENCAR_E_Portable_EV_Charger_74kW.jpg
+Not Found: /media/product_images/OEM_ODM_5m_10m_20m_30m_Factory_Directly_EV_Type_2_Extension_Cable.jpg
+Not Found: /media/product_images/European_standard_Combo_2_EV_DC_AC_Charging_CCS2_Sockets_Car_Side_Female_EV_Inlet.png
+Not Found: /media/product_images/Cable_Holder.jpg
+"GET /media/product_images/Suntree-Portable-EV-Charger.jpg HTTP/1.1" 404 179
+Not Found: /media/product_images/IEC_62196_3_Phase_11kw_22kw_16A_32A_Type_2_EVSE_Portable_EV_Charger.jpg
+"GET /media/product_images/ZENCAR_E_Portable_EV_Charger_74kW.jpg HTTP/1.1" 404 179
+"GET /media/product_images/OEM_ODM_5m_10m_20m_30m_Factory_Directly_EV_Type_2_Extension_Cable.jpg HTTP/1.1" 404 179
+"GET /media/product_images/European_standard_Combo_2_EV_DC_AC_Charging_CCS2_Sockets_Car_Side_Female_EV_Inlet.png HTTP/1.1" 404 179
+Not Found: /media/product_images/Workersbee_Gen2.0_Type_2_AC_Outlet_Socket_for_AC_charging_pile.png
+"GET /media/product_images/IEC_62196_3_Phase_11kw_22kw_16A_32A_Type_2_EVSE_Portable_EV_Charger.jpg HTTP/1.1" 404 179
+"GET /media/product_images/Cable_Holder.jpg HTTP/1.1" 404 179
+Not Found: /media/product_images/12V_Car_Heating_Cup_Car_Heated_Mug_450ml_Stainless_Steel.jpg
+Not Found: /media/product_images/PHRX_200W_Electric_Car_Heater_DC_12V_Heating_Fan_Defogger_Defroster_Demis_nGh1bdU.jpg
+Not Found: /media/product_images/Perfect_Dealz_Multifunction_Electric_Cleaning_Brush_Waxing_Brush_Handheld_0PCUBiO.jpg
+Not Found: /media/product_images/Vehicle_Car_Cigarette_Light_Fan_With_Clip_Holder_8_-_PM-036.jpg
+Not Found: /media/product_images/Perfect_Dealz_Electric_Vibration_Seat_Comfort_Cushion.jpg
+"GET /media/product_images/PHRX_200W_Electric_Car_Heater_DC_12V_Heating_Fan_Defogger_Defroster_Demis_nGh1bdU.jpg HTTP/1.1" 404 179
+"GET /media/product_images/12V_Car_Heating_Cup_Car_Heated_Mug_450ml_Stainless_Steel.jpg HTTP/1.1" 404 179
+"GET /media/product_images/Workersbee_Gen2.0_Type_2_AC_Outlet_Socket_for_AC_charging_pile.png HTTP/1.1" 404 179
+"GET /media/product_images/Vehicle_Car_Cigarette_Light_Fan_With_Clip_Holder_8_-_PM-036.jpg HTTP/1.1" 404 179
+"GET /media/product_images/Perfect_Dealz_Multifunction_Electric_Cleaning_Brush_Waxing_Brush_Handheld_0PCUBiO.jpg HTTP/1.1" 404 179
+"GET /media/product_images/Perfect_Dealz_Electric_Vibration_Seat_Comfort_Cushion.jpg HTTP/1.1" 404 179
+Not Found: /media/product_images/HX-T201_Dual_Head_Car_Cigarette_Lighter_Fan_4.5.jpg
+Not Found: /media/product_images/Tire_Inflator_Portable_Air_Compressor_150_PSI_Bike_Pump_12V_Electric_Air__2Fq9OSO.jpg
+"GET /media/product_images/HX-T201_Dual_Head_Car_Cigarette_Lighter_Fan_4.5.jpg HTTP/1.1" 404 179
+"GET /media/product_images/Tire_Inflator_Portable_Air_Compressor_150_PSI_Bike_Pump_12V_Electric_Air__2Fq9OSO.jpg HTTP/1.1" 404 179
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 23590
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /profile HTTP/1.1" 200 24578
+"GET /media/profile_pictures/city.jpg HTTP/1.1" 200 324561
+"GET / HTTP/1.1" 200 23590
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /ecommerce/shop_home HTTP/1.1" 200 35233
+"GET /media/product_images/Cable_Holder.jpg HTTP/1.1" 200 140555
+"GET /media/product_images/Suntree-Portable-EV-Charger.jpg HTTP/1.1" 200 179945
+"GET /media/product_images/IEC_62196_3_Phase_11kw_22kw_16A_32A_Type_2_EVSE_Portable_EV_Charger.jpg HTTP/1.1" 200 73985
+"GET /media/product_images/ZENCAR_E_Portable_EV_Charger_74kW.jpg HTTP/1.1" 200 246788
+"GET /media/product_images/EVC-Charging-Cable-5m_rXly5KX.jpg HTTP/1.1" 200 102854
+"GET /media/product_images/Portable_Level_2_Home_Charger.jpg HTTP/1.1" 200 208506
+"GET /media/product_images/European_standard_Combo_2_EV_DC_AC_Charging_CCS2_Sockets_Car_Side_Female_EV_Inlet.png HTTP/1.1" 200 108709
+"GET /media/product_images/OEM_ODM_5m_10m_20m_30m_Factory_Directly_EV_Type_2_Extension_Cable.jpg HTTP/1.1" 200 75826
+"GET /media/product_images/PHRX_200W_Electric_Car_Heater_DC_12V_Heating_Fan_Defogger_Defroster_Demis_nGh1bdU.jpg HTTP/1.1" 200 17564
+"GET /media/product_images/12V_Car_Heating_Cup_Car_Heated_Mug_450ml_Stainless_Steel.jpg HTTP/1.1" 200 37267
+"GET /media/product_images/Perfect_Dealz_Multifunction_Electric_Cleaning_Brush_Waxing_Brush_Handheld_0PCUBiO.jpg HTTP/1.1" 200 25330
+"GET /media/product_images/Vehicle_Car_Cigarette_Light_Fan_With_Clip_Holder_8_-_PM-036.jpg HTTP/1.1" 200 38386
+"GET /media/product_images/Perfect_Dealz_Electric_Vibration_Seat_Comfort_Cushion.jpg HTTP/1.1" 200 17468
+"GET /media/product_images/Workersbee_Gen2.0_Type_2_AC_Outlet_Socket_for_AC_charging_pile.png HTTP/1.1" 200 116940
+"GET /media/product_images/HX-T201_Dual_Head_Car_Cigarette_Lighter_Fan_4.5.jpg HTTP/1.1" 200 18856
+"GET /media/product_images/Tire_Inflator_Portable_Air_Compressor_150_PSI_Bike_Pump_12V_Electric_Air__2Fq9OSO.jpg HTTP/1.1" 200 144969
+"GET /ecommerce/product/1/ HTTP/1.1" 200 24205
+"GET /ecommerce/product/1/ HTTP/1.1" 200 24205
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0

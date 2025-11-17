@@ -360,3 +360,8 @@
 [2025-11-11 12:12:49,127] WARNING SLOW REQUEST: /auth/login/ took 11.183 seconds!
 [2025-11-11 12:33:58,222] WARNING SLOW REQUEST: /auth/register/ took 5.405 seconds!
 [2025-11-11 12:46:41,907] WARNING SLOW REQUEST: /auth/register/ took 8.641 seconds!
+[2025-11-17 12:25:31,552] WARNING SLOW REQUEST: /ecommerce/product/1/ took 6.441 seconds!
+[2025-11-17 12:25:31,591] WARNING SLOW REQUEST: / took 6.482 seconds!
+[2025-11-17 12:30:09,249] WARNING SLOW REQUEST: / took 26.061 seconds!
+[2025-11-17 12:30:56,030] WARNING SLOW REQUEST: /profile took 8.530 seconds!
+[2025-11-17 12:31:54,194] WARNING SLOW REQUEST: /media/profile_pictures/city.jpg took 53.833 seconds!
