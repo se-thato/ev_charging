@@ -67173,3 +67173,13 @@ Watching for file changes with StatReloader
 "GET /static/VoltHub/charging.css HTTP/1.1" 304 0
 "GET /static/VoltHub/map.js HTTP/1.1" 304 0
 "GET /static/VoltHub/style.css HTTP/1.1" 304 0
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 179
+"GET / HTTP/1.1" 200 23590
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /profile HTTP/1.1" 200 24578
