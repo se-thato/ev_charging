@@ -67919,3 +67919,102 @@ C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
 Watching for file changes with StatReloader
 C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /ecommerce/shop_home HTTP/1.1" 200 36049
+Not Found: /static/VoltHub/style.css
+Not Found: /static/VoltHub/charging.css
+"GET /static/VoltHub/style.css HTTP/1.1" 404 179
+"GET /static/VoltHub/charging.css HTTP/1.1" 404 179
+Not Found: /static/VoltHub/map.js
+"GET /static/VoltHub/map.js HTTP/1.1" 404 179
+"GET /ecommerce/shop_home HTTP/1.1" 200 36049
+Not Found: /static/VoltHub/style.css
+Not Found: /static/VoltHub/charging.css
+"GET /static/VoltHub/style.css HTTP/1.1" 404 179
+"GET /static/VoltHub/charging.css HTTP/1.1" 404 179
+Not Found: /static/VoltHub/map.js
+"GET /static/VoltHub/map.js HTTP/1.1" 404 179
+"GET /ecommerce/product/1/ HTTP/1.1" 200 24256
+Not Found: /static/VoltHub/style.css
+Not Found: /static/VoltHub/charging.css
+Not Found: /static/VoltHub/map.js
+"GET /static/VoltHub/style.css HTTP/1.1" 404 179
+"GET /static/VoltHub/charging.css HTTP/1.1" 404 179
+"GET /static/VoltHub/map.js HTTP/1.1" 404 179
+Not Found: /static/VoltHub/style.css
+Not Found: /static/VoltHub/charging.css
+"GET /static/VoltHub/style.css HTTP/1.1" 404 179
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /static/VoltHub/charging.css HTTP/1.1" 404 179
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 179
+"GET /ecommerce/shop_home HTTP/1.1" 200 36049
+Not Found: /static/VoltHub/charging.css
+Not Found: /static/VoltHub/style.css
+"GET /static/VoltHub/charging.css HTTP/1.1" 404 179
+"GET /static/VoltHub/style.css HTTP/1.1" 404 179
+Not Found: /static/VoltHub/map.js
+"GET /static/VoltHub/map.js HTTP/1.1" 404 179
+"GET /profile HTTP/1.1" 200 24680
+Not Found: /static/VoltHub/style.css
+Not Found: /static/VoltHub/charging.css
+"GET /static/VoltHub/style.css HTTP/1.1" 404 179
+"GET /static/VoltHub/charging.css HTTP/1.1" 404 179
+Not Found: /static/VoltHub/contact.css
+Not Found: /static/VoltHub/map.js
+Not Found: /static/VoltHub/navbar.css
+"GET /static/VoltHub/contact.css HTTP/1.1" 404 179
+"GET /static/VoltHub/map.js HTTP/1.1" 404 179
+"GET /static/VoltHub/navbar.css HTTP/1.1" 404 179
+"GET /stations/ HTTP/1.1" 200 24593
+Not Found: /static/VoltHub/style.css
+Not Found: /static/VoltHub/charging.css
+Not Found: /static/VoltHub/contact.css
+Not Found: /static/VoltHub/navbar.css
+"GET /static/VoltHub/style.css HTTP/1.1" 404 179
+Not Found: /static/VoltHub/map.js
+"GET /static/VoltHub/charging.css HTTP/1.1" 404 179
+"GET /static/VoltHub/contact.css HTTP/1.1" 404 179
+"GET /static/VoltHub/navbar.css HTTP/1.1" 404 179
+"GET /static/VoltHub/map.js HTTP/1.1" 404 179
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /stations/ HTTP/1.1" 200 25154
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /stations/ HTTP/1.1" 200 25154
+"GET /ecommerce/shop_home HTTP/1.1" 200 36457
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /ecommerce/shop_home HTTP/1.1" 200 36457
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /ecommerce/shop_home HTTP/1.1" 200 36457
+"GET /ecommerce/product/1/ HTTP/1.1" 200 24664
+"POST /cart/add/1/ HTTP/1.1" 200 27
+"GET /stations/ HTTP/1.1" 200 25154
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET /stations/ HTTP/1.1" 200 25154
+"GET /ecommerce/shop_home HTTP/1.1" 200 36457
+"GET /admin/ HTTP/1.1" 200 35656
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /admin/ HTTP/1.1" 200 35299
+"GET /admin/auth/user/ HTTP/1.1" 200 32658
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/ HTTP/1.1" 200 35299
+"GET /ecommerce/shop_home HTTP/1.1" 200 35233
+"GET /static/VoltHub/style.css HTTP/1.1" 200 3083
+"GET /static/VoltHub/map.js HTTP/1.1" 200 6075
+"GET /static/VoltHub/charging.css HTTP/1.1" 200 6194
+Watching for file changes with StatReloader
+"GET /profile HTTP/1.1" 200 24578
+"GET /static/VoltHub/navbar.css HTTP/1.1" 200 6654
+"GET /static/VoltHub/contact.css HTTP/1.1" 200 5122
+"POST /profile HTTP/1.1" 302 0
+"GET /profile HTTP/1.1" 200 24373
+"POST /profile HTTP/1.1" 302 0
+"GET /profile HTTP/1.1" 200 24667
+"GET /media/media/boat.jpg HTTP/1.1" 200 975365
+"GET /admin/ HTTP/1.1" 200 35299

@@ -22,9 +22,9 @@ SECRET_KEY = 'django-insecure-i9r%i5hq%av96r_&&%(qa2fto$bwx-1ka2u__7b8!@z40f#1t!
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
+DEBUG = True
 
-DEBUG = False
+#DEBUG = False
 
 ALLOWED_HOSTS = ["evcharging-production-c179.up.railway.app", "localhost", "127.0.0.1"]
 
@@ -292,10 +292,7 @@ USE_TZ = True
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-
-
+"""
 STATIC_ROOT = "staticfiles"
 #STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
@@ -303,7 +300,7 @@ STATIC_DIR = BASE_DIR / 'static'
 STATICFILES_DIRS = [STATIC_DIR] if STATIC_DIR.exists() else []
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
+"""
 
 
 # Media files configuration
@@ -418,10 +415,48 @@ AWS_S3_CUSTOM_DOMAIN = os.environ.get("AWS_S3_CUSTOM_DOMAIN")
 AWS_DEFAULT_ACL = os.environ.get("AWS_DEFAULT_ACL")
 
 
+AWS_LOCATION = 'static'
+
 AWS_S3_OBJECT_PARAMETERS = {
     "CacheControl": "max-age=86400",
 }
 
+
+# STATIC & MEDIA CONFIGURATION
+# -----------------------------
+USE_S3 = (
+    AWS_ACCESS_KEY_ID
+    and AWS_SECRET_ACCESS_KEY
+    and AWS_STORAGE_BUCKET_NAME
+)
+
+if USE_S3 and not DEBUG:
+    # STATIC FILES
+    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
+    STATICFILES_STORAGE = "storages.backends.s3boto3.S3StaticStorage"
+
+    STATIC_ROOT = BASE_DIR / "staticfiles"
+
+    # MEDIA FILES
+    MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
+    DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
+else:
+    # LOCAL DEVELOPMENT
+    STATIC_URL = "/static/"
+    MEDIA_URL = "/media/"
+
+    STATIC_ROOT = BASE_DIR / "staticfiles"
+    MEDIA_ROOT = BASE_DIR / "media"
+
+    STATICFILES_DIRS = [BASE_DIR / "static"]
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+
+
+
+
+"""
 # Determine whether to use S3 based on presence of all required settings
 USE_S3 = (
     AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME and AWS_S3_CUSTOM_DOMAIN
@@ -443,7 +478,7 @@ STATIC_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazona
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_LOCATION = 'static'
 
-
+"""
 
 """"
 # Static files
