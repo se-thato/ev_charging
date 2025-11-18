@@ -68018,3 +68018,18 @@ Watching for file changes with StatReloader
 "GET /profile HTTP/1.1" 200 24667
 "GET /media/media/boat.jpg HTTP/1.1" 200 975365
 "GET /admin/ HTTP/1.1" 200 35299
+Watching for file changes with StatReloader
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29105
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/1/change/ HTTP/1.1" 200 30914
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+Watching for file changes with StatReloader
+"GET /admin/ HTTP/1.1" 200 35299
+"GET / HTTP/1.1" 200 23590
+"GET /profile HTTP/1.1" 200 24545
+"GET /media/media/boat.jpg HTTP/1.1" 304 0
+"POST /profile HTTP/1.1" 302 0
+"GET /profile HTTP/1.1" 200 24373
+"POST /profile HTTP/1.1" 302 0
+"GET /profile HTTP/1.1" 200 24742
+"GET /media/media/profile_pictures/EV_wallpaper.jpg HTTP/1.1" 200 126561

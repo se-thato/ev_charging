@@ -367,3 +367,5 @@
 [2025-11-17 12:31:54,194] WARNING SLOW REQUEST: /media/profile_pictures/city.jpg took 53.833 seconds!
 [2025-11-17 23:04:48,555] WARNING SLOW REQUEST: / took 5.580 seconds!
 [2025-11-18 15:50:05,078] WARNING SLOW REQUEST: /profile took 60.102 seconds!
+[2025-11-18 16:12:52,052] WARNING SLOW REQUEST: /profile took 5.778 seconds!
+[2025-11-18 16:13:01,659] WARNING SLOW REQUEST: /media/media/profile_pictures/EV_wallpaper.jpg took 5.217 seconds!
