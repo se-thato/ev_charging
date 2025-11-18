@@ -68033,3 +68033,20 @@ Watching for file changes with StatReloader
 "POST /profile HTTP/1.1" 302 0
 "GET /profile HTTP/1.1" 200 24742
 "GET /media/media/profile_pictures/EV_wallpaper.jpg HTTP/1.1" 200 126561
+Watching for file changes with StatReloader
+"GET /admin/ HTTP/1.1" 200 35299
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29105
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/1/change/ HTTP/1.1" 200 30964
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/charging_station/profile/1/change/ HTTP/1.1" 200 31186
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/charging_station/profile/1/change/ HTTP/1.1" 302 0
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29316
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"GET /admin/charging_station/profile/1/change/ HTTP/1.1" 200 30635
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+"POST /admin/charging_station/profile/1/change/ HTTP/1.1" 302 0
+"GET /admin/charging_station/profile/ HTTP/1.1" 200 29316
+"GET /admin/jsi18n/ HTTP/1.1" 200 3342
+C:\Users\Thato\charging\ev_charging\charging_station\models.py changed, reloading.
