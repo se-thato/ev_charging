@@ -365,3 +365,4 @@
 [2025-11-17 12:30:09,249] WARNING SLOW REQUEST: / took 26.061 seconds!
 [2025-11-17 12:30:56,030] WARNING SLOW REQUEST: /profile took 8.530 seconds!
 [2025-11-17 12:31:54,194] WARNING SLOW REQUEST: /media/profile_pictures/city.jpg took 53.833 seconds!
+[2025-11-17 23:04:48,555] WARNING SLOW REQUEST: / took 5.580 seconds!

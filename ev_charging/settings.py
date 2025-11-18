@@ -7,7 +7,6 @@ from decouple import config
 from dotenv import load_dotenv
 import warnings
 
-
 # Load environment variables from .env file
 load_dotenv()
 
@@ -121,7 +120,7 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
-    'REFRESH_TOKEN_TOKEN': timedelta(days=14),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
     'ALGORITHM': 'HS256',
@@ -135,7 +134,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    #"whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -233,57 +232,27 @@ CHANNEL_LAYERS = {
 
 # Database
 """
-DB_LIVE = os.environ.get("DB_LIVE", "").lower() in ("1", "true", "yes")
-if DB_LIVE:
-    # Support Railway/MySQL environment variables as fallbacks
-    db_name = os.environ.get('DB_NAME') or os.environ.get('MYSQLDATABASE') or os.environ.get('MYSQL_DATABASE')
-    db_user = os.environ.get('DB_USER') or os.environ.get('MYSQLUSER') or os.environ.get('MYSQL_USER')
-    db_password = os.environ.get('DB_PASSWORD') or os.environ.get('MYSQLPASSWORD') or os.environ.get('MYSQL_PASSWORD')
-    db_host = os.environ.get('DB_HOST') or os.environ.get('MYSQLHOST') or os.environ.get('MYSQL_HOST') or 'localhost'
-    db_port = int(os.environ.get('DB_PORT') or os.environ.get('MYSQLPORT') or os.environ.get('MYSQL_PORT') or 3306)
-
-    db_options = {}
-    # Optional SSL configuration for hosted MySQL providers
-    mysql_ssl = os.environ.get('MYSQL_SSL') or os.environ.get('DB_SSL')
-    if mysql_ssl and mysql_ssl.lower() in ('1', 'true', 'yes', 'required'):
-        db_options['ssl'] = {}
-        if os.environ.get('MYSQL_SSL_CA'):
-            db_options['ssl']['ca'] = os.environ.get('MYSQL_SSL_CA')
-
+# Database (MySQL on Railway if env present, otherwise local sqlite)
+if os.environ.get("DB_NAME") and os.environ.get("DB_USER"):
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': db_name,
-            'USER': db_user,
-            'PASSWORD': db_password,
-            'HOST': db_host,
-            'PORT': db_port,
-            'OPTIONS': db_options,
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": os.environ.get("DB_NAME"),
+            "USER": os.environ.get("DB_USER"),
+            "PASSWORD": os.environ.get("DB_PASSWORD", ""),
+            "HOST": os.environ.get("DB_HOST"),
+            "PORT": os.environ.get("DB_PORT", "3306"),
+            "OPTIONS": {},
         }
     }
 else:
-
 """
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get("DB_NAME"),
-        'USER': os.environ.get("DB_USER"),
-        'PASSWORD': os.environ.get("DB_PASSWORD"),
-        'HOST': os.environ.get("DB_HOST"),
-        'PORT': os.environ.get("DB_PORT"),
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -325,7 +294,10 @@ USE_TZ = True
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+
+STATIC_ROOT = "staticfiles"
+#STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
 STATIC_DIR = BASE_DIR / 'static'
 STATICFILES_DIRS = [STATIC_DIR] if STATIC_DIR.exists() else []
@@ -443,28 +415,45 @@ AWS_SECRET_ACCESS_KEY= os.environ.get("AWS_SECRET_ACCESS_KEY")
 AWS_STORAGE_BUCKET_NAME= os.environ.get("AWS_STORAGE_BUCKET_NAME")
 AWS_S3_REGION_NAME = os.environ.get("AWS_S3_REGION_NAME")
 AWS_S3_CUSTOM_DOMAIN = os.environ.get("AWS_S3_CUSTOM_DOMAIN")
-#AWS_DEFAULT_ACL = os.environ.get("AWS_DEFAULT_ACL")
+AWS_DEFAULT_ACL = os.environ.get("AWS_DEFAULT_ACL")
 
 
 AWS_S3_OBJECT_PARAMETERS = {
     "CacheControl": "max-age=86400",
 }
 
-STATIC_LOCATION = "static"
-MEDIA_LOCATION = "media"
+# Determine whether to use S3 based on presence of all required settings
+USE_S3 = (
+    AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME and AWS_S3_CUSTOM_DOMAIN
+)
 
+
+if USE_S3 and not DEBUG:
+    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
+    MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
+    STATICFILES_STORAGE = "storages.backends.s3boto3.S3StaticStorage"
+    DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+else:
+    # Local / dev: use WhiteNoise for serving static files
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
+
+# AWS S3 Static files configuration
+STATIC_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/static/"
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_LOCATION = 'static'
+
+
+
+""""
 # Static files
 STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
 STATICFILES_STORAGE = "storages.backends.s3boto3.S3StaticStorage"
-STATIC_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/{STATIC_LOCATION}/"
-STATICFILES_STORAGE = "custom_storages.StaticStorage"
 
 # Media files
 MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-DEFAULT_FILE_STORAGE = "custom_storages.MediaStorage"
-MEDIA_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/{MEDIA_LOCATION}/"
-
+"""
 
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
