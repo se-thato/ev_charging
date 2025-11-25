@@ -22,7 +22,7 @@ VoltHub is a web-based platform for electric vehicle (EV) charging. It uses Djan
 - ev_charging/ — project settings, URLs, ASGI/WSGI, Celery config
 - media/ and profile_pictures/ — uploaded files
 - static/ and staticfiles/ — static assets
-- virt/ — local virtual environment (optional)
+- virt/ — local virtual environment
 
 ## Requirements
 
