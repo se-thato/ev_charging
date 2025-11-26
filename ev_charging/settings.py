@@ -434,8 +434,9 @@ if USE_S3 and not DEBUG:
     # STATIC FILES
     STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
     STATICFILES_STORAGE = "storages.backends.s3boto3.S3StaticStorage"
-
-    STATIC_ROOT = BASE_DIR / "staticfiles"
+    STATIC_ROOT = "staticfiles"
+    STATICFILES_DIRS = [BASE_DIR / "static"]
+    
 
     # MEDIA FILES
     MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
@@ -445,9 +446,10 @@ else:
     # LOCAL DEVELOPMENT
     STATIC_URL = "/static/"
     MEDIA_URL = "/media/"
+    STATIC_ROOT = "staticfiles"
+    MEDIA_ROOT = "media"
 
     STATIC_ROOT = BASE_DIR / "staticfiles"
-    MEDIA_ROOT = BASE_DIR / "media"
 
     STATICFILES_DIRS = [BASE_DIR / "static"]
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
@@ -491,7 +493,13 @@ DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 """
 
 AWS_S3_FILE_OVERWRITE = False
+
+AWS_QUERYSTRING_AUTH = False
 AWS_DEFAULT_ACL = None
+
+AWS_S3_OBJECT_PARAMETERS = {
+    "ACL": "public-read",
+}
 
 
 
