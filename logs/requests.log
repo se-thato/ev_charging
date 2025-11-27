@@ -68302,3 +68302,31 @@ Watching for file changes with StatReloader
 Watching for file changes with StatReloader
 "GET /ecommerce/shop_home HTTP/1.1" 200 36457
 "GET /profile HTTP/1.1" 200 25265
+Watching for file changes with StatReloader
+"GET /profile HTTP/1.1" 200 25265
+"POST /profile HTTP/1.1" 302 0
+"GET /profile HTTP/1.1" 200 24934
+"POST /profile HTTP/1.1" 302 0
+"GET /profile HTTP/1.1" 200 25387
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /profile HTTP/1.1" 200 24602
+"GET /static/VoltHub/charging.css HTTP/1.1" 200 6194
+"GET /static/VoltHub/style.css HTTP/1.1" 200 3083
+"GET /media/profile_pictures/boat_frH2o65.jpg HTTP/1.1" 200 975365
+"GET / HTTP/1.1" 200 23590
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/login.css HTTP/1.1" 304 0
+"GET /static/VoltHub/register.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/image/video.mp4 HTTP/1.1" 304 0
+"GET /admin/ HTTP/1.1" 200 35417
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader

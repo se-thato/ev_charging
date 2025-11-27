@@ -22,7 +22,6 @@ SECRET_KEY = 'django-insecure-i9r%i5hq%av96r_&&%(qa2fto$bwx-1ka2u__7b8!@z40f#1t!
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
 
 DEBUG = False
 
@@ -434,7 +433,7 @@ if USE_S3 and not DEBUG:
     # STATIC FILES
     STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
     STATICFILES_STORAGE = "storages.backends.s3boto3.S3StaticStorage"
-    STATIC_ROOT = "staticfiles"
+    STATIC_ROOT = BASE_DIR / "staticfiles"
     STATICFILES_DIRS = [BASE_DIR / "static"]
     
 
