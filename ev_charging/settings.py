@@ -358,20 +358,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #AUTH_USER_MODEL = 'charging_station.CustomUser'
 
-"""
-#smtp settings(email)
-# Email
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#EMAIL_HOST = config("EMAIL_HOST", default="localhost")
-EMAIL_HOST = config("EMAIL_HOST", default="smtp.gmail.com")
-EMAIL_PORT = config("EMAIL_PORT", cast=int, default=587)
-EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool, default=True)
-EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="")
-EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="")
-DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL", default="noreply@volthub.com")
-"""
-
-
 
 # Allauth
 SITE_ID = 1
@@ -422,7 +408,6 @@ AWS_S3_OBJECT_PARAMETERS = {
 
 
 # STATIC & MEDIA CONFIGURATION
-# -----------------------------
 USE_S3 = (
     AWS_ACCESS_KEY_ID
     and AWS_SECRET_ACCESS_KEY
@@ -455,46 +440,10 @@ else:
 
 
 
-
-
-"""
-# Determine whether to use S3 based on presence of all required settings
-USE_S3 = (
-    AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY and AWS_STORAGE_BUCKET_NAME and AWS_S3_CUSTOM_DOMAIN
-)
-
-
-if USE_S3 and not DEBUG:
-    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
-    MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
-    STATICFILES_STORAGE = "storages.backends.s3boto3.S3StaticStorage"
-    DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-else:
-    # Local / dev: use WhiteNoise for serving static files
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-    DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
-
-# AWS S3 Static files configuration
-STATIC_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/static/"
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_LOCATION = 'static'
-
-"""
-
-""""
-# Static files
-STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
-STATICFILES_STORAGE = "storages.backends.s3boto3.S3StaticStorage"
-
-# Media files
-MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
-"""
-
 AWS_S3_FILE_OVERWRITE = False
 
 AWS_QUERYSTRING_AUTH = False
-AWS_DEFAULT_ACL = None
+AWS_DEFAULT_ACL = "public-read" # this will make the files publicly accessible
 
 AWS_S3_OBJECT_PARAMETERS = {
     "ACL": "public-read",

@@ -68330,3 +68330,23 @@ C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
 Watching for file changes with StatReloader
 C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 24253
+"GET /profile HTTP/1.1" 200 25265
+"POST /profile HTTP/1.1" 302 0
+"GET /profile HTTP/1.1" 200 24934
+- Broken pipe from ('127.0.0.1', 64000)
+"POST /profile HTTP/1.1" 302 0
+"GET /profile HTTP/1.1" 200 25399
+"POST /profile HTTP/1.1" 302 0
+"POST /profile HTTP/1.1" 302 0
+- Broken pipe from ('127.0.0.1', 62508)
+"GET /profile HTTP/1.1" 200 25010
+"GET /profile HTTP/1.1" 200 24812
+"POST /profile HTTP/1.1" 302 0
+"GET /profile HTTP/1.1" 200 25411
+"POST /profile HTTP/1.1" 302 0
+"GET /profile HTTP/1.1" 200 24934
+"POST /profile HTTP/1.1" 302 0
+"GET /profile HTTP/1.1" 200 25411
