@@ -133,7 +133,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    #"whitenoise.middleware.WhiteNoiseMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -230,7 +230,6 @@ CHANNEL_LAYERS = {
 }
 
 # Database
-"""
 # Database (MySQL on Railway if env present, otherwise local sqlite)
 if os.environ.get("DB_NAME") and os.environ.get("DB_USER"):
     DATABASES = {
@@ -245,13 +244,13 @@ if os.environ.get("DB_NAME") and os.environ.get("DB_USER"):
         }
     }
 else:
-"""
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
     }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -407,7 +406,7 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 
 
-# STATIC & MEDIA CONFIGURATION
+# Static and Media files settings
 USE_S3 = (
     AWS_ACCESS_KEY_ID
     and AWS_SECRET_ACCESS_KEY
@@ -415,19 +414,19 @@ USE_S3 = (
 )
 
 if USE_S3 and not DEBUG:
-    # STATIC FILES
+    # Static files
     STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
     STATICFILES_STORAGE = "storages.backends.s3boto3.S3StaticStorage"
     STATIC_ROOT = BASE_DIR / "staticfiles"
     STATICFILES_DIRS = [BASE_DIR / "static"]
     
 
-    # MEDIA FILES
+    # Media files
     MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
     DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
 else:
-    # LOCAL DEVELOPMENT
+    # This is for local development and when S3 is not configured
     STATIC_URL = "/static/"
     MEDIA_URL = "/media/"
     STATIC_ROOT = "staticfiles"
