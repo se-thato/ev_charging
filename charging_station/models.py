@@ -203,7 +203,7 @@ class Rating(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     station = models.ForeignKey(ChargingPoint, on_delete=models.CASCADE)
     rating = models.PositiveIntegerField()
-    comment = models.TextField(null=True, blank=True)
+    comment_text = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='ratings_created')
     updated_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='ratings_updated')

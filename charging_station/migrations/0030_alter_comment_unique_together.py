@@ -11,9 +11,3 @@ class Migration(migrations.Migration):
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
-    operations = [
-        migrations.AlterUniqueTogether(
-            name='comment',
-            unique_together={('user', 'station')},
-        ),
-    ]

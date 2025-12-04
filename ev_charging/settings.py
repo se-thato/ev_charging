@@ -230,7 +230,6 @@ CHANNEL_LAYERS = {
 }
 
 # Database
-"""
 # Database (MySQL on Railway if env present, otherwise local sqlite)
 if os.environ.get("DB_NAME") and os.environ.get("DB_USER"):
     DATABASES = {
@@ -245,13 +244,13 @@ if os.environ.get("DB_NAME") and os.environ.get("DB_USER"):
         }
     }
 else:
-"""
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
     }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
