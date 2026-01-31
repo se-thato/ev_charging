@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>{% block title %}VoltHub{% endblock %}</title>
     
     <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
@@ -25,6 +25,23 @@
 
     
     {% block extra_css %}{% endblock %}
+
+    <style>
+      /* Global mobile-first responsiveness */
+      html, body { max-width: 100%; overflow-x: hidden; }
+      img, video { max-width: 100%; height: auto; }
+      /* Ensure buttons and links are easy to tap */
+      .btn, button, a.btn { min-height: 44px; padding: .6rem 1rem; font-size: 1rem; }
+      /* Form controls touch target */
+      .form-control, select.form-select { min-height: 44px; }
+      /* Tables: prevent overflow on small screens */
+      @media (max-width: 576px){
+        table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        thead, tbody, th, td, tr { display: revert; }
+        .container, .container-fluid { padding-left: .75rem; padding-right: .75rem; }
+        .navbar .nav-link { padding: .5rem .75rem; }
+      }
+    </style>
     </head>
 
 

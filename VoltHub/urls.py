@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     path('', views.home, name=""),
 
-    path('dashboard', views.dashboard, name="dashboard"),
+    #path('dashboard', views.dashboard, name="dashboard"),
     
     path('about_us', views.about_us, name="about_us"),
 
@@ -43,7 +43,9 @@ urlpatterns = [
     #posts section
     path('post_detail', views.post_detail, name="post_detail"),
     path('post_detail/<int:pk>/', views.post_detail, name='post_detail'),
-
     
-
-]
+    # comment reactions
+    path('comments/<int:comment_id>/upvote/', views.comment_upvote, name='comment_upvote'),
+    path('comments/<int:comment_id>/downvote/', views.comment_downvote, name='comment_downvote'),
+    
+    ]

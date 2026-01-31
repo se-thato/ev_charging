@@ -4,8 +4,14 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from django.db.models import F
+from django.db.models import F, Sum
 from django.db.models.functions import ACos, Cos, Radians, Sin
+from django.core.exceptions import PermissionDenied
+from django.core.exceptions import ValidationError  
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+
 
 from .models import (
     ChargingPoint,
@@ -113,6 +119,14 @@ class ChargingSessionViewSet(viewsets.ModelViewSet):
     filter_backends = [OrderingFilter, SearchFilter]
     ordering_fields = ["start_time", "end_time", "status"]
 
+    #this method calculates the duration of the session
+    def save(self, *args, **kwargs):
+        if self.start_time and self.end_time:
+            if self.end_time < self.start_time:
+                raise ValidationError("Opps!! end time cannot be before start time.")
+            self.duration = self.end_time - self.start_time
+        super().save(*args, **kwargs)
+
 
 
 class BookingViewSet(viewsets.ModelViewSet):
@@ -121,6 +135,23 @@ class BookingViewSet(viewsets.ModelViewSet):
     pagination_class = DefaultPageNumberPagination
     filter_backends = [OrderingFilter, SearchFilter]
     ordering_fields = ["created_at", "status", "booking_date"]
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        station = serializer.validated_data['station']
+
+        # This function will check if the station is bookable before allowing booking
+        if station.status != 'bookable':
+            raise PermissionDenied(
+                "This charging station is not available for booking."
+            )
+
+        booking = serializer.save(user=request.user) # Save the booking with the logged-in user
+
+        return Response(BookingSerializer(booking).data,status=status.HTTP_201_CREATED) # Return the created booking details
+
 
 
 
@@ -134,7 +165,6 @@ class ProfileViewSet(viewsets.ModelViewSet):
     ordering_fields = ["id", "username", "email"]
 
 
-
 class PaymentMethodViewSet(viewsets.ModelViewSet):
     queryset = PaymentMethod.objects.all()
     serializer_class = PaymentMethodSerializer
@@ -142,7 +172,6 @@ class PaymentMethodViewSet(viewsets.ModelViewSet):
     pagination_class = DefaultPageNumberPagination
     filter_backends = [OrderingFilter, SearchFilter]
     ordering_fields = ["created_at", "is_default"]
-
 
 
 class PaymentViewSet(viewsets.ModelViewSet):
@@ -153,13 +182,36 @@ class PaymentViewSet(viewsets.ModelViewSet):
     filter_backends = [OrderingFilter, SearchFilter]
     ordering_fields = ["created_at", "amount", "status"]
 
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        payment = serializer.save(user=request.user)
+
+        # So this will calculate the platform commission and station earnings
+        if payment.charging_session:
+            station = payment.charging_session.station
+            commission_rate = station.commission_rate
+
+            commission = (commission_rate / 100) * payment.amount # calculate commission
+            payment.platform_commission = commission
+            payment.station_earnings = payment.amount - commission
+            payment.save()
+
+        # Return the created payment with details, including commission info and earnings, So that the user can see what they paid for
+        headers = self.get_success_headers(serializer.data)
+        return Response(
+            PaymentSerializer(payment).data,
+            status=status.HTTP_201_CREATED,
+            headers=headers
+        )
 
 
 class RatingViewSet(viewsets.ModelViewSet):
     queryset = Rating.objects.all()
     serializer_class = RatingSerializer
     pagination_class = DefaultPageNumberPagination
-    filter_backends = [OrderingFilter, SearchFilter]
+    filter_backends = [OrderingFilter, SearchFilter] 
     ordering_fields = ["created_at", "rating"]
 
 
@@ -180,6 +232,7 @@ class CommentViewSet(viewsets.ModelViewSet):
     filter_backends = [OrderingFilter, SearchFilter]
     ordering_fields = ["created_at", "upvotes", "downvotes"]
 
+
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
@@ -187,6 +240,7 @@ class PostViewSet(viewsets.ModelViewSet):
     pagination_class = DefaultPageNumberPagination
     filter_backends = [OrderingFilter, SearchFilter]
     ordering_fields = ["created_at", "title"]
+
 
 class SubscriptionPlanViewSet(viewsets.ModelViewSet):
     queryset = SubscriptionPlan.objects.all()
@@ -215,3 +269,24 @@ class ChargingStationAnaliticsViewSet(viewsets.ModelViewSet):
     pagination_class = DefaultPageNumberPagination
     filter_backends = [OrderingFilter, SearchFilter]
     ordering_fields = ["total_sessions", "total_revenue", "created_at"]
+
+
+#This view will provide dashboard data for station owners
+class StationOwnerDashboardView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        stations = ChargingPoint.objects.filter(owner=user)
+        bookings = Booking.objects.filter(station__in=stations,status='completed') #This is to get only completed bookings
+        #This will get all payments related to the bookings
+        payments = Payment.objects.filter(booking__in=bookings)
+
+        #Then calculate the total earnings, total bookings, and total stations
+        return Response({
+            "total_stations": stations.count(),
+            "total_bookings": bookings.count(),
+            "total_earnings": payments.aggregate(
+                total=Sum('station_earnings')
+            )['total'] or 0
+        })

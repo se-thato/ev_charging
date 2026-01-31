@@ -33,7 +33,7 @@ def charging_session_pre_save(sender, instance, **kwargs):
     except ChargingSession.DoesNotExist:
         return
 
-    # If previously had no end_time and now has an end_time -> mark to generate invoice
+    # If previously had no end_time and now has an end_time , mark to generate invoice
     if old.end_time is None and instance.end_time is not None:
         instance._generate_invoice = True
 

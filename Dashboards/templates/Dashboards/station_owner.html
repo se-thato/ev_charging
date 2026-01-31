@@ -1,0 +1,196 @@
+{% extends "VoltHub/base.html" %}
+
+{% block container_classes %}container-fluid p-0{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Station Owner Dashboard</title>
+
+    <style>
+        /* === YOUR PROVIDED CSS (UNCHANGED) === */
+        :root {
+          --vh-bg: #050512;
+          --vh-surface: rgba(13, 13, 30, 0.55);
+          --vh-primary: #7a7cff;
+          --vh-accent: #00e5ff;
+          --vh-accent-2: #45ffbc;
+          --vh-border: rgba(122, 124, 255, 0.35);
+          --vh-text: #e6e9ff;
+          --vh-text-strong: #ffffff;
+          --vh-muted: #c5cdfa;
+          --vh-glow: rgba(0, 229, 255, 0.5);
+        }
+
+        html, body {
+          margin: 0;
+          background-color: #070718;
+          overflow-x: hidden;
+          font-family: Arial, sans-serif;
+        }
+
+        .dash-wrap {
+          position: relative;
+          padding: 4vh 0 8vh;
+          width: 100vw;
+          margin-left: calc(50% - 50vw);
+          margin-right: calc(50% - 50vw);
+          background:
+            radial-gradient(1200px 600px at 10% -20%, rgba(122,124,255,0.22), transparent 60%),
+            radial-gradient(1000px 800px at 120% 10%, rgba(0,229,255,0.18), transparent 50%),
+            linear-gradient(135deg, #070718 0%, #040414 45%, #09091f 100%);
+        }
+
+        .dash-header {
+          text-align: center;
+          margin-bottom: 2rem;
+          position: relative;
+          z-index: 1;
+        }
+
+        .dash-header h1 {
+          color: var(--vh-text-strong);
+          font-weight: 800;
+        }
+
+        .subtitle {
+          color: whitesmoke;
+        }
+
+        .accent-line {
+          height: 2px;
+          max-width: 420px;
+          margin: .75rem auto 0;
+          background: linear-gradient(90deg, transparent, var(--vh-accent), var(--vh-primary), transparent);
+        }
+
+        .stats {
+          display: flex;
+          gap: 1.5rem;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .glass-card {
+          border: 1px solid var(--vh-border);
+          background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+          backdrop-filter: blur(12px);
+          border-radius: 16px;
+          box-shadow: 0 20px 60px rgba(12, 16, 50, 0.65);
+          color: var(--vh-text);
+          width: 260px;
+        }
+
+        .card-header {
+          padding: 1rem;
+          font-weight: bold;
+          border-bottom: 1px solid var(--vh-border);
+          text-align: center;
+        }
+
+        .card-body {
+          padding: 1.25rem;
+          text-align: center;
+          font-size: 1.6rem;
+          color: var(--vh-text-strong);
+        }
+
+        .neon-table {
+          margin: 2rem 1rem 0;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          background: white;
+        }
+
+        th, td {
+          padding: 12px;
+          border: 1px solid #ddd;
+          text-align: left;
+        }
+
+        th {
+          background: linear-gradient(90deg, rgba(122,124,255,0.45), rgba(0,229,255,0.30));
+          color: #000;
+        }
+
+        tbody tr:hover {
+          background-color: #f0f8ff;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="dash-wrap">
+
+    <!-- HEADER -->
+    <div class="dash-header">
+        <h1>⚡Station Owner Dashboard</h1>
+        <p class="subtitle">Monitor your stations, bookings & revenue</p>
+        <div class="accent-line"></div>
+    </div> 
+
+    <!-- STAT CARDS -->
+    <div class="stats">
+
+        <div class="glass-card">
+            <div class="card-header">Total Stations</div>
+            <div class="card-body">{{ total_stations }}</div>
+        </div>
+
+        <div class="glass-card">
+            <div class="card-header">Total Bookings</div>
+            <div class="card-body">{{ total_bookings }}</div>
+        </div>
+
+        <div class="glass-card">
+            <div class="card-header">This Month’s Earnings</div>
+            <div class="card-body">${{ monthly_earnings }}</div>
+        </div>
+
+    </div>
+
+    <!-- BOOKINGS TABLE -->
+    <div class="glass-card neon-table">
+        <div class="card-header">Recent Bookings</div>
+        <div class="card-body" style="padding:0">
+
+            {% if bookings %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Station</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in bookings %}
+                    <tr>
+                        <td>{{ booking.user.email }}</td>
+                        <td>{{ booking.station.name }}</td>
+                        <td>{{ booking.created_at|date:"Y-m-d H:i" }}</td>
+                        <td>{{ booking.status }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+                <p style="padding:1rem;">No bookings yet.</p>
+            {% endif %}
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+{% include 'VoltHub/footer.html' %}
+{% endblock %}

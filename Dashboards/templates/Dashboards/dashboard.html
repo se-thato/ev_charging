@@ -120,6 +120,7 @@
   .site-footer, footer { position: relative; z-index: 1; }
 </style>
 
+<body>
 <section class="dash-wrap">
   <div class="dash-header">
     <h1>Welcome to The VoltHub {{ user.username }}</h1>
@@ -146,8 +147,6 @@
               <th>Station</th>
               <th>Location</th>
               <th>Capacity</th>
-              <th>Latitude</th>
-              <th>Longitude</th>
               <th>Available Slots</th>
               <th>Price Per Hour</th>
               <th>Status</th>
@@ -165,8 +164,6 @@
                   <td>{{ station.name }}</td>
                   <td class="cell-mono">{{ station.location }}</td>
                   <td>{{ station.capicity }}</td>
-                  <td class="cell-mono">{{ station.latitude }}</td>
-                  <td class="cell-mono">{{ station.longitude }}</td>
                   <td>{{ station.available_slots }}</td>
                   <td>R{{ station.price_per_hour }}</td>
                   <td>
@@ -295,5 +292,6 @@
     <a class="btn btn-outline-primary btn-sm neon-cta" href="{% url 'book' %}">Book Your Session</a>
   </div>
 </section>
+</body>
 {% include 'VoltHub/footer.html' %}
 {% endblock %}

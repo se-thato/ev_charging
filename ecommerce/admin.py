@@ -1,8 +1,21 @@
 from django.contrib import admin
-from .models import Product, Category, Order, OrderItem, CartItem, Cart, Customer, Review, Wishlist, WishlistItem, Address, Profile
+from .models import Product, Category, ProductImage, Order, OrderItem, CartItem, Cart, Customer, Review, Wishlist, WishlistItem, Address, Profile,Country, Supplier,ConnectorType,SupplierOrder
 
 
-admin.site.register(Product)
+class ProductImageInline(admin.TabularInline):
+    model = ProductImage
+    extra = 1  # Show one blank image field by default
+    max_num = 10  # Maximum images per product
+
+class ProductAdmin(admin.ModelAdmin):
+    inlines = [ProductImageInline]
+    list_display = ('name', 'price', 'supplier', 'active')
+    list_filter = ('category', 'active', 'supplier')
+    search_fields = ('name', 'description')
+    ordering = ('-created_at',)
+    
+
+admin.site.register(Product, ProductAdmin)
 
 admin.site.register(Category)
 
@@ -25,3 +38,12 @@ admin.site.register(Wishlist)
 admin.site.register(WishlistItem)
 
 admin.site.register(Profile)
+
+admin.site.register(Country)
+
+admin.site.register(Supplier)
+
+admin.site.register(ConnectorType)
+
+admin.site.register(SupplierOrder)
+

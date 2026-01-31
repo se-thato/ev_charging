@@ -91,6 +91,18 @@
 }
 .btn-neon:hover { color: #fff; border-color: rgba(0,229,255,0.65); background: linear-gradient(180deg, rgba(0,229,255,0.18), rgba(122,124,255,0.12)); box-shadow: 0 0 0 2px rgba(0,229,255,0.24), 0 10px 26px rgba(0,229,255,0.16); transform: translateY(-1px); }
 
+/* Prominent CTA variant for visibility */
+.btn-cta {
+  font-weight: 700;
+  padding: .5rem 1rem;
+  background: linear-gradient(180deg, var(--vh-accent), var(--vh-primary));
+  color: #0b0f2a;
+  border-color: rgba(0,229,255,0.8);
+  box-shadow: 0 0 0 2px rgba(0,229,255,0.3), 0 10px 26px rgba(0,229,255,0.22);
+}
+.btn-cta:hover { transform: translateY(-2px); }
+.btn-cta:focus-visible { outline: 3px solid var(--vh-accent-2); outline-offset: 2px; }
+
 /* Highlights strip */
 .highlights { position: relative; z-index: 1; padding: 2.5rem 1rem 1rem; }
 .highlights-inner { max-width: 1200px; margin: 0 auto; }
@@ -112,6 +124,18 @@
 .testimonial-card h4 { margin: 0 0 .25rem; font-weight: 700; }
 .testimonial-card p  { margin: 0 0 .35rem; font-style: italic; color: #e6e9ff; }
 .testimonial-card small { color: var(--vh-muted); }
+
+/* Mobile and accessibility tweaks */
+.back-video { position: fixed; inset: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1; }
+.btn-neon, .btn-cta { min-height: 44px; padding: .6rem 1rem; font-size: 1rem; }
+@media (max-width: 576px){
+  .hero-inner { padding: 1.25rem 1rem; }
+  .highlights { padding: 1.25rem 1rem; }
+  .home-testimonials { padding: 1.25rem 1rem 2rem; }
+  .testimonial-grid { gap: .75rem; }
+  .testimonial-card { padding: .875rem 1rem; }
+  .hero-actions { gap: .5rem; }
+}
 </style>
 </head>
 
@@ -131,7 +155,7 @@
       Our EV charging station locator provides efficient and convenient options, from home installation to public fast-charging networks. Power up your EV now with fast, reliable, and eco-friendly charging solutions. Find a station near you.
     </p>
     <div class="hero-actions">
-      <a href="{% url 'book' %}" class="btn-neon">Book Now</a>
+      <a href="{% url 'stations' %}" class="btn-neon"><i class="fa fa-map-marker"></i> Explore Charging Points</a>
     </div>
   </div>
 </section>
@@ -166,15 +190,49 @@
           <h4>- {{ comment.user.username }}</h4>
           <p>"{{ comment.comment_text }}"</p>
           <small>Posted on {{ comment.created_at|date:"F j, Y, g:i a" }}</small>
-          <br/><br/>
-          <a href="{% url 'post_detail' %}" class="btn-neon">View Post</a>
-
+          <div class="mt-2" style="display:flex; gap:.5rem; align-items:center;">
+            {% if user.is_authenticated %}
+              <form method="post" action="/comments/{{ comment.id }}/upvote/">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-sm btn-outline-success" title="Upvote">
+                  <i class="fa fa-thumbs-up"></i> {{ comment.upvotes }}
+                </button>
+              </form>
+              <form method="post" action="/comments/{{ comment.id }}/downvote/">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-sm btn-outline-danger" title="Downvote">
+                  <i class="fa fa-thumbs-down"></i> {{ comment.downvotes }}
+                </button>
+              </form>
+            {% else %}
+              <button type="button" class="btn btn-sm btn-outline-success" disabled title="Login to vote">
+                <i class="fa fa-thumbs-up"></i> {{ comment.upvotes }}
+              </button>
+              <button type="button" class="btn btn-sm btn-outline-danger" disabled title="Login to vote">
+                <i class="fa fa-thumbs-down"></i> {{ comment.downvotes }}
+              </button>
+              <a href="{% url 'authentication:login' %}" class="btn btn-link btn-sm" aria-label="Login to vote">Login to vote</a>
+            {% endif %}
+            <span class="badge bg-secondary">Score: {{ comment.total_votes }}</span>
+          </div>
         </div>
       {% empty %}
         <div class="testimonial-card">
           <p>No comments yet. Be the first to share your thoughts!</p>
         </div>
       {% endfor %}
+    </div>
+
+    <div style="text-align:center; margin-top: 1rem;">
+      {% if post_to_comment %}
+        <a href="{% url 'post_detail' pk=post_to_comment.pk %}" class="btn-neon btn-cta" title="Add your comment" aria-label="Add your comment">
+          <i class="fa fa-comment"></i> Add your comment
+        </a>
+      {% else %}
+        <a href="{% url 'stations' %}" class="btn-neon btn-cta" title="Add your comment" aria-label="Add your comment">
+          <i class="fa fa-comment"></i> Add your comment
+        </a>
+      {% endif %}
     </div>
   </div>
 </section>

@@ -93,6 +93,25 @@
   .btn-neon:hover { color: #fff; border-color: rgba(0,229,255,0.65); background: linear-gradient(180deg, rgba(0,229,255,0.18), rgba(122,124,255,0.12)); box-shadow: 0 0 0 2px rgba(0,229,255,0.24), 0 10px 26px rgba(0,229,255,0.16); transform: translateY(-1px); }
 
   .spacer-bottom { padding-bottom: 6vh; }
+ /* New gallery styles */
+  .gallery-thumbnails {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .gallery-thumbnails img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border 0.2s ease;
+  }
+  .gallery-thumbnails img.selected {
+    border-color: var(--vh-accent);
+  }
 </style>
 
 <section class="product-wrap">
@@ -104,12 +123,32 @@
 
   <div class="product-inner spacer-bottom">
     <div class="row g-4 align-items-start">
+      <!-- Product Images -->
       <div class="col-12 col-lg-6">
         <div class="product-media">
-          {% if product.on_sale %}<div class="sale-badge">Sale</div>{% endif %}
-          <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-img" />
+          {% if product.on_sale %}
+            <div class="sale-badge">Sale</div>
+          {% endif %}
+
+          <!-- Main Image -->
+          {% if product.main_image %}
+            <img id="main-product-img" src="{{ product.main_image.url }}" alt="{{ product.name }}" class="product-img" />
+          {% else %}
+            <img id="main-product-img" src="{% static 'images/placeholder.png' %}" alt="No Image" class="product-img" />
+          {% endif %}
+
+          <!-- Gallery Thumbnails -->
+          <div class="gallery-thumbnails">
+            {% for image in product.gallery.all %}
+              <img src="{{ image.image.url }}" alt="{{ image.alt_text }}" class="{% if forloop.first %}selected{% endif %}" data-large="{{ image.image.url }}">
+            {% empty %}
+              <!-- No gallery images -->
+            {% endfor %}
+          </div>
         </div>
       </div>
+
+      <!-- Product Details -->
       <div class="col-12 col-lg-6">
         <div class="product-card">
           <div class="product-body">
@@ -122,54 +161,49 @@
                 <strong>R{{ product.sale_price }}</strong>
               {% else %}
                 <strong>R{{ product.price }}</strong>
-              
               {% endif %}
             </div>
+
             <div class="actions">
               <a href="{% url 'shop_home' %}" class="btn-neon">Back to Shop</a>
               <a href="{% url 'Cart:add-cart' product.id %}" class="btn-neon" id="add-to-cart" value="{{ product.id }}">Add to Cart</a>
-          
-
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   {% include 'VoltHub/footer.html' %}
 </section>
 
+<!-- JS Section -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
 <script>
-//Check if button is clicked
-$(document).on('click', '#add-to-cart', function(e) {
-  e.preventDefault();
-  $.ajax({
-    type: 'POST',
-    url: "{% url 'Cart:add-cart' product.id %}",
+  // Cart AJAX (your existing code)
+  $(document).on('click', '#add-to-cart', function(e) {
+    e.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: "{% url 'Cart:add-cart' product.id %}",
       data: {
         product_id: $('#add-to-cart').val(),
-        //this is to prevent csrf attacks
         csrfmiddlewaretoken: '{{ csrf_token }}',
         action: 'post'
       },
-      // If the request is successful
       success: function(json) {
-        //console.log(json)
         document.getElementById('cart-quantity').textContent = json.qty;
-
-
-      }, 
-      // If there is an error
-      error: function(xhr, status, error) {
-        
-      }
-
+      },
+      error: function(xhr, status, error) {}
     });
-    
   });
 
+  // Gallery thumbnail click
+  $(document).on('click', '.gallery-thumbnails img', function() {
+    var newSrc = $(this).data('large');
+    $('#main-product-img').attr('src', newSrc);
+    $('.gallery-thumbnails img').removeClass('selected');
+    $(this).addClass('selected');
+  });
 </script>
-
 {% endblock %}

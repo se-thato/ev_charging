@@ -14,18 +14,34 @@ class BookingForm(forms.ModelForm):
         label='Booking Date'
     )
 
+    # Optional start time so users can pick an exact datetime.
+    # `datetime-local` produces a naive datetime string in the user's local
+    # timezone; we convert it to an aware datetime in the view.
+    start_time = forms.DateTimeField(
+        required=False,
+        widget=forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'}),
+        label='Start Time (optional)'
+    )
 
     class Meta:
         model = Booking
-        fields = ['email', 'station', 'booking_date', 'duration', 'payment_method', 'status']
+        # Do NOT expose `status` to users; default remains 'pending' at the model level.
+        fields = ['email', 'station', 'booking_date', 'start_time', 'duration', 'payment_method']
 
 
 #updating your bookings
 class UpdateBookingForm(forms.ModelForm):
 
+    start_time = forms.DateTimeField(
+        required=False,
+        widget=forms.DateTimeInput(attrs={'type': 'datetime-local', 'class': 'form-control'}),
+        label='Start Time (optional)'
+    )
+
     class Meta:
         model = Booking
-        fields = ['email', 'station', 'booking_date', 'duration', 'payment_method', 'status']
+        # Do NOT expose `status` to users; only backend/admin should change it.
+        fields = ['email', 'station', 'booking_date', 'start_time', 'duration', 'payment_method']
 
 
 class ProfileForm(forms.ModelForm):
@@ -50,8 +66,6 @@ class ChargingPointForm(forms.ModelForm):
             'name',
             'location',
             'address',
-            'latitude',
-            'longitude',
             'capicity',
             'available_slots',
             'availability',
@@ -76,8 +90,9 @@ class ChargingPointForm(forms.ModelForm):
             'is_active': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }
 
+# form for adding comments
 class CommentForm(forms.ModelForm):
-    content = forms.CharField(
+    comment_text = forms.CharField(
         label='',
         widget=forms.Textarea(attrs={
             'rows': 3,
@@ -86,4 +101,4 @@ class CommentForm(forms.ModelForm):
     )
     class Meta:
         model = Comment
-        fields = ['content']
+        fields = ['comment_text']

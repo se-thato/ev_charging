@@ -77,7 +77,7 @@ def generate_invoice_and_email(self, session_id):
         full_name = user.get_full_name() if callable(getattr(user, "get_full_name", None)) else str(user)
     except Exception:
         full_name = str(user)
-
+    # This will print the invoice details
     line(f"Invoice ID: INV-{session.id:06d}")
     line(f"User: {full_name}")
     line(f"Email: {user_email}")

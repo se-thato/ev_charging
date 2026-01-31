@@ -2,11 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import timedelta
 from django.utils import timezone
-from django.core.exceptions import ValidationError  
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.core.validators import MinValueValidator
 from django.contrib.auth import get_user_model
+from django.core.exceptions import ValidationError
+
+from django.conf import settings
 
 
 
@@ -25,16 +27,22 @@ class Profile(models.Model):
         return self.username
 
 
-
 class ChargingPoint(models.Model):
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    STATUS_CHOICES = [
+        ('info_only', 'Info Only'), #visible but not bookable
+        ('claimed', 'Claimed'), # owner exists, not yet approved
+        ('bookable', 'Bookable'), # owner exists, approved and bookable
+    ]
+
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,related_name='owened_stations')
+    status = models.CharField(max_length=20,choices=STATUS_CHOICES,default='info_only')
+    commission_rate = models.DecimalField(max_digits=5,decimal_places=2,default=10.00) #percentage commission
+
     name = models.CharField(max_length=150)
     location = models.CharField(max_length=150, null=True, blank=True)
     capicity = models.PositiveIntegerField()
     available_slots = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
-    latitude = models.FloatField(null=True, blank=True)
-    longitude = models.FloatField(null=True, blank=True)
     address = models.CharField(max_length=255, default="Unknown address")
     availability = models.BooleanField(null=True, blank=True)
     price_per_hour = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
@@ -48,8 +56,6 @@ class ChargingPoint(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.address})"
-
-
 
 
 class ChargingSession(models.Model):
@@ -70,16 +76,7 @@ class ChargingSession(models.Model):
     )
     duration = models.DurationField(null=True, blank=True)
 
-    #this method calculates the duration of the session
-    def save(self, *args, **kwargs):
-        if self.start_time and self.end_time:
-            if self.end_time < self.start_time:
-                raise ValidationError("Opps!! end time cannot be before start time.")
-            self.duration = self.end_time - self.start_time
-        super().save(*args, **kwargs)
-
-
-
+ 
     def __str__(self):
         return f"Session made by {self.user} at {self.station} - {self.status}"
 
@@ -92,16 +89,20 @@ class Booking(models.Model):
     STATUS_CHOICES = [
         ('pending', 'pending'),
         ('confirmed', 'confirmed'),
+        ('completed', 'completed'),
         ('cancelled', 'cancelled'),
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     email = models.EmailField(max_length=100, null=True, blank=True)
-    start_time = models.DateTimeField(auto_now_add=True)
+
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField(null=True, blank=True)
     station = models.ForeignKey(ChargingPoint, on_delete=models.CASCADE)
     booking_date = models.DateField(null=True, blank=True)
     duration = models.DurationField(null=True, blank=True)
-    end_time = models.DateField(null=True, blank=True)
+    source = models.CharField(max_length=50,default='platform') #This ensures we know where the booking came from
+    
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
     created_at = models.DateTimeField(default=timezone.now)
     payment_method = models.ForeignKey('PaymentMethod', on_delete=models.CASCADE, null=True, blank=True)
@@ -151,6 +152,9 @@ class PaymentMethod(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     is_default = models.BooleanField(default=False)  #this is to set a default payment method
 
+    platform_commission = models.DecimalField(max_digits=10,decimal_places=2,default=0.0) #This is to track platform commission on each payment method
+    station_earnings = models.DecimalField(max_digits=10,decimal_places=2,default=0.0) #This is to track station earnings on each payment method
+
     #to prevent repetitive payment methods
     class Meta:
         unique_together = ('user', 'payment_type', 'last_four_digits', 'email')
@@ -159,7 +163,6 @@ class PaymentMethod(models.Model):
 
     def __str__(self):
         return f"{self.get_payment_type_display()} - {self.user.username}"
-
 
 
 class Payment(models.Model):
@@ -176,7 +179,9 @@ class Payment(models.Model):
     status = models.CharField(max_length=15, choices=STATUS_CHOICES, default='pending')
     currency = models.CharField(max_length=3)
     charging_session = models.ForeignKey(ChargingSession, on_delete=models.SET_NULL, null=True, blank=True)
-    
+    booking = models.OneToOneField(Booking, on_delete=models.CASCADE, null=True, blank=True)
+    platform_commission = models.DecimalField(max_digits=10,decimal_places=2,default=0)
+    station_earnings = models.DecimalField(max_digits=10,decimal_places=2,default=0)
 
     #gateway metadata
     gateway_transaction_id = models.CharField(max_length=255, null=True, blank=True)
@@ -190,8 +195,9 @@ class Payment(models.Model):
             models.Index(fields=['status', 'created_at']),
         ]
 
-    def __str__(self):
+def __str__(self):
         return f"payment {self.id} - {self.currency}{self.amount} ({self.get_status_display()})"
+
 
 
 
@@ -203,11 +209,12 @@ class Rating(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     station = models.ForeignKey(ChargingPoint, on_delete=models.CASCADE)
     rating = models.PositiveIntegerField()
-    comment_text = models.CharField(max_length=255)
+    comment_text = models.CharField(max_length=255, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='ratings_created')
     updated_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='ratings_updated')
 
+    # This method ensures rating is between 1 and 5 or raises validation error
     def save(self, *args, **kwargs):
         if not (1 <= self.rating <= 5):
             raise ValidationError("Rating must be between 1 and 5.")

@@ -11,6 +11,8 @@ urlpatterns = [
     #path('cart-add/<int:product_id>/', views.add_to_cart, name='cart-add'),
     #path('remove_from_cart/<int:product_id>/', views.remove_from_cart, name='remove_from_cart'),
     path('checkout/', views.checkout, name='checkout'),
+    path('shopify/callback/', views.shopify_callback, name='shopify_callback')
+
     
    
 ]

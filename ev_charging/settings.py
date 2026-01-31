@@ -23,7 +23,9 @@ SECRET_KEY = 'django-insecure-i9r%i5hq%av96r_&&%(qa2fto$bwx-1ka2u__7b8!@z40f#1t!
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
+#DEBUG = False
+
+DEBUG = True
 
 ALLOWED_HOSTS = ["evcharging-production-c179.up.railway.app", "localhost", "127.0.0.1"]
 
@@ -58,6 +60,7 @@ INSTALLED_APPS = [
     'authentication',
     'ecommerce',
     'Cart',
+    'Dashboards',
 
     'rest_framework',
     'rest_framework.authtoken',  
@@ -66,7 +69,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     'channels',
     'oauth2_provider',
-    'axes', # For brute-force protection
+    'axes', # For brute force protection
     'drf_yasg', #swagger
     'anymail', # For email backend
 
@@ -166,19 +169,51 @@ CELERY_RESULT_SERIALIZER = 'json'
 
 
 # Redis cache
-try:
-    import django_redis
-    CACHES = {
-        "default": {
-            "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": os.environ.get("REDIS_URL"),
-            "OPTIONS": {
-                "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            },
+# Read REDIS_URL early and try a quick reachability test. If Redis is not
+# configured or not reachable (e.g., DNS resolution fails when using hosted
+# services only available inside their network), fall back to an in-memory
+# LocMemCache to avoid 500 errors from things like DRF throttling.
+REDIS_URL = os.environ.get("REDIS_URL")
+if REDIS_URL:
+    try:
+        import redis as _redis_client
+
+        # This will raise an exception if Redis is not reachable
+        client = _redis_client.from_url(REDIS_URL, socket_connect_timeout=2)
+        client.ping()
+
+        try:
+            import django_redis
+
+            CACHES = {
+                "default": {
+                    "BACKEND": "django_redis.cache.RedisCache",
+                    "LOCATION": REDIS_URL,
+                    "OPTIONS": {
+                        "CLIENT_CLASS": "django_redis.client.DefaultClient",
+                    },
+                }
+            }
+        except ModuleNotFoundError:
+            # If django redis isn't installed, fall back to LocMemCache
+            CACHES = {
+                "default": {
+                    "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+                    "LOCATION": "dev-local-cache",
+                }
+            }
+    except Exception as e:
+        import warnings
+        # This will catch connection errors, timeout errors, etc.
+        warnings.warn(f"Redis at {REDIS_URL} not reachable ({e}). Falling back to LocMemCache.")
+        CACHES = {
+            "default": {
+                "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+                "LOCATION": "dev-local-cache",
+            }
         }
-    }
-except ModuleNotFoundError:
-    # Fallback for development when django-redis isn't installed
+else:
+    # No REDIS_URL configured use local in-memory cache for development
     CACHES = {
         "default": {
             "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
@@ -186,7 +221,6 @@ except ModuleNotFoundError:
         }
     }
 
-REDIS_URL = os.environ.get("REDIS_URL")
 
 
 CORS_ALLOW_ALL_ORIGINS = True #Adjusting for production
@@ -230,6 +264,7 @@ CHANNEL_LAYERS = {
 }
 
 # Database
+"""
 # Database (MySQL on Railway if env present, otherwise local sqlite)
 if os.environ.get("DB_NAME") and os.environ.get("DB_USER"):
     DATABASES = {
@@ -244,13 +279,13 @@ if os.environ.get("DB_NAME") and os.environ.get("DB_USER"):
         }
     }
 else:
-
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
+"""
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -447,6 +482,20 @@ AWS_DEFAULT_ACL = "public-read" # this will make the files publicly accessible
 AWS_S3_OBJECT_PARAMETERS = {
     "ACL": "public-read",
 }
+
+
+
+# Shopify API Credentials
+SHOPIFY_SHOP_NAME = os.getenv("SHOPIFY_SHOP_NAME")
+SHOPIFY_API_KEY = os.getenv("SHOPIFY_API_KEY")
+SHOPIFY_API_SECRET = os.getenv("SHOPIFY_API_SECRET")
+SHOPIFY_ACCESS_TOKEN = os.getenv("SHOPIFY_ACCESS_TOKEN")
+SHOPIFY_API_VERSION = "2026-01"
+
+# This is for OAuth integration for Shopify
+SHOPIFY_CLIENT_ID = os.getenv("SHOPIFY_CLIENT_ID")
+SHOPIFY_CLIENT_SECRET = os.getenv("SHOPIFY_CLIENT_SECRET")
+SHOPIFY_REDIRECT_URI = os.getenv("SHOPIFY_REDIRECT_URI")
 
 
 

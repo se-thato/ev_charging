@@ -62,6 +62,7 @@ pluggy==1.6.0
 promise==2.3
 prompt_toolkit==3.0.52
 psycopg2-binary==2.9.10
+pyactiveresource==2.2.2
 pycparser==2.22
 Pygments==2.19.1
 PyJWT==2.9.0
@@ -78,6 +79,7 @@ requests==2.32.3
 rich==14.0.0
 s3transfer==0.14.0
 setuptools==80.9.0
+ShopifyAPI==12.7.0
 shortuuid==1.0.13
 six==1.17.0
 sqlparse==0.5.3

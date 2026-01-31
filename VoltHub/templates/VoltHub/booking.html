@@ -85,6 +85,7 @@
       {{ form.email|as_crispy_field }}
       {{ form.station|as_crispy_field }}
       {{ form.booking_date|as_crispy_field }}
+      {{ form.start_time|as_crispy_field }}
 
       <div class="form-group">
         <label for="{{ form.duration.id_for_label }}">Duration</label>
@@ -95,13 +96,12 @@
       </div>
 
       {{ form.payment_method|as_crispy_field }}
-      {{ form.status|as_crispy_field }}
 
       <button type="submit" class="btn-neon">Book Now <i class="fa fa-calendar" aria-hidden="true"></i></button>
     </form>
 
     <div class="book-links">
-      <p><a href="{% url 'dashboard' %}">Back to Dashboard</a></p>
+      <p><a href="{% url 'user_dashboard' %}">Back to Dashboard</a></p>
     </div>
   </div>
 </section>

@@ -1,5 +1,7 @@
-{% extends 'ecommerce/base.html' %}
+{% extends 'VoltHub/base.html' %}
 {% load static %}
+
+{% block container_classes %}container-fluid p-0{% endblock %}
 
 {% block content %}
 <style>
@@ -143,8 +145,15 @@
     font-size: .75rem;
     box-shadow: 0 6px 14px rgba(0,0,0,0.25);
   }
+  /* Optional: small hover effect for main image preview */
+  .product-img {
+    transition: transform 0.2s ease;
+  }
+  .product-card:hover .product-img {
+    transform: scale(1.05);
+  }
 </style>
-
+<html>
 <section class="shop-wrap">
   <div class="shop-inner shop-hero">
     <h1 class="shop-title">Power Your Drive, Shop Premium EV Essentials</h1>
@@ -158,7 +167,14 @@
         <div class="col">
           <div class="product-card">
             {% if product.on_sale %}<div class="sale-badge">Sale</div>{% endif %}
-            <img class="product-img" src="{{ product.image.url }}" alt="{{ product.name }}" />
+
+            {# Use main_image if available, otherwise fallback #}
+            {% if product.main_image %}
+              <img class="product-img" src="{{ product.main_image.url }}" alt="{{ product.name }}" />
+            {% else %}
+              <img class="product-img" src="{% static 'images/placeholder.png' %}" alt="No Image" />
+            {% endif %} 
+
             <div class="product-body">
               <h5 class="product-title">{{ product.name }}</h5>
               <div class="product-price">
@@ -179,7 +195,108 @@
       {% endfor %}
     </div>
   </div>
+</section>
+</html>
+{% include 'VoltHub/footer.html' %}
+{% endblock %}
+
+
+
+
+{% comment %} {% extends 'ecommerce/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  /* ====== COLORS & STYLES (your original styles) ====== */
+  :root {
+    --vh-bg: #050512;
+    --vh-surface: rgba(13, 13, 30, 0.55);
+    --vh-primary: #7a7cff;
+    --vh-accent: #00e5ff;
+    --vh-accent-2: #45ffbc;
+    --vh-border: rgba(122, 124, 255, 0.35);
+    --vh-text: #e6e9ff;
+    --vh-muted: #a9b1ff;
+    --vh-glow: rgba(0, 229, 255, 0.5);
+  }
+
+  .shop-wrap { position: relative; width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); background: radial-gradient(1200px 600px at 10% -20%, rgba(122,124,255,0.22), transparent 60%), radial-gradient(1000px 800px at 120% 10%, rgba(0,229,255,0.18), transparent 50%), linear-gradient(135deg, #070718 0%, #040414 45%, #09091f 100%); overflow: hidden; }
+  .shop-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+
+  .shop-hero { padding: 8vh 0 4vh; text-align: center; color: var(--vh-text); }
+  .shop-title { margin: 0 0 .5rem; font-weight: 800; font-size: clamp(1.8rem, 4vw, 3rem); background: linear-gradient(90deg, var(--vh-primary), var(--vh-accent) 60%, var(--vh-accent-2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 12px rgba(122,124,255,0.25), 0 0 26px rgba(0,229,255,0.15); letter-spacing: .4px; }
+  .shop-subtitle { color: var(--vh-muted); }
+  .accent-line { position: relative; height: 2px; margin: 1rem auto 2rem; max-width: 520px; }
+  .accent-line::after { content: ""; position: absolute; left: 0; right: 0; height: 2px; border-radius: 2px; background: linear-gradient(90deg, transparent, var(--vh-accent), var(--vh-primary), transparent); background-size: 200% 100%; animation: lineFlow 8s linear infinite; }
+  @keyframes lineFlow { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+
+  /* ====== PRODUCT CARD ====== */
+  .product-card { position: relative; background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid var(--vh-border); border-radius: 18px; backdrop-filter: blur(10px) saturate(160%); -webkit-backdrop-filter: blur(10px) saturate(160%); box-shadow: 0 20px 50px rgba(12, 16, 50, 0.45), inset 0 0 24px rgba(0, 229, 255, 0.06); color: var(--vh-text); height: 100%; display: flex; flex-direction: column; transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease; }
+  .product-card:hover { transform: translateY(-3px); border-color: rgba(0,229,255,0.55); box-shadow: 0 30px 70px rgba(0, 229, 255, 0.18), 0 10px 26px rgba(122,124,255,0.16); }
+
+  .product-img-wrapper { position: relative; width: 100%; overflow: hidden; border-top-left-radius: 18px; border-top-right-radius: 18px; }
+  .product-img { width: 100%; height: 220px; object-fit: cover; transition: transform 0.2s ease; }
+  .product-card:hover .product-img { transform: scale(1.05); }
+
+  .product-body { padding: 1rem 1rem .5rem; text-align: center; }
+  .product-title { font-weight: 700; margin-bottom: .25rem; }
+  .product-price { color: var(--vh-text); }
+  .product-price del { color: #e6e9ff90; }
+
+  .product-actions { padding: 0 1rem 1rem; margin-top: auto; }
+  .btn-neon { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; width: 100%; border: 1px solid var(--vh-border); color: var(--vh-text); border-radius: 14px; padding: .65rem 1rem; background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)); box-shadow: 0 0 0 1px rgba(122,124,255,0.25); transition: transform .08s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease, color .2s ease; text-decoration: none; }
+  .btn-neon:hover { color: #fff; border-color: rgba(0,229,255,0.65); background: linear-gradient(180deg, rgba(0,229,255,0.18), rgba(122,124,255,0.12)); box-shadow: 0 0 0 2px rgba(0,229,255,0.24), 0 10px 26px rgba(0,229,255,0.16); transform: translateY(-1px); }
+  .sale-badge { position: absolute; top: .6rem; right: .6rem; background: linear-gradient(90deg, var(--vh-accent), var(--vh-primary)); color: white; padding: .25rem .6rem; border-radius: 999px; font-size: .75rem; box-shadow: 0 6px 14px rgba(0,0,0,0.25); }
+</style>
+
+<section class="shop-wrap">
+  <div class="shop-inner shop-hero">
+    <h1 class="shop-title">Power Your Drive, Shop Premium EV Essentials</h1>
+    <p class="shop-subtitle">With The VoltHub</p>
+    <div class="accent-line"></div>
+  </div>
+
+  <div class="shop-inner" style="padding-bottom: 6vh;">
+    <div class="row gx-4 gy-4 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+      {% for product in products %}
+        <div class="col">
+          <div class="product-card">
+            {% if product.on_sale %}<div class="sale-badge">Sale</div>{% endif %}
+
+            <div class="product-img-wrapper">
+              {% if product.image %}
+                <img class="product-img" src="{{ product.image.url }}" alt="{{ product.name }}" />
+              {% elif product.image_url %}
+                <img class="product-img" src="{{ product.image_url }}" alt="{{ product.name }}" />
+              {% else %}
+                <img class="product-img" src="{% static 'images/placeholder.png' %}" alt="No Image" />
+              {% endif %}
+            </div>
+
+            <div class="product-body">
+              <h5 class="product-title">{{ product.name }}</h5>
+              <div class="product-price">
+                {% if product.on_sale %}
+                  <del>R{{ product.price }}</del>&nbsp;<strong>R{{ product.sale_price }}</strong>
+                {% else %}
+                  <strong>R{{ product.price }}</strong>
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="product-actions">
+              {% if product.supplier_product_url %}
+                <a class="btn-neon" href="{{ product.supplier_product_url }}" target="_blank">View Product</a>
+              {% else %}
+                <a class="btn-neon" href="{% url 'product' product.id %}">View Product</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
   {% include 'VoltHub/footer.html' %}
 </section>
-
-{% endblock %}
+{% endblock %} {% endcomment %}

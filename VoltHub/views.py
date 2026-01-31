@@ -3,10 +3,12 @@ from .forms import BookingForm, UpdateBookingForm, ProfileForm, ChargingPointFor
 
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
+from django.contrib.auth import get_user_model
 
 from django.contrib.auth.decorators import login_required, user_passes_test
 from charging_station.models import ChargingPoint, ChargingSession, Booking, Profile, Comment, Post
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.views import redirect_to_login
 
 from django.conf import settings
 import logging
@@ -16,6 +18,8 @@ from django.http import HttpResponse
 
 from django.core.mail import BadHeaderError
 from django.contrib import messages
+from django.core.exceptions import ValidationError
+from django.db.models import F
 import logging
 
 # Configure logging
@@ -26,27 +30,38 @@ logger = logging.getLogger(__name__)
 def home(request):
     #this will collect all the comment related to the VoltHub app/website
     comments = Comment.objects.filter(station__name='VoltHub').order_by('-created_at')
-    return render(request, 'VoltHub/home.html', {'comments': comments})
+    # Ensure there is a Post to host general comments; create a default one if none exists
+    post_to_comment = Post.objects.order_by('-created_at').first()
+    if not post_to_comment:
+        User = get_user_model()
+        author = User.objects.filter(is_superuser=True).first() or User.objects.first()
+        if author:
+            post_to_comment = Post.objects.create(
+                title='Community Feedback',
+                content='Share your thoughts about VoltHub.',
+                author=author,
+            )
+    return render(request, 'VoltHub/home.html', {'comments': comments, 'post_to_comment': post_to_comment})
 
 
-# Dashboard view
-@login_required(login_url='authentication:login')
-def dashboard(request):
-    try:
-        stations = ChargingPoint.objects.filter(is_active=True)  # olny active stations
-        sessions = ChargingSession.objects.filter(user=request.user).select_related('station')
-        bookings = Booking.objects.filter(user=request.user).select_related('station')  # This will fetch user-specific bookings
+# # Dashboard view
+# @login_required(login_url='authentication:login')
+# def dashboard(request):
+#     try:
+#         stations = ChargingPoint.objects.filter(is_active=True)  # olny active stations
+#         sessions = ChargingSession.objects.filter(user=request.user).select_related('station')
+#         bookings = Booking.objects.filter(user=request.user).select_related('station')  # This will fetch user specific bookings
 
-        context = {
-            'stations': stations,
-            'sessions': sessions,
-            'bookings': bookings,
-        }
-        return render(request, 'VoltHub/dashboard.html', context)
+#         context = {
+#             'stations': stations,
+#             'sessions': sessions,
+#             'bookings': bookings,
+#         }
+#         return render(request, 'VoltHub/dashboard.html', context)
 
-    except Exception as e:
-        # Log the error (optional) and return an error message
-        return HttpResponse(f"An error occurred: {str(e)}", status=500)
+#     except Exception as e:
+#         # 
+#         return HttpResponse(f"An error occurred: {str(e)}", status=500)
 
 
 
@@ -89,7 +104,7 @@ def contact_us(request):
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=[settings.CONTACT_RECEIVER_EMAIL], 
                 fail_silently=False,
-                #reply_to=[message_email] if message_email else None
+        
             )
             #This part shows success message when the email is sent
             messages.success(request, "Your message was sent successfully! We'll get back to you soon.")
@@ -117,9 +132,92 @@ def booking(request):
         form = BookingForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            # attach user and persist booking
+            booking = form.save(commit=False)
+            if not booking.user_id:
+                booking.user = request.user
+            try:
+                booking.created_by = request.user
+            except Exception:
+                pass
+            try:
+                booking.updated_by = request.user
+            except Exception:
+                pass
 
-            return redirect('dashboard')
+            # If the form provided an explicit start_time, prefer it. The
+            # `datetime-local` widget yields a naive datetime in local time, so
+            # make it timezone-aware before saving. Otherwise fall back to the
+            # booking_date at midnight or now as before.
+            from datetime import datetime, time
+            from django.utils import timezone as dj_timezone
+
+            provided_start = form.cleaned_data.get('start_time')
+            if provided_start:
+                # make aware if naive
+                if dj_timezone.is_naive(provided_start):
+                    provided_start = dj_timezone.make_aware(provided_start)
+                booking.start_time = provided_start
+            else:
+                if not getattr(booking, 'start_time', None):
+                    if booking.booking_date:
+                        naive_dt = datetime.combine(booking.booking_date, time.min)
+                        booking.start_time = dj_timezone.make_aware(naive_dt)
+                    else:
+                        # fallback to immediate start if booking_date missing
+                        booking.start_time = dj_timezone.now()
+
+            # If duration provided, compute end_time automatically
+            if booking.duration and booking.start_time and not booking.end_time:
+                booking.end_time = booking.start_time + booking.duration
+
+            booking.save()
+
+            # Send confirmation email to the user via Brevo 
+            to_email = booking.email or getattr(request.user, 'email', None)
+            if to_email:
+                subject = "Your EV Charging Booking Confirmation"
+
+                from django.utils import timezone as dj_timezone
+
+                start_display = "N/A"
+                end_display = "N/A"
+                if booking.start_time:
+                    start_display = dj_timezone.localtime(booking.start_time).strftime("%Y-%m-%d %H:%M")
+                if booking.end_time:
+                    end_display = dj_timezone.localtime(booking.end_time).strftime("%Y-%m-%d %H:%M")
+
+                plain_body = (
+                    f"Hello {request.user.first_name or request.user.username},\n\n"
+                    f"Your booking at {booking.station.name} on {booking.booking_date} is received.\n"
+                    f"Start: {start_display}\n"
+                    f"End: {end_display}\n"
+                    f"Status: {booking.status}\n\n"
+                    f"Thank you for using VoltHub."
+                )
+                html_body = (
+                    f"<p>Hello {request.user.first_name or request.user.username},</p>"
+                    f"<p>Your booking at <strong>{booking.station.name}</strong> on <strong>{booking.booking_date}</strong> is confirmed.</p>"
+                    f"<p><strong>Start:</strong> {start_display}</p>"
+                    f"<p><strong>End:</strong> {end_display}</p>"
+                    f"<p>Status: <strong>{booking.status}</strong></p>"
+                    f"<p>Thank you for using <strong>VoltHub</strong>.</p>"
+                )
+                try:
+                    send_mail(
+                        subject=subject,
+                        message=plain_body,
+                        from_email=settings.DEFAULT_FROM_EMAIL,
+                        recipient_list=[to_email],
+                        html_message=html_body,
+                        fail_silently=True,
+                    )
+                except Exception:
+                    # Do not block user flow on email issues
+                    pass
+
+            messages.success(request, "Booking created successfully.")
+            return redirect('user_dashboard')
 
     context = {'form': form}
 
@@ -139,10 +237,34 @@ def update_booking(request, pk):
         form =UpdateBookingForm(request.POST, instance=booking)
 
         if form.is_valid():
+            # Save but allow us to compute dependent datetimes
+            updated = form.save(commit=False)
 
-            form.save()
+            from datetime import datetime, time
+            from django.utils import timezone as dj_timezone
 
-            return redirect("dashboard")
+            provided_start = form.cleaned_data.get('start_time')
+            if provided_start:
+                if dj_timezone.is_naive(provided_start):
+                    provided_start = dj_timezone.make_aware(provided_start)
+                updated.start_time = provided_start
+            else:
+                if not getattr(updated, 'start_time', None):
+                    if updated.booking_date:
+                        naive_dt = datetime.combine(updated.booking_date, time.min)
+                        updated.start_time = dj_timezone.make_aware(naive_dt)
+                    else:
+                        updated.start_time = dj_timezone.now()
+
+            if updated.duration and updated.start_time:
+                updated.end_time = updated.start_time + updated.duration
+
+            # Ensure users cannot change booking status via the update form.
+            updated.status = booking.status
+
+            updated.save()
+
+            return redirect('user_dashboard')
 
     context = {'form': form}
 
@@ -174,7 +296,6 @@ def view_session(request, pk):
 
 
 # delete booking record
-
 @login_required(login_url='authentication:login')
 def delete_booking(request, pk):
 
@@ -182,7 +303,7 @@ def delete_booking(request, pk):
 
     booking.delete()
 
-    return redirect('dashboard')
+    return redirect('user_dashboard')
 
 
 
@@ -295,20 +416,63 @@ def verify_stations(request):
 
 
 def post_detail(request, pk):
+    # Show a post detail page but use station based comments bound to the "VoltHub" station
     post = get_object_or_404(Post, pk=pk)
-    comments = Comment.objects.filter(post=post).order_by('-created_at')
+
+    station, _ = ChargingPoint.objects.get_or_create(
+        name='VoltHub',
+        defaults={
+            'capicity': 0,
+            'available_slots': 0,
+        
+        }
+    )
+
+    comments = Comment.objects.filter(station=station).order_by('-created_at')
 
     if request.method == "POST":
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.post = post
-            comment.user = request.user
-            comment.save()
-            return redirect('post_detail', pk=post.pk)
+        # Require authentication for comment submission
+        if not request.user.is_authenticated:
+            return redirect_to_login(next=request.get_full_path())
+        # Accept both potential field names to be tolerant of existing templates
+        text = (request.POST.get('comment_text') or request.POST.get('content') or '').strip()
+        if not text:
+            messages.error(request, 'Please enter a comment before submitting.')
+        else:
+            try:
+                existing = Comment.objects.filter(user=request.user, station=station).first()
+                if existing:
+                    # Bypass model.save() duplicate check by using QuerySet.update
+                    Comment.objects.filter(pk=existing.pk).update(comment_text=text)
+                    messages.success(request, 'Your comment has been updated.')
+                else:
+                    Comment.objects.create(user=request.user, station=station, comment_text=text)
+                    messages.success(request, 'Your comment has been posted.')
+                return redirect('post_detail', pk=post.pk)
+            except ValidationError as e:
+                messages.error(request, str(e))
+            except Exception as e:
+                messages.error(request, 'Failed to submit your comment. Please try again.')
 
-    else:
-        form = CommentForm()
-        
-        return render(request, 'VoltHub/post_details.html', {'post': post, 'comments': comments, 'form': form})
+    # Render the page; template should show existing comments and a textarea to submit
+    return render(request, 'VoltHub/post_details.html', {
+        'post': post,
+        'comments': comments,
+    })
+
+
+@login_required(login_url='authentication:login')
+def comment_upvote(request, comment_id):
+    if request.method == 'POST':
+        comment = get_object_or_404(Comment, pk=comment_id)
+        Comment.objects.filter(pk=comment.pk).update(upvotes=F('upvotes') + 1)
+    return redirect(request.META.get('HTTP_REFERER', '/'))
+
+
+@login_required(login_url='authentication:login')
+def comment_downvote(request, comment_id):
+    if request.method == 'POST':
+        comment = get_object_or_404(Comment, pk=comment_id)
+        Comment.objects.filter(pk=comment.pk).update(downvotes=F('downvotes') + 1)
+    return redirect(request.META.get('HTTP_REFERER', '/'))
         

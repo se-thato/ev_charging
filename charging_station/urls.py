@@ -15,6 +15,7 @@ from .views import (
     UserSubscriptionViewSet,
     ChargingStationAnaliticsViewSet,
     PostViewSet,
+    StationOwnerDashboardView
 )
 
 urlpatterns = [
@@ -138,4 +139,7 @@ urlpatterns = [
     ),
     # Keep the extra analytics alias, mapped to the same list action
     path("analytics/",ChargingStationAnaliticsViewSet.as_view({"get": "list"}),name="charging-station-analytics",),
+ 
+    #This is the new path for station owner dashboard
+    path('station-owner/dashboard/',StationOwnerDashboardView.as_view(),name='station-owner-dashboard'),
 ]
