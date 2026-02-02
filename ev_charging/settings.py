@@ -82,6 +82,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
 
+
     #aws s3 storage
     'storages',
 ]
@@ -305,10 +306,30 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Allauth
+SITE_ID = 1
+
+
 AUTHENTICATION_BACKENDS = [
     'axes.backends.AxesStandaloneBackend',
     'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
+
+
+#This is for social account providers, so it can work with allauth, for example Google
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email'], # this will request access to user's profile and email
+        'AUTH_PARAMS': {'access_type': 'online'}, # 'online' or 'offline' for refresh token
+    }
+}
+
+
+#This will redirect users to home page after login/logout
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 
 
 # Internationalization
@@ -392,9 +413,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #AUTH_USER_MODEL = 'charging_station.CustomUser'
 
-
-# Allauth
-SITE_ID = 1
 
 ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']

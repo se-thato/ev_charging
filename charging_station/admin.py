@@ -24,6 +24,7 @@ admin.site.register(SubscriptionPlan)
 
 admin.site.register(UserSubscription)
 
+
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'created_at')

@@ -604,3 +604,13 @@
 [2026-02-01 00:18:23,337] WARNING SLOW REQUEST: / took 8.989 seconds!
 [2026-02-01 00:20:15,101] WARNING SLOW REQUEST: /Dashboards/user_dashboard took 8.448 seconds!
 [2026-02-01 00:20:35,310] WARNING SLOW REQUEST: /analytics/ took 6.220 seconds!
+[2026-02-01 21:43:06,647] WARNING SLOW REQUEST: /auth/login/ took 14.669 seconds!
+[2026-02-01 21:53:59,790] WARNING SLOW REQUEST: / took 29.774 seconds!
+[2026-02-01 23:45:36,978] WARNING SLOW REQUEST: /contact_us took 7.137 seconds!
+[2026-02-01 23:48:10,395] WARNING SLOW REQUEST: /auth/reset_password/ took 8.504 seconds!
+[2026-02-02 12:39:37,784] WARNING SLOW REQUEST: / took 6.471 seconds!
+[2026-02-02 12:52:26,312] WARNING SLOW REQUEST: /profile took 5.754 seconds!
+[2026-02-02 12:53:07,872] WARNING SLOW REQUEST: /accounts/google/login/ took 6.092 seconds!
+[2026-02-02 13:36:25,555] WARNING SLOW REQUEST: /admin/login/ took 5.843 seconds!
+[2026-02-02 13:41:18,512] WARNING SLOW REQUEST: /auth/register/ took 6.489 seconds!
+[2026-02-02 13:53:12,932] WARNING SLOW REQUEST: /admin/ took 50.076 seconds!
