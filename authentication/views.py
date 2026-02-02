@@ -47,12 +47,40 @@ def activate(request, uidb64, token):
         return redirect('authentication:login')
 
 
-def activateEmail(request, user, to_email):
+# def activateEmail(request, user, to_email):
 
-    if settings.DEBUG:
-        domain = get_current_site(request).domain 
-    else:
-        domain = "evcharging-production-c179.up.railway.app" 
+#     if settings.DEBUG:
+#         domain = get_current_site(request).domain 
+#     else:
+#         domain = "evcharging-production-c179.up.railway.app" 
+
+#     mail_subject = "Activate your account"
+    
+#     message = render_to_string("authentication/activate_account.html", {
+#         "user": user.username,
+#         "domain": domain,
+#         "uid": urlsafe_base64_encode(force_bytes(user.pk)),
+#         "token": account_activation_token.make_token(user),
+#         "protocol": "https" if request.is_secure() else "http",
+#     })
+#     email = EmailMessage(mail_subject, message, to=[to_email])
+
+#     email.content_subtype = "html"
+
+#     if email.send():
+#         messages.success(request, f'Dear {user.username}, please go to your email {to_email} inbox and click the verification link to verify your account!Note: If you don\'t see the email, please check your spam folder.')
+#     else:
+#         messages.error(request, f'Dear {user.username}, there was an error sending the verification email. Please try again later.')
+
+def activateEmail(request, user, to_email):
+    from django.contrib.sites.shortcuts import get_current_site
+
+    # Get domain from Sites framework if available
+    current_site = get_current_site(request)
+    domain = current_site.domain if current_site else "localhost:8000"
+
+    # Use https in production
+    protocol = "https" if not settings.DEBUG else "http"
 
     mail_subject = "Activate your account"
     
@@ -61,16 +89,15 @@ def activateEmail(request, user, to_email):
         "domain": domain,
         "uid": urlsafe_base64_encode(force_bytes(user.pk)),
         "token": account_activation_token.make_token(user),
-        "protocol": "https" if request.is_secure() else "http",
+        "protocol": protocol,
     })
     email = EmailMessage(mail_subject, message, to=[to_email])
-
     email.content_subtype = "html"
 
     if email.send():
-        messages.success(request, f'Dear {user.username}, please go to your email {to_email} inbox and click the verification link to verify your account!Note: If you don\'t see the email, please check your spam folder.')
+        messages.success(request, f'Dear {user.username}, please check your email {to_email} to verify your account!')
     else:
-        messages.error(request, f'Dear {user.username}, there was an error sending the verification email. Please try again later.')
+        messages.error(request, f'Dear {user.username}, there was an error sending the verification email.')
 
 
 def activation_success(request):
