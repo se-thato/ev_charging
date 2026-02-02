@@ -106,58 +106,58 @@ def activation_success(request):
 def activation_failed(request):
     return render(request, 'authentication/activation_failed.html')
 
-# def register(request):
-#     form = UserRegisterForm()
+def register(request):
+    form = UserRegisterForm()
 
-#     if request.method == "POST":
-#         form = UserRegisterForm(request.POST, request.FILES)  # Include request.FILES for file uploads
-#         if form.is_valid():
-#             email = form.cleaned_data.get('email') #this is to get the email from the form
+    if request.method == "POST":
+        form = UserRegisterForm(request.POST, request.FILES)  # Include request.FILES for file uploads
+        if form.is_valid():
+            email = form.cleaned_data.get('email') #this is to get the email from the form
 
-#             # Check if Profile with same email exists
-#             if Profile.objects.filter(email=email).exists():
-#                 messages.error(request, "A profile with this email already exists.")
-#                 return redirect('authentication:register')
+            # Check if Profile with same email exists
+            if Profile.objects.filter(email=email).exists():
+                messages.error(request, "A profile with this email already exists.")
+                return redirect('authentication:register')
             
-#             #This part creates the user
-#             user = form.save(commit=False)  # Don't save yet
-#             user.is_active = False  # Deactivate account till it is confirmed
-#             user.save()  # Now we will save the user
-#             activateEmail(request, user, form.cleaned_data.get('email'))  # Send activation email
-#             messages.success(request, f"Activation email sent to {form.cleaned_data.get('email')}.")
+            #This part creates the user
+            user = form.save(commit=False)  # Don't save yet
+            user.is_active = False  # Deactivate account till it is confirmed
+            user.save()  # Now we will save the user
+            activateEmail(request, user, form.cleaned_data.get('email'))  # Send activation email
+            messages.success(request, f"Activation email sent to {form.cleaned_data.get('email')}.")
 
-#             # Create Profile only after the user has been successfully created
-#             Profile.objects.get_or_create(
-#                 username=user.username,
-#                 first_name=user.first_name,
-#                 last_name=user.last_name,
-#                 email=user.email,
-#                 profile_picture=form.cleaned_data.get('profile_picture')
-#             )
+            # Create Profile only after the user has been successfully created
+            Profile.objects.get_or_create(
+                username=user.username,
+                first_name=user.first_name,
+                last_name=user.last_name,
+                email=user.email,
+                profile_picture=form.cleaned_data.get('profile_picture')
+            )
 
-#             messages.success(request, f"Account created for {user.username}!")
+            messages.success(request, f"Account created for {user.username}!")
 
-#             #sending a welcome email
-#             send_mail(
-#                 'Welcome to VoltHub!',
-#                 'Thank you for registering at VoltHub. We are excited to have you on board!',
-#                 from_email=settings.DEFAULT_FROM_EMAIL,
-#                 recipient_list=[form.cleaned_data['email']],
-#                 fail_silently=False,
-#             )
+            #sending a welcome email
+            send_mail(
+                'Welcome to VoltHub!',
+                'Thank you for registering at VoltHub. We are excited to have you on board!',
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[form.cleaned_data['email']],
+                fail_silently=False,
+            )
             
 
-#             return redirect('authentication:login')
+            return redirect('authentication:login')
         
-#         else:
-#             # Display all errors (including duplicate email)
-#             for error in list(form.errors.values()):
-#                 messages.error(request, error)
-#     else:
-#         form = UserRegisterForm()
+        else:
+            # Display all errors (including duplicate email)
+            for error in list(form.errors.values()):
+                messages.error(request, error)
+    else:
+        form = UserRegisterForm()
 
-#     context = {'form': form}
-#     return render(request, 'authentication/register.html', context=context)
+    context = {'form': form}
+    return render(request, 'authentication/register.html', context=context)
 
 
 
