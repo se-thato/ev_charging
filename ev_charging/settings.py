@@ -29,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["evcharging-production-c179.up.railway.app", "localhost", "127.0.0.1"]
 
+DOMAIN = "evcharging-production-c179.up.railway.app"
+
 CSRF_TRUSTED_ORIGINS = [
     "https://evcharging-production-c179.up.railway.app",
     "http://127.0.0.1:8000",
