@@ -72,32 +72,32 @@ def activate(request, uidb64, token):
 #     else:
 #         messages.error(request, f'Dear {user.username}, there was an error sending the verification email. Please try again later.')
 
-# def activateEmail(request, user, to_email):
-#     from django.contrib.sites.shortcuts import get_current_site
-  
-#     # Get domain from Sites framework if available
-#     current_site = get_current_site(request)
-#     domain = current_site.domain if current_site else "localhost:8000"
+def activateEmail(request, user, to_email):
+    from django.contrib.sites.shortcuts import get_current_site
 
-#     # Use https in production
-#     protocol = "https" if not settings.DEBUG else "http"
+    # Get domain from Sites framework if available
+    current_site = get_current_site(request)
+    domain = current_site.domain if current_site else "localhost:8000"
 
-#     mail_subject = "Activate your account"
+    # Use https in production
+    protocol = "https" if not settings.DEBUG else "http"
+
+    mail_subject = "Activate your account"
     
-#     message = render_to_string("authentication/activate_account.html", {
-#         "user": user.username,
-#         "domain": domain,
-#         "uid": urlsafe_base64_encode(force_bytes(user.pk)),
-#         "token": account_activation_token.make_token(user),
-#         "protocol": protocol,
-#     })
-#     email = EmailMessage(mail_subject, message, to=[to_email])
-#     email.content_subtype = "html"
+    message = render_to_string("authentication/activate_account.html", {
+        "user": user.username,
+        "domain": domain,
+        "uid": urlsafe_base64_encode(force_bytes(user.pk)),
+        "token": account_activation_token.make_token(user),
+        "protocol": protocol,
+    })
+    email = EmailMessage(mail_subject, message, to=[to_email])
+    email.content_subtype = "html"
 
-#     if email.send():
-#         messages.success(request, f'Dear {user.username}, please check your email {to_email} to verify your account!')
-#     else:
-#         messages.error(request, f'Dear {user.username}, there was an error sending the verification email.')
+    if email.send():
+        messages.success(request, f'Dear {user.username}, please check your email {to_email} to verify your account!')
+    else:
+        messages.error(request, f'Dear {user.username}, there was an error sending the verification email.')
 
 
 def activation_success(request):
@@ -190,6 +190,9 @@ def user_logout(request):
     auth.logout(request)
 
     return redirect('authentication:login')
+
+
+
 
 
 
