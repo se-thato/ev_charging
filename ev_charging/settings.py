@@ -268,7 +268,6 @@ CHANNEL_LAYERS = {
 }
 
 # Database
-"""
 # Database (MySQL on Railway if env present, otherwise local sqlite)
 if os.environ.get("DB_NAME") and os.environ.get("DB_USER"):
     DATABASES = {
@@ -279,17 +278,20 @@ if os.environ.get("DB_NAME") and os.environ.get("DB_USER"):
             "PASSWORD": os.environ.get("DB_PASSWORD", ""),
             "HOST": os.environ.get("DB_HOST"),
             "PORT": os.environ.get("DB_PORT", "3306"),
+            "URL": os.environ.get("DB_URL"),
+            "LIVE": os.environ.get("DB_LIVE", "False").lower() == "true", # this will assist in conditional logic elsewhere to determine if we're running in production or not
             "OPTIONS": {},
         }
     }
 else:
-"""
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
     }
-}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

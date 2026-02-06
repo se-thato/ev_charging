@@ -614,3 +614,5 @@
 [2026-02-02 13:36:25,555] WARNING SLOW REQUEST: /admin/login/ took 5.843 seconds!
 [2026-02-02 13:41:18,512] WARNING SLOW REQUEST: /auth/register/ took 6.489 seconds!
 [2026-02-02 13:53:12,932] WARNING SLOW REQUEST: /admin/ took 50.076 seconds!
+[2026-02-02 22:26:28,959] WARNING SLOW REQUEST: /about_us took 58.367 seconds!
+[2026-02-06 09:37:02,657] WARNING SLOW REQUEST: /station-owner/dashboard/ took 5.841 seconds!
