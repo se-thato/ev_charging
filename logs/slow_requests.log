@@ -616,3 +616,14 @@
 [2026-02-02 13:53:12,932] WARNING SLOW REQUEST: /admin/ took 50.076 seconds!
 [2026-02-02 22:26:28,959] WARNING SLOW REQUEST: /about_us took 58.367 seconds!
 [2026-02-06 09:37:02,657] WARNING SLOW REQUEST: /station-owner/dashboard/ took 5.841 seconds!
+[2026-02-08 11:14:40,499] WARNING SLOW REQUEST: /auth/login/ took 17.000 seconds!
+[2026-02-08 11:15:51,539] WARNING SLOW REQUEST: /auth/login/ took 27.624 seconds!
+[2026-02-08 11:17:20,894] WARNING SLOW REQUEST: /admin/login/ took 6.358 seconds!
+[2026-02-08 11:18:08,054] WARNING SLOW REQUEST: /admin/login/ took 16.459 seconds!
+[2026-02-08 11:20:01,821] WARNING SLOW REQUEST: /admin/login/ took 9.753 seconds!
+[2026-02-08 11:20:20,951] WARNING SLOW REQUEST: /admin/auth/user/ took 5.984 seconds!
+[2026-02-08 11:20:47,480] WARNING SLOW REQUEST: /admin/auth/user/1/change/ took 10.546 seconds!
+[2026-02-08 11:21:09,352] WARNING SLOW REQUEST: /admin/auth/user/1/delete/ took 8.103 seconds!
+[2026-02-08 11:21:20,916] WARNING SLOW REQUEST: /admin/auth/user/1/change/ took 6.356 seconds!
+[2026-02-08 11:21:37,154] WARNING SLOW REQUEST: /admin/auth/user/1/delete/ took 7.683 seconds!
+[2026-02-08 11:21:47,532] WARNING SLOW REQUEST: /admin/auth/user/1/change/ took 5.555 seconds!

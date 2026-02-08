@@ -18,14 +18,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-i9r%i5hq%av96r_&&%(qa2fto$bwx-1ka2u__7b8!@z40f#1t!'
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY",
+    "django-insecure-i9r%i5hq%av96r_&&%(qa2fto$bwx-1ka2u__7b8!@z40f#1t!",
+)
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 #DEBUG = False
 
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
 ALLOWED_HOSTS = ["evcharging-production-c179.up.railway.app", "localhost", "127.0.0.1"]
 
@@ -268,23 +271,46 @@ CHANNEL_LAYERS = {
 }
 
 # Database
-# Database (MySQL on Railway if env present, otherwise local sqlite)
-if os.environ.get("DB_NAME") and os.environ.get("DB_USER"):
+# Prefer DATABASE_URL when available (e.g., Railway), otherwise fall back to
+# explicit DB_* vars or sqlite for local development.
+DATABASE_URL = os.environ.get("DATABASE_URL")
+if DATABASE_URL:
+    try:
+        import dj_database_url
+
+        DATABASES = {
+            "default": dj_database_url.parse(DATABASE_URL, conn_max_age=600),
+        }
+    except ModuleNotFoundError:
+        warnings.warn(
+            "DATABASE_URL is set but dj-database-url is not installed. "
+            "Add dj-database-url to requirements.txt."
+        )
+        DATABASES = {
+            "default": {
+                "ENGINE": "django.db.backends.sqlite3",
+                "NAME": BASE_DIR / "db.sqlite3",
+            }
+        }
+elif os.environ.get("DB_NAME") and os.environ.get("DB_USER"):
+    db_host = os.environ.get("DB_HOST")
+    if not db_host:
+        warnings.warn(
+            "DB_HOST is not set. Django will default to localhost, which will "
+            "fail on Railway. Set DB_HOST to the Railway internal host."
+        )
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.mysql",
             "NAME": os.environ.get("DB_NAME"),
             "USER": os.environ.get("DB_USER"),
             "PASSWORD": os.environ.get("DB_PASSWORD", ""),
-            "HOST": os.environ.get("DB_HOST"),
+            "HOST": db_host,
             "PORT": os.environ.get("DB_PORT", "3306"),
-            "URL": os.environ.get("DB_URL"),
-            "LIVE": os.environ.get("DB_LIVE", "False").lower() == "true", # this will assist in conditional logic elsewhere to determine if we're running in production or not
             "OPTIONS": {},
         }
     }
 else:
-
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
