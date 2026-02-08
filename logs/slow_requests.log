@@ -627,3 +627,10 @@
 [2026-02-08 11:21:20,916] WARNING SLOW REQUEST: /admin/auth/user/1/change/ took 6.356 seconds!
 [2026-02-08 11:21:37,154] WARNING SLOW REQUEST: /admin/auth/user/1/delete/ took 7.683 seconds!
 [2026-02-08 11:21:47,532] WARNING SLOW REQUEST: /admin/auth/user/1/change/ took 5.555 seconds!
+[2026-02-08 13:21:22,167] WARNING SLOW REQUEST: /admin/auth/user/1/change/ took 8.171 seconds!
+[2026-02-08 13:21:30,759] WARNING SLOW REQUEST: /admin/jsi18n/ took 6.647 seconds!
+[2026-02-08 13:21:49,288] WARNING SLOW REQUEST: /admin/auth/user/1/change/ took 6.309 seconds!
+[2026-02-08 13:21:55,168] WARNING SLOW REQUEST: /admin/auth/user/1/change/ took 5.746 seconds!
+[2026-02-08 13:22:39,418] WARNING SLOW REQUEST: /admin/auth/user/3/change/ took 7.843 seconds!
+[2026-02-08 13:22:57,272] WARNING SLOW REQUEST: /admin/auth/user/3/delete/ took 7.689 seconds!
+[2026-02-08 13:23:08,247] WARNING SLOW REQUEST: /admin/auth/user/3/change/ took 6.369 seconds!
