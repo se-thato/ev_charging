@@ -162,8 +162,8 @@ MIDDLEWARE = [
 
 
 
-AXES_FAILURE_LIMIT = 3 # Maximum number of login attempts before lockout
-AXES_COOLOFF_TIME = 60  # This is the time (in minutes) that a user will be locked out after exceeding the failure limit
+# AXES_FAILURE_LIMIT = 3 # Maximum number of login attempts before lockout
+# AXES_COOLOFF_TIME = 60  # This is the time (in minutes) that a user will be locked out after exceeding the failure limit
 
 
 # Celery
