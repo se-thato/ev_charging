@@ -275,26 +275,54 @@ CHANNEL_LAYERS = {
 }
 
 # Database
+
+# Detect environment
+ENVIRONMENT = os.environ.get("ENVIRONMENT", "local")  # default to local
+
+if ENVIRONMENT == "production":
+    # Inside Railway
+    DB_HOST = os.environ.get("DB_HOST", "mysql.railway.internal")
+    DB_PORT = os.environ.get("DB_PORT", "3306")
+else:
+    # Local development
+    DB_HOST = os.environ.get("DB_HOST", "mainline.proxy.rlwy.net")
+    DB_PORT = os.environ.get("DB_PORT", "3306")  # or Railway public port for local testing
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": os.environ.get("DB_NAME", ""),
-        "USER": os.environ.get("DB_USER", ""),
+        "NAME": os.environ.get("DB_NAME", "railway"),
+        "USER": os.environ.get("DB_USER", "root"),
         "PASSWORD": os.environ.get("DB_PASSWORD", ""),
-        "HOST": os.environ.get("DB_HOST", "mainline.proxy.rlwy.net"),
-        "PORT": os.environ.get("DB_PORT", "3306"),
+        "HOST": DB_HOST,
+        "PORT": DB_PORT,
         "OPTIONS": {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
         },
     }
 }
-# else:
-#     DATABASES = {
-#         "default": {
-#             "ENGINE": "django.db.backends.sqlite3",
-#             "NAME": BASE_DIR / "db.sqlite3",
-#         }
+
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": os.environ.get("DB_NAME", ""),
+#         "USER": os.environ.get("DB_USER", ""),
+#         "PASSWORD": os.environ.get("DB_PASSWORD", ""),
+#         "HOST": os.environ.get("DB_HOST", ""),
+#         "PORT": os.environ.get("DB_PORT", ""),
+#         "OPTIONS": {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#         },
 #     }
+# }
+# # else:
+# #     DATABASES = {
+# #         "default": {
+# #             "ENGINE": "django.db.backends.sqlite3",
+# #             "NAME": BASE_DIR / "db.sqlite3",
+# #         }
+# #     }
 
 
 # Password validation
