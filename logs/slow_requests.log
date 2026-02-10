@@ -634,3 +634,4 @@
 [2026-02-08 13:22:39,418] WARNING SLOW REQUEST: /admin/auth/user/3/change/ took 7.843 seconds!
 [2026-02-08 13:22:57,272] WARNING SLOW REQUEST: /admin/auth/user/3/delete/ took 7.689 seconds!
 [2026-02-08 13:23:08,247] WARNING SLOW REQUEST: /admin/auth/user/3/change/ took 6.369 seconds!
+[2026-02-10 10:49:48,776] WARNING SLOW REQUEST: / took 5.225 seconds!
