@@ -162,8 +162,12 @@ MIDDLEWARE = [
 
 
 
-# AXES_FAILURE_LIMIT = 3 # Maximum number of login attempts before lockout
-# AXES_COOLOFF_TIME = 60  # This is the time (in minutes) that a user will be locked out after exceeding the failure limit
+AXES_FAILURE_LIMIT = 5 # Maximum number of login attempts before lockout
+AXES_COOLOFF_TIME = timedelta(minutes=30)  # This is the time (in minutes) that a user will be locked out after exceeding the failure limit
+AXES_ENABLED = True
+AXES_LOCK_OUT_AT_FAILURE = True
+AXES_RESET_ON_SUCCESS = True
+
 
 
 # Celery
@@ -271,52 +275,26 @@ CHANNEL_LAYERS = {
 }
 
 # Database
-# Prefer DATABASE_URL when available (e.g., Railway), otherwise fall back to
-# explicit DB_* vars or sqlite for local development.
-DATABASE_URL = os.environ.get("DATABASE_URL")
-if DATABASE_URL:
-    try:
-        import dj_database_url
-
-        DATABASES = {
-            "default": dj_database_url.parse(DATABASE_URL, conn_max_age=600),
-        }
-    except ModuleNotFoundError:
-        warnings.warn(
-            "DATABASE_URL is set but dj-database-url is not installed. "
-            "Add dj-database-url to requirements.txt."
-        )
-        DATABASES = {
-            "default": {
-                "ENGINE": "django.db.backends.sqlite3",
-                "NAME": BASE_DIR / "db.sqlite3",
-            }
-        }
-elif os.environ.get("DB_NAME") and os.environ.get("DB_USER"):
-    db_host = os.environ.get("DB_HOST")
-    if not db_host:
-        warnings.warn(
-            "DB_HOST is not set. Django will default to localhost, which will "
-            "fail on Railway. Set DB_HOST to the Railway internal host."
-        )
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.mysql",
-            "NAME": os.environ.get("DB_NAME"),
-            "USER": os.environ.get("DB_USER"),
-            "PASSWORD": os.environ.get("DB_PASSWORD", ""),
-            "HOST": db_host,
-            "PORT": os.environ.get("DB_PORT", "3306"),
-            "OPTIONS": {},
-        }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": os.environ.get("DB_NAME"),
+        "USER": os.environ.get("DB_USER"),
+        "PASSWORD": os.environ.get("DB_PASSWORD"),
+        "HOST": os.environ.get("DB_HOST"),
+        "PORT": os.environ.get("DB_PORT"),
+        "OPTIONS": {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
-    }
+}
+# else:
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": "django.db.backends.sqlite3",
+#             "NAME": BASE_DIR / "db.sqlite3",
+#         }
+#     }
 
 
 # Password validation

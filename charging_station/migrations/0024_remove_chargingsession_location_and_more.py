@@ -13,70 +13,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='chargingsession',
-            name='location',
-        ),
-        migrations.RemoveField(
-            model_name='profile',
-            name='username',
-        ),
-        migrations.AddField(
-            model_name='booking',
-            name='created_by',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='bookings_created', to=settings.AUTH_USER_MODEL),
-        ),
-        migrations.AddField(
-            model_name='booking',
-            name='updated_by',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='bookings_updated', to=settings.AUTH_USER_MODEL),
-        ),
-        migrations.AddField(
-            model_name='chargingpoint',
-            name='created_by',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='charging_points_created', to=settings.AUTH_USER_MODEL),
-        ),
-        migrations.AddField(
-            model_name='chargingpoint',
-            name='updated_by',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='charging_points_updated', to=settings.AUTH_USER_MODEL),
-        ),
-        migrations.AddField(
-            model_name='chargingsession',
-            name='duration',
-            field=models.DurationField(blank=True, null=True),
-        ),
-        migrations.AddField(
-            model_name='profile',
-            name='user',
-            field=models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
-        ),
-        migrations.AddField(
-            model_name='rating',
-            name='created_by',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='ratings_created', to=settings.AUTH_USER_MODEL),
-        ),
-        migrations.AddField(
-            model_name='rating',
-            name='updated_by',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='ratings_updated', to=settings.AUTH_USER_MODEL),
-        ),
         migrations.AlterField(
             model_name='chargingsession',
             name='end_time',
             field=models.DateTimeField(blank=True, null=True),
-        ),
-        migrations.AlterUniqueTogether(
-            name='booking',
-            unique_together={('user', 'station', 'start_time', 'end_time')},
-        ),
-        migrations.AlterUniqueTogether(
-            name='comment',
-            unique_together={('user', 'station', 'comment_text')},
-        ),
-        migrations.AlterUniqueTogether(
-            name='rating',
-            unique_together={('user', 'station')},
         ),
         migrations.CreateModel(
             name='Notification',

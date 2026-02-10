@@ -8,10 +8,10 @@
             },
             "ssh": "Disabled",
             "previewLimit": 50,
-            "server": "yamabiko.proxy.rlwy.net",
-            "port": 45635,
+            "server": "mainline.proxy.rlwy.net",
+            "port": 10905,
             "driver": "MySQL",
-            "name": "EV_Charging",
+            "name": "EV_Charhing",
             "database": "railway",
             "username": "root"
         }
