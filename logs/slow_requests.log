@@ -649,3 +649,5 @@
 [2026-03-01 15:18:05,468] WARNING SLOW REQUEST: /auth/login/ took 5.859 seconds!
 [2026-03-01 15:21:36,014] WARNING SLOW REQUEST: /about_us took 5.684 seconds!
 [2026-03-12 20:39:27,767] WARNING SLOW REQUEST: /auth/login/ took 12.721 seconds!
+[2026-03-13 23:20:27,981] WARNING SLOW REQUEST: / took 5.719 seconds!
+[2026-03-13 23:20:55,101] WARNING SLOW REQUEST: /auth/login/ took 5.759 seconds!

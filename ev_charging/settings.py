@@ -279,6 +279,13 @@ DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_PUBLIC_URL"))
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -338,15 +345,11 @@ USE_TZ = True
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-"""
-STATIC_ROOT = "staticfiles"
-#STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATIC_URL = '/static/'
-STATIC_DIR = BASE_DIR / 'static'
-STATICFILES_DIRS = [STATIC_DIR] if STATIC_DIR.exists() else []
-
+# Default static configuration (ensure STATIC_URL is always defined)
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [BASE_DIR / "static"]
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-"""
 
 
 # Media files configuration
@@ -452,44 +455,44 @@ AWS_S3_OBJECT_PARAMETERS = {
 
 
 # Static and Media files settings
-USE_S3 = (
-    AWS_ACCESS_KEY_ID
-    and AWS_SECRET_ACCESS_KEY
-    and AWS_STORAGE_BUCKET_NAME
-)
+# USE_S3 = (
+#     AWS_ACCESS_KEY_ID
+#     and AWS_SECRET_ACCESS_KEY
+#     and AWS_STORAGE_BUCKET_NAME
+# )
 
-if USE_S3 and not DEBUG:
-    # Static files
-    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
-    STATICFILES_STORAGE = "storages.backends.s3boto3.S3StaticStorage"
-    STATIC_ROOT = BASE_DIR / "staticfiles"
-    STATICFILES_DIRS = [BASE_DIR / "static"]
+# if USE_S3 and not DEBUG:
+#     # Static files
+#     STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/"
+#     STATICFILES_STORAGE = "storages.backends.s3boto3.S3StaticStorage"
+#     STATIC_ROOT = BASE_DIR / "staticfiles"
+#     STATICFILES_DIRS = [BASE_DIR / "static"]
     
 
-    # Media files
-    MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
-    DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+#     # Media files
+#     MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
+#     DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
-else:
-    # This is for local development and when S3 is not configured
-    STATIC_URL = "/static/"
-    MEDIA_URL = "/media/"
-    STATIC_ROOT = "staticfiles"
+# else:
+#     # This is for local development and when S3 is not configured
+#     STATIC_URL = "/static/"
+#     MEDIA_URL = "/media/"
+#     STATIC_ROOT = "staticfiles"
 
-    STATIC_ROOT = BASE_DIR / "staticfiles"
+#     STATIC_ROOT = BASE_DIR / "staticfiles"
 
-    STATICFILES_DIRS = [BASE_DIR / "static"]
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+#     STATICFILES_DIRS = [BASE_DIR / "static"]
+#     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
-AWS_S3_FILE_OVERWRITE = False
+# AWS_S3_FILE_OVERWRITE = False
 
-AWS_QUERYSTRING_AUTH = False
-AWS_DEFAULT_ACL = "public-read" # this will make the files publicly accessible
+# AWS_QUERYSTRING_AUTH = False
+# AWS_DEFAULT_ACL = "public-read" # this will make the files publicly accessible
 
-AWS_S3_OBJECT_PARAMETERS = {
-    "ACL": "public-read",
-}
+# AWS_S3_OBJECT_PARAMETERS = {
+#     "ACL": "public-read",
+# }
 
 
 # Shopify API Credentials
