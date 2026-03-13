@@ -6,6 +6,7 @@ from pathlib import Path
 from decouple import config
 from dotenv import load_dotenv
 import warnings
+import dj_database_url
 
 # Load environment variables from .env file
 load_dotenv()
@@ -87,7 +88,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
-
 
     #aws s3 storage
     'storages',
@@ -275,54 +275,9 @@ CHANNEL_LAYERS = {
 }
 
 # Database
-
-# Detect environment
-ENVIRONMENT = os.environ.get("ENVIRONMENT", "local")  # default to local
-
-if ENVIRONMENT == "production":
-    # Inside Railway
-    DB_HOST = os.environ.get("DB_HOST", "mysql.railway.internal")
-    DB_PORT = os.environ.get("DB_PORT", "3306")
-else:
-    # Local development
-    DB_HOST = os.environ.get("DB_HOST", "mainline.proxy.rlwy.net")
-    DB_PORT = os.environ.get("DB_PORT", "3306")  # or Railway public port for local testing
-
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": os.environ.get("DB_NAME", "railway"),
-        "USER": os.environ.get("DB_USER", "root"),
-        "PASSWORD": os.environ.get("DB_PASSWORD", ""),
-        "HOST": DB_HOST,
-        "PORT": DB_PORT,
-        "OPTIONS": {
-            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
-    }
+    'default': dj_database_url.parse(os.environ.get("DATABASE_PUBLIC_URL"))
 }
-
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.mysql",
-#         "NAME": os.environ.get("DB_NAME", ""),
-#         "USER": os.environ.get("DB_USER", ""),
-#         "PASSWORD": os.environ.get("DB_PASSWORD", ""),
-#         "HOST": os.environ.get("DB_HOST", ""),
-#         "PORT": os.environ.get("DB_PORT", ""),
-#         "OPTIONS": {
-#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-#         },
-#     }
-# }
-# # else:
-# #     DATABASES = {
-# #         "default": {
-# #             "ENGINE": "django.db.backends.sqlite3",
-# #             "NAME": BASE_DIR / "db.sqlite3",
-# #         }
-# #     }
 
 
 # Password validation
@@ -520,13 +475,11 @@ else:
     STATIC_URL = "/static/"
     MEDIA_URL = "/media/"
     STATIC_ROOT = "staticfiles"
-    MEDIA_ROOT = "media"
 
     STATIC_ROOT = BASE_DIR / "staticfiles"
 
     STATICFILES_DIRS = [BASE_DIR / "static"]
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
 
 
 AWS_S3_FILE_OVERWRITE = False
@@ -537,7 +490,6 @@ AWS_DEFAULT_ACL = "public-read" # this will make the files publicly accessible
 AWS_S3_OBJECT_PARAMETERS = {
     "ACL": "public-read",
 }
-
 
 
 # Shopify API Credentials

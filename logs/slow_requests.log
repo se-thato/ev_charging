@@ -635,3 +635,17 @@
 [2026-02-08 13:22:57,272] WARNING SLOW REQUEST: /admin/auth/user/3/delete/ took 7.689 seconds!
 [2026-02-08 13:23:08,247] WARNING SLOW REQUEST: /admin/auth/user/3/change/ took 6.369 seconds!
 [2026-02-10 10:49:48,776] WARNING SLOW REQUEST: / took 5.225 seconds!
+[2026-02-10 12:15:27,086] WARNING SLOW REQUEST: /auth/login/ took 6.861 seconds!
+[2026-02-10 12:16:04,081] WARNING SLOW REQUEST: /auth/login/ took 18.380 seconds!
+[2026-02-10 12:18:09,355] WARNING SLOW REQUEST: /profile took 15.430 seconds!
+[2026-02-10 12:18:09,388] WARNING SLOW REQUEST: /profile took 6.365 seconds!
+[2026-02-10 12:19:58,169] WARNING SLOW REQUEST: /auth/logout-user/ took 6.360 seconds!
+[2026-02-10 12:21:05,822] WARNING SLOW REQUEST: /accounts/google/login/ took 5.458 seconds!
+[2026-02-10 12:21:49,885] WARNING SLOW REQUEST: /auth/login/ took 13.088 seconds!
+[2026-02-10 12:21:58,417] WARNING SLOW REQUEST: /Dashboards/user_dashboard took 5.219 seconds!
+[2026-02-10 12:22:16,942] WARNING SLOW REQUEST: /post_detail/1/ took 5.795 seconds!
+[2026-02-10 21:55:54,196] WARNING SLOW REQUEST: /station-owner/dashboard/ took 7.681 seconds!
+[2026-03-01 15:17:23,862] WARNING SLOW REQUEST: / took 5.437 seconds!
+[2026-03-01 15:18:05,468] WARNING SLOW REQUEST: /auth/login/ took 5.859 seconds!
+[2026-03-01 15:21:36,014] WARNING SLOW REQUEST: /about_us took 5.684 seconds!
+[2026-03-12 20:39:27,767] WARNING SLOW REQUEST: /auth/login/ took 12.721 seconds!

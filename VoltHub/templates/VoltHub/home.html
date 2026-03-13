@@ -4,18 +4,7 @@
 {% block container_classes %}container-fluid p-0{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'VoltHub/home.css' %}">
-{% endblock %}
-
-{% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VoltHub - Home</title>
 <style>
-/* Home page external stylesheet */
 :root {
   --vh-primary: #7a7cff; /* electric violet */
   --vh-accent: #00e5ff;  /* neon cyan */
@@ -29,7 +18,7 @@
 .video-overlay {
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
   background: linear-gradient(180deg, rgba(5,5,12,0.55), rgba(5,5,12,0.35));
 }
@@ -37,7 +26,7 @@
 /* Hero overlay above background video */
 .home-hero {
   position: relative;
-  z-index: 1; /* ensure on top of fixed video */
+  z-index: 2; /* ensure on top of fixed video and overlay */
   min-height: calc(100vh - 56px);
   display: grid;
   place-items: center;
@@ -104,7 +93,7 @@
 .btn-cta:focus-visible { outline: 3px solid var(--vh-accent-2); outline-offset: 2px; }
 
 /* Highlights strip */
-.highlights { position: relative; z-index: 1; padding: 2.5rem 1rem 1rem; }
+.highlights { position: relative; z-index: 2; padding: 2.5rem 1rem 1rem; }
 .highlights-inner { max-width: 1200px; margin: 0 auto; }
 .highlights-grid { display: grid; grid-template-columns: repeat(12,1fr); gap: 1rem; }
 .hl-card { grid-column: span 12; border: 1px solid var(--vh-border); border-radius: 16px; background: linear-gradient(180deg, rgba(8,8,25,0.5), rgba(8,8,25,0.25)); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); padding: 1rem; color: var(--vh-text); box-shadow: 0 10px 30px rgba(12, 16, 50, 0.45); }
@@ -114,7 +103,7 @@
 .hl-card p  { margin: 0; color: #e6e9ff; }
 
 /* Testimonials */
-.home-testimonials { position: relative; z-index: 1; padding: 2rem 1rem 4rem; }
+.home-testimonials { position: relative; z-index: 2; padding: 2rem 1rem 4rem; }
 .testimonials-inner { max-width: 1200px; margin: 0 auto; }
 .testimonials-title { color: var(--vh-text); margin: 0 0 .75rem; font-weight: 800; text-align: center; }
 .testimonial-grid { display: grid; gap: 1rem; grid-template-columns: repeat(12,1fr); }
@@ -126,7 +115,7 @@
 .testimonial-card small { color: var(--vh-muted); }
 
 /* Mobile and accessibility tweaks */
-.back-video { position: fixed; inset: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: -1; }
+.back-video { position: fixed; inset: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: 0; }
 .btn-neon, .btn-cta { min-height: 44px; padding: .6rem 1rem; font-size: 1rem; }
 @media (max-width: 576px){
   .hero-inner { padding: 1.25rem 1rem; }
@@ -137,9 +126,9 @@
   .hero-actions { gap: .5rem; }
 }
 </style>
-</head>
+{% endblock %}
 
-<body>
+{% block content %}
 <video autoplay loop muted playsinline class="back-video">
   <source src="{% static 'VoltHub/image/video.mp4' %}" type="video/mp4">
 </video>
@@ -235,8 +224,6 @@
     </div>
   </div>
 </section>
-
-</body>
 
 {% include 'VoltHub/footer.html' %}
 {% endblock %}
