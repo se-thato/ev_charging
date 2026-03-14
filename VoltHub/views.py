@@ -45,23 +45,23 @@ def home(request):
 
 
 # # Dashboard view
-# @login_required(login_url='authentication:login')
-# def dashboard(request):
-#     try:
-#         stations = ChargingPoint.objects.filter(is_active=True)  # olny active stations
-#         sessions = ChargingSession.objects.filter(user=request.user).select_related('station')
-#         bookings = Booking.objects.filter(user=request.user).select_related('station')  # This will fetch user specific bookings
+@login_required(login_url='authentication:login')
+def dashboard(request):
+    try:
+        stations = ChargingPoint.objects.filter(is_active=True)  # olny active stations
+        sessions = ChargingSession.objects.filter(user=request.user).select_related('station')
+        bookings = Booking.objects.filter(user=request.user).select_related('station')  # This will fetch user specific bookings
 
-#         context = {
-#             'stations': stations,
-#             'sessions': sessions,
-#             'bookings': bookings,
-#         }
-#         return render(request, 'VoltHub/dashboard.html', context)
+        context = {
+            'stations': stations,
+            'sessions': sessions,
+            'bookings': bookings,
+        }
+        return render(request, 'VoltHub/dashboard.html', context)
 
-#     except Exception as e:
-#         # 
-#         return HttpResponse(f"An error occurred: {str(e)}", status=500)
+    except Exception as e:
+        # 
+        return HttpResponse(f"An error occurred: {str(e)}", status=500)
 
 
 

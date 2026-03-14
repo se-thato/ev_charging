@@ -7,6 +7,9 @@ from decouple import config
 from dotenv import load_dotenv
 import warnings
 import dj_database_url
+#Redis imports for cache configuration and connectivity test
+import redis
+import django_redis
 
 # Load environment variables from .env file
 load_dotenv()
@@ -67,7 +70,6 @@ INSTALLED_APPS = [
     'authentication',
     'ecommerce',
     'Cart',
-    'Dashboards',
 
     'rest_framework',
     'rest_framework.authtoken',  
@@ -179,56 +181,33 @@ CELERY_RESULT_SERIALIZER = 'json'
 
 
 
-# Redis cache
-# Read REDIS_URL early and try a quick reachability test. If Redis is not
-# configured or not reachable (e.g., DNS resolution fails when using hosted
-# services only available inside their network), fall back to an in-memory
-# LocMemCache to avoid 500 errors from things like DRF throttling.
-REDIS_URL = os.environ.get("REDIS_URL")
+# Redis cache (implementation using REDIS_PUBLIC_URL with connectivity test and fallback)
+REDIS_URL = os.environ.get("REDIS_PUBLIC_URL") or os.environ.get("REDIS_URL")
 if REDIS_URL:
     try:
-        import redis as _redis_client
-
-        # This will raise an exception if Redis is not reachable
-        client = _redis_client.from_url(REDIS_URL, socket_connect_timeout=2)
+        # Testing Redis connection
+        client = redis.from_url(REDIS_URL, socket_connect_timeout=2)
         client.ping()
-
-        try:
-            import django_redis
-
-            CACHES = {
-                "default": {
-                    "BACKEND": "django_redis.cache.RedisCache",
-                    "LOCATION": REDIS_URL,
-                    "OPTIONS": {
-                        "CLIENT_CLASS": "django_redis.client.DefaultClient",
-                    },
-                }
+        CACHES = {
+            "default": {
+                "BACKEND": "django_redis.cache.RedisCache",
+                "LOCATION": REDIS_URL,
+                "OPTIONS": {
+                    "CLIENT_CLASS": "django_redis.client.DefaultClient",
+                },
             }
-        except ModuleNotFoundError:
-            # If django redis isn't installed, fall back to LocMemCache
-            CACHES = {
-                "default": {
-                    "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
-                    "LOCATION": "dev-local-cache",
-                }
-            }
-    except Exception as e:
-        import warnings
-        # This will catch connection errors, timeout errors, etc.
+        }
+    except Exception as e: #This will catch any connection errors, authentication errors, or other issues with Redis
         warnings.warn(f"Redis at {REDIS_URL} not reachable ({e}). Falling back to LocMemCache.")
         CACHES = {
             "default": {
                 "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
-                "LOCATION": "dev-local-cache",
             }
         }
-else:
-    # No REDIS_URL configured use local in-memory cache for development
+else: #This is for local development when REDIS_PUBLIC_URL is not set
     CACHES = {
         "default": {
             "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
-            "LOCATION": "dev-local-cache",
         }
     }
 
@@ -276,7 +255,7 @@ CHANNEL_LAYERS = {
 
 # Database
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_PUBLIC_URL"))
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 # DATABASES = {

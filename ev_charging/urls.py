@@ -41,7 +41,7 @@ urlpatterns = [
    path('cart/', include('Cart.urls')),
 
    #Dashboards app
-   path('Dashboards/', include('Dashboards.urls')),
+   #path('Dashboards/', include('Dashboards.urls')),
 
 
 

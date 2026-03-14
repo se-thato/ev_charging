@@ -152,7 +152,7 @@ def my_login(request):
             if user is not None:
                 auth.login(request, user)
                 messages.success(request, f"Welcome back, {user.username}!")
-                return redirect('user_dashboard')
+                return redirect('dashboard')
 
     context = {'form': form}
 
