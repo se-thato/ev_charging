@@ -1116,3 +1116,5 @@
 [2026-03-24 18:22:58,684] WARNING SLOW REQUEST: /swagger/ took 15.578 seconds!
 [2026-03-24 18:24:50,101] WARNING SLOW REQUEST: /swagger/ took 30.973 seconds!
 [2026-03-24 18:24:50,999] WARNING SLOW REQUEST: /swagger/ took 24.356 seconds!
+[2026-03-24 19:34:43,975] WARNING SLOW REQUEST: /admin/ took 9.688 seconds!
+[2026-03-24 19:39:08,534] WARNING SLOW REQUEST: /admin/ecommerce/cartitem/ took 8.788 seconds!
