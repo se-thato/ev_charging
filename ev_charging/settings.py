@@ -34,7 +34,10 @@ SECRET_KEY = os.environ.get(
 
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = ["evcharging-production-c179.up.railway.app", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = [
+    "evcharging-production-c179.up.railway.app",
+    "localhost", "127.0.0.1",
+    "impetuously-geitonogamous-rosaura.ngrok-free.dev"]
 
 DOMAIN = "evcharging-production-c179.up.railway.app"
 SITE = "https://evcharging-production-c179.up.railway.app"
@@ -43,6 +46,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://evcharging-production-c179.up.railway.app",
     "http://127.0.0.1:8000",
     "http://localhost:8000",
+    "https://impetuously-geitonogamous-rosaura.ngrok-free.dev"
 ]
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Use secure cookies only in production; disable for local HTTP development so session persists
@@ -128,7 +132,6 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 }
 
 #SimpleJWT setting
-
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
@@ -137,6 +140,13 @@ SIMPLE_JWT = {
     'ALGORITHM': 'HS256',
     'SIGNING_KEY': SECRET_KEY,
 }
+
+
+
+LANGUAGE_CODE = 'en-za'
+TIME_ZONE     = 'Africa/South Africa'
+USE_I18N      = True
+USE_TZ        = True
 
 
 
@@ -182,7 +192,7 @@ CELERY_RESULT_SERIALIZER = 'json'
 
 
 # Redis cache (implementation using REDIS_PUBLIC_URL with connectivity test and fallback)
-REDIS_URL = os.environ.get("REDIS_PUBLIC_URL") or os.environ.get("REDIS_URL")
+REDIS_URL = os.environ.get("REDIS_PUBLIC_URL")
 if REDIS_URL:
     try:
         # Testing Redis connection
@@ -223,6 +233,8 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 
+
+
 ROOT_URLCONF = 'ev_charging.urls'
 
 TEMPLATES = [
@@ -255,7 +267,7 @@ CHANNEL_LAYERS = {
 
 # Database
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': dj_database_url.parse(os.environ.get("DATABASE_PUBLIC_URL"))
 }
 
 # DATABASES = {
@@ -475,16 +487,13 @@ AWS_S3_OBJECT_PARAMETERS = {
 
 
 # Shopify API Credentials
-SHOPIFY_SHOP_NAME = os.getenv("SHOPIFY_SHOP_NAME")
-SHOPIFY_API_KEY = os.getenv("SHOPIFY_API_KEY")
-SHOPIFY_API_SECRET = os.getenv("SHOPIFY_API_SECRET")
-SHOPIFY_ACCESS_TOKEN = os.getenv("SHOPIFY_ACCESS_TOKEN")
 SHOPIFY_API_VERSION = "2026-01"
-
 # This is for OAuth integration for Shopify
-SHOPIFY_CLIENT_ID = os.getenv("SHOPIFY_CLIENT_ID")
-SHOPIFY_CLIENT_SECRET = os.getenv("SHOPIFY_CLIENT_SECRET")
-SHOPIFY_REDIRECT_URI = os.getenv("SHOPIFY_REDIRECT_URI")
+SHOPIFY_SHOP_DOMAIN      = config('SHOPIFY_SHOP_DOMAIN')
+SHOPIFY_CLIENT_ID        = config('SHOPIFY_CLIENT_ID')
+SHOPIFY_CLIENT_SECRET    = config('SHOPIFY_CLIENT_SECRET')
+SHOPIFY_REDIRECT_URI     = config('SHOPIFY_REDIRECT_URI')
+SHOPIFY_STOREFRONT_TOKEN = config('SHOPIFY_STOREFRONT_TOKEN')
 
 
 

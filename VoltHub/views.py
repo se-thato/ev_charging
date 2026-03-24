@@ -9,14 +9,15 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from charging_station.models import ChargingPoint, ChargingSession, Booking, Profile, Comment, Post
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.views import redirect_to_login
-
 from django.conf import settings
 import logging
 
-from django.core.mail import send_mail
+from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 
-from django.core.mail import BadHeaderError
+from datetime import datetime, time
+from django.utils import timezone as dj_timezone
+
 from django.contrib import messages
 from django.core.exceptions import ValidationError
 from django.db.models import F
@@ -149,9 +150,7 @@ def booking(request):
             # `datetime-local` widget yields a naive datetime in local time, so
             # make it timezone-aware before saving. Otherwise fall back to the
             # booking_date at midnight or now as before.
-            from datetime import datetime, time
-            from django.utils import timezone as dj_timezone
-
+            
             provided_start = form.cleaned_data.get('start_time')
             if provided_start:
                 # make aware if naive
@@ -178,7 +177,6 @@ def booking(request):
             if to_email:
                 subject = "Your EV Charging Booking Confirmation"
 
-                from django.utils import timezone as dj_timezone
 
                 start_display = "N/A"
                 end_display = "N/A"
@@ -239,10 +237,7 @@ def update_booking(request, pk):
         if form.is_valid():
             # Save but allow us to compute dependent datetimes
             updated = form.save(commit=False)
-
-            from datetime import datetime, time
-            from django.utils import timezone as dj_timezone
-
+    
             provided_start = form.cleaned_data.get('start_time')
             if provided_start:
                 if dj_timezone.is_naive(provided_start):

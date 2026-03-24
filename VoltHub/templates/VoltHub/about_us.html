@@ -15,6 +15,20 @@
     --vh-muted: #b8c3ff;
   }
 
+  /* ── FIX: remove white gap from base.html container ── */
+body,
+  html {
+      background-color: #050512 !important;
+      margin: 0;
+  }
+
+  /* Remove any padding/margin from the base container */
+  .container-fluid {
+      background-color: #050512 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+  }
+
   /* Full-bleed background */
   .about-wrap {
     position: relative;

@@ -37,8 +37,7 @@ class ChargingPoint(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,related_name='owened_stations')
     status = models.CharField(max_length=20,choices=STATUS_CHOICES,default='info_only')
     commission_rate = models.DecimalField(max_digits=5,decimal_places=2,default=10.00) #percentage commission
-
-    name = models.CharField(max_length=150)
+    name = models.CharField(max_length=150, unique=True)
     location = models.CharField(max_length=150, null=True, blank=True)
     capicity = models.PositiveIntegerField()
     available_slots = models.PositiveIntegerField()
@@ -52,6 +51,10 @@ class ChargingPoint(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='charging_points_created')
     updated_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='charging_points_updated')
     is_verified = models.BooleanField(default=False) #Only the admin can verify a charging point
+    latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    opening_hours = models.JSONField(null=True, blank=True)
+    last_synced_at = models.DateTimeField(null=True, blank=True) # This will help us track when we last updated the station's availability and pricing from the external API
 
 
     def __str__(self):

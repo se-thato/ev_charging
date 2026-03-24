@@ -1,7 +1,170 @@
 {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
+
+<style>
+  .messages {
+    position: fixed;
+    top: 68px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+    width: min(480px, 92vw);
+  }
+
+  .messages li {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px 9px 10px;
+    border-radius: 999px;
+    pointer-events: all;
+    animation: pillIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    position: relative;
+    overflow: hidden;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .messages li.hiding {
+    animation: pillOut 0.28s ease forwards;
+  }
+
+  @keyframes pillIn {
+    from { opacity: 0; transform: translateY(-16px) scale(0.9); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @keyframes pillOut {
+    from { opacity: 1; transform: scale(1); max-height: 60px; }
+    to   { opacity: 0; transform: scale(0.88); max-height: 0; padding: 0; margin: 0; }
+  }
+
+  /* Django tag styles */
+  .messages li.success {
+    background: rgba(10, 28, 18, 0.95);
+    border: 1px solid rgba(69, 255, 188, 0.4);
+    box-shadow: 0 4px 24px rgba(69, 255, 188, 0.15), 0 0 0 1px rgba(69, 255, 188, 0.06);
+  }
+  .messages li.error {
+    background: rgba(28, 8, 8, 0.95);
+    border: 1px solid rgba(255, 80, 80, 0.4);
+    box-shadow: 0 4px 24px rgba(255, 80, 80, 0.15), 0 0 0 1px rgba(255, 80, 80, 0.06);
+  }
+  .messages li.warning {
+    background: rgba(26, 18, 4, 0.95);
+    border: 1px solid rgba(255, 193, 7, 0.4);
+    box-shadow: 0 4px 24px rgba(255, 193, 7, 0.15), 0 0 0 1px rgba(255, 193, 7, 0.06);
+  }
+  .messages li.info {
+    background: rgba(4, 14, 28, 0.95);
+    border: 1px solid rgba(0, 229, 255, 0.4);
+    box-shadow: 0 4px 24px rgba(0, 229, 255, 0.15), 0 0 0 1px rgba(0, 229, 255, 0.06);
+  }
+  .messages li.debug {
+    background: rgba(14, 14, 30, 0.95);
+    border: 1px solid rgba(122, 124, 255, 0.4);
+    box-shadow: 0 4px 24px rgba(122, 124, 255, 0.15), 0 0 0 1px rgba(122, 124, 255, 0.06);
+  }
+
+  /* Glow dot */
+  .pill-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .messages li.success .pill-dot { background: #45ffbc; box-shadow: 0 0 6px #45ffbc; }
+  .messages li.error   .pill-dot { background: #ff5050; box-shadow: 0 0 6px #ff5050; }
+  .messages li.warning .pill-dot { background: #ffc107; box-shadow: 0 0 6px #ffc107; }
+  .messages li.info    .pill-dot { background: #00e5ff; box-shadow: 0 0 6px #00e5ff; }
+  .messages li.debug   .pill-dot { background: #7a7cff; box-shadow: 0 0 6px #7a7cff; }
+
+  /* Message text */
+  .pill-text {
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 340px;
+  }
+  .messages li.success .pill-text { color: #45ffbc; }
+  .messages li.error   .pill-text { color: #ff8080; }
+  .messages li.warning .pill-text { color: #ffd54f; }
+  .messages li.info    .pill-text { color: #00e5ff; }
+  .messages li.debug   .pill-text { color: #a9b1ff; }
+
+  /* Close button */
+  .pill-close {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 15px;
+    cursor: pointer;
+    padding: 0 0 0 4px;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: color 0.15s;
+  }
+  .pill-close:hover { color: #fff; }
+
+  /* Progress bar */
+  .pill-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1.5px;
+    animation: pillBar 5s linear forwards;
+    border-radius: 0 0 999px 999px;
+  }
+  .messages li.success .pill-bar { background: #45ffbc; }
+  .messages li.error   .pill-bar { background: #ff5050; }
+  .messages li.warning .pill-bar { background: #ffc107; }
+  .messages li.info    .pill-bar { background: #00e5ff; }
+  .messages li.debug   .pill-bar { background: #7a7cff; }
+
+  @keyframes pillBar {
+    from { width: 100%; }
+    to   { width: 0%; }
+  }
+</style>
+
+<ul class="messages" id="voltMessages">
+  {% for message in messages %}
+  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+    <span class="pill-dot"></span>
+    <span class="pill-text">{{ message }}</span>
+    <button class="pill-close" aria-label="Dismiss">&times;</button>
+    <span class="pill-bar"></span>
+  </li>
+  {% endfor %}
+</ul>
+
+
+<script> 
+  (function () {
+    function dismissLi(li) {
+      if (!li || li.classList.contains('hiding')) return;
+      clearTimeout(li._t);
+      li.classList.add('hiding');
+      li.addEventListener('animationend', function () { li.remove(); }, { once: true });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('#voltMessages li').forEach(function (li) {
+        li._t = setTimeout(function () { dismissLi(li); }, 10000);
+        var btn = li.querySelector('.pill-close');
+        if (btn) btn.addEventListener('click', function () { dismissLi(li); });
+      });
+    });
+  })();
+</script>
+
 {% endif %}

@@ -1,0 +1,343 @@
+{% extends 'VoltHub/base.html' %}
+{% load static %}
+
+{% block container_classes %}container-fluid p-0{% endblock %}
+
+{% block content %}
+<style>
+  :root {
+    --vh-bg: #050512;
+    --vh-primary: #7a7cff;
+    --vh-accent: #00e5ff;
+    --vh-accent-2: #45ffbc;
+    --vh-border: rgba(122, 124, 255, 0.35);
+    --vh-text: #e6e9ff;
+    --vh-muted: #a9b1ff;
+  }
+
+  body, html { background-color: #050512 !important; margin: 0; }
+  .container-fluid { background-color: #050512 !important; padding: 0 !important; margin: 0 !important; }
+
+  .cart-wrap {
+    position: relative; width: 100vw;
+    margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+    background:
+      radial-gradient(1200px 600px at 10% -20%, rgba(122,124,255,0.22), transparent 60%),
+      radial-gradient(1000px 800px at 120% 10%, rgba(0,229,255,0.18), transparent 50%),
+      linear-gradient(135deg, #070718 0%, #040414 45%, #09091f 100%);
+    overflow: hidden; min-height: 80vh;
+  }
+  .cart-wrap::before, .cart-wrap::after {
+    content: ""; position: absolute;
+    width: 60vmax; height: 60vmax; border-radius: 50%;
+    filter: blur(60px); opacity: 0.25; z-index: 0;
+    animation: floaty 18s ease-in-out infinite;
+  }
+  .cart-wrap::before { background: radial-gradient(circle, rgba(122,124,255,0.45), transparent 60%); left: -20vmax; top: -15vmax; animation-delay: -4s; }
+  .cart-wrap::after  { background: radial-gradient(circle, rgba(0,229,255,0.40), transparent 60%); right: -25vmax; bottom: -20vmax; }
+  @keyframes floaty { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-20px) } }
+
+  .cart-inner { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; padding: 0 1rem; }
+
+  .cart-hero { padding: 6vh 0 3vh; text-align: center; color: var(--vh-text); }
+  .cart-title {
+    margin: 0 0 .5rem; font-weight: 800;
+    font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+    background: linear-gradient(90deg, var(--vh-primary), var(--vh-accent) 60%, var(--vh-accent-2));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    letter-spacing: .4px;
+  }
+  .cart-subtitle { color: var(--vh-muted); font-size: 0.9rem; }
+  .accent-line { position: relative; height: 2px; margin: .75rem auto 2rem; max-width: 420px; }
+  .accent-line::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 2px; border-radius: 2px;
+    background: linear-gradient(90deg, transparent, var(--vh-accent), var(--vh-primary), transparent);
+    background-size: 200% 100%; animation: lineFlow 8s linear infinite;
+  }
+  @keyframes lineFlow { 0%{ background-position: 0% 50% } 100%{ background-position: 200% 50% } }
+
+  .empty-cart { text-align: center; padding: 5vh 1rem; color: var(--vh-muted); }
+  .empty-cart .empty-icon { font-size: 3rem; opacity: .2; margin-bottom: 1rem; }
+  .empty-cart h3 { color: var(--vh-text); margin-bottom: .5rem; }
+  .empty-cart p { font-size: 0.88rem; }
+
+  .cart-item {
+    display: flex; align-items: center; gap: 1.25rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+    border: 1px solid var(--vh-border); border-radius: 14px;
+    padding: 1rem 1.25rem; margin-bottom: .85rem; transition: border-color .2s;
+  }
+  .cart-item:hover { border-color: rgba(0,229,255,0.4); }
+
+  .cart-item-img {
+    width: 80px; height: 80px; border-radius: 10px;
+    object-fit: cover; flex-shrink: 0; background: rgba(255,255,255,0.04);
+  }
+  .cart-item-img-placeholder {
+    width: 80px; height: 80px; border-radius: 10px;
+    background: rgba(255,255,255,0.04);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; opacity: .2; flex-shrink: 0;
+  }
+
+  .cart-item-details { flex: 1; min-width: 0; }
+  .cart-item-name {
+    font-weight: 700; color: var(--vh-text); font-size: 0.95rem; margin-bottom: .2rem;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .cart-item-category {
+    font-size: 0.7rem; color: var(--vh-muted);
+    text-transform: uppercase; letter-spacing: .06em; margin-bottom: .35rem;
+  }
+  .cart-item-price { font-size: 0.9rem; color: var(--vh-accent-2); font-weight: 600; }
+  .cart-item-subtotal { font-size: 0.78rem; color: var(--vh-muted); margin-top: .2rem; }
+
+  /* Quantity controls */
+  .qty-controls {
+    display: flex; align-items: center; gap: .4rem; flex-shrink: 0;
+  }
+  .qty-btn {
+    width: 28px; height: 28px; border-radius: 6px;
+    border: 1px solid var(--vh-border); background: rgba(255,255,255,0.05);
+    color: var(--vh-text); cursor: pointer; font-size: 0.9rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .15s; font-family: inherit; line-height: 1;
+  }
+  .qty-btn:hover { border-color: rgba(0,229,255,0.4); color: var(--vh-accent); background: rgba(0,229,255,0.08); }
+  .qty-display {
+    min-width: 32px; text-align: center;
+    font-size: 0.88rem; font-weight: 600; color: var(--vh-text);
+    background: rgba(122,124,255,0.12); border: 1px solid var(--vh-border);
+    border-radius: 6px; padding: .2rem .5rem;
+  }
+
+  .btn-remove {
+    font-size: 0.75rem; color: var(--vh-muted);
+    border: 1px solid var(--vh-border); border-radius: 8px;
+    padding: .3rem .65rem; background: transparent;
+    cursor: pointer; transition: all .15s; white-space: nowrap; font-family: inherit;
+  }
+  .btn-remove:hover { color: #ff7b88; border-color: rgba(220,53,69,0.4); background: rgba(220,53,69,0.1); }
+
+  .summary-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+    border: 1px solid var(--vh-border); border-radius: 14px;
+    padding: 1.25rem; margin-top: 1.5rem; margin-bottom: 3rem;
+  }
+  .summary-title { font-weight: 700; color: var(--vh-text); margin-bottom: 1rem; font-size: 0.95rem; }
+  .summary-row {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.88rem; color: var(--vh-muted); margin-bottom: .5rem;
+  }
+  .summary-row.total {
+    border-top: 1px solid var(--vh-border); margin-top: .75rem; padding-top: .75rem;
+    font-size: 1rem; font-weight: 700; color: var(--vh-text);
+  }
+  .summary-row.total span:last-child { color: var(--vh-accent-2); }
+
+  .btn-neon {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    border: 1px solid var(--vh-border); color: var(--vh-text);
+    border-radius: 12px; padding: .65rem 1.25rem; font-size: 0.85rem; font-weight: 600;
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+    text-decoration: none; cursor: pointer; transition: all .18s; font-family: inherit;
+  }
+  .btn-neon:hover {
+    color: #fff; border-color: rgba(0,229,255,0.65); text-decoration: none;
+    background: linear-gradient(180deg, rgba(0,229,255,0.18), rgba(122,124,255,0.12));
+    box-shadow: 0 0 0 2px rgba(0,229,255,0.2), 0 8px 20px rgba(0,229,255,0.14);
+  }
+  .btn-checkout {
+    width: 100%; justify-content: center; margin-top: 1rem;
+    background: linear-gradient(135deg, rgba(122,124,255,0.3), rgba(0,229,255,0.2));
+    border-color: rgba(0,229,255,0.5); font-size: 0.95rem;
+  }
+  .btn-checkout:hover {
+    background: linear-gradient(135deg, rgba(122,124,255,0.5), rgba(0,229,255,0.35));
+    box-shadow: 0 0 0 2px rgba(0,229,255,0.3), 0 10px 30px rgba(0,229,255,0.2);
+  }
+
+  .cart-actions { display: flex; gap: .75rem; margin-bottom: 1rem; }
+</style>
+
+<section class="cart-wrap">
+  <div class="cart-inner cart-hero">
+    <h1 class="cart-title">Your Shopping Cart</h1>
+    <p class="cart-subtitle">Review your items before checkout</p>
+    <div class="accent-line"></div>
+  </div>
+
+  <div class="cart-inner" style="padding-bottom: 6vh;">
+
+    <div class="cart-actions">
+      <a class="btn-neon" href="{% url 'shop_home' %}">
+        <i class="fa fa-arrow-left" style="font-size:.8rem;"></i>
+        Continue Shopping
+      </a>
+    </div>
+
+    {% if cart_products %}
+
+      {% for product in cart_products %}
+        <!--
+          cart_quantities is a dict: {product_id: quantity}
+          We look up the quantity for each product using its id.
+          This shows the REAL quantity the user added, not just 1.
+        -->
+        {% with qty=cart_quantities|default_if_none:1 %}
+        <div class="cart-item" id="cart-item-{{ product.id }}">
+
+          {% if product.main_image %}
+            <img class="cart-item-img" src="{{ product.main_image }}" alt="{{ product.name }}" loading="lazy" />
+          {% else %}
+            <div class="cart-item-img-placeholder">&#9889;</div>
+          {% endif %}
+
+          <div class="cart-item-details">
+            {% if product.category %}
+              <div class="cart-item-category">{{ product.category.name }}</div>
+            {% endif %}
+            <div class="cart-item-name">{{ product.name }}</div>
+            <div class="cart-item-price">
+              {% if product.on_sale and product.sale_price %}
+                R{{ product.sale_price|floatformat:2 }}
+                <span style="font-size:0.75rem;color:var(--vh-muted);text-decoration:line-through;margin-left:.35rem;">R{{ product.price|floatformat:2 }}</span>
+              {% else %}
+                R{{ product.price|floatformat:2 }}
+              {% endif %}
+            </div>
+          </div>
+
+          <!--
+            Quantity controls — + and - buttons update the session cart via AJAX.
+            The qty value comes from cart_quantities[product.id] passed from the view.
+          -->
+          <div class="qty-controls">
+            <button class="qty-btn"
+                    onclick="updateQty({{ product.id }}, -1, this)"
+                    title="Decrease quantity">−</button>
+            <span class="qty-display" id="qty-{{ product.id }}">
+              {{ cart_quantities|default_if_none:1 }}
+            </span>
+            <button class="qty-btn"
+                    onclick="updateQty({{ product.id }}, 1, this)"
+                    title="Increase quantity">+</button>
+          </div>
+
+          <button class="btn-remove" onclick="removeFromCart({{ product.id }})">
+            <i class="fa fa-trash" style="font-size:.75rem;"></i> Remove
+          </button>
+
+        </div>
+        {% endwith %}
+      {% endfor %}
+
+      <div class="summary-card">
+        <div class="summary-title">Order Summary</div>
+        <div class="summary-row">
+          <span>Items ({{ cart_products|length }})</span>
+          <span id="summaryTotal">R{{ cart_total|floatformat:2 }}</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span style="color:var(--vh-accent-2);">Calculated at checkout</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total</span>
+          <span id="summaryTotalBottom">R{{ cart_total|floatformat:2 }}</span>
+        </div>
+
+        <a class="btn-neon btn-checkout" href="{% url 'checkout' %}">
+          <i class="fa fa-lock" style="font-size:.85rem;"></i>
+          Proceed to Checkout
+        </a>
+      </div>
+
+    {% else %}
+      <div class="empty-cart">
+        <div class="empty-icon">&#128722;</div>
+        <h3>Your cart is empty</h3>
+        <p>Browse our shop and add some items to get started.</p>
+        <a class="btn-neon" href="{% url 'shop_home' %}" style="margin-top:1rem;display:inline-flex;">
+          Shop Now
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% include 'VoltHub/footer.html' %}
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+var CSRF = '{{ csrf_token }}';
+
+// Pass cart_quantities from Django to JavaScript
+// This is a JSON object like {4: 2, 7: 1}
+var cartQuantities = {{ cart_quantities_json|safe }};
+
+// Set real quantities on page load
+document.addEventListener('DOMContentLoaded', function() {
+    Object.keys(cartQuantities).forEach(function(productId) {
+        var qtyEl = document.getElementById('qty-' + productId);
+        if (qtyEl) qtyEl.textContent = cartQuantities[productId];
+    });
+});
+
+function updateQty(productId, change, btn) {
+    var qtyEl = document.getElementById('qty-' + productId);
+    var currentQty = parseInt(qtyEl.textContent) || 1;
+    var newQty = currentQty + change;
+
+    if (newQty < 1) {
+        // If qty goes below 1, remove the item
+        removeFromCart(productId);
+        return;
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: '/cart/update/' + productId + '/',
+        data: {
+            product_id: productId,
+            quantity: newQty,
+            csrfmiddlewaretoken: CSRF,
+            action: 'post'
+        },
+        success: function(json) {
+            if (json.success) {
+                qtyEl.textContent = newQty;
+                // Refresh page to recalculate totals
+                location.reload();
+            }
+        },
+        error: function() { console.log('Update failed'); }
+    });
+}
+
+function removeFromCart(productId) {
+    $.ajax({
+        type: 'POST',
+        url: '/cart/delete/' + productId + '/',
+        data: {
+            product_id: productId,
+            csrfmiddlewaretoken: CSRF,
+            action: 'post'
+        },
+        success: function(json) {
+            if (json.success) {
+                // Remove the item row from DOM smoothly
+                var item = document.getElementById('cart-item-' + productId);
+                if (item) {
+                    item.style.transition = 'opacity .3s ease';
+                    item.style.opacity = '0';
+                    setTimeout(function() { location.reload(); }, 300);
+                }
+            }
+        },
+        error: function() { console.log('Remove failed'); }
+    });
+}
+</script>
+{% endblock %}

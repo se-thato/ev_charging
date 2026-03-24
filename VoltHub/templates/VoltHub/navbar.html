@@ -1,20 +1,18 @@
 {% load static %}
 
-
 <style>
   :root {
     --vh-bg: #050512;
     --vh-surface: rgba(13, 13, 30, 0.55);
-    --vh-primary: #7a7cff; /* electric violet */
-    --vh-accent: #00e5ff;  /* neon cyan */
-    --vh-accent-2: #45ffbc; /* mint */
+    --vh-primary: #7a7cff;
+    --vh-accent: #00e5ff;
+    --vh-accent-2: #45ffbc;
     --vh-border: rgba(122, 124, 255, 0.35);
     --vh-text: #e6e9ff;
     --vh-muted: #a9b1ff;
     --vh-glow: rgba(0, 229, 255, 0.5);
   }
 
-  /* Base color + text overrides */
   .custom-navbar.neon-navbar,
   .navbar.neon-navbar {
     background: linear-gradient(135deg, #0a0a1f 0%, #06061a 50%, #0a0a1f 100%);
@@ -22,231 +20,160 @@
     box-shadow: 0 10px 30px rgba(10, 12, 45, 0.55), inset 0 0 20px rgba(0, 229, 255, 0.05);
     backdrop-filter: saturate(160%) blur(10px);
     -webkit-backdrop-filter: saturate(160%) blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 1030;
+    position: sticky; top: 0; z-index: 1030;
   }
 
   .neon-navbar::after {
-    /* thin animated accent line across the bottom */
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -1px;
-    height: 2px;
+    content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
     background: linear-gradient(90deg, transparent, var(--vh-accent), var(--vh-primary), var(--vh-accent-2), transparent);
-    background-size: 200% 100%;
-    animation: lineFlow 8s linear infinite;
-    opacity: 0.9;
+    background-size: 200% 100%; animation: lineFlow 8s linear infinite; opacity: 0.9;
   }
 
-  @keyframes lineFlow {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
-  }
+  @keyframes lineFlow { 0%{ background-position: 0% 50% } 100%{ background-position: 200% 50% } }
 
   .custom-navbar .navbar-nav .nav-link,
-  .custom-navbar .navbar-brand {
-    color: var(--vh-text) !important;
-  }
+  .custom-navbar .navbar-brand { color: var(--vh-text) !important; }
 
-  /* Brand styling */
   .navbar-brand.main-heading {
-    font-weight: 800;
-    letter-spacing: 0.6px;
+    font-weight: 800; letter-spacing: 0.6px;
     background: linear-gradient(90deg, var(--vh-primary), var(--vh-accent) 60%, var(--vh-accent-2));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 12px rgba(122, 124, 255, 0.25), 0 0 26px rgba(0, 229, 255, 0.15);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   }
 
-  /* Links */
   .navbar-nav .nav-link {
-    position: relative;
-    font-weight: 500;
-    letter-spacing: 0.4px;
-    padding: 0.65rem 0.95rem;
-    transition: color .2s ease, text-shadow .2s ease;
+    position: relative; font-weight: 500; letter-spacing: 0.4px;
+    padding: 0.65rem 0.95rem; transition: color .2s ease, text-shadow .2s ease;
   }
-
-  .navbar-nav .nav-link:hover,
-  .navbar-nav .nav-link:focus {
+  .navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus {
     color: #ffffff !important;
     text-shadow: 0 0 8px var(--vh-glow), 0 0 18px rgba(122, 124, 255, 0.35);
   }
-
   .navbar-nav .nav-link::after {
-    content: "";
-    position: absolute;
-    left: 0.9rem;
-    right: 0.9rem;
-    bottom: 0.35rem;
-    height: 2px;
-    border-radius: 2px;
+    content: ""; position: absolute; left: 0.9rem; right: 0.9rem; bottom: 0.35rem;
+    height: 2px; border-radius: 2px;
     background: linear-gradient(90deg, transparent, var(--vh-accent), var(--vh-primary), transparent);
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: transform .25s ease;
+    transform: scaleX(0); transform-origin: center; transition: transform .25s ease;
   }
-
   .navbar-nav .nav-link:hover::after,
   .navbar-nav .nav-link:focus::after,
-  .navbar-nav .active > .nav-link::after {
-    transform: scaleX(1);
-  }
+  .navbar-nav .active > .nav-link::after { transform: scaleX(1); }
 
-  /* Dropdown */
   .dropdown-menu {
-    background: var(--vh-surface);
-    border: 1px solid var(--vh-border);
+    background: var(--vh-surface); border: 1px solid var(--vh-border);
     box-shadow: 0 10px 35px rgba(18, 24, 60, 0.65), inset 0 0 14px rgba(0, 229, 255, 0.06);
-    backdrop-filter: blur(12px) saturate(160%);
-    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    backdrop-filter: blur(12px) saturate(160%); -webkit-backdrop-filter: blur(12px) saturate(160%);
   }
-
-  .dropdown-item {
-    color: var(--vh-text);
-    transition: background .2s ease, color .2s ease, padding-left .2s ease;
-  }
-
-  .dropdown-item:hover,
-  .dropdown-item:focus {
+  .dropdown-item { color: var(--vh-text); transition: background .2s ease, color .2s ease, padding-left .2s ease; }
+  .dropdown-item:hover, .dropdown-item:focus {
     color: #ffffff;
     background: linear-gradient(90deg, rgba(122, 124, 255, 0.15), rgba(0, 229, 255, 0.10));
     padding-left: 1.15rem;
   }
+  .dropdown-divider { border-top-color: rgba(122, 124, 255, 0.25); }
 
-  .dropdown-divider {
-    border-top-color: rgba(122, 124, 255, 0.25);
-  }
-
-  /* Toggler */
   .navbar-dark .navbar-toggler {
-    border-color: var(--vh-border);
-    border-width: 1px;
-    outline: none;
+    border-color: var(--vh-border); border-width: 1px; outline: none;
     box-shadow: 0 0 0 1px rgba(122, 124, 255, 0.25);
   }
-
-  .navbar-dark .navbar-toggler:focus,
-  .navbar-dark .navbar-toggler:hover {
-    box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.25);
-    border-color: rgba(0, 229, 255, 0.55);
+  .navbar-dark .navbar-toggler:focus, .navbar-dark .navbar-toggler:hover {
+    box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.25); border-color: rgba(0, 229, 255, 0.55);
   }
+  .navbar-dark .navbar-toggler-icon { filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.45)); }
 
-  .navbar-dark .navbar-toggler-icon {
-    filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.45));
-  }
-
-  /* Search */
   .neon-search .form-control {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--vh-border);
-    color: var(--vh-text);
-    border-radius: 999px;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--vh-border);
+    color: var(--vh-text); border-radius: 999px; padding-left: 1rem; padding-right: 1rem;
   }
-
-  .neon-search .form-control::placeholder {
-    color: var(--vh-muted);
-  }
-
+  .neon-search .form-control::placeholder { color: var(--vh-muted); }
   .neon-search .form-control:focus {
     background: rgba(255, 255, 255, 0.075);
     box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.20), 0 0 24px rgba(0, 229, 255, 0.15);
-    border-color: rgba(0, 229, 255, 0.5);
-    color: #fff;
+    border-color: rgba(0, 229, 255, 0.5); color: #fff;
   }
 
-  .btn-neon-outline.btn,
-  .btn.btn-outline-light {
-    border-color: var(--vh-border);
-    color: var(--vh-text);
-    border-radius: 999px;
+  .btn-neon-outline.btn, .btn.btn-outline-light {
+    border-color: var(--vh-border); color: var(--vh-text); border-radius: 999px;
     background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
     box-shadow: 0 0 0 1px rgba(122, 124, 255, 0.25);
   }
-
-  .btn-neon-outline.btn:hover,
-  .btn.btn-outline-light:hover {
-    color: #fff;
-    border-color: rgba(0, 229, 255, 0.65);
+  .btn-neon-outline.btn:hover, .btn.btn-outline-light:hover {
+    color: #fff; border-color: rgba(0, 229, 255, 0.65);
     box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.25), 0 0 22px rgba(0, 229, 255, 0.2);
     background: linear-gradient(180deg, rgba(0,229,255,0.15), rgba(122,124,255,0.10));
   }
 
-  /* Spacing and alignment */
   .navbar-nav .nav-item { margin: 0 0.6rem; }
   .navbar .navbar-nav { align-items: center; }
   .navbar .neon-search { margin-left: 1.25rem; }
   .neon-search .form-control { margin-right: 0.5rem; }
-/* User dropdown */
+
+  /* ── Cart badge ── */
+  .cart-nav-link { position: relative; display: inline-flex; align-items: center; gap: .35rem; }
+  .cart-badge-count {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    background: var(--vh-accent);
+    color: #000;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    box-shadow: 0 0 8px rgba(0,229,255,0.6);
+    /* Hidden by default — shown when count > 0 */
+    opacity: 0;
+    transform: scale(0);
+    transition: all .2s ease;
+  }
+  .cart-badge-count.has-items {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* User dropdown */
   .user-dropdown { margin-left: 0.75rem; }
   .user-dropdown .nav-link { padding: 0 !important; }
   .user-dropdown .nav-link::after { display: none; }
   .user-dropdown .user-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+    display: inline-flex; align-items: center; gap: 0.5rem;
     padding: 0.15rem 0.6rem 0.15rem 0.15rem;
     background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-    border: 1px solid var(--vh-border);
-    border-radius: 999px;
+    border: 1px solid var(--vh-border); border-radius: 999px;
     box-shadow: 0 0 0 1px rgba(122,124,255,0.2);
   }
-
   .user-dropdown .user-chip:hover {
     box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.25), 0 0 18px rgba(0, 229, 255, 0.18);
     border-color: rgba(0, 229, 255, 0.55);
   }
-
-  .user-avatar {
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid var(--vh-border);
-    box-shadow: 0 0 10px rgba(0,229,255,0.15);
-  }
-
+  .user-avatar { border-radius: 50%; object-fit: cover; border: 1px solid var(--vh-border); box-shadow: 0 0 10px rgba(0,229,255,0.15); }
   .user-initials {
     width: 30px; height: 30px;
     display: inline-flex; align-items: center; justify-content: center;
     border-radius: 50%;
     background: radial-gradient(85% 85% at 30% 30%, var(--vh-primary) 0%, var(--vh-accent) 100%);
-    color: #fff;
-    font-weight: 700;
-    letter-spacing: 0.4px;
-    text-shadow: 0 0 6px rgba(0,229,255,0.4);
-    box-shadow: 0 0 12px rgba(122,124,255,0.25);
+    color: #fff; font-weight: 700; letter-spacing: 0.4px;
+    text-shadow: 0 0 6px rgba(0,229,255,0.4); box-shadow: 0 0 12px rgba(122,124,255,0.25);
   }
-
   .user-name { color: var(--vh-text); font-weight: 600; letter-spacing: 0.3px; }
   .user-dropdown .dropdown-menu { min-width: 220px; }
-  /* Ensure dropdown caret is visible and spaced */
   .user-dropdown .dropdown-toggle { padding-right: .45rem !important; }
   .user-dropdown .dropdown-toggle::after {
-    display: inline-block !important;
-    margin-left: .35rem;
-    vertical-align: .15em;
-    border-top-color: var(--vh-text);
-    filter: drop-shadow(0 0 4px rgba(0,229,255,0.35));
+    display: inline-block !important; margin-left: .35rem; vertical-align: .15em;
+    border-top-color: var(--vh-text); filter: drop-shadow(0 0 4px rgba(0,229,255,0.35));
   }
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-dark justify-content-center custom-navbar neon-navbar">
   <a class="navbar-brand main-heading" href="{% url '' %}">VoltHub</a>
 
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-bs-toggle="collapse"
-    data-bs-target="#navbarNavDropdown"
-    aria-controls="navbarNavDropdown"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+    aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -260,18 +187,26 @@
           <a class="nav-link" href="{% url 'dashboard' %}">Dashboard <i class="fa fa-th-large"></i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'stations' %}">Charging Points <i class="fa fa-car" aria-hidden="true"></i></a>
+          <a class="nav-link" href="{% url 'stations' %}">Charging Points <i class="fa fa-map-marker" aria-hidden="true"></i></a>
         </li>
-                <li class="nav-item">
-          <a class="nav-link" href="{% url 'shop_home' %}">Shop <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'shop_home' %}">Shop <i class="fa fa-cart-plus" aria-hidden="true"></i></a>
         </li>
 
+        <!-- ── Cart link with live badge ── -->
         <li class="nav-item">
-          <a class="nav-link" href="{% url '' %}">Station Owner <i class="bi bi-ev-station" aria-hidden="true"></i> 
+          <a class="nav-link cart-nav-link" href="{% url 'cart' %}">
+            Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <!--
+              cart-badge-count: hidden by default (opacity:0, scale:0)
+              JavaScript reads the session cart quantity and shows this badge
+              The 'has-items' class makes it visible when count > 0
+            -->
+            <span class="cart-badge-count" id="navCartBadge">0</span>
           </a>
         </li>
 
-              {% else %}
+      {% else %}
         <li class="nav-item">
           <a class="nav-link" href="{% url '' %}">Home <i class="fa fa-home" aria-hidden="true"></i></a>
         </li>
@@ -290,21 +225,20 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'contact_us' %}">Contact Us <i class="fa fa-solid fa-address-card" aria-hidden="true"></i></a>
         </li>
-        
       {% endif %}
     </ul>
 
     <form class="d-flex ms-auto neon-search" role="search">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-light" type="submit">
-        <i class="bi bi-search"></i>
-        Submit
+        <i class="bi bi-search"></i> Submit
       </button>
     </form>
 
     {% if user.is_authenticated %}
     <div class="nav-item dropdown user-dropdown">
-      <a class="nav-link dropdown-toggle p-0" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="User menu">
+      <a class="nav-link dropdown-toggle p-0" href="#" id="userDropdown" role="button"
+        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="User menu">
         <span class="user-chip">
           {% if user.profile and user.profile.profile_photo %}
             <img src="{{ user.profile.profile_photo.url }}" alt="User avatar" width="30" height="30" class="user-avatar" />
@@ -324,3 +258,30 @@
     {% endif %}
   </div>
 </nav>
+
+<!--
+  Cart badge script — reads cart quantity from the server
+  and updates the badge on every page load.
+  Uses a lightweight endpoint that returns just the count.
+-->
+<script>
+(function() {
+    fetch('/cart/count/', {
+        method: 'GET',
+        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+    })
+    .then(function(response) { return response.json(); })
+    .then(function(data) {
+        var badge = document.getElementById('navCartBadge');
+        if (!badge) return;
+        var count = data.count || 0;
+        badge.textContent = count;
+        if (count > 0) {
+            badge.classList.add('has-items');
+        } else {
+            badge.classList.remove('has-items');
+        }
+    })
+    .catch(function() {});
+})();
+</script>

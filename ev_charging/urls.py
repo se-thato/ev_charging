@@ -1,10 +1,12 @@
 from django.contrib import admin
+from VoltHub.station_api_views import nearby_ocm_stations
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -20,9 +22,11 @@ urlpatterns = [
    path('admin/', admin.site.urls),
    path('', include("charging_station.urls")),
    path('', include("VoltHub.urls")),
+
+   # API endpoint for nearby stations (both OCM and my DB)
+   path('api/stations/nearby/', nearby_ocm_stations, name='nearby_stations'),
     
    #authentication
-   #path('authentication/', include('authentication.urls', namespace='authentication')),
    #path('', include("authentication.urls")),
    path('auth/', include("authentication.urls")),
 
@@ -40,11 +44,10 @@ urlpatterns = [
    path('ecommerce/', include('ecommerce.urls')),
    path('cart/', include('Cart.urls')),
 
+   path('', include('ecommerce.urls')),
+
    #Dashboards app
    #path('Dashboards/', include('Dashboards.urls')),
-
-
-
 
    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),

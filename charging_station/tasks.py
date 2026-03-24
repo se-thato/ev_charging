@@ -107,5 +107,5 @@ def generate_invoice_and_email(self, session_id):
     email.send(fail_silently=False)
     buffer.close()
 
-    
+
     return f"Invoice sent to {user_email} for session {session.id}"

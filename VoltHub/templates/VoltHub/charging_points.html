@@ -4,115 +4,233 @@
 {% block container_classes %}container-fluid p-0{% endblock %}
 
 {% block content %}
-
 <title>Charging Stations</title>
 <style>
   :root {
     --vh-bg: #050512;
     --vh-surface: rgba(13, 13, 30, 0.55);
-    --vh-primary: #7a7cff; /* electric violet */
-    --vh-accent: #00e5ff;  /* neon cyan */
-    --vh-accent-2: #45ffbc; /* mint */
+    --vh-primary: #7a7cff;
+    --vh-accent: #00e5ff;
+    --vh-accent-2: #45ffbc;
     --vh-border: rgba(122, 124, 255, 0.35);
     --vh-text: #e6e9ff;
     --vh-muted: #a9b1ff;
   }
 
-  /* Full-bleed wrap (edge-to-edge, removes side gaps) */
+  body, html { background-color: #050512 !important; margin: 0; }
+  .container-fluid { background-color: #050512 !important; padding: 0 !important; margin: 0 !important; }
+
   .charge-wrap {
     position: relative;
     width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
-    background: radial-gradient(1200px 600px at 10% -20%, rgba(122,124,255,0.22), transparent 60%),
-                radial-gradient(1000px 800px at 120% 10%, rgba(0,229,255,0.18), transparent 50%),
-                linear-gradient(135deg, #070718 0%, #040414 45%, #09091f 100%);
+    background:
+      radial-gradient(1200px 600px at 10% -20%, rgba(122,124,255,0.22), transparent 60%),
+      radial-gradient(1000px 800px at 120% 10%, rgba(0,229,255,0.18), transparent 50%),
+      linear-gradient(135deg, #070718 0%, #040414 45%, #09091f 100%);
     overflow: hidden;
   }
-  .charge-wrap::before,
-  .charge-wrap::after {
-    content: "";
-    position: absolute;
-    width: 60vmax; height: 60vmax; border-radius: 50%; filter: blur(60px); opacity: .25; z-index: 0;
+  .charge-wrap::before, .charge-wrap::after {
+    content: ""; position: absolute;
+    width: 60vmax; height: 60vmax; border-radius: 50%;
+    filter: blur(60px); opacity: .25; z-index: 0;
     animation: floaty 18s ease-in-out infinite;
   }
   .charge-wrap::before { background: radial-gradient(circle, rgba(122,124,255,0.45), transparent 60%); left: -20vmax; top: -15vmax; animation-delay: -4s; }
   .charge-wrap::after  { background: radial-gradient(circle, rgba(0,229,255,0.40), transparent 60%); right: -25vmax; bottom: -20vmax; }
   @keyframes floaty { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-20px) } }
 
-  .charge-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+  .charge-inner { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 1rem; }
 
-  /* Hero */
-  .charge-hero { text-align: center; color: var(--vh-text); padding: 7vh 0 3vh; }
+  /* ── Hero ── */
+  .charge-hero { text-align: center; color: var(--vh-text); padding: 5vh 0 2vh; }
   .charge-title {
-    margin: 0 0 .5rem; font-weight: 800; letter-spacing: .4px; font-size: clamp(1.8rem, 4vw, 3rem);
+    margin: 0 0 .5rem; font-weight: 800; letter-spacing: .4px;
+    font-size: clamp(1.6rem, 3.5vw, 2.6rem);
     background: linear-gradient(90deg, var(--vh-primary), var(--vh-accent) 60%, var(--vh-accent-2));
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 12px rgba(122,124,255,0.25), 0 0 26px rgba(0,229,255,0.15);
   }
-  .charge-subtitle { color: var(--vh-muted); }
+  .charge-subtitle { color: var(--vh-muted); font-size: .9rem; }
 
-  .accent-line { position: relative; height: 2px; margin: 1rem auto 2rem; max-width: 520px; }
+  .accent-line { position: relative; height: 2px; margin: .75rem auto 1.5rem; max-width: 420px; }
   .accent-line::after {
     content: ""; position: absolute; left: 0; right: 0; height: 2px; border-radius: 2px;
     background: linear-gradient(90deg, transparent, var(--vh-accent), var(--vh-primary), transparent);
     background-size: 200% 100%; animation: lineFlow 8s linear infinite;
   }
-  @keyframes lineFlow { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+  @keyframes lineFlow { 0%{ background-position: 0% 50% } 100%{ background-position: 200% 50% } }
 
-  /* Search */
+  /* ── Search ── */
   .search-row { display: flex; justify-content: center; padding: 0 0 1rem; }
   .search-input {
-    width: min(720px, 100%);
-    border-radius: 14px;
-    padding: .9rem 1rem;
-    border: 1px solid var(--vh-border);
-    background: rgba(255,255,255,0.06);
-    color: var(--vh-text);
-    outline: none;
-    transition: box-shadow .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
+    width: min(720px, 100%); border-radius: 14px; padding: .9rem 1rem;
+    border: 1px solid var(--vh-border); background: rgba(255,255,255,0.06);
+    color: var(--vh-text); outline: none;
+    transition: box-shadow .2s, border-color .2s, background .2s;
   }
   .search-input::placeholder { color: var(--vh-muted); }
-  .search-input:focus { border-color: rgba(0,229,255,0.55); box-shadow: 0 0 0 3px rgba(0,229,255,0.18), 0 0 24px rgba(0,229,255,0.12); background: rgba(255,255,255,0.08); color: #fff; }
+  .search-input:focus { border-color: rgba(0,229,255,0.55); box-shadow: 0 0 0 3px rgba(0,229,255,0.18); background: rgba(255,255,255,0.08); color: #fff; }
 
-  /* Map */
-  .map-shell { position: relative; border-radius: 18px; overflow: hidden; border: 1px solid var(--vh-border); box-shadow: 0 20px 60px rgba(12,16,50,0.55), inset 0 0 24px rgba(0,229,255,0.08); background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); }
+  /* ── Main layout: left sidebar | map | right sidebar ── */
+  .map-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr 280px;
+    gap: 1rem;
+    align-items: start;
+    padding-bottom: 1.5rem;
+  }
+
+  /* Collapse sidebars on tablet */
+  @media (max-width: 1100px) {
+    .map-layout { grid-template-columns: 240px 1fr; }
+    .ocm-sidebar { display: none; }
+  }
+
+  /* Stack vertically on mobile */
+  @media (max-width: 768px) {
+    .map-layout { grid-template-columns: 1fr; }
+    .our-sidebar, .ocm-sidebar { max-height: 300px; }
+    .our-sidebar { order: 3; }
+    .ocm-sidebar { display: block; order: 4; }
+    .map-col { order: 1; }
+  }
+
+  /* ── Sidebar shared styles ── */
+  .sidebar-panel {
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    border: 1px solid var(--vh-border);
+    border-radius: 16px;
+    padding: 1rem;
+    height: fit-content;
+    max-height: calc(min(70vh, 560px) + 2rem);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: .75rem; flex-shrink: 0;
+  }
+  .sidebar-title {
+    font-weight: 700; font-size: .88rem; color: var(--vh-text);
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .sidebar-title .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  .dot-green { background: #45ffbc; }
+  .dot-blue  { background: #00e5ff; }
+  @keyframes pulse { 0%,100%{ opacity:1 } 50%{ opacity:.4 } }
+
+  .sidebar-count {
+    font-size: .72rem; color: var(--vh-muted);
+    background: rgba(122,124,255,0.15);
+    border: 1px solid var(--vh-border);
+    border-radius: 999px; padding: .15rem .55rem;
+  }
+
+  .sidebar-list {
+    overflow-y: auto; flex: 1;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(122,124,255,0.3) transparent;
+  }
+  .sidebar-list::-webkit-scrollbar { width: 4px; }
+  .sidebar-list::-webkit-scrollbar-track { background: transparent; }
+  .sidebar-list::-webkit-scrollbar-thumb { background: rgba(122,124,255,0.3); border-radius: 4px; }
+
+  /* ── VoltHub station cards (left sidebar) ── */
+  .our-station-card {
+    padding: .75rem; margin-bottom: .5rem;
+    border-radius: 10px; border: 1px solid var(--vh-border);
+    background: rgba(255,255,255,0.04);
+    cursor: pointer; transition: border-color .2s, background .2s;
+  }
+  .our-station-card:hover { border-color: rgba(0,229,255,.45); background: rgba(0,229,255,0.06); }
+  .our-station-card:last-child { margin-bottom: 0; }
+
+  .sc-name { font-weight: 700; font-size: .85rem; color: var(--vh-text); margin-bottom: .2rem; display: flex; align-items: center; gap: .4rem; }
+  .sc-address { font-size: .74rem; color: var(--vh-muted); margin-bottom: .3rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sc-slots { font-size: .78rem; font-weight: 600; }
+  .sc-price { font-size: .72rem; color: var(--vh-muted); margin-top: .15rem; }
+  .sc-book {
+    display: block; margin-top: .5rem; text-align: center;
+    padding: .3rem .5rem; font-size: .75rem; font-weight: 700;
+    border-radius: 8px; text-decoration: none; color: #000;
+    background: linear-gradient(90deg, var(--vh-accent-2), var(--vh-accent));
+    transition: opacity .15s;
+  }
+  .sc-book:hover { opacity: .85; color: #000; text-decoration: none; }
+
+  /* Status dot colours */
+  .status-online  { color: #45ffbc; }
+  .status-full    { color: #ffc107; }
+  .status-offline { color: #ff4444; }
+  .status-unknown { color: var(--vh-muted); }
+
+  /* ── OCM station cards (right sidebar) ── */
+  .ocm-station-card {
+    padding: .65rem; margin-bottom: .45rem;
+    border-radius: 10px; border: 1px solid var(--vh-border);
+    background: rgba(255,255,255,0.03);
+    transition: border-color .2s;
+  }
+  .ocm-station-card:hover { border-color: rgba(0,229,255,.3); }
+  .ocm-station-card:last-child { margin-bottom: 0; }
+
+  .oc-name { font-weight: 600; font-size: .82rem; color: var(--vh-text); margin-bottom: .15rem; }
+  .oc-address { font-size: .72rem; color: var(--vh-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: .2rem; }
+  .oc-meta { font-size: .7rem; color: var(--vh-muted); }
+
+  /* ── Map ── */
+  .map-col { position: relative; }
+  .map-shell {
+    border-radius: 18px; overflow: hidden;
+    border: 1px solid var(--vh-border);
+    box-shadow: 0 20px 60px rgba(12,16,50,0.55), inset 0 0 24px rgba(0,229,255,0.08);
+  }
   .map-canvas { width: 100%; height: min(70vh, 560px); min-height: 360px; }
 
-  /* Station cards */
-  .section-title { color: var(--vh-text); margin: 1.75rem 0 .75rem; font-weight: 700; }
+  /* WS connection indicator */
+  .ws-indicator {
+    position: absolute; top: .75rem; left: .75rem; z-index: 10;
+    font-size: .7rem; padding: .25rem .6rem; border-radius: 999px;
+    background: rgba(5,5,18,0.85); border: 1px solid var(--vh-border);
+    color: var(--vh-muted); display: flex; align-items: center; gap: .4rem;
+    transition: all .3s;
+  }
+  .ws-indicator.connected { border-color: rgba(69,255,188,.4); color: #45ffbc; }
+  .ws-indicator .ws-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+  /* ── Below-map station grid (existing) ── */
+  .section-title { color: var(--vh-text); margin: 2rem 0 .75rem; font-weight: 700; }
 
   .station-card {
     background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-    border: 1px solid var(--vh-border);
-    border-radius: 18px;
+    border: 1px solid var(--vh-border); border-radius: 18px;
     backdrop-filter: blur(10px) saturate(160%);
     -webkit-backdrop-filter: blur(10px) saturate(160%);
-    box-shadow: 0 20px 50px rgba(12, 16, 50, 0.45), inset 0 0 24px rgba(0, 229, 255, 0.06);
-    color: var(--vh-text);
-    height: 100%;
-    padding: 1rem 1.1rem;
-    transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+    box-shadow: 0 20px 50px rgba(12,16,50,0.45), inset 0 0 24px rgba(0,229,255,0.06);
+    color: var(--vh-text); height: 100%; padding: 1rem 1.1rem;
+    transition: transform .12s, box-shadow .2s, border-color .2s;
   }
-  .station-card:hover { transform: translateY(-3px); border-color: rgba(0,229,255,0.55); box-shadow: 0 30px 70px rgba(0, 229, 255, 0.18), 0 10px 26px rgba(122,124,255,0.16); }
+  .station-card:hover { transform: translateY(-3px); border-color: rgba(0,229,255,0.55); box-shadow: 0 30px 70px rgba(0,229,255,0.18), 0 10px 26px rgba(122,124,255,0.16); }
   .station-name { font-weight: 700; margin-bottom: .35rem; }
   .station-meta { color: var(--vh-muted); margin-bottom: .25rem; }
   .station-price { margin-bottom: .5rem; }
-
   .status-badge { display: inline-block; padding: .25rem .6rem; border-radius: 999px; font-size: .78rem; }
   .status-available { background: linear-gradient(90deg, #34e89e, #0f9b0f); color: white; }
   .status-unavailable { background: linear-gradient(90deg, #ff6a6a, #ff3b3b); color: white; }
 
   .btn-neon {
     display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
-    width: 100%;
-    border: 1px solid var(--vh-border);
-    color: var(--vh-text);
-    border-radius: 14px;
-    padding: .65rem 1rem;
+    width: 100%; border: 1px solid var(--vh-border); color: var(--vh-text);
+    border-radius: 14px; padding: .65rem 1rem;
     background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
     box-shadow: 0 0 0 1px rgba(122,124,255,0.25);
-    transition: transform .08s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
+    transition: transform .08s, box-shadow .2s, border-color .2s, background .2s, color .2s;
     text-decoration: none;
   }
   .btn-neon:hover { color: #fff; border-color: rgba(0,229,255,0.65); background: linear-gradient(180deg, rgba(0,229,255,0.18), rgba(122,124,255,0.12)); box-shadow: 0 0 0 2px rgba(0,229,255,0.24), 0 10px 26px rgba(0,229,255,0.16); transform: translateY(-1px); }
@@ -122,52 +240,106 @@
 
   .spacer-bottom { padding-bottom: 6vh; }
 
-  /* Floating action button for adding a station */
   .fab-add {
-    position: fixed;
-    right: 24px;
-    bottom: 24px;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    color: #fff;
-    text-decoration: none;
+    position: fixed; right: 24px; bottom: 24px;
+    width: 56px; height: 56px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; color: #fff; text-decoration: none;
     background: linear-gradient(135deg, var(--vh-primary), var(--vh-accent));
     border: 1px solid var(--vh-border);
-    box-shadow: 0 12px 32px rgba(0, 229, 255, 0.25), 0 6px 16px rgba(122, 124, 255, 0.25);
-    z-index: 1000;
-    transition: transform .12s ease, box-shadow .2s ease, filter .2s ease;
+    box-shadow: 0 12px 32px rgba(0,229,255,0.25), 0 6px 16px rgba(122,124,255,0.25);
+    z-index: 1000; transition: transform .12s, box-shadow .2s, filter .2s;
   }
-  .fab-add:hover {
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 16px 40px rgba(0, 229, 255, 0.35), 0 8px 22px rgba(122, 124, 255, 0.28);
-    filter: brightness(1.05);
-  }
+  .fab-add:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 16px 40px rgba(0,229,255,0.35); filter: brightness(1.05); }
 </style>
 
 <section class="charge-wrap">
+
+  <!-- Hero -->
   <div class="charge-inner charge-hero">
     <h1 class="charge-title">Find a Charging Station</h1>
     <p class="charge-subtitle">Search, navigate and book a slot in seconds</p>
     <div class="accent-line"></div>
   </div>
 
+  <!-- Search -->
   <div class="charge-inner">
     <div class="search-row">
       <input id="search-input" class="search-input" type="text" placeholder="Search for a location...">
     </div>
-    <div class="map-shell">
-      <div id="map" class="map-canvas"></div>
+  </div>
+
+  <!-- Map + sidebars layout -->
+  <div class="charge-inner">
+    <div class="map-layout">
+
+      <!--LEFT SIDEBAR: VoltHub stations (live via WebSocket)-->
+      <aside class="sidebar-panel our-sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-title">
+            <span class="dot dot-green"></span>
+            VoltHub Stations
+          </div>
+          <span class="sidebar-count" id="our-count">0</span>
+        </div>
+
+        <!--
+          Legend for slot colours:
+          Green  = slots available
+          Amber  = almost full (1–2 slots)
+          Red    = full or offline
+        -->
+        <div style="display:flex;gap:.5rem;margin-bottom:.75rem;flex-shrink:0">
+          <span style="font-size:.68rem;color:#45ffbc">● Available</span>
+          <span style="font-size:.68rem;color:#ffc107">● Almost full</span>
+          <span style="font-size:.68rem;color:#ff4444">● Full/Offline</span>
+        </div>
+
+        <!-- Station cards injected here by map.js WebSocket -->
+        <div class="sidebar-list" id="our-stations-list">
+          <p style="color:var(--vh-muted);font-size:.85rem">Connecting...</p>
+        </div>
+      </aside>
+
+      <!--MAP-->
+      <div class="map-col">
+        <!-- WebSocket connection status indicator -->
+        <div class="ws-indicator" id="ws-indicator">
+          <span class="ws-dot"></span>
+          <span id="ws-status-text">Connecting</span>
+        </div>
+
+        <div class="map-shell">
+          <div id="map" class="map-canvas"></div>
+        </div>
+      </div>
+
+      <!--Right sidebar OCM stations (info only, no booking)-->
+      <aside class="sidebar-panel ocm-sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-title">
+            <span class="dot dot-blue"></span>
+            Nearby Stations
+          </div>
+          <span class="sidebar-count" id="ocm-count">0</span>
+        </div>
+
+        <div style="font-size:.7rem;color:var(--vh-muted);margin-bottom:.75rem;flex-shrink:0">
+          External stations — directions only
+        </div>
+
+        <!-- OCM station cards injected here by map.js -->
+        <div class="sidebar-list" id="ocm-stations-list">
+          <p style="color:var(--vh-muted);font-size:.85rem">Move the map to load stations.</p>
+        </div>
+      </aside>
+
     </div>
   </div>
-  
 
+  <!-- Below map: Django DB station cards (existing) -->
   <div class="charge-inner spacer-bottom">
-    <h4 class="section-title">You Can Also Check This Available Stations</h4>
+    <h4 class="section-title">Bookable VoltHub Stations</h4>
     <div class="row g-4">
       {% for station in stations %}
         <div class="col-12 col-md-6 col-lg-4">
@@ -176,7 +348,7 @@
             <div class="station-meta">Location: {{ station.location }}</div>
             <div class="station-price">Price per hour: R{{ station.price_per_hour }}</div>
             <div class="mb-3">
-              {% if station.available %}
+              {% if station.availability %}
                 <span class="status-badge status-available">Available</span>
               {% else %}
                 <span class="status-badge status-unavailable">Unavailable</span>
@@ -186,25 +358,127 @@
           </div>
         </div>
       {% empty %}
-        <p class="text-light">No charging stations available.</p>
+        <p class="text-light">No charging stations available yet.</p>
       {% endfor %}
     </div>
 
-    <a href="{% url 'dashboard' %}" class="btn-ghost"><i class="fa fa-arrow-left"></i> Back to Dashboard</a>
+    <a href="{% url 'dashboard' %}" class="btn-ghost">
+      <i class="fa fa-arrow-left"></i> Back to Dashboard
+    </a>
   </div>
-  
-  <!-- Floating action button to add a new charging station -->
-{% if user.is_authenticated %}
-<a href="{% url 'submit_station' %}" class="fab-add" title="Add your charging station">
-  <i class="fa fa-plus"></i>
-</a>
-{% endif %}
 
+  {% if user.is_authenticated %}
+  <a href="{% url 'submit_station' %}" class="fab-add" title="Add your charging station">
+    <i class="fa fa-plus"></i>
+  </a>
+  {% endif %}
 
 </section>
 
-<!-- Google Maps API and page script -->
+<!-- Google Maps API -->
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6RCLJT5k3SVic4HZNe0y2MumLXuLNc0M&callback=initMap&libraries=places"></script>
+
+<script>
+  // Override sidebar renderers from map.js to use our styled cards
+
+  window.renderOurSidebar = function(stations) {
+    const list = document.getElementById('our-stations-list');
+    const count = document.getElementById('our-count');
+    if (!list) return;
+
+    if (count) count.textContent = stations.length;
+
+    if (!stations || stations.length === 0) {
+      list.innerHTML = '<p style="color:var(--vh-muted);font-size:.85rem">No VoltHub stations nearby.</p>';
+      return;
+    }
+
+    list.innerHTML = stations.map(s => {
+      const slotColor = s.available_slots > 2 ? 'status-online'
+                      : s.available_slots > 0  ? 'status-full'
+                      : 'status-offline';
+
+      const dotColor  = s.available_slots > 2 ? '#45ffbc'
+                      : s.available_slots > 0  ? '#ffc107'
+                      : '#ff4444';
+
+      const bookBtn = s.bookable
+        ? `<a href="/book/?station_id=${s.id}" class="sc-book">Book Now</a>`
+        : `<div style="font-size:.72rem;color:var(--vh-muted);margin-top:.4rem">Info only</div>`;
+
+      const openingNote = s.status === 'offline' && s.opening_hours
+        ? `<div style="font-size:.7rem;color:#ffc107;margin-top:.2rem">Check opening hours</div>`
+        : '';
+
+      return `
+        <div class="our-station-card" data-station-id="${s.id}" onclick="focusStation(${s.id}, 'volthub')">
+          <div class="sc-name">
+            <span style="width:8px;height:8px;border-radius:50%;background:${dotColor};display:inline-block;flex-shrink:0"></span>
+            ${s.name}
+          </div>
+          <div class="sc-address">${s.address || ''}</div>
+          <div class="sc-slots ${slotColor}">
+            ${s.available_slots}/${s.total_slots} slots · ${s.status}
+          </div>
+          ${s.price_per_hour ? `<div class="sc-price">R${s.price_per_hour}/hr</div>` : ''}
+          ${openingNote}
+          ${bookBtn}
+        </div>`;
+    }).join('');
+  };
+
+  window.renderOcmSidebar = function(stations) {
+    const list = document.getElementById('ocm-stations-list');
+    const count = document.getElementById('ocm-count');
+    if (!list) return;
+
+    if (count) count.textContent = stations.length;
+
+    if (!stations || stations.length === 0) {
+      list.innerHTML = '<p style="color:var(--vh-muted);font-size:.85rem">No external stations found nearby.</p>';
+      return;
+    }
+
+    list.innerHTML = stations.slice(0, 25).map(s => {
+      const dotColor = s.status === 'online'  ? '#45ffbc'
+                     : s.status === 'partial' ? '#ffc107'
+                     : s.status === 'offline' ? '#ff4444'
+                     : 'var(--vh-muted)';
+
+      const connectors = s.connector_types && s.connector_types.length
+        ? s.connector_types.slice(0, 2).join(', ')
+        : 'Unknown connector';
+
+      return `
+        <div class="ocm-station-card">
+          <div class="oc-name">
+            <span style="width:7px;height:7px;border-radius:50%;background:${dotColor};display:inline-block;margin-right:.35rem"></span>
+            ${s.name}
+          </div>
+          <div class="oc-address">${s.address || ''}</div>
+          <div class="oc-meta">${connectors} · ${s.num_points || '?'} points · ${s.usage_cost || 'Price N/A'}</div>
+        </div>`;
+    }).join('');
+  };
+
+  
+  window.updateOurSidebar = window.renderOurSidebar;
+  window.updateOcmSidebar = window.renderOcmSidebar;
+
+  // WebSocket status indicator updates
+  window.setWsStatus = function(connected) {
+    const indicator = document.getElementById('ws-indicator');
+    const text = document.getElementById('ws-status-text');
+    if (!indicator || !text) return;
+    if (connected) {
+      indicator.classList.add('connected');
+      text.textContent = 'Live';
+    } else {
+      indicator.classList.remove('connected');
+      text.textContent = 'Reconnecting...';
+    }
+  };
+</script>
 
 {% include 'VoltHub/footer.html' %}
 {% endblock %}

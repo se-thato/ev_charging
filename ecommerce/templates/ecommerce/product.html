@@ -1,4 +1,4 @@
-{% extends 'ecommerce/base.html' %}
+{% extends 'VoltHub/base.html' %}
 {% load static %}
 
 {% block content %}
@@ -132,7 +132,7 @@
 
           <!-- Main Image -->
           {% if product.main_image %}
-            <img id="main-product-img" src="{{ product.main_image.url }}" alt="{{ product.name }}" class="product-img" />
+            <img id="main-product-img" src="{{ product.main_image }}" alt="{{ product.name }}" class="product-img" />
           {% else %}
             <img id="main-product-img" src="{% static 'images/placeholder.png' %}" alt="No Image" class="product-img" />
           {% endif %}
@@ -166,7 +166,18 @@
 
             <div class="actions">
               <a href="{% url 'shop_home' %}" class="btn-neon">Back to Shop</a>
-              <a href="{% url 'Cart:add-cart' product.id %}" class="btn-neon" id="add-to-cart" value="{{ product.id }}">Add to Cart</a>
+              
+              {% comment %} <a href="{% url 'Cart:add-cart' product.id %}" 
+                class="btn-neon" 
+                id="add-to-cart" 
+                value="{{ product.id }}">Add to Cart
+              </a> {% endcomment %}
+              <button class="btn-neon" 
+                  id="add-to-cart" 
+                  data-product-id="{{ product.id }}"
+                  data-url="{% url 'Cart:add-cart' product.id %}">
+               Add to Cart
+             </button>
             </div>
           </div>
         </div>
@@ -180,7 +191,37 @@
 <!-- JS Section -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
-  // Cart AJAX (your existing code)
+  $(document).on('click', '#add-to-cart', function(e) {
+    e.preventDefault();
+    
+    var productId = $(this).data('product-id');  // ← read from data attribute
+    var url = $(this).data('url');               // ← read URL from data attribute
+    
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: {
+            product_id: productId,
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            action: 'post'
+        },
+        success: function(json) {
+            if (json.success) {
+                // Update cart count in navbar if you have one
+                if (document.getElementById('cart-quantity')) {
+                    document.getElementById('cart-quantity').textContent = json.qty;
+                }
+                // Show a quick success message
+                alert('Added to cart! Items in cart: ' + json.qty);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.log('Cart error:', error);
+        }
+    });
+});
+
+  {% comment %} // Cart AJAX (your existing code)
   $(document).on('click', '#add-to-cart', function(e) {
     e.preventDefault();
     $.ajax({
@@ -204,6 +245,6 @@
     $('#main-product-img').attr('src', newSrc);
     $('.gallery-thumbnails img').removeClass('selected');
     $(this).addClass('selected');
-  });
+  }); {% endcomment %}
 </script>
 {% endblock %}
