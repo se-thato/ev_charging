@@ -10,12 +10,24 @@
   :root {
     --vh-bg: #050512;
     --vh-surface: rgba(13, 13, 30, 0.55);
-    --vh-primary: #7a7cff; /* electric violet */
-    --vh-accent: #00e5ff;  /* neon cyan */
-    --vh-accent-2: #45ffbc; /* mint */
+    --vh-primary: #7a7cff;
+    --vh-accent: #00e5ff;
+    --vh-accent-2: #45ffbc;
     --vh-border: rgba(122, 124, 255, 0.35);
     --vh-text: #e6e9ff;
     --vh-muted: #a9b1ff;
+  }
+
+  body,
+  html {
+      background-color: #050512 !important;
+      margin: 0;
+  }
+
+  .container-fluid {
+      background-color: #050512 !important;
+      padding: 0 !important;
+      margin: 0 !important;
   }
 
   .submit-wrap {
@@ -68,6 +80,7 @@
     -webkit-backdrop-filter: blur(10px) saturate(160%);
     box-shadow: 0 20px 50px rgba(12, 16, 50, 0.45), inset 0 0 24px rgba(0, 229, 255, 0.06);
     color: var(--vh-text);
+    margin-bottom: 1.25rem;
   }
 
   .form-header { padding: 1.25rem 1.25rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
@@ -88,7 +101,7 @@
 
   .checkbox-field { display: flex; align-items: center; gap: .6rem; padding-top: .6rem; }
 
-  /* Inputs override to match theme */
+  /* Inputs */
   .form-control, input[type="number"], input[type="time"], input[type="text"], input[type="email"] {
     background: rgba(255,255,255,0.06) !important;
     border: 1px solid var(--vh-border) !important;
@@ -125,6 +138,38 @@
   .btn-neon.btn-compact { padding: .45rem .85rem; font-size: .9rem; border-radius: 12px; }
   .btn-ghost { width: auto; padding: .65rem 1rem; background: transparent; border: 1px dashed var(--vh-border); color: var(--vh-muted); border-radius: 12px; text-decoration: none; display: inline-flex; align-items: center; gap: .5rem; }
   .btn-ghost:hover { color: #fff; border-color: rgba(0,229,255,0.65); box-shadow: 0 0 0 2px rgba(0,229,255,0.18); }
+
+  /* ── Map picker styles ── */
+  .map-section-title {
+    font-weight: 700; font-size: .88rem;
+    color: var(--vh-accent);
+    text-transform: uppercase; letter-spacing: .06em;
+    margin-bottom: .5rem;
+  }
+  .map-picker-hint { color: var(--vh-muted); font-size: .85rem; margin-bottom: .85rem; }
+
+  #picker-map {
+    width: 100%; height: 300px;
+    border-radius: 12px;
+    border: 1px solid var(--vh-border);
+    margin-bottom: .85rem;
+  }
+
+  .coords-display {
+    display: flex; gap: 1rem; margin-bottom: .75rem;
+  }
+  .coords-box {
+    flex: 1; padding: .55rem 1rem;
+    background: rgba(0,229,255,0.06);
+    border: 1px solid rgba(0,229,255,0.2);
+    border-radius: 10px;
+    font-size: .82rem; color: var(--vh-accent-2);
+  }
+  .coords-box span { color: var(--vh-muted); font-size: .72rem; display: block; margin-bottom: .1rem; }
+  .coords-warning {
+    font-size: .8rem; color: #ffc107;
+    margin-top: .25rem;
+  }
 </style>
 
 <section class="submit-wrap">
@@ -135,19 +180,24 @@
   </div>
 
   <div class="submit-inner">
+
+    <!-- ── Station details card (original structure preserved) ── -->
     <div class="glass-card">
       <div class="form-header">
         <h5 class="m-0">Station Details</h5>
         <span class="hint">Please provide accurate location and pricing</span>
       </div>
       <div class="form-body">
-        <form method="post">
+        <form method="post" id="station-form">
           {% csrf_token %}
           {{ form.non_field_errors }}
 
           <div class="grid-form">
             {% for field in form %}
-              {% if field.field.widget.input_type == 'checkbox' %}
+              {% if field.html_name == 'latitude' or field.html_name == 'longitude' %}
+                {# Hidden fields — rendered outside the grid below the map #}
+                {{ field }}
+              {% elif field.field.widget.input_type == 'checkbox' %}
                 <div class="checkbox-field">
                   {{ field }}
                   <label for="{{ field.id_for_label }}">{{ field.label }}</label>
@@ -170,17 +220,110 @@
             {% endfor %}
           </div>
 
+          <!-- ── Map coordinate picker (inserted inside the form) ── -->
+          <div style="margin-top: 1.5rem;">
+            <div class="map-section-title">📍 Pin Your Station on the Map</div>
+            <p class="map-picker-hint">
+              Click anywhere on the map to drop a pin at your station's exact location.
+              This places your station marker on the live map so nearby users can find you.
+            </p>
+
+            <div id="picker-map"></div>
+
+            <div class="coords-display">
+              <div class="coords-box">
+                <span>Latitude</span>
+                <strong id="lat-display">Not set — click the map</strong>
+              </div>
+              <div class="coords-box">
+                <span>Longitude</span>
+                <strong id="lng-display">Not set — click the map</strong>
+              </div>
+            </div>
+
+            {% if not form.latitude.value %}
+              <p class="coords-warning">
+                ⚠ No location pinned yet. Your station will appear in the sidebar but not on the map until you pin it.
+              </p>
+            {% endif %}
+          </div>
+
+          <!-- ── Submit / Back buttons (original style preserved) ── -->
           <div class="d-flex gap-2 mt-3">
             <button type="submit" class="btn-neon btn-compact">Submit Station</button>
             <a href="{% url 'stations' %}" class="btn-ghost"><i class="fa fa-arrow-left"></i> Back</a>
           </div>
+
         </form>
       </div>
       <div class="form-footer">
-        <small class="text-white"><b>NOTE:</b>Submissions are reviewed by the admin team. You’ll see your station once it’s approved.</small>
+        <small class="text-white"><b>NOTE:</b> Submissions are reviewed by the admin team. You'll see your station once it's approved.</small>
       </div>
     </div>
+
   </div>
 </section>
+
+<!-- Google Maps for coordinate picker -->
+<script>
+function initPickerMap() {
+  const defaultCenter = { lat: -26.341069, lng: 28.132964 };
+  let pin = null;
+
+  const map = new google.maps.Map(document.getElementById('picker-map'), {
+    zoom: 12,
+    center: defaultCenter,
+    mapTypeControl: false,
+    streetViewControl: false,
+    fullscreenControl: false,
+  });
+
+  // Center on user's location if available
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      pos => map.setCenter({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
+      () => {}
+    );
+  }
+
+  // Drop pin on click and fill hidden form fields
+  map.addListener('click', function(event) {
+    const lat = event.latLng.lat();
+    const lng = event.latLng.lng();
+
+    if (pin) pin.setMap(null);
+
+    pin = new google.maps.Marker({
+      position: event.latLng,
+      map: map,
+      animation: google.maps.Animation.DROP,
+      title: 'Your station location',
+    });
+
+    document.getElementById('id_latitude').value = lat.toFixed(6);
+    document.getElementById('id_longitude').value = lng.toFixed(6);
+    document.getElementById('lat-display').textContent = lat.toFixed(6);
+    document.getElementById('lng-display').textContent = lng.toFixed(6);
+
+    // Remove the warning once coordinates are set
+    const warning = document.querySelector('.coords-warning');
+    if (warning) warning.style.display = 'none';
+  });
+
+  // Restore pin if form was re-rendered after validation error
+  const existingLat = document.getElementById('id_latitude').value;
+  const existingLng = document.getElementById('id_longitude').value;
+  if (existingLat && existingLng) {
+    const pos = { lat: parseFloat(existingLat), lng: parseFloat(existingLng) };
+    pin = new google.maps.Marker({ position: pos, map: map });
+    map.setCenter(pos);
+    document.getElementById('lat-display').textContent = existingLat;
+    document.getElementById('lng-display').textContent = existingLng;
+  }
+}
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6RCLJT5k3SVic4HZNe0y2MumLXuLNc0M&callback=initPickerMap"></script>
+
 {% include 'VoltHub/footer.html' %}
 {% endblock %}
