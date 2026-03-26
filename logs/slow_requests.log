@@ -1134,3 +1134,16 @@
 [2026-03-25 22:07:26,374] WARNING SLOW REQUEST: /stations/ took 8.545 seconds!
 [2026-03-25 22:07:35,072] WARNING SLOW REQUEST: /cart/count/ took 5.513 seconds!
 [2026-03-26 11:38:03,984] WARNING SLOW REQUEST: /stations/ took 6.248 seconds!
+[2026-03-26 13:26:00,823] WARNING SLOW REQUEST: / took 18.017 seconds!
+[2026-03-26 13:28:22,431] WARNING SLOW REQUEST: /auth/login/ took 30.576 seconds!
+[2026-03-26 13:28:31,573] WARNING SLOW REQUEST: /dashboard took 6.551 seconds!
+[2026-03-26 13:28:46,537] WARNING SLOW REQUEST: /stations/ took 6.083 seconds!
+[2026-03-26 13:28:48,988] WARNING SLOW REQUEST: /analytics/ took 8.753 seconds!
+[2026-03-26 13:29:00,833] WARNING SLOW REQUEST: /api/stations/nearby/ took 9.612 seconds!
+[2026-03-26 13:29:23,749] WARNING SLOW REQUEST: /book took 7.253 seconds!
+[2026-03-26 13:31:44,985] WARNING SLOW REQUEST: /book took 6.647 seconds!
+[2026-03-26 13:32:42,741] WARNING SLOW REQUEST: /analytics/ took 6.433 seconds!
+[2026-03-26 13:33:13,511] WARNING SLOW REQUEST: /analytics/ took 7.307 seconds!
+[2026-03-26 13:33:50,406] WARNING SLOW REQUEST: /profile took 36.473 seconds!
+[2026-03-26 13:33:59,583] WARNING SLOW REQUEST: /analytics/ took 9.247 seconds!
+[2026-03-26 13:34:24,805] WARNING SLOW REQUEST: /profile took 5.758 seconds!
