@@ -148,7 +148,6 @@
     border-color: rgba(0,229,255,0.35);
   }
 
-  /* ── Toast notification ── */
   .cart-toast {
     position: fixed; bottom: 2rem; right: 2rem; z-index: 9999;
     background: linear-gradient(135deg, rgba(13,13,40,0.97), rgba(6,6,24,0.97));
@@ -236,11 +235,6 @@
                 </a>
 
                 {% if product.active %}
-                  <!--
-                    data-django-url  → Cart app URL: saves to session + database
-                    data-shopify-url → Storefront API URL: creates Shopify cart for checkout
-                    Both are called together when user clicks Add
-                  -->
                   <button class="btn-neon btn-cart"
                           data-product-id="{{ product.id }}"
                           data-django-url="{% url 'Cart:add-cart' product.id %}"
@@ -267,7 +261,6 @@
   </div>
 </section>
 
-<!-- Toast notification -->
 <div class="cart-toast" id="cartToast">
   <span class="toast-icon">&#10003;</span>
   <span id="toastMessage">Added to cart!</span>
@@ -292,11 +285,8 @@ function addToCart(btn) {
     var djangoUrl = $(btn).data('django-url');
     var shopifyUrl = $(btn).data('shopify-url');
 
-    // Disable button to prevent double-clicking
     $(btn).prop('disabled', true).html('<i class="fa fa-spinner fa-spin" style="font-size:0.8rem;"></i> Adding...');
 
-    // Step 1 — Save to Django session + database (Cart app)
-    // This saves to your Django DB (visible in admin) and session (fast display)
     $.ajax({
         type: 'POST',
         url: djangoUrl,
@@ -307,9 +297,6 @@ function addToCart(btn) {
         },
         success: function(djangoJson) {
             if (djangoJson.success) {
-
-                // Step 2 — Also save to Shopify cart (Storefront API)
-                // This creates/updates the Shopify cart so checkout works
                 if (shopifyUrl) {
                     $.ajax({
                         type: 'POST',
@@ -319,18 +306,14 @@ function addToCart(btn) {
                             csrfmiddlewaretoken: CSRF_TOKEN,
                         },
                         complete: function() {
-                            // Whether Shopify succeeds or fails, show success to user
-                            // Django cart always works — Shopify is bonus for checkout
                             showToast('Added to cart! (' + djangoJson.qty + ' items)');
                             $(btn).prop('disabled', false).html('<i class="fa fa-cart-plus" style="font-size:0.8rem;"></i> Add');
                         }
                     });
                 } else {
-                    // No Shopify variant ID — Django only
                     showToast('Added to cart! (' + djangoJson.qty + ' items)');
                     $(btn).prop('disabled', false).html('<i class="fa fa-cart-plus" style="font-size:0.8rem;"></i> Add');
                 }
-
             } else {
                 showToast('Could not add to cart. Please try again.');
                 $(btn).prop('disabled', false).html('<i class="fa fa-cart-plus" style="font-size:0.8rem;"></i> Add');
