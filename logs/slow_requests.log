@@ -1147,3 +1147,6 @@
 [2026-03-26 13:33:50,406] WARNING SLOW REQUEST: /profile took 36.473 seconds!
 [2026-03-26 13:33:59,583] WARNING SLOW REQUEST: /analytics/ took 9.247 seconds!
 [2026-03-26 13:34:24,805] WARNING SLOW REQUEST: /profile took 5.758 seconds!
+[2026-03-28 15:51:43,517] WARNING SLOW REQUEST: /auth/login/ took 9.341 seconds!
+[2026-03-28 16:00:36,097] WARNING SLOW REQUEST: /auth/register/ took 7.249 seconds!
+[2026-03-28 16:07:52,911] WARNING SLOW REQUEST: /auth/login/ took 5.011 seconds!

@@ -7,24 +7,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>{% block title %}VoltHub{% endblock %}</title>
-    
+    {% block extra_css %}
     <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
-
     <link rel="stylesheet" type="text/css" href="{% static 'VoltHub/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'VoltHub/charging.css' %}">
-    
+    <link rel="stylesheet" href="{% static 'authentication/register.css' %}">
+    <link rel="stylesheet" href="{% static 'authentication/login.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'VoltHub/footer.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'VoltHub/login.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'VoltHub/register.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'VoltHub/home.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'VoltHub/contact.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'VoltHub/navbar.css' %}">
-
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    
-    {% block extra_css %}{% endblock %}
+    {% endblock %}
 
     <style>
       /* Global mobile-first responsiveness */
@@ -42,7 +36,7 @@
         .navbar .nav-link { padding: .5rem .75rem; }
       }
     </style>
-    </head>
+</head>
 
 
     <body>
