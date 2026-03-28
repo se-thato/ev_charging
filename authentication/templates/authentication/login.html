@@ -2,6 +2,10 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'authentication/login.css' %}">
+{% endblock %}
+
 {% block container_classes %}container-fluid p-0{% endblock %}
 
 {% block content %}
