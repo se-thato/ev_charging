@@ -176,7 +176,7 @@ MIDDLEWARE = [
 
 AXES_FAILURE_LIMIT = 5 # Maximum number of login attempts before lockout
 AXES_COOLOFF_TIME = timedelta(minutes=30)  # This is the time (in minutes) that a user will be locked out after exceeding the failure limit
-AXES_ENABLED = True
+AXES_ENABLED = False
 AXES_LOCK_OUT_AT_FAILURE = True
 AXES_RESET_ON_SUCCESS = True
 
