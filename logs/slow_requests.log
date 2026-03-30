@@ -1150,3 +1150,10 @@
 [2026-03-28 15:51:43,517] WARNING SLOW REQUEST: /auth/login/ took 9.341 seconds!
 [2026-03-28 16:00:36,097] WARNING SLOW REQUEST: /auth/register/ took 7.249 seconds!
 [2026-03-28 16:07:52,911] WARNING SLOW REQUEST: /auth/login/ took 5.011 seconds!
+[2026-03-28 21:57:13,204] WARNING SLOW REQUEST: / took 5.672 seconds!
+[2026-03-28 21:57:31,546] WARNING SLOW REQUEST: /admin/login/ took 6.682 seconds!
+[2026-03-28 21:58:00,380] WARNING SLOW REQUEST: /admin/login/ took 10.839 seconds!
+[2026-03-28 21:58:09,089] WARNING SLOW REQUEST: / took 9.201 seconds!
+[2026-03-28 21:58:50,569] WARNING SLOW REQUEST: /auth/login/ took 16.020 seconds!
+[2026-03-28 21:59:05,206] WARNING SLOW REQUEST: /analytics/ took 6.642 seconds!
+[2026-03-28 21:59:23,960] WARNING SLOW REQUEST: /shop_home took 19.596 seconds!

@@ -1,6 +1,6 @@
 client_id = "224c12136d3707f9a8aeeaf96f759c8b"
 name = "VoltHub"
-application_url = "https://impetuously-geitonogamous-rosaura.ngrok-free.dev"
+application_url = "https://evcharging-production-c179.up.railway.app"
 embedded = false
 
 [build]
@@ -13,4 +13,4 @@ api_version = "2026-04"
 scopes = "read_products,write_products,read_orders,write_orders,read_inventory"
 
 [auth]
-redirect_urls = [ "https://impetuously-geitonogamous-rosaura.ngrok-free.dev/shopify/callback/" ]
+redirect_urls = [ "https://evcharging-production-c179.up.railway.app/shopify/callback/","https://impetuously-geitonogamous-rosaura.ngrok-free.dev/shopify/callback/" ]
