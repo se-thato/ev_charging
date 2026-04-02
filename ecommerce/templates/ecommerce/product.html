@@ -6,15 +6,15 @@
   :root {
     --vh-bg: #050512;
     --vh-surface: rgba(13, 13, 30, 0.55);
-    --vh-primary: #7a7cff; /* electric violet */
-    --vh-accent: #00e5ff;  /* neon cyan */
-    --vh-accent-2: #45ffbc; /* mint */
+    --vh-primary: #7a7cff;
+    --vh-accent: #00e5ff;
+    --vh-accent-2: #45ffbc;
     --vh-border: rgba(122, 124, 255, 0.35);
     --vh-text: #e6e9ff;
     --vh-muted: #a9b1ff;
   }
 
-  /* Full-bleed product section (removes side gaps) */
+  /* Full-bleed product section */
   .product-wrap {
     position: relative;
     width: 100vw;
@@ -25,75 +25,86 @@
                 linear-gradient(135deg, #070718 0%, #040414 45%, #09091f 100%);
     overflow: hidden;
   }
-  .product-wrap::before,
-  .product-wrap::after {
+  .product-wrap::before, .product-wrap::after {
     content: "";
     position: absolute;
-    width: 60vmax; height: 60vmax; border-radius: 50%; filter: blur(60px); opacity: .25; z-index: 0;
+    width: 60vmax; height: 60vmax; border-radius: 50%;
+    filter: blur(60px); opacity: .25; z-index: 0;
     animation: floaty 18s ease-in-out infinite;
   }
   .product-wrap::before { background: radial-gradient(circle, rgba(122,124,255,0.45), transparent 60%); left: -20vmax; top: -15vmax; animation-delay: -4s; }
   .product-wrap::after  { background: radial-gradient(circle, rgba(0,229,255,0.40), transparent 60%); right: -25vmax; bottom: -20vmax; }
   @keyframes floaty { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-20px) } }
 
-  .product-inner { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+  .product-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
 
-  .product-hero { text-align: center; color: var(--vh-text); padding: 7vh 0 3vh; }
+  .product-hero {
+    text-align: center;
+    color: var(--vh-text);
+    padding: 7vh 0 2vh;
+  }
   .product-title-hero {
-    margin: 0 0 .5rem; font-weight: 800; letter-spacing: .4px; font-size: clamp(1.8rem, 4vw, 3rem);
+    margin: 0 0 .25rem;
+    font-weight: 800;
+    letter-spacing: .4px;
+    font-size: clamp(1.8rem, 4vw, 3rem);
     background: linear-gradient(90deg, var(--vh-primary), var(--vh-accent) 60%, var(--vh-accent-2));
-    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 12px rgba(122,124,255,0.25), 0 0 26px rgba(0,229,255,0.15);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
-  .product-subtitle { color: var(--vh-muted); }
 
-  .accent-line { position: relative; height: 2px; margin: 1rem auto 2rem; max-width: 520px; }
-  .accent-line::after {
-    content: ""; position: absolute; left: 0; right: 0; height: 2px; border-radius: 2px;
-    background: linear-gradient(90deg, transparent, var(--vh-accent), var(--vh-primary), transparent);
-    background-size: 200% 100%; animation: lineFlow 8s linear infinite;
+  /* 2‑column layout */
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0 3rem;
   }
-  @keyframes lineFlow { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
-
-  /* Product card */
-  .product-card {
-    position: relative; display: flex; flex-direction: column; gap: 1rem;
-    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-    border: 1px solid var(--vh-border); border-radius: 18px;
-    box-shadow: 0 20px 60px rgba(12, 16, 50, 0.65), inset 0 0 24px rgba(0, 229, 255, 0.08);
-    backdrop-filter: blur(10px) saturate(160%); -webkit-backdrop-filter: blur(10px) saturate(160%);
-    padding: 1rem; color: var(--vh-text);
+  @media (max-width: 768px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
   }
-  .product-card:hover { border-color: rgba(0,229,255,0.55); box-shadow: 0 30px 70px rgba(0, 229, 255, 0.18), 0 10px 26px rgba(122,124,255,0.16); }
 
-  .product-media { position: relative; }
+  /* Gallery */
+  .product-gallery {
+    position: relative;
+  }
+  .main-image-wrapper {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--vh-border);
+    background: rgba(13,13,30,0.6);
+    cursor: zoom-in;
+  }
   .product-img {
-    width: 100%; height: 100%; max-height: 480px; object-fit: cover; border-radius: 14px;
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    display: block;
+    padding: 0.5rem;
+    transition: transform 0.2s;
   }
-  .sale-badge { position: absolute; top: .6rem; right: .6rem; background: linear-gradient(90deg, var(--vh-accent), var(--vh-primary)); color: #fff; padding: .25rem .6rem; border-radius: 999px; font-size: .75rem; box-shadow: 0 6px 14px rgba(0,0,0,0.25); }
-
-  .product-body { padding: .5rem 0; }
-  .product-title { font-weight: 700; margin-bottom: .5rem; }
-  .product-desc { color: var(--vh-muted); }
-  .product-price { margin-top: .75rem; font-size: 1.1rem; }
-  .product-price del { color: #e6e9ff90; }
-
-  .actions { display: flex; gap: .5rem; margin-top: 1rem; flex-wrap: wrap; }
-  .btn-neon {
-    display: inline-flex; align-items: center; justify-content: center; gap: .3rem;
-    border: 1px solid var(--vh-border); color: var(--vh-text);
-    font-size: 0.95rem;
-    border-radius: 8px; padding: .35rem .65rem;
-    flex: 0 0 auto; width: auto; min-width: 0; white-space: nowrap;
-    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-    box-shadow: 0 0 0 1px rgba(122,124,255,0.25);
-    transition: transform .08s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
-    text-decoration: none;
+  .sale-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: linear-gradient(90deg, var(--vh-accent), var(--vh-primary));
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 2;
   }
-  .btn-neon:hover { color: #fff; border-color: rgba(0,229,255,0.65); background: linear-gradient(180deg, rgba(0,229,255,0.18), rgba(122,124,255,0.12)); box-shadow: 0 0 0 2px rgba(0,229,255,0.24), 0 10px 26px rgba(0,229,255,0.16); transform: translateY(-1px); }
-
-  .spacer-bottom { padding-bottom: 6vh; }
- /* New gallery styles */
   .gallery-thumbnails {
     display: flex;
     gap: 0.5rem;
@@ -101,84 +112,249 @@
     flex-wrap: wrap;
   }
   .gallery-thumbnails img {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 8px;
     border: 2px solid transparent;
     cursor: pointer;
-    transition: border 0.2s ease;
+    transition: all 0.2s;
   }
   .gallery-thumbnails img.selected {
     border-color: var(--vh-accent);
   }
+
+  /* Product info (right column) */
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .product-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--vh-text);
+    margin: 0;
+  }
+  .product-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--vh-accent-2);
+  }
+  .product-price del {
+    font-size: 1rem;
+    color: var(--vh-muted);
+    margin-right: 0.5rem;
+  }
+  .product-short-desc {
+    color: var(--vh-muted);
+    line-height: 1.5;
+    border-left: 3px solid var(--vh-accent);
+    padding-left: 1rem;
+    margin: 0.5rem 0;
+  }
+  .quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.5rem 0;
+  }
+  .quantity-selector label {
+    color: var(--vh-muted);
+    font-weight: 500;
+  }
+  .qty-input {
+    width: 70px;
+    background: rgba(13,13,30,0.8);
+    border: 1px solid var(--vh-border);
+    border-radius: 8px;
+    padding: 0.5rem;
+    color: var(--vh-text);
+    text-align: center;
+    font-size: 1rem;
+  }
+  .add-to-cart-btn {
+    background: linear-gradient(135deg, var(--vh-primary), var(--vh-accent));
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: 40px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .add-to-cart-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 12px rgba(0,229,255,0.5);
+  }
+  .back-link {
+    color: var(--vh-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    display: inline-block;
+  }
+  .back-link:hover {
+    color: var(--vh-accent);
+  }
+
+  /* Collapsible details (Amazon style) */
+  .product-details-accordion {
+    margin-top: 2rem;
+    border-top: 1px solid var(--vh-border);
+  }
+  .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--vh-accent);
+  }
+  .accordion-icon {
+    font-size: 1.2rem;
+    transition: transform 0.2s;
+  }
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    color: var(--vh-muted);
+    line-height: 1.6;
+    background: rgba(10,10,25,0.4);
+    border-radius: 12px;
+    padding: 0 1rem;
+  }
+  .accordion-content.open {
+    max-height: 600px;
+    padding: 1rem;
+    overflow-y: auto;
+  }
+  /* Hide images inside description (they belong to gallery) */
+  .accordion-content img {
+    display: none;
+  }
+
+  /* Fullscreen lightbox */
+  #fullscreen-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(4,4,20,0.97);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    backdrop-filter: blur(8px);
+  }
+  #fullscreen-lightbox.active { display: flex; }
+  #fullscreen-lightbox img {
+    max-width: 92vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 12px;
+    border: 1px solid var(--vh-border);
+  }
+  #lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    background: none;
+    border: 1px solid var(--vh-border);
+    color: var(--vh-muted);
+    font-size: 1.8rem;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 0.2rem 0.6rem;
+  }
+  #lightbox-close:hover { color: var(--vh-accent); }
+  .lightbox-caption {
+    color: var(--vh-muted);
+    font-size: 0.8rem;
+    margin-top: 0.75rem;
+  }
+
+  .spacer-bottom { padding-bottom: 6vh; }
 </style>
+
+<!-- Fullscreen Lightbox -->
+<div id="fullscreen-lightbox">
+  <button id="lightbox-close">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+  <p class="lightbox-caption">Click outside or press Esc to close</p>
+</div>
 
 <section class="product-wrap">
   <div class="product-inner product-hero">
     <h1 class="product-title-hero">{{ product.name }}</h1>
-    <p class="product-subtitle">Discover the details of your premium EV accessory</p>
-    <div class="accent-line"></div>
   </div>
 
   <div class="product-inner spacer-bottom">
-    <div class="row g-4 align-items-start">
-      <!-- Product Images -->
-      <div class="col-12 col-lg-6">
-        <div class="product-media">
-          {% if product.on_sale %}
-            <div class="sale-badge">Sale</div>
-          {% endif %}
-
-          <!-- Main Image -->
-          {% if product.main_image %}
-            <img id="main-product-img" src="{{ product.main_image }}" alt="{{ product.name }}" class="product-img" />
-          {% else %}
-            <img id="main-product-img" src="{% static 'images/placeholder.png' %}" alt="No Image" class="product-img" />
-          {% endif %}
-
-          <!-- Gallery Thumbnails -->
-          <div class="gallery-thumbnails">
-            {% for image in product.gallery.all %}
-              <img src="{{ image.image.url }}" alt="{{ image.alt_text }}" class="{% if forloop.first %}selected{% endif %}" data-large="{{ image.image.url }}">
-            {% empty %}
-              <!-- No gallery images -->
-            {% endfor %}
-          </div>
+    <div class="product-grid">
+      <!-- LEFT COLUMN: Gallery -->
+      <div class="product-gallery">
+        {% if product.on_sale %}
+          <div class="sale-badge">Sale</div>
+        {% endif %}
+        <div class="main-image-wrapper">
+          <img id="main-product-img"
+               src="{% if product.main_image %}{{ product.main_image }}{% else %}{% static 'images/placeholder.png' %}{% endif %}"
+               alt="{{ product.name }}"
+               class="product-img">
+        </div>
+        <div class="gallery-thumbnails">
+          {% for image in product.gallery.all %}
+            <img src="{{ image.image.url }}"
+                 alt="{{ image.alt_text }}"
+                 class="{% if forloop.first %}selected{% endif %}"
+                 data-large="{{ image.image.url }}">
+          {% endfor %}
         </div>
       </div>
 
-      <!-- Product Details -->
-      <div class="col-12 col-lg-6">
-        <div class="product-card">
-          <div class="product-body">
-            <h4 class="product-title">{{ product.name }}</h4>
-            <p class="product-desc">{{ product.description }}</p>
-            <div class="product-price">
-              {% if product.on_sale %}
-                <del>R{{ product.price }}</del>
-                &nbsp;
-                <strong>R{{ product.sale_price }}</strong>
-              {% else %}
-                <strong>R{{ product.price }}</strong>
-              {% endif %}
-            </div>
+      <!-- RIGHT COLUMN: Product info -->
+      <div class="product-info">
+        <h1 class="product-title">{{ product.name }}</h1>
+        <div class="product-price">
+          {% if product.on_sale %}
+            <del>R{{ product.price }}</del> R{{ product.sale_price }}
+          {% else %}
+            R{{ product.price }}
+          {% endif %}
+        </div>
 
-            <div class="actions">
-              <a href="{% url 'shop_home' %}" class="btn-neon">Back to Shop</a>
-              
-              {% comment %} <a href="{% url 'Cart:add-cart' product.id %}" 
-                class="btn-neon" 
-                id="add-to-cart" 
-                value="{{ product.id }}">Add to Cart
-              </a> {% endcomment %}
-              <button class="btn-neon" 
-                  id="add-to-cart" 
-                  data-product-id="{{ product.id }}"
-                  data-url="{% url 'Cart:add-cart' product.id %}">
-               Add to Cart
-             </button>
-            </div>
+        <!-- Short description (first 150 chars) -->
+        <div class="product-short-desc">
+          {{ product.description|striptags|truncatechars:150 }}
+        </div>
+
+        <!-- Quantity + Add to Cart -->
+        <div class="quantity-selector">
+          <label for="qty-input">Quantity:</label>
+          <input type="number" id="qty-input" class="qty-input" value="1" min="1" max="99">
+        </div>
+        <button class="add-to-cart-btn" id="add-to-cart"
+                data-product-id="{{ product.id }}"
+                data-url="{% url 'Cart:add-cart' product.id %}">
+          🛒 Add to Cart
+        </button>
+
+        <a href="{% url 'shop_home' %}" class="back-link">← Back to Shop</a>
+
+        <!-- Collapsible full description -->
+        <div class="product-details-accordion">
+          <div class="accordion-header" id="desc-header">
+            <span>📄 Product Details & Specifications</span>
+            <span class="accordion-icon">▼</span>
+          </div>
+          <div class="accordion-content" id="desc-content">
+            {{ product.description|safe }}
           </div>
         </div>
       </div>
@@ -188,63 +364,96 @@
   {% include 'VoltHub/footer.html' %}
 </section>
 
-<!-- JS Section -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
-  $(document).on('click', '#add-to-cart', function(e) {
-    e.preventDefault();
-    
-    var productId = $(this).data('product-id');  // ← read from data attribute
-    var url = $(this).data('url');               // ← read URL from data attribute
-    
-    $.ajax({
-        type: 'POST',
-        url: url,
-        data: {
-            product_id: productId,
-            csrfmiddlewaretoken: '{{ csrf_token }}',
-            action: 'post'
-        },
-        success: function(json) {
-            if (json.success) {
-                // Update cart count in navbar if you have one
-                if (document.getElementById('cart-quantity')) {
-                    document.getElementById('cart-quantity').textContent = json.qty;
-                }
-                // Show a quick success message
-                alert('Added to cart! Items in cart: ' + json.qty);
-            }
-        },
-        error: function(xhr, status, error) {
-            console.log('Cart error:', error);
-        }
-    });
-});
-
-  {% comment %} // Cart AJAX (your existing code)
-  $(document).on('click', '#add-to-cart', function(e) {
-    e.preventDefault();
-    $.ajax({
-      type: 'POST',
-      url: "{% url 'Cart:add-cart' product.id %}",
-      data: {
-        product_id: $('#add-to-cart').val(),
-        csrfmiddlewaretoken: '{{ csrf_token }}',
-        action: 'post'
-      },
-      success: function(json) {
-        document.getElementById('cart-quantity').textContent = json.qty;
-      },
-      error: function(xhr, status, error) {}
-    });
-  });
-
-  // Gallery thumbnail click
+  // Gallery thumbnail switching
   $(document).on('click', '.gallery-thumbnails img', function() {
     var newSrc = $(this).data('large');
     $('#main-product-img').attr('src', newSrc);
     $('.gallery-thumbnails img').removeClass('selected');
     $(this).addClass('selected');
-  }); {% endcomment %}
+  });
+
+  // Add to cart with quantity
+  $('#add-to-cart').on('click', function(e) {
+    e.preventDefault();
+    var $btn = $(this);
+    var productId = $btn.data('product-id');
+    var url = $btn.data('url');
+    var quantity = $('#qty-input').val();
+    var originalText = $btn.html();
+
+    $btn.html('Adding...').prop('disabled', true);
+    $.ajax({
+      type: 'POST',
+      url: url,
+      data: {
+        product_id: productId,
+        quantity: quantity,
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+        action: 'post'
+      },
+      success: function(json) {
+        if (json.success) {
+          // Update cart badge
+          $.get('/cart/count/', function(data) {
+            if (document.getElementById('cart-quantity')) {
+              document.getElementById('cart-quantity').textContent = data.count;
+            }
+          });
+          $btn.html('✓ Added!');
+          setTimeout(function() {
+            $btn.html(originalText).prop('disabled', false);
+          }, 2000);
+        } else {
+          $btn.html('Error');
+          setTimeout(function() {
+            $btn.html(originalText).prop('disabled', false);
+          }, 2000);
+        }
+      },
+      error: function() {
+        $btn.html('Error');
+        setTimeout(function() {
+          $btn.html(originalText).prop('disabled', false);
+        }, 2000);
+      }
+    });
+  });
+
+  // Accordion toggle
+  $('#desc-header').on('click', function() {
+    var content = $('#desc-content');
+    var icon = $('.accordion-icon');
+    content.toggleClass('open');
+    icon.html(content.hasClass('open') ? '▲' : '▼');
+  });
+
+  // Fullscreen lightbox
+  (function() {
+    const lightbox = document.getElementById('fullscreen-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('lightbox-close');
+    const mainImg = document.getElementById('main-product-img');
+
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || '';
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    if (mainImg) {
+      mainImg.addEventListener('click', () => openLightbox(mainImg.src, mainImg.alt));
+    }
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+    });
+  })();
 </script>
 {% endblock %}

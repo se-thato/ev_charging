@@ -67,7 +67,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'category', 'price', 'on_sale', 'sale_price', 'active', 'shopify_id')
     list_filter = ('active', 'on_sale', 'category')
     search_fields = ('name', 'shopify_id', 'description')
-    readonly_fields = ('created_at', 'shopify_id', 'shopify_variant_id', 'shopify_image_url')
+    readonly_fields = ('description_preview','created_at', 'shopify_id', 'shopify_variant_id', 'shopify_image_url')
     inlines = [ProductImageInline]
     fieldsets = (
         ('Basic Info', {

@@ -2,10 +2,23 @@ import shopify
 import os
 import django
 
+
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ev_charging.settings")
 django.setup()
 
 from ecommerce.models import Product, Supplier, Category
+
+from django.utils.html import strip_tags
+import bleach
+
+# Allow only safe tags, strip everything else
+ALLOWED_TAGS = ['p', 'b', 'i', 'ul', 'ol', 'li', 'br', 'span', 'h1', 'h2', 'h3', 'img']
+ALLOWED_ATTRS = {'img': ['src', 'alt'], 'span': ['style'], '*': []}
+
+clean_description = bleach.clean(raw_description, tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRS, strip=True)
+
+
 
 # Shopify credentials
 SHOP_URL = "https://{API_KEY}:{ACCESS_TOKEN}@volt-hub-dev.myshopify.com/admin/api/2026-01"

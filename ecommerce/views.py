@@ -1,3 +1,4 @@
+
 import secrets
 import hmac
 import hashlib
@@ -10,8 +11,9 @@ from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.conf import settings
+from django.db import models  # added for Sum aggregation
 
-from .models import Category, Product, ShopifyStore, Cart, CartItem, Order
+from .models import Category, Product, ShopifyStore, Cart, CartItem, Order, Supplier
 from .storefront_client import create_cart, add_to_cart, remove_from_cart, get_cart
 from Cart.cart import Cart as SessionCart
 
@@ -182,19 +184,36 @@ def add_to_cart_view(request, product_id):
     except (ValueError, TypeError):
         quantity = 1
 
+    # Add to local DB cart (for logged-in users) or session cart (for guests)
+    if request.user.is_authenticated:
+        # Get or create the user's active Cart first, then add/update the CartItem
+        cart, _ = Cart.objects.get_or_create(user=request.user, active=True)
+        cart_item, created = CartItem.objects.get_or_create(
+            cart=cart,
+            product=product,
+            defaults={'quantity': quantity, 'price_at_time': product.price}
+        )
+        if not created:
+            cart_item.quantity += quantity
+            cart_item.price_at_time = product.price  # refresh price snapshot
+            cart_item.save()
+    else:
+        session_cart = SessionCart(request)
+        session_cart.add(product, quantity)
+
+    # Shopify Storefront API cart
     cart_id = request.session.get('shopify_cart_id')
 
     if cart_id:
-        cart = add_to_cart(cart_id, product.shopify_variant_id, quantity)
+        shopify_cart = add_to_cart(cart_id, product.shopify_variant_id, quantity)
     else:
-        cart = create_cart(product.shopify_variant_id, quantity)
+        shopify_cart = create_cart(product.shopify_variant_id, quantity)
 
-    if cart:
-        request.session['shopify_cart_id'] = cart['cart_id']
-        request.session['shopify_checkout_url'] = cart['checkout_url']
-        # Return JSON so the shop_home AJAX can handle it
+    if shopify_cart:
+        request.session['shopify_cart_id'] = shopify_cart['cart_id']
+        request.session['shopify_checkout_url'] = shopify_cart['checkout_url']
         if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-            return JsonResponse({'success': True})
+            return JsonResponse({'success': True, 'qty': _get_cart_count(request)})
         messages.success(request, f"'{product.name}' added to cart!")
     else:
         if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
@@ -205,31 +224,35 @@ def add_to_cart_view(request, product_id):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# CART VIEW — displays session cart with real quantities
+# CART VIEW — displays items from DB (if logged in) or session
 # ─────────────────────────────────────────────────────────────────────────────
 def cart_view(request):
-    session_cart = SessionCart(request)
-    cart_products = session_cart.get_products()
-
-    # raw_cart is the session dict:
-    # {'4': {'price': '199.99', 'quantity': 2}, '7': {'price': '89.99', 'quantity': 1}}
-    raw_cart = session_cart.cart
-
-    # Build quantities dict with int keys so template lookup works
-    # {4: 2, 7: 1}
-    cart_quantities = {int(k): v.get('quantity', 1) for k, v in raw_cart.items()}
-
-    # Calculate total using session prices × quantities
-    cart_total = sum(
-        float(v.get('price', 0)) * v.get('quantity', 1)
-        for v in raw_cart.values()
-    )
+    if request.user.is_authenticated:
+        # Traverse Cart → CartItem using cart__user lookup
+        cart_items = CartItem.objects.filter(
+            cart__user=request.user,
+            cart__active=True
+        ).select_related('product')
+        cart_products = [item.product for item in cart_items]
+        cart_quantities = {item.product.id: item.quantity for item in cart_items}
+        cart_total = sum(
+            (item.price_at_time or item.product.price) * item.quantity
+            for item in cart_items
+        )
+    else:
+        # Guest: session cart
+        session_cart = SessionCart(request)
+        cart_products = session_cart.get_products()
+        raw_cart = session_cart.cart
+        cart_quantities = {int(k): v.get('quantity', 1) for k, v in raw_cart.items()}
+        cart_total = sum(
+            float(v.get('price', 0)) * v.get('quantity', 1)
+            for v in raw_cart.values()
+        )
 
     return render(request, 'ecommerce/cart.html', {
         'cart_products': cart_products,
         'cart_quantities': cart_quantities,
-        # cart_quantities_json passes the dict as JSON for JavaScript to read
-        # json.dumps converts Python dict to JSON: {4: 2, 7: 1}
         'cart_quantities_json': json.dumps(cart_quantities),
         'cart_total': round(cart_total, 2),
     })
@@ -237,17 +260,72 @@ def cart_view(request):
 
 # ─────────────────────────────────────────────────────────────────────────────
 # CART COUNT — lightweight endpoint for navbar badge
-# Called by navbar.html JavaScript on every page load
-# Returns JSON: {"count": 3}
+# Returns JSON: {"count": total_quantity}
 # ─────────────────────────────────────────────────────────────────────────────
 def cart_count_view(request):
-    session_cart = SessionCart(request)
-    # __len__ returns total quantity of all items in session cart
-    count = session_cart.__len__()
+    count = _get_cart_count(request)
     return JsonResponse({'count': count})
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# UPDATE CART QUANTITY (called from AJAX)
+# ─────────────────────────────────────────────────────────────────────────────
+@require_POST
+def cart_update(request, product_id):
+    try:
+        quantity = int(request.POST.get('quantity', 1))
+        if quantity < 1:
+            quantity = 1
+    except (ValueError, TypeError):
+        quantity = 1
+
+    product = get_object_or_404(Product, id=product_id, active=True)
+
+    if request.user.is_authenticated:
+        cart, _ = Cart.objects.get_or_create(user=request.user, active=True)
+        cart_item, created = CartItem.objects.get_or_create(
+            cart=cart,
+            product=product,
+            defaults={'quantity': quantity, 'price_at_time': product.price}
+        )
+        if not created:
+            cart_item.quantity = quantity
+            cart_item.save()
+    else:
+        session_cart = SessionCart(request)
+        session_cart.add(product, quantity)
+
+    return JsonResponse({'success': True})
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# REMOVE FROM CART (called from AJAX)
+# ─────────────────────────────────────────────────────────────────────────────
+@require_POST
+def cart_delete(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+
+    if request.user.is_authenticated:
+        # Filter through Cart → CartItem relationship
+        CartItem.objects.filter(
+            cart__user=request.user,
+            cart__active=True,
+            product=product
+        ).delete()
+
+    # Also remove from session cart
+    session_cart = SessionCart(request)
+    session_cart.remove(product)
+
+    # Return updated total quantity
+    total_qty = _get_cart_count(request)
+
+    return JsonResponse({'success': True, 'qty': total_qty})
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # REMOVE FROM CART (Shopify Storefront API line removal)
+# ─────────────────────────────────────────────────────────────────────────────
 @require_POST
 def remove_from_cart_view(request, line_id):
     cart_id = request.session.get('shopify_cart_id')
@@ -269,7 +347,9 @@ def remove_from_cart_view(request, line_id):
     return redirect('cart')
 
 
-#Checkout view — redirects to Shopify checkout page
+# ─────────────────────────────────────────────────────────────────────────────
+# CHECKOUT — redirects to Shopify hosted checkout
+# ─────────────────────────────────────────────────────────────────────────────
 def checkout(request):
     checkout_url = request.session.get('shopify_checkout_url')
 
@@ -280,8 +360,9 @@ def checkout(request):
     return redirect(checkout_url)
 
 
-
+# ─────────────────────────────────────────────────────────────────────────────
 # SHOPIFY WEBHOOK — receives real-time product updates from Shopify
+# ─────────────────────────────────────────────────────────────────────────────
 @csrf_exempt
 @require_POST
 def shopify_product_webhook(request):
@@ -357,19 +438,21 @@ def _sync_single_product(sp):
     )
 
 
-# HELPER FUNCTIONS
+# ─────────────────────────────────────────────────────────────────────────────
+# HELPER — cart count for navbar badge
+# ─────────────────────────────────────────────────────────────────────────────
 def _get_cart_count(request):
     """
-    Returns Shopify cart item count for the nav badge.
-    Uses the Storefront API session cart.
-    Returns 0 if no active Shopify cart exists.
+    Returns total cart quantity for the navbar badge.
+    For logged-in users: queries DB via Cart → CartItem relationship.
+    For guests: uses session cart.
     """
-    cart_id = request.session.get('shopify_cart_id')
-    if not cart_id:
-        return 0
-
-    cart = get_cart(cart_id)
-    if not cart:
-        return 0
-
-    return cart.get('total_quantity', 0)
+    if request.user.is_authenticated:
+        total_qty = CartItem.objects.filter(
+            cart__user=request.user,
+            cart__active=True
+        ).aggregate(total=models.Sum('quantity'))['total'] or 0
+        return total_qty
+    else:
+        session_cart = SessionCart(request)
+        return len(session_cart)

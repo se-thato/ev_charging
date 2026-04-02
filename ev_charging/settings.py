@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get(
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-#DEBUG = False
+#DEBUG = False 6+l
 
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
@@ -261,9 +261,17 @@ WSGI_APPLICATION = 'ev_charging.wsgi.application'
 ASGI_APPLICATION = 'ev_charging.asgi.application'
 
 # Channels layer configuration
+# CHANNEL_LAYERS = {
+#     'default': {
+#         'BACKEND': 'channels.layers.InMemoryChannelLayer',
+#     },
+# }
 CHANNEL_LAYERS = {
     'default': {
-        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [os.environ.get('REDIS_PUBLIC_URL')],
+        },
     },
 }
 

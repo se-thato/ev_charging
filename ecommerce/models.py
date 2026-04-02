@@ -184,6 +184,11 @@ class Product(models.Model):
     active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
+    
+    def description_preview(self):
+        return format_html(self.description)
+        description_preview.short_description = "Description Preview"
+
     def profit(self):
         # A regular method (not a field) — calculates profit margin on the fly.
         # Returns None if we don't know the supplier price.

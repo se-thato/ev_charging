@@ -10,3 +10,4 @@ urlpatterns = [
     path('update/', views.cart_update, name='cart_update'),
 
 ]
+
