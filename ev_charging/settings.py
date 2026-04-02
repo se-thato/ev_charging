@@ -290,6 +290,12 @@ else:
         }
     }
 
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_PUBLIC_URL') or os.environ.get('DATABASE_URL')
+    )
+}
+
 # DATABASES = {
 #     'default': dj_database_url.parse(os.environ.get("DATABASE_PUBLIC_URL"))
 # }

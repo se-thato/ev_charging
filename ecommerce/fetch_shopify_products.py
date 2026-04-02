@@ -42,38 +42,85 @@ def get_or_create_category(shopify_product):
     category, _ = Category.objects.get_or_create(name=category_name)
     return category
 
+
 def fetch_shopify_products():
-    products = shopify.Product.find()
-    for sp in products:
-        supplier = get_or_create_supplier(sp)
-        category = get_or_create_category(sp)
+    all_products = []
+    page = shopify.Product.find(limit=250, status='active')
+    all_products.extend(page)
+    
+    while page.has_next_page():
+        page = page.next_page()
+        all_products.extend(page)
+    
+    print(f"Found {len(all_products)} products in Shopify. Syncing...")
+    
+    synced = 0
+    errors = 0
+    for sp in all_products:
+        try:
+            supplier = get_or_create_supplier(sp)
+            category = get_or_create_category(sp)
+            price = float(sp.variants[0].price) if sp.variants else 0
+            image_url = sp.images[0].src if sp.images else None
+            variant_id = str(sp.variants[0].id) if sp.variants else None
 
-        # Some Shopify products may have multiple variants
-        price = float(sp.variants[0].price) if sp.variants else 0
+            product, created = Product.objects.update_or_create(
+                shopify_id=str(sp.id),
+                defaults={
+                    "name": sp.title,
+                    "supplier": supplier,
+                    "category": category,
+                    "price": price,
+                    "supplier_price": None,
+                    "supplier_product_url": f"https://volt-hub-dev.myshopify.com/products/{sp.handle}",
+                    "description": sp.body_html or "",
+                    "active": (sp.status == "active"),
+                    "shopify_image_url": image_url,
+                    "shopify_variant_id": variant_id,
+                }
+            )
+            action = "Created" if created else "Updated"
+            print(f"  {action}: {sp.title[:60]}")
+            synced += 1
+        except Exception as e:
+            print(f"  ERROR on {sp.title[:60]}: {e}")
+            errors += 1
 
-        # Take first image if exists
-        image_url = sp.images[0].src if sp.images else None
+    print(f"Done! Synced: {synced} products. Errors: {errors}")
 
-        product, created = Product.objects.get_or_create(
-            name=sp.title,
-            defaults={
-                "supplier": supplier,
-                "category": category,
-                "price": price,
-                "supplier_price": None,
-                "supplier_product_url": f"https://{sp.handle}.myshopify.com",
-                "description": sp.body_html or "",
-                "active": True,
-                "image": image_url
-            }
-        )
-        if not created:
-            # This will update price or description if product already exists
-            product.price = price
-            product.description = sp.body_html or ""
-            product.save()
 
-    print("Shopify products synced successfully!")
+# def fetch_shopify_products():
+#     products = shopify.Product.find()
+#     for sp in products:
+#         supplier = get_or_create_supplier(sp)
+#         category = get_or_create_category(sp)
 
-if __name__ == "__main__":
-    fetch_shopify_products()
+#         # Some Shopify products may have multiple variants
+#         price = float(sp.variants[0].price) if sp.variants else 0
+
+#         # Take first image if exists
+#         image_url = sp.images[0].src if sp.images else None
+
+#         product, created = Product.objects.get_or_create(
+#             name=sp.title,
+#             defaults={
+#                 "supplier": supplier,
+#                 "category": category,
+#                 "price": price,
+#                 "supplier_price": None,
+#                 "supplier_product_url": f"https://{sp.handle}.myshopify.com",
+#                 "description": sp.body_html or "",
+#                 "active": True,
+#                 "image": image_url
+#             }
+#         )
+#         if not created:
+#             # This will update price or description if product already exists
+#             product.price = price
+#             product.description = sp.body_html or ""
+#             product.save()
+
+#     print("Shopify products synced successfully!")
+
+# if __name__ == "__main__":
+#     fetch_shopify_products()
