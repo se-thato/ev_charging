@@ -1248,3 +1248,13 @@
 [2026-04-02 15:57:15,072] WARNING SLOW REQUEST: /shop_home took 6.864 seconds!
 [2026-04-02 15:57:27,270] WARNING SLOW REQUEST: /cart/count/ took 9.990 seconds!
 [2026-04-02 15:57:42,714] WARNING SLOW REQUEST: /product/26/ took 14.741 seconds!
+[2026-04-02 22:42:33,914] WARNING SLOW REQUEST: / took 6.702 seconds!
+[2026-04-02 22:42:44,855] WARNING SLOW REQUEST: /cart/count/ took 7.752 seconds!
+[2026-04-02 22:42:45,929] WARNING SLOW REQUEST: /auth/login/ took 5.719 seconds!
+[2026-04-02 22:43:36,776] WARNING SLOW REQUEST: /auth/login/ took 17.146 seconds!
+[2026-04-02 22:43:45,982] WARNING SLOW REQUEST: /dashboard took 6.220 seconds!
+[2026-04-02 22:43:54,790] WARNING SLOW REQUEST: /analytics/ took 6.450 seconds!
+[2026-04-02 22:48:01,084] WARNING SLOW REQUEST: /admin/ecommerce/product/ took 5.107 seconds!
+[2026-04-02 22:48:17,214] WARNING SLOW REQUEST: /admin/ecommerce/product/ took 12.269 seconds!
+[2026-04-02 22:48:21,307] WARNING SLOW REQUEST: /admin/ecommerce/product/ took 5.844 seconds!
+[2026-04-02 23:09:49,401] WARNING SLOW REQUEST: /shop_home took 9.213 seconds!
