@@ -84,7 +84,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     'channels',
     'oauth2_provider',
-    'axes', # For brute force protection
+    #'axes', # For brute force protection
     'drf_yasg', #swagger
     'anymail', # For email backend
 
@@ -168,7 +168,7 @@ MIDDLEWARE = [
     'charging_station.middleware.RequestLoggingMiddleware',
     'charging_station.middleware.PerformanceMonitoringMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    'axes.middleware.AxesMiddleware',
+    #'axes.middleware.AxesMiddleware',
     # allauth
     'allauth.account.middleware.AccountMiddleware',
     
