@@ -1,0 +1,633 @@
+{% extends 'VoltHub/base.html' %}
+{% load static %}
+
+{% block content %}
+
+{# ============================================================
+   VoltHub Checkout Page
+   Flow:
+     1. User sees their cart items + order summary (pulled from
+        Django session cart / DB cart)
+     2. User fills in contact + shipping details
+     3. On "Confirm & Pay", we POST the shipping info to Django
+        which attaches it to the Shopify cart, then redirects
+        the user to Shopify's hosted checkout URL
+   ============================================================ #}
+
+<style>
+  :root {
+    --vh-bg:      #050512;
+    --vh-surface: rgba(13,13,30,0.55);
+    --vh-primary: #7a7cff;
+    --vh-accent:  #00e5ff;
+    --vh-accent2: #45ffbc;
+    --vh-border:  rgba(122,124,255,0.35);
+    --vh-text:    #e6e9ff;
+    --vh-muted:   #a9b1ff;
+    --vh-glow:    rgba(0,229,255,0.5);
+    --vh-error:   #ff6b6b;
+    --vh-success: #45ffbc;
+  }
+
+  body, html { background-color: var(--vh-bg) !important; margin: 0; }
+  .container-fluid { background-color: var(--vh-bg) !important; padding: 0 !important; margin: 0 !important; }
+
+  /* ── Full-bleed wrapper ── */
+  .checkout-wrap {
+    position: relative; width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    background:
+      radial-gradient(1200px 600px at 10% -20%, rgba(122,124,255,0.18), transparent 60%),
+      radial-gradient(1000px 800px at 120% 10%,  rgba(0,229,255,0.14),  transparent 50%),
+      linear-gradient(135deg, #070718 0%, #040414 45%, #09091f 100%);
+    min-height: 80vh;
+  }
+  .checkout-wrap::before, .checkout-wrap::after {
+    content:""; position:absolute;
+    width:50vmax; height:50vmax; border-radius:50%; filter:blur(60px); opacity:.2; z-index:0;
+    animation: floaty 18s ease-in-out infinite;
+  }
+  .checkout-wrap::before { background:radial-gradient(circle,rgba(122,124,255,0.4),transparent 60%); left:-15vmax; top:-10vmax; animation-delay:-4s; }
+  .checkout-wrap::after  { background:radial-gradient(circle,rgba(0,229,255,0.35),transparent 60%); right:-20vmax; bottom:-15vmax; }
+  @keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
+
+  .checkout-inner {
+    position: relative; z-index: 1;
+    max-width: 1100px; margin: 0 auto;
+    padding: 4vh 1rem 8vh;
+  }
+
+  /* ── Page heading ── */
+  .checkout-hero { text-align:center; margin-bottom: 3rem; }
+  .checkout-hero h1 {
+    font-weight: 800; font-size: clamp(1.6rem,3.5vw,2.6rem);
+    background: linear-gradient(90deg, var(--vh-primary), var(--vh-accent) 60%, var(--vh-accent2));
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    margin-bottom: .4rem;
+  }
+  .checkout-hero p { color: var(--vh-muted); }
+
+  .accent-line { position:relative; height:2px; margin:.75rem auto 0; max-width:400px; }
+  .accent-line::after {
+    content:""; position:absolute; left:0; right:0; height:2px; border-radius:2px;
+    background:linear-gradient(90deg,transparent,var(--vh-accent),var(--vh-primary),transparent);
+    background-size:200% 100%; animation:lineFlow 8s linear infinite;
+  }
+  @keyframes lineFlow { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+
+  /* ── Glass card ── */
+  .glass-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+    border: 1px solid var(--vh-border); border-radius: 18px;
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    box-shadow: 0 20px 50px rgba(12,16,50,0.45), inset 0 0 20px rgba(0,229,255,0.04);
+    padding: 2rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--vh-accent);
+    margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .section-label::after {
+    content:""; flex:1; height:1px;
+    background:linear-gradient(90deg, var(--vh-border), transparent);
+  }
+
+  /* ── Form fields ── */
+  .form-group { margin-bottom: 1.1rem; }
+  .form-group label {
+    display: block; font-size: 0.78rem; font-weight: 600;
+    color: var(--vh-muted); margin-bottom: .35rem; letter-spacing:.03em;
+  }
+  .form-group label .required { color: var(--vh-accent); margin-left:2px; }
+
+  .form-control-neon {
+    width: 100%; padding: .65rem 1rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--vh-border);
+    border-radius: 10px; color: var(--vh-text);
+    font-size: 0.9rem; font-family: inherit;
+    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    outline: none;
+  }
+  .form-control-neon::placeholder { color: rgba(169,177,255,0.45); }
+  .form-control-neon:focus {
+    border-color: rgba(0,229,255,0.55);
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 0 0 3px rgba(0,229,255,0.12), 0 0 20px rgba(0,229,255,0.08);
+  }
+  .form-control-neon.is-invalid { border-color: var(--vh-error); }
+  .form-control-neon.is-invalid:focus { box-shadow: 0 0 0 3px rgba(255,107,107,0.15); }
+
+  select.form-control-neon option { background: #0d0d1e; color: var(--vh-text); }
+
+  .field-error { font-size:0.75rem; color:var(--vh-error); margin-top:.25rem; display:none; }
+  .field-error.visible { display:block; }
+
+  /* ── Cart item row ── */
+  .cart-item {
+    display: flex; align-items: center; gap: 1rem;
+    padding: .85rem 0; border-bottom: 1px solid var(--vh-border);
+  }
+  .cart-item:last-child { border-bottom: none; }
+  .cart-item-img {
+    width: 56px; height: 56px; border-radius: 10px; object-fit: cover;
+    border: 1px solid var(--vh-border); flex-shrink: 0;
+    background: rgba(255,255,255,0.04);
+  }
+  .cart-item-img-placeholder {
+    width:56px; height:56px; border-radius:10px;
+    border:1px solid var(--vh-border); flex-shrink:0;
+    background:rgba(255,255,255,0.04);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.4rem; opacity:.25;
+  }
+  .cart-item-name { flex:1; font-size:.88rem; font-weight:600; color:var(--vh-text); }
+  .cart-item-qty  { font-size:.78rem; color:var(--vh-muted); margin-top:.15rem; }
+  .cart-item-price { font-size:.95rem; font-weight:700; color:var(--vh-text); white-space:nowrap; }
+
+  /* ── Order summary totals ── */
+  .summary-row {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:.5rem 0; font-size:.88rem; color:var(--vh-muted);
+    border-bottom:1px solid rgba(122,124,255,0.12);
+  }
+  .summary-row:last-child { border-bottom:none; }
+  .summary-row.total {
+    font-size:1.05rem; font-weight:700; color:var(--vh-text);
+    margin-top:.5rem; padding-top:.75rem;
+    border-top:1px solid var(--vh-border);
+  }
+  .summary-row.total .amount {
+    background:linear-gradient(90deg,var(--vh-accent),var(--vh-primary));
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+
+  /* ── Security badge ── */
+  .secure-badge {
+    display:flex; align-items:center; gap:.4rem;
+    font-size:0.72rem; color:var(--vh-muted);
+    margin-top:1rem; justify-content:center;
+  }
+  .secure-badge i { color:var(--vh-accent2); }
+
+  /* ── Shopify badge ── */
+  .shopify-badge {
+    display:flex; align-items:center; gap:.4rem;
+    font-size:0.72rem; color:var(--vh-muted);
+    margin-top:.4rem; justify-content:center;
+  }
+
+  /* ── Confirm button ── */
+  .btn-confirm {
+    width:100%; padding:.85rem 1rem; border-radius:14px;
+    border:none; cursor:pointer; font-family:inherit;
+    font-size:1rem; font-weight:700; letter-spacing:.03em;
+    background:linear-gradient(135deg, var(--vh-primary), var(--vh-accent));
+    color:#fff;
+    box-shadow:0 8px 24px rgba(0,229,255,0.25), 0 4px 12px rgba(122,124,255,0.2);
+    transition:transform .15s ease, box-shadow .2s ease, opacity .2s ease;
+    margin-top:1.25rem;
+    display:flex; align-items:center; justify-content:center; gap:.5rem;
+  }
+  .btn-confirm:hover:not(:disabled) {
+    transform:translateY(-2px);
+    box-shadow:0 14px 36px rgba(0,229,255,0.32), 0 6px 18px rgba(122,124,255,0.25);
+  }
+  .btn-confirm:disabled { opacity:.5; cursor:not-allowed; transform:none; }
+
+  /* ── Back link ── */
+  .back-link {
+    display:inline-flex; align-items:center; gap:.4rem;
+    color:var(--vh-muted); font-size:.85rem; text-decoration:none;
+    margin-bottom:1.5rem; transition:color .2s ease;
+  }
+  .back-link:hover { color:var(--vh-accent); }
+
+  /* ── Empty cart state ── */
+  .empty-checkout {
+    text-align:center; padding:4rem 1rem; color:var(--vh-muted);
+  }
+  .empty-checkout h3 { color:var(--vh-text); margin-bottom:.5rem; }
+
+  /* ── Step indicator ── */
+  .steps {
+    display:flex; align-items:center; justify-content:center;
+    gap:0; margin-bottom:2.5rem;
+  }
+  .step {
+    display:flex; align-items:center; gap:.4rem;
+    font-size:.78rem; font-weight:600;
+  }
+  .step-num {
+    width:26px; height:26px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:.7rem; font-weight:700;
+  }
+  .step.active .step-num {
+    background:linear-gradient(135deg,var(--vh-primary),var(--vh-accent));
+    color:#fff; box-shadow:0 0 12px rgba(0,229,255,0.4);
+  }
+  .step.done .step-num { background:var(--vh-accent2); color:#000; }
+  .step.pending .step-num { background:rgba(255,255,255,0.08); color:var(--vh-muted); }
+  .step.active .step-label { color:var(--vh-text); }
+  .step.done .step-label  { color:var(--vh-accent2); }
+  .step.pending .step-label { color:var(--vh-muted); }
+  .step-divider {
+    flex:1; max-width:60px; height:1px; margin:0 .5rem;
+    background:linear-gradient(90deg,var(--vh-border),transparent);
+  }
+</style>
+
+<section class="checkout-wrap">
+  <div class="checkout-inner">
+
+    {# ── Back to cart ── #}
+    <a href="{% url 'cart' %}" class="back-link">
+      <i class="fa fa-arrow-left"></i> Back to cart
+    </a>
+
+    {# ── Page heading ── #}
+    <div class="checkout-hero">
+      <h1>Secure Checkout</h1>
+      <p>Review your order and enter your details below</p>
+      <div class="accent-line"></div>
+    </div>
+
+    {# ── Step indicator ── #}
+    <div class="steps">
+      <div class="step done">
+        <span class="step-num">&#10003;</span>
+        <span class="step-label">Cart</span>
+      </div>
+      <div class="step-divider"></div>
+      <div class="step active">
+        <span class="step-num">2</span>
+        <span class="step-label">Details</span>
+      </div>
+      <div class="step-divider"></div>
+      <div class="step pending">
+        <span class="step-num">3</span>
+        <span class="step-label">Payment</span>
+      </div>
+    </div>
+
+    {# ── Check if cart is empty ── #}
+    {% if not cart_items %}
+      <div class="empty-checkout glass-card">
+        <h3>Your cart is empty</h3>
+        <p>Add some products before checking out.</p>
+        <a href="{% url 'shop_home' %}" style="
+          display:inline-flex; align-items:center; gap:.4rem; margin-top:1rem;
+          color:var(--vh-accent); text-decoration:none; font-weight:600;">
+          <i class="fa fa-shopping-bag"></i> Browse Shop
+        </a>
+      </div>
+
+    {% else %}
+    {# ── Main checkout layout ── #}
+    <div class="row g-4">
+
+      {# ════════════════════════════════════════
+         LEFT COLUMN — Contact + Shipping Form
+         This form is submitted to Django view
+         which then redirects to Shopify checkout
+         ════════════════════════════════════════ #}
+      <div class="col-12 col-lg-7">
+        <div class="glass-card">
+
+          {# POST to our Django checkout view which
+             attaches shipping info and redirects to Shopify #}
+          <form id="checkout-form" method="POST" action="{% url 'checkout' %}" novalidate>
+            {% csrf_token %}
+
+            {# ── Contact info ── #}
+            <div class="section-label">
+              <i class="fa fa-user-o"></i> Contact information
+            </div>
+
+            <div class="row g-3">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>First name <span class="required">*</span></label>
+                  <input type="text" name="first_name" class="form-control-neon"
+                         placeholder="Thato"
+                         value="{{ request.user.first_name }}"
+                         autocomplete="given-name" required>
+                  <div class="field-error" id="err-first-name">Please enter your first name.</div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Last name <span class="required">*</span></label>
+                  <input type="text" name="last_name" class="form-control-neon"
+                         placeholder="Selepe"
+                         value="{{ request.user.last_name }}"
+                         autocomplete="family-name" required>
+                  <div class="field-error" id="err-last-name">Please enter your last name.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Email address <span class="required">*</span></label>
+              <input type="email" name="email" class="form-control-neon"
+                     placeholder="you@example.com"
+                     value="{{ request.user.email }}"
+                     autocomplete="email" required>
+              <div class="field-error" id="err-email">Please enter a valid email address.</div>
+            </div>
+
+            <div class="form-group">
+              <label>Phone number</label>
+              <input type="tel" name="phone" class="form-control-neon"
+                     placeholder="+27 78 352 2058"
+                     autocomplete="tel">
+            </div>
+
+            {# ── Shipping address ── #}
+            <div class="section-label" style="margin-top:1.5rem;">
+              <i class="fa fa-map-marker"></i> Shipping address
+            </div>
+
+            <div class="form-group">
+              <label>Street address <span class="required">*</span></label>
+              <input type="text" name="address1" class="form-control-neon"
+                     placeholder="123 Main Street"
+                     autocomplete="address-line1" required>
+              <div class="field-error" id="err-address1">Please enter your street address.</div>
+            </div>
+
+            <div class="form-group">
+              <label>Apartment, suite, etc. <span style="color:var(--vh-muted);font-weight:400;">(optional)</span></label>
+              <input type="text" name="address2" class="form-control-neon"
+                     placeholder="Apt 4B"
+                     autocomplete="address-line2">
+            </div>
+
+            <div class="row g-3">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>City <span class="required">*</span></label>
+                  <input type="text" name="city" class="form-control-neon"
+                         placeholder="Johannesburg"
+                         autocomplete="address-level2" required>
+                  <div class="field-error" id="err-city">Please enter your city.</div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Province <span class="required">*</span></label>
+                  {# South African provinces — change for your target market #}
+                  <select name="province" class="form-control-neon" required>
+                    <option value="" disabled selected>Select province</option>
+                    <option value="GP">Gauteng</option>
+                    <option value="WC">Western Cape</option>
+                    <option value="KZN">KwaZulu-Natal</option>
+                    <option value="EC">Eastern Cape</option>
+                    <option value="FS">Free State</option>
+                    <option value="LP">Limpopo</option>
+                    <option value="MP">Mpumalanga</option>
+                    <option value="NC">Northern Cape</option>
+                    <option value="NW">North West</option>
+                  </select>
+                  <div class="field-error" id="err-province">Please select your province.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Postal code <span class="required">*</span></label>
+                  <input type="text" name="zip" class="form-control-neon"
+                         placeholder="2000"
+                         autocomplete="postal-code"
+                         maxlength="10" required>
+                  <div class="field-error" id="err-zip">Please enter your postal code.</div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label>Country</label>
+                  {# Hardcoded to South Africa for now — can be made dynamic #}
+                  <input type="text" name="country" class="form-control-neon"
+                         value="South Africa" readonly
+                         style="opacity:.7; cursor:not-allowed;">
+                  <input type="hidden" name="country_code" value="ZA">
+                </div>
+              </div>
+            </div>
+
+            {# ── Order notes ── #}
+            <div class="form-group" style="margin-top:.5rem;">
+              <label>Order notes <span style="color:var(--vh-muted);font-weight:400;">(optional)</span></label>
+              <textarea name="note" class="form-control-neon" rows="2"
+                        placeholder="Special delivery instructions..."></textarea>
+            </div>
+
+            {# Hidden field — Django view reads this to know which
+               Shopify checkout URL to redirect to #}
+            <input type="hidden" name="shopify_checkout_url"
+                   value="{{ shopify_checkout_url }}">
+
+            {# Submit button — visible on mobile below the form,
+               hidden on desktop (we show it in the right column) #}
+            <button type="submit" class="btn-confirm d-lg-none" id="submit-btn-mobile">
+              <i class="fa fa-lock"></i>
+              Confirm &amp; Pay with Shopify
+            </button>
+
+          </form>{# end #checkout-form #}
+
+        </div>{# end glass-card #}
+      </div>{# end left column #}
+
+
+      {# ════════════════════════════════════════
+         RIGHT COLUMN — Order Summary
+         Shows cart items + totals + pay button
+         ════════════════════════════════════════ #}
+      <div class="col-12 col-lg-5">
+        <div class="glass-card" style="position:sticky; top:80px;">
+
+          <div class="section-label">
+            <i class="fa fa-shopping-bag"></i> Order summary
+          </div>
+
+          {# ── Cart items list ── #}
+          <div id="cart-items-list">
+            {% for item in cart_items %}
+            <div class="cart-item">
+
+              {# Product image #}
+              {% if item.product.main_image %}
+                <img class="cart-item-img"
+                     src="{{ item.product.main_image }}"
+                     alt="{{ item.product.name }}">
+              {% else %}
+                <div class="cart-item-img-placeholder">&#9889;</div>
+              {% endif %}
+
+              {# Product name + qty #}
+              <div style="flex:1; min-width:0;">
+                <div class="cart-item-name">{{ item.product.name|truncatechars:45 }}</div>
+                <div class="cart-item-qty">Qty: {{ item.quantity }}</div>
+              </div>
+
+              {# Line total #}
+              <div class="cart-item-price">
+                R{{ item.line_total|floatformat:2 }}
+              </div>
+
+            </div>
+            {% endfor %}
+          </div>
+
+          {# ── Totals ── #}
+          <div style="margin-top:1rem;">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span>R{{ subtotal|floatformat:2 }}</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              {# Shipping is calculated by Shopify at payment step #}
+              <span style="color:var(--vh-accent2);">Calculated at payment</span>
+            </div>
+            <div class="summary-row">
+              <span>Tax</span>
+              <span style="color:var(--vh-accent2);">Included</span>
+            </div>
+            <div class="summary-row total">
+              <span>Total</span>
+              <span class="amount">R{{ subtotal|floatformat:2 }}</span>
+            </div>
+          </div>
+
+          {# ── Desktop pay button (submits the form in left column) ── #}
+          <button type="button" class="btn-confirm d-none d-lg-flex"
+                  onclick="submitCheckout()">
+            <i class="fa fa-lock"></i>
+            Confirm &amp; Pay with Shopify
+          </button>
+
+          {# ── Security notice ── #}
+          <div class="secure-badge">
+            <i class="fa fa-lock"></i>
+            256-bit SSL encrypted &amp; secure
+          </div>
+          <div class="shopify-badge">
+            <i class="fa fa-check-circle" style="color:var(--vh-accent2);"></i>
+            Payment processed securely by Shopify
+          </div>
+
+        </div>{# end glass-card #}
+      </div>{# end right column #}
+
+    </div>{# end row #}
+    {% endif %}{# end cart check #}
+
+  </div>{# end checkout-inner #}
+</section>
+
+{% include 'VoltHub/footer.html' %}
+
+<script>
+// ── Form validation before submitting to Django/Shopify ──
+// We validate required fields client-side first so the user
+// doesn't get sent to Shopify with missing shipping info.
+
+var requiredFields = [
+  { name: 'first_name', errId: 'err-first-name' },
+  { name: 'last_name',  errId: 'err-last-name'  },
+  { name: 'email',      errId: 'err-email'       },
+  { name: 'address1',   errId: 'err-address1'    },
+  { name: 'city',       errId: 'err-city'        },
+  { name: 'province',   errId: 'err-province'    },
+  { name: 'zip',        errId: 'err-zip'         },
+];
+
+function validateForm() {
+  var valid = true;
+
+  requiredFields.forEach(function(f) {
+    var input = document.querySelector('[name="' + f.name + '"]');
+    var errEl = document.getElementById(f.errId);
+    if (!input || !errEl) return;
+
+    var val = input.value.trim();
+    if (!val) {
+      input.classList.add('is-invalid');
+      errEl.classList.add('visible');
+      valid = false;
+    } else {
+      input.classList.remove('is-invalid');
+      errEl.classList.remove('visible');
+    }
+  });
+
+  // Extra: basic email format check
+  var emailInput = document.querySelector('[name="email"]');
+  if (emailInput && emailInput.value.trim()) {
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim());
+    if (!emailOk) {
+      emailInput.classList.add('is-invalid');
+      document.getElementById('err-email').textContent = 'Please enter a valid email address.';
+      document.getElementById('err-email').classList.add('visible');
+      valid = false;
+    }
+  }
+
+  return valid;
+}
+
+// Called by desktop pay button
+function submitCheckout() {
+  if (validateForm()) {
+    var btn = document.querySelector('.btn-confirm.d-none');
+    if (btn) {
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Redirecting to Shopify...';
+    }
+    document.getElementById('checkout-form').submit();
+  } else {
+    // Scroll to first error
+    var firstInvalid = document.querySelector('.form-control-neon.is-invalid');
+    if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+// Mobile pay button submits via standard form submit event
+document.getElementById('checkout-form').addEventListener('submit', function(e) {
+  if (!validateForm()) {
+    e.preventDefault();
+    var firstInvalid = document.querySelector('.form-control-neon.is-invalid');
+    if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } else {
+    var mobileBtn = document.getElementById('submit-btn-mobile');
+    if (mobileBtn) {
+      mobileBtn.disabled = true;
+      mobileBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Redirecting to Shopify...';
+    }
+  }
+});
+
+// Live validation — clear error as user types
+document.querySelectorAll('.form-control-neon').forEach(function(input) {
+  input.addEventListener('input', function() {
+    if (input.value.trim()) {
+      input.classList.remove('is-invalid');
+      // Find sibling error div
+      var err = input.parentElement.querySelector('.field-error');
+      if (err) err.classList.remove('visible');
+    }
+  });
+});
+</script>
+
+{% endblock %}

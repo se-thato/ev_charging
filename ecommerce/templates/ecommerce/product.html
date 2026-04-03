@@ -6,41 +6,27 @@
   :root {
     --vh-bg: #050512;
     --vh-surface: rgba(13, 13, 30, 0.55);
-    --vh-primary: #7a7cff; /* electric violet */
-    --vh-accent: #00e5ff;  /* neon cyan */
-    --vh-accent-2: #45ffbc; /* mint */
+    --vh-primary: #7a7cff;
+    --vh-accent: #00e5ff;
+    --vh-accent-2: #45ffbc;
     --vh-border: rgba(122, 124, 255, 0.35);
     --vh-text: #e6e9ff;
     --vh-muted: #a9b1ff;
   }
 
-   body,
-  html {
-      background-color: #050512 !important;
-      margin: 0;
-  }
+  body, html { background-color: #050512 !important; margin: 0; }
+  .container-fluid { background-color: #050512 !important; padding: 0 !important; margin: 0 !important; }
 
-  .container-fluid {
-      background-color: #050512 !important;
-      padding: 0 !important;
-      margin: 0 !important;
-  }
-
-  /* Full-bleed product section (removes side gaps) */
   .product-wrap {
-    position: relative;
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+    position: relative; width: 100vw;
+    margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
     background: radial-gradient(1200px 600px at 10% -20%, rgba(122,124,255,0.22), transparent 60%),
                 radial-gradient(1000px 800px at 120% 10%, rgba(0,229,255,0.18), transparent 50%),
                 linear-gradient(135deg, #070718 0%, #040414 45%, #09091f 100%);
     overflow: hidden;
   }
-  .product-wrap::before,
-  .product-wrap::after {
-    content: "";
-    position: absolute;
+  .product-wrap::before, .product-wrap::after {
+    content: ""; position: absolute;
     width: 60vmax; height: 60vmax; border-radius: 50%; filter: blur(60px); opacity: .25; z-index: 0;
     animation: floaty 18s ease-in-out infinite;
   }
@@ -55,7 +41,6 @@
     margin: 0 0 .5rem; font-weight: 800; letter-spacing: .4px; font-size: clamp(1.8rem, 4vw, 3rem);
     background: linear-gradient(90deg, var(--vh-primary), var(--vh-accent) 60%, var(--vh-accent-2));
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 12px rgba(122,124,255,0.25), 0 0 26px rgba(0,229,255,0.15);
   }
   .product-subtitle { color: var(--vh-muted); }
 
@@ -67,64 +52,130 @@
   }
   @keyframes lineFlow { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
 
-  /* Product card */
   .product-card {
     position: relative; display: flex; flex-direction: column; gap: 1rem;
     background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
     border: 1px solid var(--vh-border); border-radius: 18px;
-    box-shadow: 0 20px 60px rgba(12, 16, 50, 0.65), inset 0 0 24px rgba(0, 229, 255, 0.08);
+    box-shadow: 0 20px 60px rgba(12,16,50,0.65), inset 0 0 24px rgba(0,229,255,0.08);
     backdrop-filter: blur(10px) saturate(160%); -webkit-backdrop-filter: blur(10px) saturate(160%);
-    padding: 1rem; color: var(--vh-text);
+    padding: 1.5rem; color: var(--vh-text);
+    transition: border-color .2s ease, box-shadow .2s ease;
   }
-  .product-card:hover { border-color: rgba(0,229,255,0.55); box-shadow: 0 30px 70px rgba(0, 229, 255, 0.18), 0 10px 26px rgba(122,124,255,0.16); }
+  .product-card:hover {
+    border-color: rgba(0,229,255,0.55);
+    box-shadow: 0 30px 70px rgba(0,229,255,0.18), 0 10px 26px rgba(122,124,255,0.16);
+  }
 
   .product-media { position: relative; }
+
   .product-img {
-    width: 100%; height: 100%; max-height: 480px; object-fit: cover; border-radius: 14px;
+    width: 100%; max-height: 480px; object-fit: cover;
+    border-radius: 14px; cursor: zoom-in;
+    border: 1px solid var(--vh-border);
+    transition: transform .2s ease, box-shadow .2s ease;
   }
-  .sale-badge { position: absolute; top: .6rem; right: .6rem; background: linear-gradient(90deg, var(--vh-accent), var(--vh-primary)); color: #fff; padding: .25rem .6rem; border-radius: 999px; font-size: .75rem; box-shadow: 0 6px 14px rgba(0,0,0,0.25); }
+  .product-img:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 30px rgba(0,229,255,0.2);
+  }
+
+  .zoom-hint {
+    position: absolute; bottom: .6rem; right: .6rem;
+    background: rgba(0,0,0,0.55); color: var(--vh-muted);
+    font-size: 0.7rem; padding: .2rem .5rem; border-radius: 6px;
+    pointer-events: none;
+  }
+
+  .sale-badge {
+    position: absolute; top: .6rem; right: .6rem;
+    background: linear-gradient(90deg, var(--vh-accent), var(--vh-primary));
+    color: #fff; padding: .25rem .6rem; border-radius: 999px;
+    font-size: .75rem; font-weight: 700; box-shadow: 0 6px 14px rgba(0,0,0,0.25); z-index: 2;
+  }
+
+  .gallery-thumbnails { display: flex; gap: .5rem; margin-top: .75rem; flex-wrap: wrap; }
+  .gallery-thumbnails img {
+    width: 64px; height: 64px; object-fit: cover; border-radius: 8px;
+    border: 2px solid transparent; cursor: pointer;
+    transition: border-color .2s ease, transform .15s ease;
+  }
+  .gallery-thumbnails img:hover { transform: scale(1.05); }
+  .gallery-thumbnails img.selected { border-color: var(--vh-accent); box-shadow: 0 0 10px rgba(0,229,255,0.35); }
 
   .product-body { padding: .5rem 0; }
-  .product-title { font-weight: 700; margin-bottom: .5rem; }
-  .product-desc { color: var(--vh-muted); }
-  .product-price { margin-top: .75rem; font-size: 1.1rem; }
-  .product-price del { color: #e6e9ff90; }
+  .product-title { font-weight: 700; margin-bottom: .5rem; color: var(--vh-text); font-size: 1.2rem; }
+  .product-desc { color: var(--vh-muted); line-height: 1.7; }
+  .product-price { margin-top: .75rem; font-size: 1.15rem; }
+  .product-price del { color: rgba(230,233,255,0.45); }
+  .save-label { font-size: 0.8rem; color: var(--vh-accent-2); font-weight: 600; margin-left: .4rem; }
 
-  .actions { display: flex; gap: .5rem; margin-top: 1rem; flex-wrap: wrap; }
+  .actions { display: flex; gap: .5rem; margin-top: 1.25rem; flex-wrap: wrap; }
   .btn-neon {
-    display: inline-flex; align-items: center; justify-content: center; gap: .3rem;
+    display: inline-flex; align-items: center; justify-content: center; gap: .35rem;
     border: 1px solid var(--vh-border); color: var(--vh-text);
-    font-size: 0.95rem;
-    border-radius: 8px; padding: .35rem .65rem;
-    flex: 0 0 auto; width: auto; min-width: 0; white-space: nowrap;
+    font-size: 0.9rem; border-radius: 10px; padding: .55rem .9rem;
     background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
     box-shadow: 0 0 0 1px rgba(122,124,255,0.25);
-    transition: transform .08s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
-    text-decoration: none;
+    transition: all .18s ease; text-decoration: none; cursor: pointer; font-family: inherit;
   }
-  .btn-neon:hover { color: #fff; border-color: rgba(0,229,255,0.65); background: linear-gradient(180deg, rgba(0,229,255,0.18), rgba(122,124,255,0.12)); box-shadow: 0 0 0 2px rgba(0,229,255,0.24), 0 10px 26px rgba(0,229,255,0.16); transform: translateY(-1px); }
+  .btn-neon:hover {
+    color: #fff; border-color: rgba(0,229,255,0.65);
+    background: linear-gradient(180deg, rgba(0,229,255,0.18), rgba(122,124,255,0.12));
+    box-shadow: 0 0 0 2px rgba(0,229,255,0.24), 0 10px 26px rgba(0,229,255,0.16);
+    transform: translateY(-1px); text-decoration: none;
+  }
+  .btn-neon:disabled { opacity: .4; cursor: not-allowed; pointer-events: none; }
+  .btn-cart {
+    background: linear-gradient(180deg, rgba(0,229,255,0.14), rgba(122,124,255,0.08));
+    border-color: rgba(0,229,255,0.35);
+  }
 
   .spacer-bottom { padding-bottom: 6vh; }
- /* New gallery styles */
-  .gallery-thumbnails {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    flex-wrap: wrap;
+
+  /* ── Lightbox ── */
+  #fullscreen-lightbox {
+    display: none;
+    position: fixed; inset: 0; z-index: 99999;
+    background: rgba(0,0,0,0.93);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    align-items: center; justify-content: center;
+    cursor: zoom-out;
+    animation: fadeIn .2s ease;
   }
-  .gallery-thumbnails img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 6px;
-    border: 2px solid transparent;
-    cursor: pointer;
-    transition: border 0.2s ease;
+  #fullscreen-lightbox.active { display: flex; }
+  @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+
+  #lightbox-img {
+    max-width: 90vw; max-height: 90vh;
+    object-fit: contain; border-radius: 14px;
+    box-shadow: 0 0 80px rgba(0,229,255,0.18), 0 0 40px rgba(122,124,255,0.12);
+    animation: zoomIn .2s ease;
+    cursor: default;
   }
-  .gallery-thumbnails img.selected {
-    border-color: var(--vh-accent);
+  @keyframes zoomIn { from { transform: scale(0.95); opacity: 0 } to { transform: scale(1); opacity: 1 } }
+
+  #lightbox-close {
+    position: absolute; top: 1rem; right: 1.5rem;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    color: #fff; font-size: 1.5rem; line-height: 1;
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: background .2s ease, transform .15s ease;
+  }
+  #lightbox-close:hover { background: rgba(0,229,255,0.2); transform: scale(1.1); }
+
+  #lightbox-caption {
+    position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.5); font-size: 0.8rem; white-space: nowrap;
   }
 </style>
+
+<!-- Fullscreen Lightbox -->
+<div id="fullscreen-lightbox">
+  <button id="lightbox-close" aria-label="Close">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+  <span id="lightbox-caption">Click outside or press Esc to close</span>
+</div>
 
 <section class="product-wrap">
   <div class="product-inner product-hero">
@@ -135,6 +186,7 @@
 
   <div class="product-inner spacer-bottom">
     <div class="row g-4 align-items-start">
+
       <!-- Product Images -->
       <div class="col-12 col-lg-6">
         <div class="product-media">
@@ -142,21 +194,37 @@
             <div class="sale-badge">Sale</div>
           {% endif %}
 
-          <!-- Main Image -->
           {% if product.main_image %}
-            <img id="main-product-img" src="{{ product.main_image }}" alt="{{ product.name }}" class="product-img" />
+            <img id="main-product-img"
+                 src="{{ product.main_image }}"
+                 alt="{{ product.name }}"
+                 class="product-img"
+                 title="Click to zoom">
           {% else %}
-            <img id="main-product-img" src="{% static 'images/placeholder.png' %}" alt="No Image" class="product-img" />
+            <div style="
+              width:100%; height:320px; border-radius:14px;
+              border:1px solid var(--vh-border);
+              display:flex; flex-direction:column;
+              align-items:center; justify-content:center; gap:.5rem;
+              background:rgba(255,255,255,0.03); color:var(--vh-muted);">
+              <span style="font-size:3rem; opacity:.15;">&#9889;</span>
+              <span style="font-size:0.8rem;">No image available</span>
+            </div>
           {% endif %}
 
+          <div class="zoom-hint">&#128269; Click image to zoom</div>
+
           <!-- Gallery Thumbnails -->
+          {% if product.gallery.all %}
           <div class="gallery-thumbnails">
             {% for image in product.gallery.all %}
-              <img src="{{ image.image.url }}" alt="{{ image.alt_text }}" class="{% if forloop.first %}selected{% endif %}" data-large="{{ image.image.url }}">
-            {% empty %}
-              <!-- No gallery images -->
+              <img src="{{ image.image.url }}"
+                   alt="{{ image.alt_text }}"
+                   class="{% if forloop.first %}selected{% endif %}"
+                   data-large="{{ image.image.url }}">
             {% endfor %}
           </div>
+          {% endif %}
         </div>
       </div>
 
@@ -165,100 +233,142 @@
         <div class="product-card">
           <div class="product-body">
             <h4 class="product-title">{{ product.name }}</h4>
-            <p class="product-desc">{{ product.description|safe }}</p>
+
+            {% if product.category %}
+              <div style="font-size:0.72rem; color:var(--vh-muted); text-transform:uppercase; letter-spacing:.07em; margin-bottom:.5rem;">
+                {{ product.category.name }}
+              </div>
+            {% endif %}
+
             <div class="product-price">
-              {% if product.on_sale %}
-                <del>R{{ product.price }}</del>
+              {% if product.on_sale and product.sale_price %}
+                <del>R{{ product.price|floatformat:2 }}</del>
                 &nbsp;
-                <strong>R{{ product.sale_price }}</strong>
+                <strong>R{{ product.sale_price|floatformat:2 }}</strong>
+                {% if product.save_percent %}
+                  <span class="save-label">Save {{ product.save_percent }}%</span>
+                {% endif %}
               {% else %}
-                <strong>R{{ product.price }}</strong>
+                <strong>R{{ product.price|floatformat:2 }}</strong>
               {% endif %}
             </div>
 
+            <hr style="border-color:var(--vh-border); margin:1rem 0;">
+
+            <div class="product-desc">{{ product.description|safe }}</div>
+
             <div class="actions">
-              <a href="{% url 'shop_home' %}" class="btn-neon">Back to Shop</a>
-              
-              <button class="btn-neon" 
-                  id="add-to-cart" 
-                  data-product-id="{{ product.id }}"
-                  data-url="{% url 'Cart:add-cart' product.id %}">
-               Add to Cart
-             </button>
+              <a href="{% url 'shop_home' %}" class="btn-neon">
+                <i class="fa fa-arrow-left" style="font-size:0.8rem;"></i> Back to Shop
+              </a>
+
+              {% if product.active %}
+                <button class="btn-neon btn-cart"
+                        id="add-to-cart"
+                        data-product-id="{{ product.id }}"
+                        data-url="{% url 'Cart:add-cart' product.id %}">
+                  <i class="fa fa-cart-plus" style="font-size:0.8rem;"></i> Add to Cart
+                </button>
+              {% else %}
+                <button class="btn-neon" disabled>Unavailable</button>
+              {% endif %}
             </div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
   {% include 'VoltHub/footer.html' %}
 </section>
 
-<!-- JS Section -->
+<div class="cart-toast" id="cartToast" style="
+  position:fixed; bottom:2rem; right:2rem; z-index:9999;
+  background:linear-gradient(135deg,rgba(13,13,40,0.97),rgba(6,6,24,0.97));
+  border:1px solid rgba(0,229,255,0.4); border-radius:12px; padding:.85rem 1.25rem;
+  color:var(--vh-text); font-size:0.85rem; box-shadow:0 10px 30px rgba(0,0,0,0.5);
+  display:flex; align-items:center; gap:.75rem;
+  transform:translateY(20px); opacity:0; transition:all .3s ease; pointer-events:none;">
+  <span style="color:#45ffbc; font-size:1rem;">&#10003;</span>
+  <span id="toastMessage">Added to cart!</span>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
+var CSRF_TOKEN = '{{ csrf_token }}';
 
-    (function() {
-    const lightbox = document.getElementById('fullscreen-lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const closeBtn = document.getElementById('lightbox-close');
-    const mainImg = document.getElementById('main-product-img');
+// ── Lightbox ──
+(function() {
+  var lightbox  = document.getElementById('fullscreen-lightbox');
+  var lightboxImg = document.getElementById('lightbox-img');
+  var closeBtn  = document.getElementById('lightbox-close');
+  var mainImg   = document.getElementById('main-product-img');
 
-    function openLightbox(src, alt) {
-      lightboxImg.src = src;
-      lightboxImg.alt = alt || '';
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeLightbox() {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-    if (mainImg) {
-      mainImg.addEventListener('click', () => openLightbox(mainImg.src, mainImg.alt));
-    }
-    closeBtn.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
-    });
-  })();
+  function open(src, alt) {
+    if (!lightbox) return;
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    if (!lightbox) return;
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
 
-  $(document).on('click', '#add-to-cart', function(e) {
-    e.preventDefault();
-    
-    var productId = $(this).data('product-id');
-    var url = $(this).data('url');
-    
-    $.ajax({
-        type: 'POST',
-        url: url,
-        data: {
-            product_id: productId,
-            csrfmiddlewaretoken: '{{ csrf_token }}',
-            action: 'post'
-        },
-        success: function(json) {
-            if (json.success) {
-                if (document.getElementById('cart-quantity')) {
-                    document.getElementById('cart-quantity').textContent = json.qty;
-                }
-                alert('Added to cart! Items in cart: ' + json.qty);
-            }
-        },
-        error: function(xhr, status, error) {
-            console.log('Cart error:', error);
-        }
-    });
+  if (mainImg)  mainImg.addEventListener('click', function() { open(mainImg.src, mainImg.alt); });
+  if (closeBtn) closeBtn.addEventListener('click', close);
+  if (lightbox) lightbox.addEventListener('click', function(e) { if (e.target === lightbox) close(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
+})();
+
+// ── Gallery thumbnails ──
+$(document).on('click', '.gallery-thumbnails img', function() {
+  var newSrc = $(this).data('large');
+  $('#main-product-img').attr('src', newSrc);
+  $('.gallery-thumbnails img').removeClass('selected');
+  $(this).addClass('selected');
+});
+
+// ── Toast helper ──
+function showToast(msg) {
+  var t = document.getElementById('cartToast');
+  document.getElementById('toastMessage').textContent = msg;
+  t.style.transform = 'translateY(0)';
+  t.style.opacity = '1';
+  setTimeout(function() { t.style.transform = 'translateY(20px)'; t.style.opacity = '0'; }, 3000);
+}
+
+// ── Add to cart ──
+$(document).on('click', '#add-to-cart', function(e) {
+  e.preventDefault();
+  var btn = $(this);
+  var productId = btn.data('product-id');
+  var url = btn.data('url');
+
+  btn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Adding...');
+
+  $.ajax({
+    type: 'POST',
+    url: url,
+    data: { product_id: productId, csrfmiddlewaretoken: CSRF_TOKEN, action: 'post' },
+    success: function(json) {
+      if (json.success) {
+        showToast('Added to cart! (' + json.qty + ' items)');
+        var badge = document.getElementById('navCartBadge');
+        if (badge) { badge.textContent = json.qty; badge.classList.add('has-items'); }
+      } else {
+        showToast('Could not add to cart.');
+      }
+      btn.prop('disabled', false).html('<i class="fa fa-cart-plus" style="font-size:0.8rem;"></i> Add to Cart');
+    },
+    error: function() {
+      showToast('Error adding to cart.');
+      btn.prop('disabled', false).html('<i class="fa fa-cart-plus" style="font-size:0.8rem;"></i> Add to Cart');
+    }
   });
-
-  // Gallery thumbnail click
-  $(document).on('click', '.gallery-thumbnails img', function() {
-    var newSrc = $(this).data('large');
-    $('#main-product-img').attr('src', newSrc);
-    $('.gallery-thumbnails img').removeClass('selected');
-    $(this).addClass('selected');
-  });
+});
 </script>
 {% endblock %}
