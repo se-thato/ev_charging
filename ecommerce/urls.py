@@ -22,6 +22,9 @@ urlpatterns = [
     path('cart/', views.cart_view, name='cart'),
     path('cart/count/', views.cart_count_view, name='cart_count'),
 
+    path('cart/update/<int:product_id>/', views.cart_update, name='cart_update'),
+    path('cart/delete/<int:product_id>/', views.cart_delete, name='cart_delete'),
+
     # /cart/add/5/ → adds product id=5 to cart (POST only — enforced by @require_POST)
     path('cart/add/<int:product_id>/', views.add_to_cart_view, name='cart_add'),
 

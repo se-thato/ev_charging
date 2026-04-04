@@ -69,14 +69,14 @@
   .empty-state h3 { color: var(--vh-text); margin-bottom: .5rem; }
   .empty-state p { font-size: 0.88rem; }
 
-  /* ═══════════════════════════════════════════
-     PRODUCT GRID — responsive columns
+  /*
+     Product grid — responsive columns
      Desktop (1400px+): 5 columns
      Large  (1200px):   4 columns
      Tablet  (900px):   3 columns
      Mobile  (600px):   2 columns  ← phones
      Tiny    (360px):   1 column   ← very small
-  ═══════════════════════════════════════════ */
+ */
   .product-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -87,9 +87,9 @@
   @media (max-width: 600px)  { .product-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; } }
   @media (max-width: 360px)  { .product-grid { grid-template-columns: 1fr; gap: 0.6rem; } }
 
-  /* ═══════════════════════════════════════════
-     PRODUCT CARD
-  ═══════════════════════════════════════════ */
+  
+  /*Product card*/
+
   .product-card {
     position: relative;
     background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
@@ -116,9 +116,8 @@
     .product-card:active { border-color: rgba(0,229,255,0.4); }
   }
 
-  /* ═══════════════════════════════════════════
-     PRODUCT IMAGE — scales fluidly
-  ═══════════════════════════════════════════ */
+  /* Product image — scales fluidly*/
+
   .product-img-wrap {
     overflow: hidden;
     border-top-left-radius: 14px;
@@ -158,9 +157,7 @@
     text-transform: uppercase; letter-spacing: .06em; z-index: 1;
   }
 
-  /* ═══════════════════════════════════════════
-     CARD BODY — responsive padding + text
-  ═══════════════════════════════════════════ */
+  /* Card body — responsive padding + text */
   .product-body {
     padding: clamp(0.4rem, 2vw, 0.75rem) clamp(0.4rem, 2vw, 0.75rem) 0.25rem;
     text-align: center;
@@ -194,9 +191,8 @@
     color: var(--vh-accent-2); font-weight: 600; margin-left: .15rem;
   }
 
-  /* ═══════════════════════════════════════════
-     ACTION BUTTONS — touch-friendly
-  ═══════════════════════════════════════════ */
+  /* a touch-friendly buttons */
+
   .product-actions {
     padding: clamp(0.35rem, 1.5vw, 0.55rem) clamp(0.4rem, 2vw, 0.7rem) clamp(0.4rem, 2vw, 0.7rem);
     margin-top: auto; display: flex; gap: .3rem;
@@ -240,9 +236,7 @@
     .btn-label { display: none; }
   }
 
-  /* ═══════════════════════════════════════════
-     TOAST — full-width on mobile
-  ═══════════════════════════════════════════ */
+  /*full-width on mobile*/
   .cart-toast {
     position: fixed; bottom: 1rem; z-index: 9999;
     background: linear-gradient(135deg, rgba(13,13,40,0.97), rgba(6,6,24,0.97));
