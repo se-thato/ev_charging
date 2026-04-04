@@ -203,6 +203,7 @@ if REDIS_URL:
             "LOCATION": REDIS_URL,
             "OPTIONS": {
                 "CLIENT_CLASS": "django_redis.client.DefaultClient",
+                "IGNORE_EXCEPTIONS": True,
             },
         }
     }
@@ -213,7 +214,6 @@ else:
             "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
         }
     }
-
 
 
 CORS_ALLOW_ALL_ORIGINS = True #Adjusting for production
@@ -236,6 +236,7 @@ TEMPLATES = [
         'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
+
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
