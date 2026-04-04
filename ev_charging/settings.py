@@ -84,7 +84,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     'channels',
     'oauth2_provider',
-    #'axes', # For brute force protection
+    'axes', # For brute force protection
     'drf_yasg', #swagger
     'anymail', # For email backend
 
@@ -168,7 +168,7 @@ MIDDLEWARE = [
     'charging_station.middleware.RequestLoggingMiddleware',
     'charging_station.middleware.PerformanceMonitoringMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    #'axes.middleware.AxesMiddleware',
+    'axes.middleware.AxesMiddleware',
     # allauth
     'allauth.account.middleware.AccountMiddleware',
     
@@ -176,11 +176,11 @@ MIDDLEWARE = [
 
 
 
-# AXES_FAILURE_LIMIT = 5 # Maximum number of login attempts before lockout
-# AXES_COOLOFF_TIME = timedelta(minutes=30)  # This is the time (in minutes) that a user will be locked out after exceeding the failure limit
-# AXES_ENABLED = True
-# AXES_LOCK_OUT_AT_FAILURE = True
-# AXES_RESET_ON_SUCCESS = True
+AXES_FAILURE_LIMIT = 5 # Maximum number of login attempts before lockout
+AXES_COOLOFF_TIME = timedelta(minutes=30)  # This is the time (in minutes) that a user will be locked out after exceeding the failure limit
+AXES_ENABLED = True
+AXES_LOCK_OUT_AT_FAILURE = True
+AXES_RESET_ON_SUCCESS = True
 
 
 
@@ -276,25 +276,7 @@ CHANNEL_LAYERS = {
 }
 
 # Database
-# DATABASE_URL = os.environ.get("DATABASE_PUBLIC_URL")
 
-# if DATABASE_URL:
-#     DATABASES = {
-#         'default': dj_database_url.parse(DATABASE_URL)
-#     }
-# else:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
-#         }
-#     }
-
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         default=os.environ.get('DATABASE_PUBLIC_URL') or os.environ.get('DATABASE_URL')
-#     )
-# }
 DATABASE_URL = os.environ.get("DATABASE_PUBLIC_URL") or os.environ.get("DATABASE_URL")
 
 if DATABASE_URL:
@@ -309,16 +291,6 @@ else:
         }
     }
 
-# DATABASES = {
-#     'default': dj_database_url.parse(os.environ.get("DATABASE_PUBLIC_URL"))
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 
 # Password validation
@@ -344,7 +316,7 @@ SITE_ID = 1
 
 
 AUTHENTICATION_BACKENDS = [
-    #'axes.backends.AxesStandaloneBackend',
+    'axes.backends.AxesStandaloneBackend',
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]

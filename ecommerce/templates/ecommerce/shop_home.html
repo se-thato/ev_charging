@@ -41,19 +41,23 @@
   .shop-wrap::after  { background: radial-gradient(circle, rgba(0,229,255,0.40), transparent 60%); right: -25vmax; bottom: -20vmax; }
   @keyframes floaty { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-20px) } }
 
-  .shop-inner { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 0 1rem; }
-  /* ↑ CHANGED: increased max-width from 1200px to 1400px to give 5 cards more room */
+  .shop-inner {
+    position: relative; z-index: 1;
+    max-width: 1400px; margin: 0 auto;
+    padding: 0 0.75rem;
+  }
 
-  .shop-hero { padding: 8vh 0 4vh; text-align: center; color: var(--vh-text); }
+  .shop-hero { padding: 6vh 0 3vh; text-align: center; color: var(--vh-text); }
   .shop-title {
     margin: 0 0 .5rem; font-weight: 800;
-    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-size: clamp(1.3rem, 5vw, 3rem);
     background: linear-gradient(90deg, var(--vh-primary), var(--vh-accent) 60%, var(--vh-accent-2));
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     letter-spacing: .4px;
   }
-  .shop-subtitle { color: var(--vh-muted); }
-  .accent-line { position: relative; height: 2px; margin: 1rem auto 2rem; max-width: 520px; }
+  .shop-subtitle { color: var(--vh-muted); font-size: clamp(0.78rem, 3vw, 1rem); }
+
+  .accent-line { position: relative; height: 2px; margin: 0.75rem auto 1.5rem; max-width: 520px; }
   .accent-line::after {
     content: ""; position: absolute; left: 0; right: 0; height: 2px; border-radius: 2px;
     background: linear-gradient(90deg, transparent, var(--vh-accent), var(--vh-primary), transparent);
@@ -65,145 +69,205 @@
   .empty-state h3 { color: var(--vh-text); margin-bottom: .5rem; }
   .empty-state p { font-size: 0.88rem; }
 
-  /* ── CHANGED: product grid — 5 columns on large screens ── */
+  /* ═══════════════════════════════════════════
+     PRODUCT GRID — responsive columns
+     Desktop (1400px+): 5 columns
+     Large  (1200px):   4 columns
+     Tablet  (900px):   3 columns
+     Mobile  (600px):   2 columns  ← phones
+     Tiny    (360px):   1 column   ← very small
+  ═══════════════════════════════════════════ */
   .product-grid {
     display: grid;
-    /* 5 equal columns on large screens */
     grid-template-columns: repeat(5, 1fr);
-    gap: 1.25rem;
+    gap: clamp(0.5rem, 1.5vw, 1.25rem);
   }
+  @media (max-width: 1200px) { .product-grid { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 900px)  { .product-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 600px)  { .product-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; } }
+  @media (max-width: 360px)  { .product-grid { grid-template-columns: 1fr; gap: 0.6rem; } }
 
-  /* 4 columns on medium-large screens (1200px) */
-  @media (max-width: 1200px) {
-    .product-grid { grid-template-columns: repeat(4, 1fr); }
-  }
-
-  /* 3 columns on medium screens (900px) */
-  @media (max-width: 900px) {
-    .product-grid { grid-template-columns: repeat(3, 1fr); }
-  }
-
-  /* 2 columns on small screens (600px) */
-  @media (max-width: 600px) {
-    .product-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-
-  /* 1 column on very small screens (380px) */
-  @media (max-width: 380px) {
-    .product-grid { grid-template-columns: 1fr; }
-  }
-  /* ── END CHANGED ── */
-
+  /* ═══════════════════════════════════════════
+     PRODUCT CARD
+  ═══════════════════════════════════════════ */
   .product-card {
     position: relative;
     background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
     border: 1px solid var(--vh-border);
-    border-radius: 18px;
+    border-radius: 14px;
     backdrop-filter: blur(10px) saturate(160%);
     -webkit-backdrop-filter: blur(10px) saturate(160%);
-    box-shadow: 0 20px 50px rgba(12,16,50,0.45), inset 0 0 24px rgba(0,229,255,0.06);
+    box-shadow: 0 10px 30px rgba(12,16,50,0.45), inset 0 0 16px rgba(0,229,255,0.04);
     color: var(--vh-text);
     height: 100%; display: flex; flex-direction: column;
     transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease;
+    -webkit-tap-highlight-color: transparent;
   }
-  .product-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(0,229,255,0.55);
-    box-shadow: 0 30px 70px rgba(0,229,255,0.18), 0 10px 26px rgba(122,124,255,0.16);
+  /* Hover only on non-touch (desktop) */
+  @media (hover: hover) {
+    .product-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0,229,255,0.55);
+      box-shadow: 0 30px 70px rgba(0,229,255,0.18), 0 10px 26px rgba(122,124,255,0.16);
+    }
+  }
+  /* Tap feedback on touch devices */
+  @media (hover: none) {
+    .product-card:active { border-color: rgba(0,229,255,0.4); }
   }
 
-  /* ── CHANGED: slightly reduced image height so 5 cards fit better ── */
+  /* ═══════════════════════════════════════════
+     PRODUCT IMAGE — scales fluidly
+  ═══════════════════════════════════════════ */
   .product-img-wrap {
     overflow: hidden;
-    border-top-left-radius: 18px;
-    border-top-right-radius: 18px;
-    height: 180px; /* was 220px */
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    /* scales from 110px on tiny phones to 180px on desktop */
+    height: clamp(110px, 22vw, 180px);
     background: rgba(255,255,255,0.03);
   }
-  /* ── END CHANGED ── */
-
   .product-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.25s ease; }
-  .product-card:hover .product-img { transform: scale(1.05); }
+  @media (hover: hover) {
+    .product-card:hover .product-img { transform: scale(1.05); }
+  }
 
   .product-img-placeholder {
     width: 100%; height: 100%;
     display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: .4rem;
+    align-items: center; justify-content: center; gap: .3rem;
   }
-  .placeholder-icon { font-size: 2.5rem; opacity: .18; }
-  .placeholder-label { font-size: 0.7rem; color: var(--vh-muted); opacity: .5; }
+  .placeholder-icon { font-size: clamp(1.2rem, 4vw, 2.2rem); opacity: .18; }
+  .placeholder-label { font-size: 0.6rem; color: var(--vh-muted); opacity: .5; }
 
   .sale-badge {
-    position: absolute; top: .6rem; right: .6rem;
+    position: absolute; top: .4rem; right: .4rem;
     background: linear-gradient(90deg, var(--vh-accent), var(--vh-primary));
-    color: white; padding: .25rem .6rem;
-    border-radius: 999px; font-size: .72rem; font-weight: 700;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.25); z-index: 2;
+    color: white; padding: .15rem .45rem;
+    border-radius: 999px; font-size: .62rem; font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25); z-index: 2;
   }
 
   .out-of-stock-overlay {
-    position: absolute; top: 0; left: 0; right: 0; height: 180px; /* CHANGED: matches new image height */
+    position: absolute; top: 0; left: 0; right: 0;
+    height: clamp(110px, 22vw, 180px);
     background: rgba(5,5,18,0.6);
-    border-top-left-radius: 18px; border-top-right-radius: 18px;
+    border-top-left-radius: 14px; border-top-right-radius: 14px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 0.75rem; font-weight: 600; color: var(--vh-muted);
-    text-transform: uppercase; letter-spacing: .08em; z-index: 1;
+    font-size: 0.68rem; font-weight: 600; color: var(--vh-muted);
+    text-transform: uppercase; letter-spacing: .06em; z-index: 1;
   }
 
-  /* ── CHANGED: tighter padding on card body so 5 cards don't feel cramped ── */
-  .product-body { padding: .75rem .75rem .4rem; text-align: center; }
-  /* ── END CHANGED ── */
+  /* ═══════════════════════════════════════════
+     CARD BODY — responsive padding + text
+  ═══════════════════════════════════════════ */
+  .product-body {
+    padding: clamp(0.4rem, 2vw, 0.75rem) clamp(0.4rem, 2vw, 0.75rem) 0.25rem;
+    text-align: center;
+    flex: 1;
+  }
 
-  .product-category { font-size: 0.65rem; color: var(--vh-muted); text-transform: uppercase; letter-spacing: .07em; margin-bottom: .2rem; }
+  .product-category {
+    font-size: clamp(0.55rem, 1.5vw, 0.65rem);
+    color: var(--vh-muted); text-transform: uppercase;
+    letter-spacing: .06em; margin-bottom: .15rem;
+  }
 
-  /* ── CHANGED: smaller title font so long names fit in narrower cards ── */
-  .product-title { font-weight: 700; margin-bottom: .3rem; color: var(--vh-text); font-size: 0.82rem; line-height: 1.3; }
-  /* ── END CHANGED ── */
+  .product-title {
+    font-weight: 700; color: var(--vh-text);
+    font-size: clamp(0.68rem, 1.8vw, 0.83rem);
+    line-height: 1.3; margin-bottom: .25rem;
+    /* clamp to 2 lines — keeps all cards same height */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 
-  .product-price { color: var(--vh-text); font-size: 0.85rem; } /* CHANGED: smaller price text */
+  .product-price {
+    color: var(--vh-text);
+    font-size: clamp(0.72rem, 2vw, 0.86rem);
+  }
   .product-price del { color: rgba(230,233,255,0.45); }
-  .save-label { font-size: 0.68rem; color: var(--vh-accent-2); font-weight: 600; margin-left: .2rem; }
+  .save-label {
+    font-size: clamp(0.58rem, 1.5vw, 0.68rem);
+    color: var(--vh-accent-2); font-weight: 600; margin-left: .15rem;
+  }
 
-  /* ── CHANGED: tighter action padding for narrower cards ── */
-  .product-actions { padding: 0 .75rem .75rem; margin-top: auto; display: flex; gap: .4rem; }
-  /* ── END CHANGED ── */
+  /* ═══════════════════════════════════════════
+     ACTION BUTTONS — touch-friendly
+  ═══════════════════════════════════════════ */
+  .product-actions {
+    padding: clamp(0.35rem, 1.5vw, 0.55rem) clamp(0.4rem, 2vw, 0.7rem) clamp(0.4rem, 2vw, 0.7rem);
+    margin-top: auto; display: flex; gap: .3rem;
+  }
 
   .btn-neon {
     display: inline-flex; align-items: center; justify-content: center;
     flex: 1;
     border: 1px solid var(--vh-border); color: var(--vh-text);
-    border-radius: 10px; padding: .5rem .3rem; font-size: 0.75rem; /* CHANGED: smaller radius+padding+font */
+    border-radius: 8px;
+    /* minimum 44px height for touch targets (Apple HIG guideline) */
+    min-height: 44px;
+    padding: .35rem .2rem;
+    font-size: clamp(0.65rem, 1.8vw, 0.76rem);
     background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
     box-shadow: 0 0 0 1px rgba(122,124,255,0.25);
     transition: all .18s ease; text-decoration: none; cursor: pointer;
     font-family: inherit;
+    user-select: none; -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
   }
-  .btn-neon:hover {
-    color: #fff; border-color: rgba(0,229,255,0.65);
-    background: linear-gradient(180deg, rgba(0,229,255,0.18), rgba(122,124,255,0.12));
-    box-shadow: 0 0 0 2px rgba(0,229,255,0.24), 0 10px 26px rgba(0,229,255,0.16);
-    transform: translateY(-1px); text-decoration: none;
+  @media (hover: hover) {
+    .btn-neon:hover {
+      color: #fff; border-color: rgba(0,229,255,0.65);
+      background: linear-gradient(180deg, rgba(0,229,255,0.18), rgba(122,124,255,0.12));
+      box-shadow: 0 0 0 2px rgba(0,229,255,0.24), 0 10px 26px rgba(0,229,255,0.16);
+      transform: translateY(-1px); text-decoration: none;
+    }
   }
+  /* Tap feedback */
+  .btn-neon:active { opacity: .72; transform: scale(0.96); }
   .btn-neon:disabled { opacity: .4; cursor: not-allowed; pointer-events: none; }
+
   .btn-cart {
     background: linear-gradient(180deg, rgba(0,229,255,0.14), rgba(122,124,255,0.08));
     border-color: rgba(0,229,255,0.35);
   }
 
+  /* On very small phones hide text labels, show icons only */
+  @media (max-width: 380px) {
+    .btn-label { display: none; }
+  }
+
+  /* ═══════════════════════════════════════════
+     TOAST — full-width on mobile
+  ═══════════════════════════════════════════ */
   .cart-toast {
-    position: fixed; bottom: 2rem; right: 2rem; z-index: 9999;
+    position: fixed; bottom: 1rem; z-index: 9999;
     background: linear-gradient(135deg, rgba(13,13,40,0.97), rgba(6,6,24,0.97));
     border: 1px solid rgba(0,229,255,0.4);
-    border-radius: 12px; padding: .85rem 1.25rem;
-    color: var(--vh-text); font-size: 0.85rem;
+    border-radius: 12px; padding: .75rem 1rem;
+    color: var(--vh-text); font-size: 0.82rem;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    display: flex; align-items: center; gap: .75rem;
+    display: flex; align-items: center; gap: .6rem;
     transform: translateY(20px); opacity: 0;
     transition: all .3s ease;
     pointer-events: none;
   }
+  /* Desktop: bottom-right */
+  @media (min-width: 601px) {
+    .cart-toast { right: 1.5rem; max-width: 300px; }
+  }
+  /* Mobile: full width centered at bottom */
+  @media (max-width: 600px) {
+    .cart-toast {
+      left: 0.75rem; right: 0.75rem;
+      bottom: 0.75rem; max-width: none;
+    }
+  }
   .cart-toast.show { transform: translateY(0); opacity: 1; }
-  .cart-toast .toast-icon { color: var(--vh-accent-2); font-size: 1rem; }
+  .cart-toast .toast-icon { color: var(--vh-accent-2); font-size: 1rem; flex-shrink: 0; }
 </style>
 
 <section class="shop-wrap">
@@ -225,9 +289,7 @@
 
     {% else %}
 
-      {# ── CHANGED: replaced Bootstrap row/col with CSS grid for true 5-column layout ── #}
       <div class="product-grid">
-
         {% for product in products %}
           <div class="product-card">
 
@@ -237,7 +299,10 @@
 
             <div class="product-img-wrap">
               {% if product.main_image %}
-                <img class="product-img" src="{{ product.main_image }}" alt="{{ product.name }}" loading="lazy" />
+                <img class="product-img"
+                     src="{{ product.main_image }}"
+                     alt="{{ product.name }}"
+                     loading="lazy" />
               {% else %}
                 <div class="product-img-placeholder">
                   <div class="placeholder-icon">&#9889;</div>
@@ -255,16 +320,14 @@
                 <div class="product-category">{{ product.category.name }}</div>
               {% endif %}
 
-              {# CHANGED: truncated title to 50 chars so long names don't break narrow cards #}
-              <h5 class="product-title">{{ product.name|truncatechars:50 }}</h5>
+              <h5 class="product-title">{{ product.name }}</h5>
 
               <div class="product-price">
                 {% if product.on_sale and product.sale_price %}
-                  <del>R{{ product.price|floatformat:2 }}</del>
-                  &nbsp;
+                  <del>R{{ product.price|floatformat:2 }}</del>&nbsp;
                   <strong>R{{ product.sale_price|floatformat:2 }}</strong>
                   {% if product.save_percent %}
-                    <span class="save-label">Save {{ product.save_percent }}%</span>
+                    <span class="save-label">-{{ product.save_percent }}%</span>
                   {% endif %}
                 {% else %}
                   <strong>R{{ product.price|floatformat:2 }}</strong>
@@ -275,7 +338,7 @@
             <div class="product-actions">
               <a class="btn-neon" href="{% url 'product' product.id %}">
                 <i class="fa fa-eye" style="font-size:0.75rem;"></i>
-                View
+                <span class="btn-label">&nbsp;View</span>
               </a>
 
               {% if product.active %}
@@ -287,18 +350,18 @@
                         {% endif %}
                         onclick="addToCart(this)">
                   <i class="fa fa-cart-plus" style="font-size:0.75rem;"></i>
-                  Add
+                  <span class="btn-label">&nbsp;Add</span>
                 </button>
               {% else %}
-                <button class="btn-neon btn-cart" disabled>Unavailable</button>
+                <button class="btn-neon btn-cart" disabled>
+                  <span class="btn-label">N/A</span>
+                </button>
               {% endif %}
             </div>
 
           </div>
         {% endfor %}
-
       </div>
-      {# ── END CHANGED ── #}
 
     {% endif %}
 
@@ -317,55 +380,60 @@
 var CART_URL = "{% url 'cart' %}";
 var CSRF_TOKEN = '{{ csrf_token }}';
 
-function showToast(message) {
-    var toast = document.getElementById('cartToast');
-    document.getElementById('toastMessage').textContent = message;
-    toast.classList.add('show');
-    setTimeout(function() { toast.classList.remove('show'); }, 3000);
+function showToast(msg) {
+    var t = document.getElementById('cartToast');
+    document.getElementById('toastMessage').textContent = msg;
+    t.classList.add('show');
+    setTimeout(function() { t.classList.remove('show'); }, 3000);
 }
 
 function addToCart(btn) {
-    var productId = $(btn).data('product-id');
-    var djangoUrl = $(btn).data('django-url');
-    var shopifyUrl = $(btn).data('shopify-url');
+    var $btn = $(btn);
+    var productId = $btn.data('product-id');
+    var djangoUrl = $btn.data('django-url');
+    var shopifyUrl = $btn.data('shopify-url');
 
-    $(btn).prop('disabled', true).html('<i class="fa fa-spinner fa-spin" style="font-size:0.75rem;"></i> Adding...');
+    $btn.prop('disabled', true).html(
+        '<i class="fa fa-spinner fa-spin" style="font-size:0.75rem;"></i>'
+    );
 
     $.ajax({
         type: 'POST',
         url: djangoUrl,
-        data: {
-            product_id: productId,
-            csrfmiddlewaretoken: CSRF_TOKEN,
-            action: 'post'
-        },
-        success: function(djangoJson) {
-            if (djangoJson.success) {
+        data: { product_id: productId, csrfmiddlewaretoken: CSRF_TOKEN, action: 'post' },
+        success: function(json) {
+            if (json.success) {
+                // Update navbar badge
+                var badge = document.getElementById('navCartBadge');
+                if (badge) { badge.textContent = json.qty; badge.classList.add('has-items'); }
+
+                var done = function() {
+                    showToast('Added! (' + json.qty + ' in cart)');
+                    $btn.prop('disabled', false).html(
+                        '<i class="fa fa-cart-plus" style="font-size:0.75rem;"></i><span class="btn-label">&nbsp;Add</span>'
+                    );
+                };
+
                 if (shopifyUrl) {
                     $.ajax({
                         type: 'POST',
                         url: shopifyUrl,
-                        data: {
-                            quantity: 1,
-                            csrfmiddlewaretoken: CSRF_TOKEN,
-                        },
-                        complete: function() {
-                            showToast('Added to cart! (' + djangoJson.qty + ' items)');
-                            $(btn).prop('disabled', false).html('<i class="fa fa-cart-plus" style="font-size:0.75rem;"></i> Add');
-                        }
+                        data: { quantity: 1, csrfmiddlewaretoken: CSRF_TOKEN },
+                        complete: done
                     });
-                } else {
-                    showToast('Added to cart! (' + djangoJson.qty + ' items)');
-                    $(btn).prop('disabled', false).html('<i class="fa fa-cart-plus" style="font-size:0.75rem;"></i> Add');
-                }
+                } else { done(); }
             } else {
-                showToast('Could not add to cart. Please try again.');
-                $(btn).prop('disabled', false).html('<i class="fa fa-cart-plus" style="font-size:0.75rem;"></i> Add');
+                showToast('Could not add. Try again.');
+                $btn.prop('disabled', false).html(
+                    '<i class="fa fa-cart-plus" style="font-size:0.75rem;"></i><span class="btn-label">&nbsp;Add</span>'
+                );
             }
         },
         error: function() {
-            showToast('Error adding to cart. Please try again.');
-            $(btn).prop('disabled', false).html('<i class="fa fa-cart-plus" style="font-size:0.75rem;"></i> Add');
+            showToast('Error. Please try again.');
+            $btn.prop('disabled', false).html(
+                '<i class="fa fa-cart-plus" style="font-size:0.75rem;"></i><span class="btn-label">&nbsp;Add</span>'
+            );
         }
     });
 }
