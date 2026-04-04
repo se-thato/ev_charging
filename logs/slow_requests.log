@@ -1272,3 +1272,6 @@
 [2026-04-04 10:13:30,232] WARNING SLOW REQUEST: /cart/ took 8.904 seconds!
 [2026-04-04 10:21:44,070] WARNING SLOW REQUEST: /cart/ took 5.841 seconds!
 [2026-04-04 10:22:39,769] WARNING SLOW REQUEST: /shop_home took 8.678 seconds!
+[2026-04-04 10:38:01,337] WARNING SLOW REQUEST: /cart/ took 6.617 seconds!
+[2026-04-04 10:38:09,070] WARNING SLOW REQUEST: /cart/count/ took 6.283 seconds!
+[2026-04-04 10:50:15,620] WARNING SLOW REQUEST: /shop_home took 15.078 seconds!

@@ -194,29 +194,20 @@ CELERY_RESULT_SERIALIZER = 'json'
 
 
 # Redis cache (implementation using REDIS_PUBLIC_URL with connectivity test and fallback)
-REDIS_URL = os.environ.get("REDIS_PUBLIC_URL")
+REDIS_URL = os.getenv("REDIS_URL")  # Railway standard
+
 if REDIS_URL:
-    try:
-        # Testing Redis connection
-        client = redis.from_url(REDIS_URL, socket_connect_timeout=2)
-        client.ping()
-        CACHES = {
-            "default": {
-                "BACKEND": "django_redis.cache.RedisCache",
-                "LOCATION": REDIS_URL,
-                "OPTIONS": {
-                    "CLIENT_CLASS": "django_redis.client.DefaultClient",
-                },
-            }
+    CACHES = {
+        "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": REDIS_URL,
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            },
         }
-    except Exception as e: #This will catch any connection errors, authentication errors, or other issues with Redis
-        warnings.warn(f"Redis at {REDIS_URL} not reachable ({e}). Falling back to LocMemCache.")
-        CACHES = {
-            "default": {
-                "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
-            }
-        }
-else: #This is for local development when REDIS_PUBLIC_URL is not set
+    }
+else:
+    # Fallback for local development
     CACHES = {
         "default": {
             "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
@@ -270,7 +261,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            'hosts': [os.environ.get('REDIS_PUBLIC_URL')],
+            'hosts': [os.environ.get('REDIS_URL')],
         },
     },
 }
