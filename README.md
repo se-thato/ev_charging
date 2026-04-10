@@ -91,7 +91,7 @@ Open http://127.0.0.1:8000/
 
 - python manage.py test
 
-## Docker (optional)
+## Docker
 
 A Dockerfile is included. Example development build/run:
 - docker build -t volthub:dev .
