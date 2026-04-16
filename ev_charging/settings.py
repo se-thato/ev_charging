@@ -315,14 +315,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
-#This is for social account providers, so it can work with allauth, for example Google
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': ['profile', 'email'], # this will request access to user's profile and email
-        'AUTH_PARAMS': {'access_type': 'online'}, # 'online' or 'offline' for refresh token
-    }
-}
-
 
 #This will redirect users to home page after login/logout
 LOGIN_REDIRECT_URL = '/'
@@ -519,7 +511,9 @@ SOCIALACCOUNT_PROVIDERS = {
         'APP': {
             'client_id': os.getenv("GOOGLE_CLIENT_ID"),
             'secret': os.getenv("GOOGLE_CLIENT_SECRET"),
-            'key': ''
-        }
+            'key': '',
+        },
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {'access_type': 'online'},
     }
 }
