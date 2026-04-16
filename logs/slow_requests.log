@@ -1283,3 +1283,11 @@
 [2026-04-16 17:28:23,489] WARNING SLOW REQUEST: /api/bookings/ took 5.220 seconds!
 [2026-04-16 17:28:46,859] WARNING SLOW REQUEST: /api/stations/nearby/ took 6.684 seconds!
 [2026-04-16 17:59:42,481] WARNING SLOW REQUEST: /cart/count/ took 23.027 seconds!
+[2026-04-16 18:39:11,968] WARNING SLOW REQUEST: / took 7.971 seconds!
+[2026-04-16 18:57:45,510] WARNING SLOW REQUEST: /post_detail/2/ took 9.369 seconds!
+[2026-04-16 18:57:59,642] WARNING SLOW REQUEST: /auth/login/ took 5.335 seconds!
+[2026-04-16 19:02:20,670] WARNING SLOW REQUEST: /auth/login/ took 17.982 seconds!
+[2026-04-16 19:03:14,493] WARNING SLOW REQUEST: /auth/login/ took 20.887 seconds!
+[2026-04-16 19:04:29,206] WARNING SLOW REQUEST: /cart/count/ took 6.151 seconds!
+[2026-04-16 19:04:55,392] WARNING SLOW REQUEST: /auth/logout-user/ took 6.117 seconds!
+[2026-04-16 19:08:00,438] WARNING SLOW REQUEST: / took 7.940 seconds!

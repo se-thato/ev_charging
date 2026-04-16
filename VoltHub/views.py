@@ -409,7 +409,7 @@ def verify_stations(request):
     return render(request, 'VoltHub/verify_stations.html', {'pending': pending})
 
 
-
+@login_required(login_url='authentication:login')
 def post_detail(request, pk):
     # Show a post detail page but use station based comments bound to the "VoltHub" station
     post = get_object_or_404(Post, pk=pk)
@@ -417,8 +417,11 @@ def post_detail(request, pk):
     station, _ = ChargingPoint.objects.get_or_create(
         name='VoltHub',
         defaults={
-            'capicity': 0,
-            'available_slots': 0,
+        'owner': request.user,
+        'is_verified': True,
+        'is_active': True,
+        'capicity': 0,
+        'available_slots': 0,
         
         }
     )

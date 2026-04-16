@@ -18,9 +18,8 @@ from .storefront_client import create_cart, add_to_cart, remove_from_cart, get_c
 from Cart.cart import Cart as SessionCart
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # SHOP HOME
-# ─────────────────────────────────────────────────────────────────────────────
 def home_ecommerce(request):
     products = Product.objects.filter(active=True).select_related('category')
 
@@ -42,9 +41,7 @@ def home_ecommerce(request):
     })
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # PRODUCT DETAIL
-# ─────────────────────────────────────────────────────────────────────────────
 def product(request, pk):
     product = get_object_or_404(Product, id=pk, active=True)
     cart_count = _get_cart_count(request)
@@ -55,9 +52,8 @@ def product(request, pk):
     })
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # CATEGORY
-# ─────────────────────────────────────────────────────────────────────────────
 def category(request, slug):
     category = get_object_or_404(Category, slug=slug)
     products = Product.objects.filter(category=category, active=True)
@@ -70,9 +66,8 @@ def category(request, slug):
     })
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # SHOPIFY OAUTH — Step 1: redirect to Shopify permission screen
-# ─────────────────────────────────────────────────────────────────────────────
 def shopify_auth(request):
     shop = settings.SHOPIFY_SHOP_DOMAIN
     client_id = settings.SHOPIFY_CLIENT_ID
@@ -92,9 +87,8 @@ def shopify_auth(request):
     return redirect(auth_url)
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # SHOPIFY OAUTH CALLBACK — Step 2: exchange code for access token
-# ─────────────────────────────────────────────────────────────────────────────
 def shopify_callback(request):
     print("=== CALLBACK HIT ===")
     print("GET params:", dict(request.GET))
@@ -165,10 +159,9 @@ def shopify_callback(request):
     return redirect('shop_home')
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # ADD TO CART (Storefront API — for Shopify checkout)
 # Called when user clicks Add to Cart on shop_home or product page
-# ─────────────────────────────────────────────────────────────────────────────
 @require_POST
 def add_to_cart_view(request, product_id):
     product = get_object_or_404(Product, id=product_id, active=True)
@@ -223,9 +216,8 @@ def add_to_cart_view(request, product_id):
     return redirect('product', pk=product_id)
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # CART VIEW — displays items from DB (if logged in) or session
-# ─────────────────────────────────────────────────────────────────────────────
 def cart_view(request):
     if request.user.is_authenticated:
         # Traverse Cart → CartItem using cart__user lookup
@@ -258,18 +250,15 @@ def cart_view(request):
     })
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # CART COUNT — lightweight endpoint for navbar badge
 # Returns JSON: {"count": total_quantity}
-# ─────────────────────────────────────────────────────────────────────────────
 def cart_count_view(request):
     count = _get_cart_count(request)
     return JsonResponse({'count': count})
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # UPDATE CART QUANTITY (called from AJAX)
-# ─────────────────────────────────────────────────────────────────────────────
 @require_POST
 def cart_update(request, product_id):
     try:
@@ -298,9 +287,8 @@ def cart_update(request, product_id):
     return JsonResponse({'success': True})
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # REMOVE FROM CART (called from AJAX)
-# ─────────────────────────────────────────────────────────────────────────────
 @require_POST
 def cart_delete(request, product_id):
     product = get_object_or_404(Product, id=product_id)
@@ -323,9 +311,8 @@ def cart_delete(request, product_id):
     return JsonResponse({'success': True, 'qty': total_qty})
 
 
-# ─────────────────────────────────────────────────────────────────────────────
+
 # REMOVE FROM CART (Shopify Storefront API line removal)
-# ─────────────────────────────────────────────────────────────────────────────
 @require_POST
 def remove_from_cart_view(request, line_id):
     cart_id = request.session.get('shopify_cart_id')
@@ -347,9 +334,7 @@ def remove_from_cart_view(request, line_id):
     return redirect('cart')
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # CHECKOUT — redirects to Shopify hosted checkout
-# ─────────────────────────────────────────────────────────────────────────────
 def checkout(request):
     checkout_url = request.session.get('shopify_checkout_url')
 
@@ -360,9 +345,7 @@ def checkout(request):
     return redirect(checkout_url)
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # SHOPIFY WEBHOOK — receives real-time product updates from Shopify
-# ─────────────────────────────────────────────────────────────────────────────
 @csrf_exempt
 @require_POST
 def shopify_product_webhook(request):
@@ -438,9 +421,7 @@ def _sync_single_product(sp):
     )
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 # HELPER — cart count for navbar badge
-# ─────────────────────────────────────────────────────────────────────────────
 def _get_cart_count(request):
     """
     Returns total cart quantity for the navbar badge.

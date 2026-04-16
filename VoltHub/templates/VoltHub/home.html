@@ -199,7 +199,7 @@
               <button type="button" class="btn btn-sm btn-outline-danger" disabled title="Login to vote">
                 <i class="fa fa-thumbs-down"></i> {{ comment.downvotes }}
               </button>
-              <a href="{% url 'authentication:login' %}" class="btn btn-link btn-sm" aria-label="Login to vote">Login to vote</a>
+              {% comment %} <a href="{% url 'authentication:login' %}" class="btn btn-link btn-sm" aria-label="Login to vote">Login to vote</a> {% endcomment %}
             {% endif %}
             <span class="badge bg-secondary">Score: {{ comment.total_votes }}</span>
           </div>
