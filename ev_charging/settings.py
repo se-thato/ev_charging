@@ -144,7 +144,8 @@ SIMPLE_JWT = {
 }
 
 
-
+   
+   
 LANGUAGE_CODE = 'en-za'
 TIME_ZONE     = 'Africa/South Africa'
 USE_I18N      = True
@@ -152,7 +153,7 @@ USE_TZ        = True
 
 
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4' 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -509,3 +510,16 @@ SHOPIFY_STOREFRONT_TOKEN = config('SHOPIFY_STOREFRONT_TOKEN', default="")
 
 # Open Charge Map API Key
 OPEN_CHARGE_API_KEY = os.environ.get("OPEN_CHARGE_API_KEY")
+
+
+
+#when user wants to login with google, this is the configuration for that, using allauth
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': os.getenv("GOOGLE_CLIENT_ID"),
+            'secret': os.getenv("GOOGLE_CLIENT_SECRET"),
+            'key': ''
+        }
+    }
+}

@@ -1275,3 +1275,5 @@
 [2026-04-04 10:38:01,337] WARNING SLOW REQUEST: /cart/ took 6.617 seconds!
 [2026-04-04 10:38:09,070] WARNING SLOW REQUEST: /cart/count/ took 6.283 seconds!
 [2026-04-04 10:50:15,620] WARNING SLOW REQUEST: /shop_home took 15.078 seconds!
+[2026-04-15 21:27:38,781] WARNING SLOW REQUEST: /auth/login/ took 14.714 seconds!
+[2026-04-15 21:28:15,358] WARNING SLOW REQUEST: /api/stations/nearby/ took 6.850 seconds!
