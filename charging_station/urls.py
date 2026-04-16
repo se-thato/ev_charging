@@ -59,14 +59,14 @@ urlpatterns = [
         name="bookings_details",
     ),
 
-    # profile (collection only per original urls)
+    # profile
     path(
         "profiles/",
         ProfileViewSet.as_view({"get": "list", "post": "create"}),
         name="profiles",
     ),
 
-    # payment section (collection only per original urls)
+    # payment section
     path(
         "payment-method/",
         PaymentMethodViewSet.as_view({"get": "list", "post": "create"}),
@@ -78,14 +78,14 @@ urlpatterns = [
         name="payment",
     ),
 
-    # rating (collection only)
+    # rating
     path(
         "ratings/",
         RatingViewSet.as_view({"get": "list", "post": "create"}),
         name="ratings",
     ),
 
-    # issue report (collection only)
+    # issue report
     path(
         "issue-reports/",
         IssueReportViewSet.as_view({"get": "list", "post": "create"}),
@@ -93,7 +93,7 @@ urlpatterns = [
     ),
     
 
-    # comments (collection only)
+    # comments
     path(
         "comments/",
         CommentViewSet.as_view({"get": "list", "post": "create"}),

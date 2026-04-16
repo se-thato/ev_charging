@@ -1277,3 +1277,9 @@
 [2026-04-04 10:50:15,620] WARNING SLOW REQUEST: /shop_home took 15.078 seconds!
 [2026-04-15 21:27:38,781] WARNING SLOW REQUEST: /auth/login/ took 14.714 seconds!
 [2026-04-15 21:28:15,358] WARNING SLOW REQUEST: /api/stations/nearby/ took 6.850 seconds!
+[2026-04-16 17:21:19,559] WARNING SLOW REQUEST: / took 17.666 seconds!
+[2026-04-16 17:21:20,174] WARNING SLOW REQUEST: /api/token/ took 7.341 seconds!
+[2026-04-16 17:26:25,694] WARNING SLOW REQUEST: /api/profiles/ took 6.196 seconds!
+[2026-04-16 17:28:23,489] WARNING SLOW REQUEST: /api/bookings/ took 5.220 seconds!
+[2026-04-16 17:28:46,859] WARNING SLOW REQUEST: /api/stations/nearby/ took 6.684 seconds!
+[2026-04-16 17:59:42,481] WARNING SLOW REQUEST: /cart/count/ took 23.027 seconds!

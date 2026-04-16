@@ -165,7 +165,7 @@
     margin-top:.4rem; justify-content:center;
   }
 
-  /* ── Confirm button ── */
+  /* ── Confirm button, this is */
   .btn-confirm {
     width:100%; padding:.85rem 1rem; border-radius:14px;
     border:none; cursor:pointer; font-family:inherit;
@@ -183,7 +183,7 @@
   }
   .btn-confirm:disabled { opacity:.5; cursor:not-allowed; transform:none; }
 
-  /* ── Back link ── */
+  /*Back link, this is the link to go back to the cart */
   .back-link {
     display:inline-flex; align-items:center; gap:.4rem;
     color:var(--vh-muted); font-size:.85rem; text-decoration:none;
@@ -202,19 +202,23 @@
     display:flex; align-items:center; justify-content:center;
     gap:0; margin-bottom:2.5rem;
   }
+
   .step {
     display:flex; align-items:center; gap:.4rem;
     font-size:.78rem; font-weight:600;
   }
+
   .step-num {
     width:26px; height:26px; border-radius:50%;
     display:flex; align-items:center; justify-content:center;
     font-size:.7rem; font-weight:700;
   }
+
   .step.active .step-num {
     background:linear-gradient(135deg,var(--vh-primary),var(--vh-accent));
     color:#fff; box-shadow:0 0 12px rgba(0,229,255,0.4);
   }
+
   .step.done .step-num { background:var(--vh-accent2); color:#000; }
   .step.pending .step-num { background:rgba(255,255,255,0.08); color:var(--vh-muted); }
   .step.active .step-label { color:var(--vh-text); }

@@ -78,6 +78,7 @@ INSTALLED_APPS = [
     'Cart',
 
     'rest_framework',
+    'rest_framework_simplejwt',
     'rest_framework.authtoken',  
     'corsheaders',   
     'crispy_forms',
@@ -136,18 +137,19 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 #SimpleJWT setting
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-    'ROTATE_REFRESH_TOKENS': True,
-    'BLACKLIST_AFTER_ROTATION': True,
-    'ALGORITHM': 'HS256',
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),#this is for making sure that the user has to login again after 1 day, for security reasons
+    'ROTATE_REFRESH_TOKENS': True, #this will make sure that the refresh token is rotated every time the user refreshes the access token, for security reasons
+    'BLACKLIST_AFTER_ROTATION': True, #This will make sure that the old refresh token is blacklisted after rotation, for security reasons
+    'ALGORITHM': 'HS256', #This is the algorithm used for signing the tokens
     'SIGNING_KEY': SECRET_KEY,
+    'AUTH_HEADER_TYPES': ('Bearer',), #This is the prefix used in the Authorization header, for example: Authorization
 }
 
 
    
    
 LANGUAGE_CODE = 'en-za'
-TIME_ZONE     = 'Africa/South Africa'
+TIME_ZONE     = 'Africa/johannesburg'
 USE_I18N      = True
 USE_TZ        = True
 
@@ -325,9 +327,9 @@ LOGOUT_REDIRECT_URL = '/'
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
