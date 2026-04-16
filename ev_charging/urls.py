@@ -24,7 +24,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
    path('admin/', admin.site.urls),
-   path('', include("charging_station.urls")),
+   path('api/', include("charging_station.urls")),
    path('', include("VoltHub.urls")),
 
    # API endpoint for nearby stations (both OCM and my DB)
