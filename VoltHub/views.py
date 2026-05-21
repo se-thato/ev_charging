@@ -215,7 +215,7 @@ def booking(request):
                     pass
 
             messages.success(request, "Booking created successfully.")
-            return redirect('user_dashboard')
+            return redirect('dashboard')
 
     context = {'form': form}
 
@@ -259,7 +259,7 @@ def update_booking(request, pk):
 
             updated.save()
 
-            return redirect('user_dashboard')
+            return redirect('dashboard')
 
     context = {'form': form}
 
@@ -298,7 +298,7 @@ def delete_booking(request, pk):
 
     booking.delete()
 
-    return redirect('user_dashboard')
+    return redirect('dashboard')
 
 
 
