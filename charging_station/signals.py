@@ -4,6 +4,9 @@ from .models import ChargingSession
 from .tasks import send_charging_complete_email
 from .tasks import generate_invoice_and_email
 
+from django.conf import settings
+from .models import Profile, Booking, Notification
+
 
 
 
@@ -49,3 +52,33 @@ def charging_session_post_save(sender, instance, created, **kwargs):
             del instance._generate_invoice
         # Fire the background job
         generate_invoice_and_email.delay(instance.pk)
+
+
+
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_user_profile(sender, instance, created, **kwargs):
+    """
+    This signal fires after a new User is created.
+    Automatically creates a linked Profile so every
+    user always has a profile without us manually doing it.
+    """
+    if created:
+        Profile.objects.create(user=instance)
+
+
+#This signal fires after any User is updated and keeps the Profile in sync when User details change.
+# The hasattr check prevents crashing if a user somehow has no profile yet.
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def save_user_profile(sender, instance, **kwargs):
+    if hasattr(instance, 'profile'):
+        instance.profile.save()
+
+#This signal fires after a new Booking is created and sends a notification to the user confirming their booking.
+@receiver(post_save, sender=Booking)
+def create_booking_notification(sender, instance, created, **kwargs):
+    if created:
+        Notification.objects.create(
+            user=instance.user,
+            message=f"Booking confirmed for {instance.station} "
+                    f"from {instance.start_time} to {instance.end_time}."
+        )

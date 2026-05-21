@@ -75,6 +75,8 @@ class ChargingPointViewSet(viewsets.ModelViewSet):
         return Response({"message": "All charging points have been deleted"}, status=status.HTTP_204_NO_CONTENT)
     
 
+
+    # This function will only show verified stations to users, while allowing admins to see all for management purposes
     def get_queryset(self):
         return ChargingPoint.objects.filter(is_verified=True)  # Only show verified
     

@@ -1,6 +1,20 @@
 from django.contrib import admin
-from .models import ChargingPoint, ChargingSession, Booking, Profile, PaymentMethod, Rating, IssueReport, Comment, Payment, SubscriptionPlan, UserSubscription, Post
-
+from .models import (
+    ChargingPoint,
+    ChargingSession,
+    Booking,
+    Profile, 
+    PaymentMethod, 
+    Rating, 
+    IssueReport, 
+    Comment, 
+    Payment, 
+    SubscriptionPlan, 
+    UserSubscription, 
+    Post,
+    StationOwnerProfile,
+    OwnerPayout,
+)
 
 admin.site.register(ChargingPoint)
 
@@ -23,6 +37,10 @@ admin.site.register(Payment)
 admin.site.register(SubscriptionPlan)   
 
 admin.site.register(UserSubscription)
+
+admin.site.register(StationOwnerProfile)
+
+admin.site.register(OwnerPayout)
 
 
 @admin.register(Post)
