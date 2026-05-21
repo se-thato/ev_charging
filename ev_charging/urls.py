@@ -16,7 +16,7 @@ schema_view = get_schema_view(
    openapi.Info(
       title="Charging Stations API",
       default_version='v1',
-      description="API documentation for Charging Stations",
+      description="API documentation for Charging Stations Locator",
    ),
    public=True,
    permission_classes=(permissions.AllowAny,),
