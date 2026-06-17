@@ -1,27 +1,23 @@
-from django.shortcuts import render, redirect
-from .forms import BookingForm, UpdateBookingForm, ProfileForm, ChargingPointForm, CommentForm
-
-from django.contrib.auth.models import auth
-from django.contrib.auth import authenticate
-from django.contrib.auth import get_user_model
-
-from django.contrib.auth.decorators import login_required, user_passes_test
-from charging_station.models import ChargingPoint, ChargingSession, Booking, Profile, Comment, Post
-from django.shortcuts import get_object_or_404
-from django.contrib.auth.views import redirect_to_login
-from django.conf import settings
+from datetime import datetime, time, timedelta
+import json
 import logging
 
-from django.core.mail import send_mail, BadHeaderError
+from django.conf import settings
+from django.contrib import messages
+from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.views import redirect_to_login
+from django.core.exceptions import ValidationError
+from django.core.mail import BadHeaderError, send_mail
+from django.db.models import F, Sum, Count
+from django.db.models.functions import TruncDate
 from django.http import HttpResponse
-
-from datetime import datetime, time
+from django.shortcuts import get_object_or_404, redirect, render
+from django.utils import timezone
 from django.utils import timezone as dj_timezone
 
-from django.contrib import messages
-from django.core.exceptions import ValidationError
-from django.db.models import F
-import logging
+from .forms import BookingForm, UpdateBookingForm, ProfileForm, ChargingPointForm, CommentForm
+from charging_station.models import ChargingPoint, ChargingSession, Booking, Profile, Comment, Post, Payment, StationOwnerProfile, OwnerPayout
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -63,6 +59,98 @@ def dashboard(request):
     except Exception as e:
         # 
         return HttpResponse(f"An error occurred: {str(e)}", status=500)
+
+
+
+@login_required(login_url='authentication:login')
+def owner_dashboard(request):
+    
+    # Check user is a station owner
+    if not hasattr(request.user, 'owner_profile'):
+        return redirect('owner_register')
+
+    owner_profile = request.user.owner_profile
+    stations = ChargingPoint.objects.filter(owner=request.user)
+
+    # this week's metrics
+    week_ago = timezone.now() - timedelta(days=7)
+    last_week = timezone.now() - timedelta(days=14)
+
+    this_week_bookings = Booking.objects.filter(
+        station__in=stations,
+        created_at__gte=week_ago )
+    
+
+    last_week_bookings = Booking.objects.filter(
+        station__in=stations,
+        created_at__gte=last_week,
+        created_at__lt=week_ago
+    )
+
+    this_week_revenue = Payment.objects.filter(
+        booking__in=this_week_bookings,
+        status='completed'
+    ).aggregate(total=Sum('station_earnings'))['total'] or 0
+
+    last_week_revenue = Payment.objects.filter(
+        booking__in=last_week_bookings,
+        status='completed'
+    ).aggregate(total=Sum('station_earnings'))['total'] or 0
+
+    if last_week_revenue > 0:
+        revenue_change = round(
+            ((float(this_week_revenue) - float(last_week_revenue))
+             / float(last_week_revenue)) * 100, 1
+        )
+    else:
+        revenue_change = 0
+
+    #chart data for bookings over time in the last 7 days
+    daily = Booking.objects.filter(
+        station__in=stations,
+        created_at__gte=week_ago
+    ).annotate(
+        day=TruncDate('created_at')
+    ).values('day').annotate(
+        count=Count('id')
+    ).order_by('day')
+
+    chart_labels = [str(d['day']) for d in daily]
+    chart_counts = [d['count'] for d in daily]
+
+    #recent bookings
+    recent_bookings = Booking.objects.filter(station__in=stations
+    ).select_related('user', 'station').order_by('-created_at')[:10]
+
+    #payout history
+    payouts = OwnerPayout.objects.filter(owner=owner_profile).order_by('-initiated_at')[:10]
+
+    #
+    today = timezone.now().date()
+    days_ahead = 7 - today.weekday()
+    if days_ahead == 7:
+        days_ahead = 7
+    next_payout_date = today + timedelta(days=days_ahead)
+
+    context = {
+        'owner_profile': owner_profile,
+        'stations': stations,
+        'recent_bookings': recent_bookings,
+        'payouts':payouts,
+        'next_payout_date': next_payout_date,
+        'chart_labels': json.dumps(chart_labels),
+        'chart_counts': json.dumps(chart_counts),
+        'summary': {
+            'revenue_this_week': float(this_week_revenue),
+            'revenue_change_percent': revenue_change,
+            'bookings_this_week': this_week_bookings.count(),
+            'bookings_last_week':last_week_bookings.count(),
+            'active_stations': stations.filter(is_active=True).count(),
+            'total_stations': stations.count(),
+            'referral_clicks_week': owner_profile.total_referral_clicks,
+        },
+    }
+    return render(request, 'VoltHub/owner_dashboard.html', context)
 
 
 

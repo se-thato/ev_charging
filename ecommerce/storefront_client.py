@@ -1,25 +1,6 @@
-# This file handles ALL communication with Shopify's Storefront API.
-# The Storefront API is PUBLIC — it uses a token that is safe to use
-# server-side. It handles the cart and checkout flow.
-#
-# KEY DIFFERENCE from Admin API:
-#   Admin API  → server only, private token, manages your store data
-#   Storefront → powers the shopping experience, cart, and checkout
-#
-# HOW THE CART FLOW WORKS:
-#   1. User clicks "Add to Cart" → we call Shopify to create/update a cart
-#   2. Shopify gives us back a cart ID and a checkoutUrl
-#   3. We store the cart ID in the Django session (like a temporary note)
-#   4. When user clicks "Checkout" → we redirect them to Shopify's checkoutUrl
-#   5. Shopify handles payment, shipping, confirmation — everything
-
 import requests
 from django.conf import settings
 
-# The Storefront API uses GraphQL — a query language where you describe
-# exactly what data you want, and Shopify returns exactly that.
-# REST API: GET /products → returns ALL product fields whether you need them or not
-# GraphQL:  you ask for only name + price → you only get name + price
 
 STOREFRONT_URL = f"https://{settings.SHOPIFY_SHOP_DOMAIN}/api/2024-01/graphql.json"
 
@@ -405,7 +386,7 @@ def _parse_cart_lines(edges):
         image = product.get("featuredImage")
 
         lines.append({
-            "line_id": node.get("id"),           # needed to remove this line
+            "line_id": node.get("id"), # needed to remove this line
             "quantity": node.get("quantity"),
             "variant_id": merchandise.get("id"),
             "variant_title": merchandise.get("title"),

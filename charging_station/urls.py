@@ -141,5 +141,5 @@ urlpatterns = [
     path("analytics/",ChargingStationAnaliticsViewSet.as_view({"get": "list"}),name="charging-station-analytics",),
  
     #This is the new path for station owner dashboard
-    path('station-owner/dashboard/',StationOwnerDashboardView.as_view(),name='station-owner-dashboard'),
+    path('dashboard/owner/',StationOwnerDashboardView.as_view(),name='owner-dashboard'),
 ]

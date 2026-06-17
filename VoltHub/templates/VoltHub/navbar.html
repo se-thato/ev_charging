@@ -193,6 +193,10 @@
           <a class="nav-link" href="{% url 'shop_home' %}">Shop <i class="fa fa-cart-plus" aria-hidden="true"></i></a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'owner_dashboard' %}">Station Owner <i class="fa fa-solid fa-address-card" aria-hidden="true"></i></a>
+        </li>
+
 
         <!--Cart link with live badge-->
         <li class="nav-item">
@@ -226,6 +230,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'contact_us' %}">Contact Us <i class="fa fa-solid fa-address-card" aria-hidden="true"></i></a>
         </li>
+
       {% endif %}
     </ul>
 

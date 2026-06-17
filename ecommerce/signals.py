@@ -1,10 +1,3 @@
-# Django signals are a way to run code automatically when something happens.
-# Like event listeners in JavaScript — "when X happens, run Y function".
-#
-# We use two signals here:
-#   user_logged_in  → fires after a user successfully logs in
-#   user_logged_out → fires just before a user's session is destroyed
-#
 # How cart will work with signals:
 #
 #   Login:

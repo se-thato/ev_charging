@@ -4,29 +4,24 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 
-# PROFILE
+# Profile
 # Extends Django's built-in User model with extra fields.
 # We use a OneToOneField so each User has exactly one Profile.
 class Profile(models.Model):
     # OneToOneField means: one User → one Profile, and one Profile → one User.
     # on_delete=models.CASCADE means: if the User is deleted, delete the Profile too.
-    user = models.OneToOneField(User, on_delete=models.CASCADE,null=True,blank=True, related_name='profile')
-
-    # null=True  → the database column can store NULL (no value)
-    # blank=True → Django forms won't require this field
+    user = models.OneToOneField(User, on_delete=models.CASCADE,related_name='profile')
     # Both are needed together for optional fields
-    username = models.CharField(max_length=50, unique=True, null=True, blank=True)
-    first_name = models.CharField(max_length=50, null=True, blank=True)
-    last_name = models.CharField(max_length=50, null=True, blank=True)
-    email = models.EmailField(max_length=100, unique=True, null=True, blank=True)
+    username = models.CharField(max_length=50, unique=True, null=False, blank=False)
+    first_name = models.CharField(max_length=50, null=False, blank=False)
+    last_name = models.CharField(max_length=50, null=False, blank=False)
+    email = models.EmailField(max_length=100, unique=True, null=False, blank=False)
     location = models.CharField(max_length=150, null=True, blank=True)
 
+ 
     # ImageField stores the file path in the DB, not the image itself.
     # upload_to sets the subfolder inside your MEDIA_ROOT directory.
     profile_picture = models.ImageField(upload_to='profile_pictures/', null=True, blank=True)
-
-    # BooleanField stores True or False.
-    # help_text appears in the Django admin interface as a hint.
     is_station_owner = models.BooleanField(default=False,help_text="Can this user manage charging stations?")
     is_station_owner_verified = models.BooleanField(default=False,help_text="Admin verified station owner")
 
@@ -36,12 +31,12 @@ class Profile(models.Model):
         return self.username or str(self.user)
 
 
-# COUNTRY
+# Country
 # Used to support multiple regions with different currencies.
 # Both the Product and Order models reference this.
 class Country(models.Model):
     name = models.CharField(max_length=100)
-    # max_length=5 is enough for codes like "ZA", "US", "UK"
+    # max_length=5 is enough for codes like "RSA", "US", "UK"
     code = models.CharField(max_length=5)
     # Stores currency codes like "ZAR", "USD", "GBP"
     currency = models.CharField(max_length=10)
@@ -51,7 +46,7 @@ class Country(models.Model):
         return self.name
 
 
-# SUPPLIER
+# Supplier
 # Represents a vendor who supplies products.
 # A supplier can fulfill orders via Shopify, manually, or via their own API.
 class Supplier(models.Model):
@@ -87,7 +82,7 @@ class Supplier(models.Model):
     def __str__(self):
         return self.name
 
-# CATEGORY
+# Category
 # Groups products together (e.g. "Chargers", "Cables", "Adapters").
 class Category(models.Model):
     # unique=True means no two categories can have the same name.
@@ -108,7 +103,7 @@ class Category(models.Model):
 
 
 
-# CONNECTOR TYPE
+# Connector Type
 # EV-specific — stores charging connector standards like CCS2, Type 2, CHAdeMO.
 class ConnectorType(models.Model):
     name = models.CharField(max_length=50)
@@ -132,7 +127,7 @@ class ShopifyStore(models.Model):
 
 
 
-# PRODUCT
+# Product
 # The central model of your shop. Represents a product synced from Shopify.
 class Product(models.Model):
     # ForeignKey to Supplier many products can come from one supplier.
@@ -217,7 +212,7 @@ class Product(models.Model):
 
 
 
-# PRODUCT IMAGE
+# Product Image
 # Stores additional images for a product (a gallery).
 # related_name='gallery' means you can access images via product.gallery.all()
 class ProductImage(models.Model):
@@ -236,7 +231,7 @@ class ProductImage(models.Model):
 
 
 
-# ORDER
+# Order
 # Represents a completed purchase. Created when a cart is converted.
 class Order(models.Model):
     # STATUS_CHOICES is a class level constant (not a field).
@@ -266,8 +261,8 @@ class Order(models.Model):
 
 
 
-# ORDER ITEM
-# A single line in an order — one product and its quantity.
+# Order item 
+# A single line in an order one product and its quantity.
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -283,7 +278,7 @@ class OrderItem(models.Model):
 
 
 
-# SUPPLIER ORDER
+# Supplier order
 # Tracks which supplier needs to fulfill part of a customer order.
 # One customer Order can split across multiple SupplierOrders.
 class SupplierOrder(models.Model):
@@ -297,7 +292,7 @@ class SupplierOrder(models.Model):
         return f"SupplierOrder #{self.id}"
 
 
-# ADDRESS
+# Address
 # Stores shipping or billing addresses for users.
 # A user can have multiple addresses (OneToMany via ForeignKey).
 class Address(models.Model):
@@ -314,7 +309,7 @@ class Address(models.Model):
 
 
 
-# CART
+# Cart
 # The active shopping basket for a user.
 # active=True means this is the user's current open cart.
 # active=False means it has been converted to an Order.
@@ -396,7 +391,7 @@ class Cart(models.Model):
         return order
 
 
-# CART ITEM
+# Cart Item
 # A single product inside a cart with its quantity and price snapshot.
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='items')
@@ -425,7 +420,7 @@ class CartItem(models.Model):
         ordering = ['created_at']
 
 
-# WISHLIST
+# Wishlist
 # A user's saved products for later.
 class Wishlist(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='wishlist')
@@ -458,7 +453,7 @@ class WishlistItem(models.Model):
         return f"{self.product.name} in {self.wishlist.user.username}'s wishlist"
 
 
-# REVIEW
+# Reviews
 # User reviews and ratings for products.
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='reviews')

@@ -54,7 +54,6 @@ class StationOwnerProfile(models.Model):
     A user can have both a UserProfile and a StationOwnerProfile
     """
 
-
     """
     this verification status will help us manage the onboarding process of station owners
     and ensure we have all the necessary information before they can start listing stations and receiving payouts.
@@ -229,7 +228,7 @@ class ChargingPoint(models.Model):
     off_peak_end = models.TimeField(null=True, blank=True)
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='charging_points_created')
     updated_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='charging_points_updated')
-    is_verified = models.BooleanField(default=False) #Only the admin can verify a charging point
+    is_verified = models.BooleanField(default=False) #Only i the admin can verify a charging point
     latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
     opening_hours = models.JSONField(null=True, blank=True)
@@ -263,7 +262,7 @@ class ChargingSession(models.Model):
     )
     duration = models.DurationField(null=True, blank=True)
 
- 
+
     def __str__(self):
         return f"Session made by {self.user} at {self.station} - {self.status}"
 
@@ -487,7 +486,7 @@ class SubscriptionPlan(models.Model):
         return f"{self.name} - {self.price} for {self.duration_in_days} days"
     
 
-#now tracking which users are subscribed to which plan
+#now tracking which station owners are subscribed to which plan
 class UserSubscription(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     plan = models.ForeignKey(SubscriptionPlan, on_delete=models.CASCADE)

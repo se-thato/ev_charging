@@ -21,7 +21,7 @@ def notify_charging_session_complete(sender, instance, created, **kwargs):
 @receiver(pre_save, sender=ChargingSession)
 def charging_session_pre_save(sender, instance, **kwargs):
     """
-    This pre-save signal checks if the ChargingSession is being updated to have an end_time.
+    This pre_save signal checks if the ChargingSession is being updated to have an end_time.
     If so, it sets a flag on the instance to generate an invoice after save.
     This avoids doing Db queries in post_save and ensures the task is only triggered when needed.
     """

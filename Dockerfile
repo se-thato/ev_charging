@@ -25,12 +25,12 @@ RUN apt-get update \
        libjpeg62-turbo-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Setting workdir
+# Setting workdir and creating necessary directories for static and media files
 WORKDIR /app
-# Ensure expected runtime directories exist
+
 RUN mkdir -p /app/static /app/media
 
-# Install Python dependencies first (better layer caching)
+
 COPY requirements.txt ./
 RUN pip install --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt

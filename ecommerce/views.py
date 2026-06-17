@@ -19,7 +19,7 @@ from Cart.cart import Cart as SessionCart
 
 
 
-# SHOP HOME
+# Shop Home
 def home_ecommerce(request):
     products = Product.objects.filter(active=True).select_related('category')
 
@@ -41,7 +41,7 @@ def home_ecommerce(request):
     })
 
 
-# PRODUCT DETAIL
+# ProductDetail
 def product(request, pk):
     product = get_object_or_404(Product, id=pk, active=True)
     cart_count = _get_cart_count(request)
@@ -53,7 +53,7 @@ def product(request, pk):
 
 
 
-# CATEGORY
+# Category
 def category(request, slug):
     category = get_object_or_404(Category, slug=slug)
     products = Product.objects.filter(category=category, active=True)
@@ -67,7 +67,7 @@ def category(request, slug):
 
 
 
-# SHOPIFY OAUTH — Step 1: redirect to Shopify permission screen
+# SHOPIFY OAUTH — redirect to Shopify permission screen
 def shopify_auth(request):
     shop = settings.SHOPIFY_SHOP_DOMAIN
     client_id = settings.SHOPIFY_CLIENT_ID
@@ -88,7 +88,7 @@ def shopify_auth(request):
 
 
 
-# SHOPIFY OAUTH CALLBACK — Step 2: exchange code for access token
+# SHOPIFY OAUTH CALLBACK — exchange code for access token
 def shopify_callback(request):
     print("=== CALLBACK HIT ===")
     print("GET params:", dict(request.GET))
@@ -217,7 +217,7 @@ def add_to_cart_view(request, product_id):
 
 
 
-# CART VIEW — displays items from DB (if logged in) or session
+# Cart View — displays items from DB (if logged in) or session
 def cart_view(request):
     if request.user.is_authenticated:
         # Traverse Cart → CartItem using cart__user lookup
@@ -251,8 +251,8 @@ def cart_view(request):
 
 
 
-# CART COUNT — lightweight endpoint for navbar badge
-# Returns JSON: {"count": total_quantity}
+# Cart Count — lightweight endpoint for navbar badge
+# Returns JSON
 def cart_count_view(request):
     count = _get_cart_count(request)
     return JsonResponse({'count': count})
@@ -288,7 +288,7 @@ def cart_update(request, product_id):
 
 
 
-# REMOVE FROM CART (called from AJAX)
+# Remove from Cart (called from AJAX)
 @require_POST
 def cart_delete(request, product_id):
     product = get_object_or_404(Product, id=product_id)
@@ -312,7 +312,7 @@ def cart_delete(request, product_id):
 
 
 
-# REMOVE FROM CART (Shopify Storefront API line removal)
+# Remove from cart (Shopify Storefront API line removal)
 @require_POST
 def remove_from_cart_view(request, line_id):
     cart_id = request.session.get('shopify_cart_id')
@@ -334,7 +334,7 @@ def remove_from_cart_view(request, line_id):
     return redirect('cart')
 
 
-# CHECKOUT — redirects to Shopify hosted checkout
+# Checkout — redirects to Shopify hosted checkout
 def checkout(request):
     checkout_url = request.session.get('shopify_checkout_url')
 
@@ -425,7 +425,7 @@ def _sync_single_product(sp):
 def _get_cart_count(request):
     """
     Returns total cart quantity for the navbar badge.
-    For logged-in users: queries DB via Cart → CartItem relationship.
+    For logged-in users: queries DB via Cart CartItem relationship.
     For guests: uses session cart.
     """
     if request.user.is_authenticated:

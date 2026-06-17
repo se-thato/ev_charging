@@ -18,9 +18,6 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get(
     "SECRET_KEY",
@@ -104,7 +101,7 @@ INSTALLED_APPS = [
 
 
 # DRF configuration
-REST_FRAMEWORK = {
+REST_FRAMEWORK = {  
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
@@ -145,14 +142,11 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',), #This is the prefix used in the Authorization header, for example: Authorization
 }
 
-
-   
    
 LANGUAGE_CODE = 'en-za'
 TIME_ZONE     = 'Africa/Johannesburg'
 USE_I18N      = True
 USE_TZ        = True
-
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4' 
@@ -176,7 +170,6 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
     
 ]
-
 
 
 AXES_FAILURE_LIMIT = 5 # Maximum number of login attempts before lockout
@@ -289,7 +282,6 @@ else:
 
 
 # Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -317,7 +309,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
-
 #This will redirect users to home page after login/logout
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
@@ -325,8 +316,6 @@ LOGOUT_REDIRECT_URL = '/'
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/5.0/topics/i18n/
-
 # LANGUAGE_CODE = 'en-us'
 
 # TIME_ZONE = 'UTC'
@@ -334,7 +323,6 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -395,8 +383,6 @@ LOGGING = {
 
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 

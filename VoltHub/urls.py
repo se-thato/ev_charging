@@ -1,4 +1,6 @@
 from django.urls import path
+
+#from charging_station.views import StationOwnerDashboardView
 from . import views
 
 
@@ -6,6 +8,8 @@ urlpatterns = [
     path('', views.home, name=""),
 
     path('dashboard', views.dashboard, name="dashboard"),
+
+     path('owner_dashboard',views.owner_dashboard,name='owner_dashboard'),
     
     path('about_us', views.about_us, name="about_us"),
 
