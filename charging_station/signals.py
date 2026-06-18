@@ -74,8 +74,17 @@ def create_user_profile(sender, instance, created, **kwargs):
 # The hasattr check prevents crashing if a user somehow has no profile yet.
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def save_user_profile(sender, instance, **kwargs):
+    # Save any linked profiles from different apps without assuming a single related_name
     if hasattr(instance, 'profile'):
-        instance.profile.save()
+        try:
+            instance.profile.save()
+        except Exception:
+            pass
+    if hasattr(instance, 'charging_profile'):
+        try:
+            instance.charging_profile.save()
+        except Exception:
+            pass
 
 #This signal fires after a new Booking is created and sends a notification to the user confirming their booking.
 @receiver(post_save, sender=Booking)

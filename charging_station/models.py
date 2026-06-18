@@ -16,6 +16,7 @@ User = get_user_model()
 
 
 class Profile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='charging_profile', null=True, blank=True)
     username = models.CharField(max_length=50, null=True, blank=True)
     first_name = models.CharField(max_length=50, null=True, blank=True)
     last_name = models.CharField(max_length=50, null=True, blank=True)
@@ -42,7 +43,7 @@ class Profile(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.username
+        return self.username or (self.user.username if hasattr(self, 'user') and self.user else '')
 
 
 

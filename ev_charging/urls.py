@@ -31,7 +31,7 @@ urlpatterns = [
    path('api/stations/nearby/', nearby_ocm_stations, name='nearby_stations'),
     
    #authentication
-   #path('', include("authentication.urls")),
+   path('api/', include("authentication.urls")),
    path('auth/', include("authentication.urls")),
 
    # dj-rest-auth (API-based auth and registration)
