@@ -63,7 +63,11 @@ def create_user_profile(sender, instance, created, **kwargs):
     user always has a profile without us manually doing it.
     """
     if created:
-        Profile.objects.create(user=instance)
+        Profile.objects.create(
+            user=instance,
+            first_name=instance.first_name or '',
+            last_name=instance.last_name or ''
+        )
 
 
 #This signal fires after any User is updated and keeps the Profile in sync when User details change.
