@@ -205,7 +205,7 @@
                 <td colspan="8" class="text-center">No charging sessions found.</td>
               </tr>
             {% else %}
-              {% for session in sessions %}
+              {% for session in sessions %}  
                 <tr>
                   <td class="cell-mono">{{ session.id }}</td>
                   <td>{{ session.station.name }}</td>
