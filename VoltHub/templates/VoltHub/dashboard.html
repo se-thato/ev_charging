@@ -5,70 +5,45 @@
 <link rel="stylesheet" href="{% static 'VoltHub/dashboard.css' %}">
 
 <style>
-  /* ----- Hide the top navbar ----- */
-  header, nav.navbar, .neon-navbar {
-    display: none !important;
-  }
+  /* Keep the top navbar visible like other pages */
 
-  /* ----- Sidebar – fixed, 260px wide ----- */
+  /* ----- Sidebar layout – fixed, 260px wide ----- */
   .dash-layout {
     display: flex;
     min-height: 100vh;
     background: var(--vh-bg);
   }
 
-  .dash-sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 260px;
-    flex-shrink: 0;
-    padding: 1.2rem 0.75rem 0.8rem;
-    background: var(--vh-surface);
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    border-right: 1px solid var(--vh-border);
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    z-index: 1050;
-  }
+  /* Sidebar removed — dashboard uses normal page flow */
 
   .sidebar-brand {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 800;
     letter-spacing: 1px;
     color: var(--vh-text-strong);
-    padding: 0 0.75rem 1.2rem;
+    padding: 0 0.75rem 1.8rem;
     border-bottom: 1px solid var(--vh-border);
-    margin-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
   }
   .sidebar-brand span {
     color: var(--vh-accent);
   }
 
-  /* ── Sidebar navigation ── */
   .sidebar-nav {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    gap: 1.2rem;
-    min-height: 0;
-    padding: 1rem 0;
+    gap: 0.25rem;
   }
-
   .sidebar-nav .nav-link {
     display: flex;
     align-items: center;
     gap: 0.9rem;
-    padding: 0.75rem 0.8rem;
-    border-radius: 10px;
+    padding: 0.7rem 1rem;
+    border-radius: 12px;
     color: var(--vh-text);
     text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 400;
+    font-weight: 500;
     transition: all 0.2s ease;
     border: 1px solid transparent;
     background: transparent;
@@ -77,7 +52,7 @@
   .sidebar-nav .nav-link i {
     width: 1.4rem;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--vh-muted);
   }
   .sidebar-nav .nav-link:hover {
@@ -95,14 +70,14 @@
     color: var(--vh-accent);
   }
 
-  /* Cart badge */
+  /* Cart badge inside sidebar */
   .cart-badge-count {
     display: inline-block;
     background: var(--vh-accent);
     color: #000;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     font-weight: 700;
-    padding: 0.05rem 0.45rem;
+    padding: 0.1rem 0.5rem;
     border-radius: 20px;
     margin-left: auto;
     opacity: 0;
@@ -114,11 +89,10 @@
     transform: scale(1);
   }
 
-  /* Sidebar footer */
+  /* Sidebar footer – user area */
   .sidebar-footer {
-    flex-shrink: 0;
     margin-top: auto;
-    padding-top: 0.8rem;
+    padding-top: 1.2rem;
     border-top: 1px solid var(--vh-border);
     font-size: 0.8rem;
     color: var(--vh-muted);
@@ -127,11 +101,11 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.75rem;
   }
   .sidebar-footer .user-badge .avatar {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--vh-primary), var(--vh-accent));
     display: flex;
@@ -139,7 +113,7 @@
     justify-content: center;
     font-weight: 700;
     color: #000;
-    font-size: 0.9rem;
+    font-size: 1rem;
     overflow: hidden;
   }
   .sidebar-footer .user-badge .avatar img {
@@ -150,27 +124,28 @@
   .sidebar-footer .user-links {
     display: flex;
     flex-direction: column;
-    gap: 0.15rem;
+    gap: 0.3rem;
   }
   .sidebar-footer .user-links a {
     color: var(--vh-muted);
     text-decoration: none;
     font-size: 0.85rem;
-    padding: 0.15rem 0;
+    padding: 0.2rem 0;
     transition: color 0.2s;
   }
   .sidebar-footer .user-links a:hover {
     color: #fff;
   }
 
-  /* ----- Main content ----- */
+  /* Main content uses normal page flow and padding consistent with other pages */
   .dash-main {
     flex: 1;
-    margin-left: 260px;
-    padding: 1.5rem 2rem 3rem;
+    margin-left: 0;
+    padding: 1.5rem 1rem 3rem;
     min-width: 0;
   }
 
+  /* Override old dash-wrap to avoid double backgrounds */
   .dash-wrap {
     width: 100% !important;
     margin: 0 !important;
@@ -190,7 +165,36 @@
     margin-left: 0;
   }
 
-  /* Responsive */
+  /* Search form (originally in top navbar) – placed in main area */
+  .search-row {
+    margin-bottom: 1.5rem;
+  }
+  .search-row .neon-search {
+    max-width: 500px;
+  }
+  .search-row .neon-search input {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--vh-border);
+    color: var(--vh-text);
+    border-radius: 30px;
+    padding: 0.5rem 1.2rem;
+  }
+  .search-row .neon-search input:focus {
+    box-shadow: 0 0 0 2px rgba(0,229,255,0.3);
+    border-color: var(--vh-accent);
+  }
+  .search-row .neon-search button {
+    border-radius: 30px;
+    border: 1px solid var(--vh-border);
+    color: var(--vh-text);
+    background: transparent;
+  }
+  .search-row .neon-search button:hover {
+    background: rgba(0,229,255,0.15);
+    border-color: var(--vh-accent);
+  }
+
+  /* Responsive – sidebar collapses to top bar */
   @media (max-width: 768px) {
     .dash-sidebar {
       position: relative;
@@ -200,34 +204,35 @@
       border-bottom: 1px solid var(--vh-border);
       flex-direction: row;
       flex-wrap: wrap;
-      padding: 0.6rem 1rem;
-      gap: 0.2rem;
+      padding: 0.8rem 1rem;
+      gap: 0.3rem;
+      z-index: 10;
     }
     .sidebar-brand {
       width: 100%;
       border-bottom: none;
-      padding: 0 0 0.3rem;
+      padding: 0 0 0.5rem;
       margin: 0;
       font-size: 1.2rem;
     }
     .sidebar-nav {
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: flex-start;
-      gap: 0.1rem;
+      gap: 0.2rem;
     }
     .sidebar-nav .nav-link {
-      padding: 0.3rem 0.6rem;
-      font-size: 0.8rem;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
     }
     .sidebar-footer {
-      display: block;
-      width: 100%;
-      margin-top: 1rem;
+      display: none;
     }
     .dash-main {
       margin-left: 0 !important;
       padding: 1rem;
+    }
+    .search-row .neon-search {
+      max-width: 100%;
     }
   }
 </style>
@@ -235,75 +240,27 @@
 
 {% block container_classes %}container-fluid p-0{% endblock %}
 
-{% block navbar %}{% endblock %}
+{# Use the default navbar from base.html — do not override #}
 
 {% block content %}
 <title>Dashboard</title>
 
 <body>
-<div class="dash-layout">
-
-  <!-- ===== SIDEBAR ===== -->
-  <aside class="dash-sidebar">
-    <div class="sidebar-brand">
-      VOLT<span>HUB</span>
-    </div>
-
-    <nav class="sidebar-nav">
-      <a class="nav-link" href="{% url '' %}">
-        <i class="fa fa-home" aria-hidden="true"></i> Home
-      </a>
-      <a class="nav-link active" href="{% url 'dashboard' %}">
-        <i class="fa fa-th-large"></i> Dashboard
-      </a>
-      <a class="nav-link" href="{% url 'stations' %}">
-        <i class="fa fa-map-marker" aria-hidden="true"></i> Charging Points
-      </a>
-      <a class="nav-link" href="{% url 'shop_home' %}">
-        <i class="fa fa-cart-plus" aria-hidden="true"></i> Shop
-      </a>
-      
-      <a class="nav-link" href="{% url 'cart' %}">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
-        <span class="cart-badge-count" id="navCartBadge">0</span>
-      </a>
-
-      <a class="nav-link" href="{% url 'owner_dashboard' %}">
-        <i class="fa fa-solid fa-address-card" aria-hidden="true"></i> Station Owner
-      </a>
-    </nav>
-
-    <div class="sidebar-footer">
-      <div class="user-badge">
-        <div class="avatar">
-          {% if user.profile and user.profile.profile_photo %}
-            <img src="{{ user.profile.profile_photo.url }}" alt="User avatar" />
-          {% else %}
-            {{ user.username|slice:":1"|upper }}
-          {% endif %}
-        </div>
-        <div>
-          <div style="font-weight:600;color:var(--vh-text-strong);">{{ user.username }}</div>
-          <div style="font-size:0.7rem;">Premium Member</div>
-        </div>
-      </div>
-      <div class="user-links">
-        <a href="{% url 'profile' %}"><i class="fa fa-user" style="width:1.2rem;"></i> My Profile</a>
-        <a href="{% url 'authentication:logout-user' %}"><i class="fa fa-sign-out" style="width:1.2rem;"></i> Sign out</a>
-      </div>
-    </div>
-  </aside>
-
-  <!-- ===== MAIN CONTENT ===== -->
+<div>
+  <!-- MAIN DASHBOARD CONTENT -->
   <main class="dash-main">
     <section class="dash-wrap">
+
+      <!-- Header -->
       <div class="dash-header">
         <h1>Welcome to VoltHub {{ user.username }}</h1>
         <p class="subtitle">Your EV charging overview</p>
         <div class="accent-line"></div>
       </div>
 
-      <!-- Chart + Quick Actions -->
+      {# Search form removed from dashboard body; navbar search remains available #}
+
+      <!-- ===== GRID: Chart + Quick Actions ===== -->
       <div class="row g-3 mb-3">
         <div class="col-lg-8">
           <div class="glass-card h-100">
@@ -327,7 +284,7 @@
         </div>
       </div>
 
-      <!-- Charging Points -->
+      <!-- ===== Charging Points Table ===== -->
       <div class="row g-3 mb-3">
         <div class="col-12">
           <div class="glass-card">
@@ -376,7 +333,7 @@
         </div>
       </div>
 
-      <!-- Your Charging Sessions -->
+      <!-- ===== Your Charging Sessions Table ===== -->
       <div class="row g-3 mb-3">
         <div class="col-12">
           <div class="glass-card">
@@ -421,11 +378,7 @@
                               {{ session.status }}
                             {% endif %}
                           </td>
-                          <td>
-                            <a href="{% url 'view_session' session.id %}">
-                              <i class="fa fa-eye" aria-hidden="true"></i>
-                            </a>
-                          </td>
+                          <td><a href="{% url 'view_session' session.id %}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                         </tr>
                       {% endfor %}
                     {% endif %}
@@ -437,7 +390,7 @@
         </div>
       </div>
 
-      <!-- Your Bookings -->
+      <!-- ===== Your Bookings Table ===== -->
       <div class="row g-3 mb-3">
         <div class="col-12">
           <div class="glass-card">
@@ -480,11 +433,7 @@
                           <td class="cell-mono">{{ booking.created_at }}</td>
                           <td class="cell-mono">{{ booking.payment_method }}</td>
                           <td>{{ booking.duration|default:'—' }}</td>
-                          <td>
-                            <a href="{% url 'view_booking' booking.id %}">
-                              <i class="fa fa-eye" aria-hidden="true"></i>
-                            </a>
-                          </td>
+                          <td><a href="{% url 'view_booking' booking.id %}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                         </tr>
                       {% endfor %}
                     {% endif %}
@@ -500,7 +449,7 @@
   </main>
 </div>
 
-<!-- Cart badge script -->
+<!-- Cart badge script (same as original) -->
 <script>
 (function() {
     fetch('/cart/count/', {
@@ -524,5 +473,5 @@
 </script>
 
 </body>
-
+{% include 'VoltHub/footer.html' %}
 {% endblock %}

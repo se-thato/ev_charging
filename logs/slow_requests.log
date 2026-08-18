@@ -1507,3 +1507,4 @@
 [2026-08-18 18:49:38,360] WARNING SLOW REQUEST: /stations/ took 103.740 seconds!
 [2026-08-18 18:51:30,832] WARNING SLOW REQUEST: /stations/ took 26.495 seconds!
 [2026-08-18 18:51:44,620] WARNING SLOW REQUEST: /cart/count/ took 11.536 seconds!
+[2026-08-18 19:17:49,545] WARNING SLOW REQUEST: /dashboard took 5.140 seconds!
