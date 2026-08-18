@@ -65,11 +65,9 @@ def dashboard(request):
 @login_required(login_url='authentication:login')
 def owner_dashboard(request):
     
-    # Check user is a station owner
-    if not hasattr(request.user, 'owner_profile'):
-        return redirect('owner_register')
-
-    owner_profile = request.user.owner_profile
+    # Allow any logged-in user to access owner dashboard; owner_profile may be missing
+    owner_profile = getattr(request.user, 'owner_profile', None)
+    is_owner = owner_profile is not None
     stations = ChargingPoint.objects.filter(owner=request.user)
 
     # this week's metrics
@@ -122,8 +120,8 @@ def owner_dashboard(request):
     recent_bookings = Booking.objects.filter(station__in=stations
     ).select_related('user', 'station').order_by('-created_at')[:10]
 
-    #payout history
-    payouts = OwnerPayout.objects.filter(owner=owner_profile).order_by('-initiated_at')[:10]
+    #payout history (only for users with an owner profile)
+    payouts = OwnerPayout.objects.filter(owner=owner_profile).order_by('-initiated_at')[:10] if owner_profile else OwnerPayout.objects.none()
 
     #
     today = timezone.now().date()
@@ -140,17 +138,18 @@ def owner_dashboard(request):
         'next_payout_date': next_payout_date,
         'chart_labels': json.dumps(chart_labels),
         'chart_counts': json.dumps(chart_counts),
-        'summary': {
+            'summary': {
             'revenue_this_week': float(this_week_revenue),
             'revenue_change_percent': revenue_change,
             'bookings_this_week': this_week_bookings.count(),
             'bookings_last_week':last_week_bookings.count(),
             'active_stations': stations.filter(is_active=True).count(),
             'total_stations': stations.count(),
-            'referral_clicks_week': owner_profile.total_referral_clicks,
+                'referral_clicks_week': owner_profile.total_referral_clicks if owner_profile else 0,
         },
     }
-    return render(request, 'VoltHub/owner_dashboard.html', context)
+    # Use existing template `station_owner_dashboard.html` if `owner_dashboard.html` is not present
+    return render(request, 'VoltHub/station_owner_dashboard.html', context)
 
 
 

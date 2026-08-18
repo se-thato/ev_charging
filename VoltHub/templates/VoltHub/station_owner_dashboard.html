@@ -240,7 +240,7 @@
   <!--page header-->
   <div class="dash-header">
     <h1>Owner Dashboard</h1>
-    <p class="subtitle">{{ owner_profile.business_name }} — manage your stations and earnings</p>
+    <p class="subtitle">{{ owner_profile.business_name }} manage your stations and earnings</p>
     <div class="accent-line"></div>
   </div>
 
@@ -264,7 +264,8 @@
     <div class="verify-banner">
       <i class="fa fa-exclamation-triangle"></i>
       Your account is not yet verified.
-      <a href="{% url 'owner_submit_documents' %}" class="btn btn-sm neon-cta ms-2">Submit documents</a>
+      {# Temporarily disabled until owner document submission flow is implemented #}
+      {# <a href="{% url 'owner_submit_documents' %}" class="btn btn-sm neon-cta ms-2">Submit documents</a> #}
     </div>
   {% endif %}
 
@@ -419,13 +420,10 @@
                     {% endif %}
                   </td>
                   <td>
-                    <a href="{% url 'edit_station' station.id %}" title="Edit">
-                      <i class="fa fa-pencil" aria-hidden="true"></i>
-                    </a>
+                    {# edit and bookings links temporarily disabled until routes exist #}
+                    <i class="fa fa-pencil" aria-hidden="true" title="Edit (disabled)"></i>
                     &nbsp;
-                    <a href="{% url 'station_bookings' station.id %}" title="View bookings">
-                      <i class="fa fa-calendar" aria-hidden="true"></i>
-                    </a>
+                    <i class="fa fa-calendar" aria-hidden="true" title="View bookings (disabled)"></i>
                   </td>
                 </tr>
               {% endfor %}
@@ -440,7 +438,7 @@
           <p>{{ summary.referral_clicks_week }} referral clicks sent your way this week</p>
           <p class="ref-sub">Users who viewed your stations from VoltHub search</p>
         </div>
-        <a href="{% url 'owner_analytics' %}" class="btn btn-sm neon-cta">Full analytics</a>
+        {# <a href="{% url 'owner_analytics' %}" class="btn btn-sm neon-cta">Full analytics</a> #}
       </div>
 
     </div>
@@ -450,7 +448,7 @@
   <div class="glass-card">
     <div class="card-header">
       Recent bookings
-      <a href="{% url 'owner_all_bookings' %}" class="btn btn-sm neon-cta">View all</a>
+      {# <a href="{% url 'owner_all_bookings' %}" class="btn btn-sm neon-cta">View all</a> #}
     </div>
     <div class="card-body">
       <div class="table-responsive neon-table">
@@ -575,9 +573,8 @@
   <div class="glass-card">
     <div class="card-header">
       Banking details
-      <a href="{% url 'owner_banking' %}" class="btn btn-sm neon-cta">
-        {% if owner_profile.has_banking_details %}Update{% else %}Add banking details{% endif %}
-      </a>
+      {# Banking details route not implemented yet; show text instead #}
+      <span class="btn btn-sm neon-cta">{% if owner_profile and owner_profile.has_banking_details %}Update{% else %}Add banking details{% endif %}</span>
     </div>
     <div class="card-body">
       {% if owner_profile.has_banking_details %}

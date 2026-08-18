@@ -1,6 +1,10 @@
 {% extends 'VoltHub/base.html' %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'VoltHub/contact.css' %}">
+{% endblock %}
+
 {% block container_classes %}container-fluid p-0{% endblock %}
 
 {% block content %}
@@ -37,7 +41,7 @@
             <div class="info-icon"><i class="fa fa-map-marker"></i></div>
             <div>
               <h5 class="info-title">Address</h5>
-              <p class="info-text">Alberton, Katlehong,1431, Siluma View, 1673 Pula Street, Likole</p>
+              <p class="info-text">Alberton, Katlehong,1431, Siluma View, 1673 Pula Street</p>
             </div>
           </div>
 
@@ -66,8 +70,8 @@
             <div class="info-icon"><i class="fa fa-clock-o"></i></div>
             <div>
               <h5 class="info-title">Opening Hours</h5>
-              <p class="info-text mb-1"><strong>Mon - Fri:</strong> 5am - 8pm</p>
-              <p class="info-text mb-0"><strong>Sat - Sun:</strong> 5am - 8pm</p>
+              <p class="info-text mb-1"><strong>Mon - Fri:</strong>24 Hours</p>
+              <p class="info-text mb-0"><strong>Sat - Sun:</strong>24 Hours</p>
             </div>
           </div>
         </div>
