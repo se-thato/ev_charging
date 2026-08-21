@@ -5,323 +5,72 @@
 <link rel="stylesheet" href="{% static 'VoltHub/dashboard.css' %}">
 
 <style>
-  /* Keep the top navbar visible like other pages */
-
-  /* ----- Sidebar layout – fixed, 260px wide ----- */
-  .dash-layout {
-    display: flex;
-    min-height: 100vh;
-    background: var(--vh-bg);
+  /* Minimal dashboard styles — only what's used on this page */
+  :root {
+    --vh-bg: #050512;
+    --vh-surface: rgba(13, 13, 30, 0.55);
+    --vh-primary: #7a7cff;
+    --vh-accent: #00e5ff;
+    --vh-accent-2: #45ffbc;
+    --vh-border: rgba(122, 124, 255, 0.35);
+    --vh-text: #e6e9ff;
+    --vh-text-strong: #ffffff;
+    --vh-muted: #c5cdfa;
   }
 
-  /* Sidebar removed — dashboard uses normal page flow */
-
-  .sidebar-brand {
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    color: var(--vh-text-strong);
-    padding: 0 0.75rem 1.8rem;
-    border-bottom: 1px solid var(--vh-border);
-    margin-bottom: 1.5rem;
-  }
-  .sidebar-brand span {
-    color: var(--vh-accent);
-  }
-
-  .sidebar-nav {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-  .sidebar-nav .nav-link {
-    display: flex;
-    align-items: center;
-    gap: 0.9rem;
-    padding: 0.7rem 1rem;
-    border-radius: 12px;
-    color: var(--vh-text);
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
-    background: transparent;
-    position: relative;
-  }
-  .sidebar-nav .nav-link i {
-    width: 1.4rem;
-    text-align: center;
-    font-size: 1.1rem;
-    color: var(--vh-muted);
-  }
-  .sidebar-nav .nav-link:hover {
-    background: rgba(122, 124, 255, 0.12);
-    border-color: var(--vh-border);
-    color: #fff;
-  }
-  .sidebar-nav .nav-link.active {
-    background: linear-gradient(90deg, rgba(122, 124, 255, 0.25), rgba(0, 229, 255, 0.10));
-    border-color: var(--vh-primary);
-    color: #fff;
-    box-shadow: 0 0 20px rgba(122, 124, 255, 0.08);
-  }
-  .sidebar-nav .nav-link.active i {
-    color: var(--vh-accent);
-  }
-
-  /* Cart badge inside sidebar */
-  .cart-badge-count {
-    display: inline-block;
-    background: var(--vh-accent);
-    color: #000;
-    font-size: 0.7rem;
-    font-weight: 700;
-    padding: 0.1rem 0.5rem;
-    border-radius: 20px;
-    margin-left: auto;
-    opacity: 0;
-    transform: scale(0);
-    transition: all 0.2s ease;
-  }
-  .cart-badge-count.has-items {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  /* Sidebar footer – user area */
-  .sidebar-footer {
-    margin-top: auto;
-    padding-top: 1.2rem;
-    border-top: 1px solid var(--vh-border);
-    font-size: 0.8rem;
-    color: var(--vh-muted);
-  }
-  .sidebar-footer .user-badge {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 0.75rem;
-  }
-  .sidebar-footer .user-badge .avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--vh-primary), var(--vh-accent));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    color: #000;
-    font-size: 1rem;
-    overflow: hidden;
-  }
-  .sidebar-footer .user-badge .avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .sidebar-footer .user-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-  }
-  .sidebar-footer .user-links a {
-    color: var(--vh-muted);
-    text-decoration: none;
-    font-size: 0.85rem;
-    padding: 0.2rem 0;
-    transition: color 0.2s;
-  }
-  .sidebar-footer .user-links a:hover {
-    color: #fff;
-  }
-
-  /* Main content uses normal page flow and padding consistent with other pages */
+  /* Ensure dashboard content fits within normal page flow */
   .dash-main {
-    flex: 1;
-    margin-left: 0;
     padding: 1.5rem 1rem 3rem;
-    min-width: 0;
   }
 
-  /* Override old dash-wrap to avoid double backgrounds */
   .dash-wrap {
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: transparent !important;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
     overflow: visible;
   }
-  .dash-main .glass-card {
-    margin: 0 0 1.25rem 0;
-  }
-  .dash-main .dash-header {
-    text-align: left;
-    margin-top: 0;
-  }
-  .dash-main .accent-line {
-    max-width: 320px;
-    margin-left: 0;
-  }
 
-  /* Search form (originally in top navbar) – placed in main area */
-  .search-row {
-    margin-bottom: 1.5rem;
+  .dash-header { text-align: left; margin-bottom: 1.5rem; }
+  .dash-header h1 { color: var(--vh-text-strong); font-weight: 800; letter-spacing: .3px; margin-bottom: .25rem; }
+  .dash-header .subtitle { color: whitesmoke; margin: 0 auto .75rem; }
+  .accent-line { position: relative; height: 2px; margin: .75rem 0 0; max-width: 420px; }
+  .accent-line::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 2px; border-radius: 2px;
+    background: linear-gradient(90deg, transparent, var(--vh-accent), var(--vh-primary), transparent);
+    background-size: 200% 100%; animation: lineFlow 8s linear infinite;
   }
-  .search-row .neon-search {
-    max-width: 500px;
-  }
-  .search-row .neon-search input {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid var(--vh-border);
-    color: var(--vh-text);
-    border-radius: 30px;
-    padding: 0.5rem 1.2rem;
-  }
-  .search-row .neon-search input:focus {
-    box-shadow: 0 0 0 2px rgba(0,229,255,0.3);
-    border-color: var(--vh-accent);
-  }
-  .search-row .neon-search button {
-    border-radius: 30px;
-    border: 1px solid var(--vh-border);
-    color: var(--vh-text);
-    background: transparent;
-  }
-  .search-row .neon-search button:hover {
-    background: rgba(0,229,255,0.15);
-    border-color: var(--vh-accent);
-  }
+  @keyframes lineFlow { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
 
-  /* Responsive – sidebar collapses to top bar */
+  /* glass card */
+  .glass-card { border: 1px solid var(--vh-border); background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04)); backdrop-filter: blur(12px) saturate(160%); border-radius: 16px; box-shadow: 0 20px 60px rgba(12,16,50,0.65); color: var(--vh-text); margin: 0 0 1.25rem 0; }
+  .glass-card .card-header { padding: .85rem 1rem; border-bottom: 1px solid var(--vh-border); font-weight: 700; letter-spacing: .3px; color: var(--vh-text-strong); display: flex; align-items: center; justify-content: space-between; }
+  .glass-card .card-body { padding: 1rem; }
+
+  /* Chart area */
+  .chart-wrap { padding: 1rem; }
+
+  /* neon table styling used across pages */
+  .neon-table .table { color: var(--vh-text-strong) !important; margin: 0; font-size: 0.95rem; }
+  .neon-table .table thead { background: linear-gradient(90deg, rgba(122,124,255,0.45), rgba(0,229,255,0.30)) !important; color: #000000 !important; }
+  .neon-table .table th, .neon-table .table td { border-color: var(--vh-border) !important; vertical-align: middle; }
+  .neon-table .table tbody td, .neon-table .table tbody th { color: #000000 !important; }
+
+  .cell-mono { color: #000000 !important; }
+
+  /* badges */
+  .badge-success { background-color: #28a745 !important; color: #eafff3; }
+  .badge-danger  { background-color: #dc3545 !important; color: #ffecec; }
+  .badge-warning { background-color: #ffc107 !important; color: #2d2d2d; }
+  .badge-info    { background-color: #17a2b8 !important; color: #eafaff; }
+  .badge-purple  { background-color: #7a7cff !important; color: #fff; }
+
+  /* responsive adjustments */
   @media (max-width: 768px) {
-    .dash-sidebar {
-      position: relative;
-      height: auto;
-      width: 100%;
-      border-right: none;
-      border-bottom: 1px solid var(--vh-border);
-      flex-direction: row;
-      flex-wrap: wrap;
-      padding: 0.8rem 1rem;
-      gap: 0.3rem;
-      z-index: 10;
-    }
-    .sidebar-brand {
-      width: 100%;
-      border-bottom: none;
-      padding: 0 0 0.5rem;
-      margin: 0;
-      font-size: 1.2rem;
-    }
-    .sidebar-nav {
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 0.2rem;
-    }
-    .sidebar-nav .nav-link {
-      padding: 0.4rem 0.8rem;
-      font-size: 0.85rem;
-    }
-    .sidebar-footer {
-      display: none;
-    }
-    .dash-main {
-      margin-left: 0 !important;
-      padding: 1rem;
-    }
-    .search-row .neon-search {
-      max-width: 100%;
-    }
+    .dash-main { padding: 1rem; }
+    .glass-card .card-body { padding: .75rem; }
   }
 </style>
-{% endblock %}
-
-{% block container_classes %}container-fluid p-0{% endblock %}
-
-{# Use the default navbar from base.html — do not override #}
-
-{% block content %}
-<title>Dashboard</title>
-
-<body>
-<div>
-  <!-- MAIN DASHBOARD CONTENT -->
-  <main class="dash-main">
-    <section class="dash-wrap">
-
-      <!-- Header -->
-      <div class="dash-header">
-        <h1>Welcome to VoltHub {{ user.username }}</h1>
-        <p class="subtitle">Your EV charging overview</p>
-        <div class="accent-line"></div>
-      </div>
-
-      {# Search form removed from dashboard body; navbar search remains available #}
-
-      <!-- ===== GRID: Chart + Quick Actions ===== -->
-      <div class="row g-3 mb-3">
-        <div class="col-lg-8">
-          <div class="glass-card h-100">
-            <div class="card-header">Energy Overview</div>
-            <div class="card-body chart-wrap">
-              <canvas id="energyChart"></canvas>
-              <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="glass-card h-100">
-            <div class="card-header">Quick Actions</div>
-            <div class="card-body d-flex flex-column justify-content-between" style="min-height:200px;">
-              <p class="text-muted">Get started with one click</p>
-              <div class="d-grid gap-2">
-                <a class="btn btn-outline-primary neon-cta" href="{% url 'book' %}">Book Your Session</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ===== Charging Points Table ===== -->
-      <div class="row g-3 mb-3">
-        <div class="col-12">
-          <div class="glass-card">
-            <div class="card-header">Charging Points</div>
-            <div class="card-body">
-              <div class="table-responsive neon-table">
-                <table class="table table-striped table-hover table-bordered align-middle">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Station</th>
-                      <th>Location</th>
-                      <th>Capacity</th>
-                      <th>Available Slots</th>
-                      <th>Price Per Hour</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% if stations|length == 0 %}
-                      <tr><td colspan="9" class="text-center">No charging points available.</td></tr>
-                    {% else %}
-                      {% for station in stations %}
-                        <tr>
-                          <td class="cell-mono">{{ station.id }}</td>
-                          <td>{{ station.name }}</td>
-                          <td class="cell-mono">{{ station.location }}</td>
-                          <td>{{ station.capicity }}</td>
-                          <td>{{ station.available_slots }}</td>
-                          <td>R{{ station.price_per_hour }}</td>
-                          <td>
-                            {% if station.availability %}
-                              <span class="badge badge-success">Available</span>
-                            {% else %}
-                              <span class="badge badge-danger">Unavailable</span>
-                            {% endif %}
-                          </td>
                         </tr>
                       {% endfor %}
                     {% endif %}
@@ -333,7 +82,7 @@
         </div>
       </div>
 
-      <!-- ===== Your Charging Sessions Table ===== -->
+      <!--Charging Sessions Table-->
       <div class="row g-3 mb-3">
         <div class="col-12">
           <div class="glass-card">
@@ -390,7 +139,7 @@
         </div>
       </div>
 
-      <!-- ===== Your Bookings Table ===== -->
+      <!--Bookings Table-->
       <div class="row g-3 mb-3">
         <div class="col-12">
           <div class="glass-card">
@@ -449,7 +198,6 @@
   </main>
 </div>
 
-<!-- Cart badge script (same as original) -->
 <script>
 (function() {
     fetch('/cart/count/', {
