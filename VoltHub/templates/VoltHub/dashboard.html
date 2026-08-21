@@ -71,131 +71,129 @@
     .glass-card .card-body { padding: .75rem; }
   }
 </style>
-                        </tr>
-                      {% endfor %}
-                    {% endif %}
-                  </tbody>
-                </table>
-              </div>
+{% endblock %}
+
+{% block content %}
+<div class="dash-main">
+  <div class="dash-wrap">
+    <div class="dash-header">
+      <h1>Dashboard</h1>
+      <p class="subtitle">Track your charging activity and bookings.</p>
+      <div class="accent-line"></div>
+    </div>
+
+    <!--Charging Sessions Table-->
+    <div class="row g-3 mb-3">
+      <div class="col-12">
+        <div class="glass-card">
+          <div class="card-header">Your Charging Sessions</div>
+          <div class="card-body">
+            <div class="table-responsive neon-table">
+              <table class="table table-striped table-hover table-bordered align-middle">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Station</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Energy (kWh)</th>
+                    <th>Costs</th>
+                    <th>Status</th>
+                    <th>View</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% if sessions|length == 0 %}
+                    <tr><td colspan="8" class="text-center">No charging sessions found.</td></tr>
+                  {% else %}
+                    {% for session in sessions %}
+                      <tr>
+                        <td class="cell-mono">{{ session.id }}</td>
+                        <td>{{ session.station.name }}</td>
+                        <td class="cell-mono">{{ session.start_time }}</td>
+                        <td class="cell-mono">{{ session.end_time|default:'—' }}</td>
+                        <td>{{ session.energy_consumed_kwh|default:'—' }}</td>
+                        <td>R{{ session.costs|default:'—' }}</td>
+                        <td>
+                          {% if session.status == 'Pending' %}
+                            <span class="badge badge-warning">Pending</span>
+                          {% elif session.status == 'Confirmed' %}
+                            <span class="badge badge-success">Confirmed</span>
+                          {% elif session.status == 'Canceled' %}
+                            <span class="badge badge-danger">Canceled</span>
+                          {% elif session.status == 'Scheduled' %}
+                            <span class="badge badge-info">Scheduled</span>
+                          {% else %}
+                            {{ session.status }}
+                          {% endif %}
+                        </td>
+                        <td><a href="{% url 'view_session' session.id %}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                      </tr>
+                    {% endfor %}
+                  {% endif %}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!--Charging Sessions Table-->
-      <div class="row g-3 mb-3">
-        <div class="col-12">
-          <div class="glass-card">
-            <div class="card-header">Your Charging Sessions</div>
-            <div class="card-body">
-              <div class="table-responsive neon-table">
-                <table class="table table-striped table-hover table-bordered align-middle">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Station</th>
-                      <th>Start Time</th>
-                      <th>End Time</th>
-                      <th>Energy (kWh)</th>
-                      <th>Costs</th>
-                      <th>Status</th>
-                      <th>View</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% if sessions|length == 0 %}
-                      <tr><td colspan="8" class="text-center">No charging sessions found.</td></tr>
-                    {% else %}
-                      {% for session in sessions %}
-                        <tr>
-                          <td class="cell-mono">{{ session.id }}</td>
-                          <td>{{ session.station.name }}</td>
-                          <td class="cell-mono">{{ session.start_time }}</td>
-                          <td class="cell-mono">{{ session.end_time|default:'—' }}</td>
-                          <td>{{ session.energy_consumed_kwh|default:'—' }}</td>
-                          <td>R{{ session.costs|default:'—' }}</td>
-                          <td>
-                            {% if session.status == 'Pending' %}
-                              <span class="badge badge-warning">Pending</span>
-                            {% elif session.status == 'Confirmed' %}
-                              <span class="badge badge-success">Confirmed</span>
-                            {% elif session.status == 'Canceled' %}
-                              <span class="badge badge-danger">Canceled</span>
-                            {% elif session.status == 'Scheduled' %}
-                              <span class="badge badge-info">Scheduled</span>
-                            {% else %}
-                              {{ session.status }}
-                            {% endif %}
-                          </td>
-                          <td><a href="{% url 'view_session' session.id %}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-                        </tr>
-                      {% endfor %}
-                    {% endif %}
-                  </tbody>
-                </table>
-              </div>
+    <!--Bookings Table-->
+    <div class="row g-3 mb-3">
+      <div class="col-12">
+        <div class="glass-card">
+          <div class="card-header">Your Bookings</div>
+          <div class="card-body">
+            <div class="table-responsive neon-table">
+              <table class="table table-striped table-hover table-bordered align-middle">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Station</th>
+                    <th>Booking Date</th>
+                    <th>Status</th>
+                    <th>Date Booked</th>
+                    <th>Payment Method</th>
+                    <th>Duration</th>
+                    <th>View</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% if bookings|length == 0 %}
+                    <tr><td colspan="8" class="text-center">No bookings available.</td></tr>
+                  {% else %}
+                    {% for booking in bookings %}
+                      <tr>
+                        <td class="cell-mono">{{ booking.id }}</td>
+                        <td>{{ booking.station.name }}</td>
+                        <td class="cell-mono">{{ booking.booking_date }}</td>
+                        <td>
+                          {% if booking.status|lower == 'pending' %}
+                            <span class="badge badge-warning">Pending</span>
+                          {% elif booking.status|lower == 'confirmed' %}
+                            <span class="badge badge-success">Confirmed</span>
+                          {% elif booking.status|lower == 'cancelled' %}
+                            <span class="badge badge-danger">Cancelled</span>
+                          {% else %}
+                            {{ booking.status }}
+                          {% endif %}
+                        </td>
+                        <td class="cell-mono">{{ booking.created_at }}</td>
+                        <td class="cell-mono">{{ booking.payment_method }}</td>
+                        <td>{{ booking.duration|default:'—' }}</td>
+                        <td><a href="{% url 'view_booking' booking.id %}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+                      </tr>
+                    {% endfor %}
+                  {% endif %}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
-
-      <!--Bookings Table-->
-      <div class="row g-3 mb-3">
-        <div class="col-12">
-          <div class="glass-card">
-            <div class="card-header">Your Bookings</div>
-            <div class="card-body">
-              <div class="table-responsive neon-table">
-                <table class="table table-striped table-hover table-bordered align-middle">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Station</th>
-                      <th>Booking Date</th>
-                      <th>Status</th>
-                      <th>Date Booked</th>
-                      <th>Payment Method</th>
-                      <th>Duration</th>
-                      <th>View</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% if bookings|length == 0 %}
-                      <tr><td colspan="8" class="text-center">No bookings available.</td></tr>
-                    {% else %}
-                      {% for booking in bookings %}
-                        <tr>
-                          <td class="cell-mono">{{ booking.id }}</td>
-                          <td>{{ booking.station.name }}</td>
-                          <td class="cell-mono">{{ booking.booking_date }}</td>
-                          <td>
-                            {% if booking.status|lower == 'pending' %}
-                              <span class="badge badge-warning">Pending</span>
-                            {% elif booking.status|lower == 'confirmed' %}
-                              <span class="badge badge-success">Confirmed</span>
-                            {% elif booking.status|lower == 'cancelled' %}
-                              <span class="badge badge-danger">Cancelled</span>
-                            {% else %}
-                              {{ booking.status }}
-                            {% endif %}
-                          </td>
-                          <td class="cell-mono">{{ booking.created_at }}</td>
-                          <td class="cell-mono">{{ booking.payment_method }}</td>
-                          <td>{{ booking.duration|default:'—' }}</td>
-                          <td><a href="{% url 'view_booking' booking.id %}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-                        </tr>
-                      {% endfor %}
-                    {% endif %}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </section>
-  </main>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -220,6 +218,5 @@
 })();
 </script>
 
-</body>
 {% include 'VoltHub/footer.html' %}
 {% endblock %}
