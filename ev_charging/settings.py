@@ -46,6 +46,10 @@ CSRF_TRUSTED_ORIGINS = [
     "https://impetuously-geitonogamous-rosaura.ngrok-free.dev"
 ]
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_CACHE_ALIAS = 'default'
+
 # Use secure cookies only in production; disable for local HTTP development so session persists
 if DEBUG:
     SESSION_COOKIE_SECURE = True
@@ -266,10 +270,20 @@ CHANNEL_LAYERS = {
 # Database
 
 DATABASE_URL = os.environ.get("DATABASE_PUBLIC_URL") or os.environ.get("DATABASE_URL")
+DATABASE_CONN_MAX_AGE = int(os.environ.get("DATABASE_CONN_MAX_AGE", "60"))
 
 if DATABASE_URL:
+    database_url = DATABASE_URL
+    if 'sslmode=' not in database_url:
+        separator = '&' if '?' in database_url else '?'
+        database_url = f"{database_url}{separator}sslmode=require"
+
     DATABASES = {
-        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)
+        'default': dj_database_url.parse(
+            database_url,
+            conn_max_age=DATABASE_CONN_MAX_AGE,
+            conn_health_checks=True,
+        )
     }
 else:
     #docker locally will connect with postgres in production
@@ -281,6 +295,7 @@ else:
             'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
             'HOST': os.environ.get('POSTGRES_HOST'),
             'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+            'OPTIONS': {'sslmode': os.environ.get('PGSSLMODE', 'require')},
         }
     }
 

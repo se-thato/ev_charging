@@ -1529,3 +1529,6 @@
 [2026-08-21 12:12:39,226] WARNING SLOW REQUEST: /api/register/ took 7.151 seconds!
 [2026-08-21 12:17:00,165] WARNING SLOW REQUEST: /api/login/ took 7.656 seconds!
 [2026-08-21 12:17:18,169] WARNING SLOW REQUEST: / took 6.856 seconds!
+[2026-08-21 12:38:25,490] WARNING SLOW REQUEST: / took 96.046 seconds!
+[2026-08-21 12:38:25,755] WARNING SLOW REQUEST: /api/login/ took 96.184 seconds!
+[2026-08-21 12:38:25,770] WARNING SLOW REQUEST: /api/login/ took 50.011 seconds!
