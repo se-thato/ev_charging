@@ -394,8 +394,14 @@ def station_locator(request):
     # Only verified stations should be listed and mapped
     stations = ChargingPoint.objects.filter(is_verified=True, is_active=True)
     context = {'stations': stations}
-    return render(request, 'VoltHub/charging_points.html', context)   
+    return render(request, 'VoltHub/charging_points.html', context)
 
+
+@login_required(login_url='authentication:login')
+def station_detail(request, pk):
+    station = get_object_or_404(ChargingPoint, pk=pk)
+    context = {'station': station}
+    return render(request, 'VoltHub/station_detail.html', context)
 
 
 def payment_methods(request):

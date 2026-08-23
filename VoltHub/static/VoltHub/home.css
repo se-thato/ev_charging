@@ -67,6 +67,22 @@
 }
 
 .accent-line::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--vh-accent),
+        var(--vh-primary),
+        transparent
+    );
+}
+
+/* .accent-line::after {
   content: "";
   position: absolute;
   left: 0;
@@ -76,7 +92,7 @@
   background: linear-gradient(90deg, transparent, var(--vh-accent), var(--vh-primary), transparent);
   background-size: 200% 100%;
   animation: lineFlow 8s linear infinite;
-}
+} */
 
 @keyframes lineFlow {
   0% { background-position: 0% 50%; }

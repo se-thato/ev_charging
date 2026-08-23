@@ -47,8 +47,8 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
-SESSION_CACHE_ALIAS = 'default'
+# Use the database-backed session engine so Django keeps working even when Redis is unavailable.
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 # Use secure cookies only in production; disable for local HTTP development so session persists
 if DEBUG:

@@ -125132,3 +125132,3996 @@ Not Found: /static/VoltHub/{% static 'VoltHub/image/Night_in_Joburg.jpg' %}
 Watching for file changes with StatReloader
 C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
 Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Internal Server Error: /api/login/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\utils\deprecation.py", line 131, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\sessions\middleware.py", line 59, in process_response
+    request.session.save()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\sessions\backends\cache.py", line 83, in save
+    return self.create()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\sessions\backends\cache.py", line 62, in create
+    raise RuntimeError(
+    ...<2 lines>...
+    )
+RuntimeError: Unable to create a new session key. It is likely that the cache is unavailable.
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\utils\deprecation.py", line 131, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\sessions\middleware.py", line 59, in process_response
+    request.session.save()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\sessions\backends\cache.py", line 83, in save
+    return self.create()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\sessions\backends\cache.py", line 62, in create
+    raise RuntimeError(
+    ...<2 lines>...
+    )
+RuntimeError: Unable to create a new session key. It is likely that the cache is unavailable.
+"GET / HTTP/1.1" 500 145
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\utils\deprecation.py", line 131, in __call__
+    response = self.process_response(request, response)
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\sessions\middleware.py", line 59, in process_response
+    request.session.save()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\sessions\backends\cache.py", line 83, in save
+    return self.create()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\sessions\backends\cache.py", line 62, in create
+    raise RuntimeError(
+    ...<2 lines>...
+    )
+RuntimeError: Unable to create a new session key. It is likely that the cache is unavailable.
+C:\Users\Thato\charging\ev_charging\ev_charging\settings.py changed, reloading.
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 9418
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+Not Found: /static/VoltHub/{% static 'VoltHub/image/Night_in_Joburg.jpg' %}
+"GET /static/VoltHub/%7B%%20static%20'VoltHub/image/Night_in_Joburg.jpg'%20%%7D HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /api/login/ HTTP/1.1" 200 7648
+"GET /static/authentication/login.css HTTP/1.1" 304 0
+"GET /cart/count/ HTTP/1.1" 200 12
+"POST /api/login/ HTTP/1.1" 302 0
+Internal Server Error: /dashboard
+"GET /dashboard HTTP/1.1" 500 121
+Internal Server Error: /dashboard
+"GET /dashboard HTTP/1.1" 500 121
+Internal Server Error: /dashboard
+"GET /dashboard HTTP/1.1" 500 121
+C:\Users\Thato\charging\ev_charging\VoltHub\urls.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /dashboard HTTP/1.1" 200 20303
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /owner_dashboard HTTP/1.1" 200 28349
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /dashboard HTTP/1.1" 200 20303
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /profile HTTP/1.1" 200 15780
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /dashboard HTTP/1.1" 200 20303
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /stations/12/ HTTP/1.1" 200 7027
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /stations/ HTTP/1.1" 200 17558
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging_points.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /dashboard HTTP/1.1" 200 20303
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /api/stations/nearby/?lat=-26.341069&lng=28.132964 HTTP/1.1" 200 12432
+"GET /api/stations/nearby/?lat=-26.341069&lng=28.132964 HTTP/1.1" 200 12432
+"GET /owner_dashboard HTTP/1.1" 200 28349
+"GET /cart/count/ HTTP/1.1" 200 12
+C:\Users\Thato\charging\ev_charging\VoltHub\views.py changed, reloading.
+Watching for file changes with StatReloader
+"GET /dashboard HTTP/1.1" 200 43307
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+Not Found: /analytics/
+"GET /analytics/ HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /api/stations/nearby/?lat=-26.341069&lng=28.132964 HTTP/1.1" 200 12432
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /analytics/
+"GET /analytics/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /analytics/
+"GET /analytics/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 56505)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /dashboard HTTP/1.1" 200 43307
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+Not Found: /analytics/
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /analytics/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /api/stations/nearby/?lat=-26.341069&lng=28.132964 HTTP/1.1" 200 12432
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /analytics/
+"GET /analytics/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /dashboard HTTP/1.1" 200 43307
+Not Found: /analytics/
+"GET /analytics/ HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /api/stations/nearby/?lat=-26.341069&lng=28.132964 HTTP/1.1" 200 12432
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 62133)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /analytics/
+"GET /analytics/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 63528)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 50566)
+"GET /billing HTTP/1.1" 200 6230
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /dashboard HTTP/1.1" 200 43307
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /analytics/
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /analytics/ HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /api/stations/nearby/?lat=-26.341069&lng=28.132964 HTTP/1.1" 200 12432
+"GET /stations/ HTTP/1.1" 200 17558
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /static/VoltHub/charging_points.css HTTP/1.1" 304 0
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /api/stations/nearby/?lat=-26.341069&lng=28.132964 HTTP/1.1" 200 12432
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /api/stations/nearby/?lat=-26.37052&lng=28.14673 HTTP/1.1" 200 7440
+"GET /api/stations/nearby/?lat=-26.37052&lng=28.14673 HTTP/1.1" 200 7440
+"GET /dashboard HTTP/1.1" 200 43307
+Not Found: /analytics/
+"GET /analytics/ HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /api/stations/nearby/?lat=-26.37052&lng=28.14673 HTTP/1.1" 200 7440
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /owner_dashboard HTTP/1.1" 200 28349
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /dashboard HTTP/1.1" 200 43307
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+Not Found: /analytics/
+"GET /analytics/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /api/stations/nearby/?lat=-26.341069&lng=28.132964 HTTP/1.1" 200 12432
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /analytics/
+"GET /analytics/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 62826)
+Not Found: /analytics/
+"GET /analytics/ HTTP/1.1" 404 179
+"GET /shop_home HTTP/1.1" 200 59311
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/ecommerce/shop_home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET / HTTP/1.1" 200 11548
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /static/VoltHub/{% static 'VoltHub/image/Night_in_Joburg.jpg' %}
+"GET /static/VoltHub/%7B%%20static%20'VoltHub/image/Night_in_Joburg.jpg'%20%%7D HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 54669)
+"GET /shop_home HTTP/1.1" 200 59311
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/ecommerce/shop_home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /cart/count/ HTTP/1.1" 200 12
+Watching for file changes with StatReloader
+"GET /shop_home HTTP/1.1" 200 59311
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /static/ecommerce/shop_home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /admin/charging_station/chargingpoint/ HTTP/1.1" 302 0
+"GET /admin/login/?next=/admin/charging_station/chargingpoint/ HTTP/1.1" 200 4225
+"GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2804
+"GET /static/admin/css/base.css HTTP/1.1" 200 22092
+"GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+"GET /static/admin/css/login.css HTTP/1.1" 200 951
+"GET /static/admin/css/responsive.css HTTP/1.1" 200 17972
+"GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+"GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 179
+Internal Server Error: /admin/charging_station/chargingpoint/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\sessions\backends\base.py", line 244, in _get_session
+    return self._session_cache
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "C:\Users\Thato\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not translate host name "switchyard.proxy.rlwy.net" to address: Name or service not known
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\admin\options.py", line 718, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+  File "C:\Users\Thato\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\admin\sites.py", line 229, in inner
+    if not self.has_permission(request):
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\admin\sites.py", line 202, in has_permission
+    return request.user.is_active and request.user.is_staff
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\utils\functional.py", line 251, in inner
+    self._setup()
+    ~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\utils\functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\auth\middleware.py", line 37, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\auth\middleware.py", line 17, in get_user
+    request._cached_user = auth.get_user(request)
+                           ~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\auth\__init__.py", line 209, in get_user
+    user_id = _get_user_session_key(request)
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\auth\__init__.py", line 62, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+                                               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\sessions\backends\base.py", line 55, in __getitem__
+    return self._session[key]
+           ^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\sessions\backends\base.py", line 249, in _get_session
+    self._session_cache = self.load()
+                          ~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\sessions\backends\db.py", line 55, in load
+    s = self._get_session_from_db()
+  File "C:\Users\Thato\Lib\site-packages\django\contrib\sessions\backends\db.py", line 34, in _get_session_from_db
+    return self.model.objects.get(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        session_key=self.session_key, expire_date__gt=timezone.now()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\sql\compiler.py", line 1572, in execute_sql
+    cursor = self.connection.cursor()
+  File "C:\Users\Thato\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\base\base.py", line 320, in cursor
+    return self._cursor()
+           ~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\base\base.py", line 296, in _cursor
+    self.ensure_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\base\base.py", line 278, in ensure_connection
+    with self.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\base\base.py", line 279, in ensure_connection
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\base\base.py", line 256, in connect
+    self.connection = self.get_new_connection(conn_params)
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\utils\asyncio.py", line 26, in inner
+    return func(*args, **kwargs)
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\postgresql\base.py", line 332, in get_new_connection
+    connection = self.Database.connect(**conn_params)
+  File "C:\Users\Thato\Lib\site-packages\psycopg2\__init__.py", line 135, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not translate host name "switchyard.proxy.rlwy.net" to address: Name or service not known
+
+"GET /admin/charging_station/chargingpoint/ HTTP/1.1" 500 145
+Watching for file changes with StatReloader
+"GET / HTTP/1.1" 200 11548
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+Not Found: /static/VoltHub/{% static 'VoltHub/image/Night_in_Joburg.jpg' %}
+"GET /static/VoltHub/%7B%%20static%20'VoltHub/image/Night_in_Joburg.jpg'%20%%7D HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /dashboard HTTP/1.1" 200 43307
+Not Found: /analytics/
+"GET /analytics/ HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 54656)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 50498)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /api/stations/nearby/?lat=-26.341069&lng=28.132964 HTTP/1.1" 200 12432
+Not Found: /analytics/
+Not Found: /ws/stations/
+"GET /analytics/ HTTP/1.1" 404 179
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 60947)
+"GET /api/logout-user/ HTTP/1.1" 302 0
+Not Found: /analytics/
+"GET /analytics/ HTTP/1.1" 404 179
+"GET /api/login/ HTTP/1.1" 200 7648
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/authentication/login.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+Not Found: /ws/stations/
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /api/register/ HTTP/1.1" 200 9422
+"GET /static/authentication/register.css HTTP/1.1" 304 0
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /api/login/ HTTP/1.1" 200 7648
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/authentication/login.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /cart/count/ HTTP/1.1" 200 12
+"POST /api/login/ HTTP/1.1" 302 0
+"GET /dashboard HTTP/1.1" 200 56450
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /api/stations/nearby/?lat=-26.341069&lng=28.132964 HTTP/1.1" 200 12432
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 63507)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 64883)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /api/stations/nearby/?lat=-26.341069&lng=28.132964 HTTP/1.1" 200 12432
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 63327)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 54580)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /stations/ HTTP/1.1" 200 17558
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+Not Found: /ws/stations/
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/charging_points.css HTTP/1.1" 304 0
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /dashboard HTTP/1.1" 200 51567
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+- Broken pipe from ('127.0.0.1', 53308)
+"GET /api/stations/nearby/?lat=-26.375617567727062&lng=28.155183025218996 HTTP/1.1" 200 6379
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 55172)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 57683)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 57907)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 63719)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /book HTTP/1.1" 200 11864
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /static/VoltHub/booking.css HTTP/1.1" 200 4692
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /dashboard HTTP/1.1" 200 51567
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /api/stations/nearby/?lat=-26.37577160768887&lng=28.15559211020909 HTTP/1.1" 200 6379
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 63905)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 50153)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 61707)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 50063)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /cart/ HTTP/1.1" 200 19041
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/ecommerce/cart.css HTTP/1.1" 200 7851
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /dashboard HTTP/1.1" 200 51567
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /api/stations/nearby/?lat=-26.341069&lng=28.132964 HTTP/1.1" 200 12432
+"GET /book HTTP/1.1" 200 11864
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/booking.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 63482)
+Not Found: /ws/stations/
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 60448)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /api/stations/nearby/?lat=-26.341069&lng=28.132964 HTTP/1.1" 200 12432
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 59503)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 54548)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 62898)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 51269)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 51281)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /.well-known/appspecific/com.chrome.devtools.json
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+Not Found: /ws/stations/
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 179
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 56206)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 57659)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 57721)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 63315)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 56759)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 51658)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 65219)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 52711)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 51623)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 59371)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 57574)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 65507)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 51356)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 62791)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 61280)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 57285)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 54842)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 61434)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 58966)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 55713)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 54011)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 59414)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 53570)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 57940)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 51468)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 63692)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 60907)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 60039)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 63280)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 56464)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 59676)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 60710)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 63585)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 64089)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 54479)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 55969)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 62774)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 65092)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 49731)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 53788)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 59397)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 59832)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 54883)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 53721)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 50980)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 62043)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 63968)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 56176)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 51009)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 55053)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 65275)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 64291)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 50656)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 57148)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 57768)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 65223)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 58146)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 53879)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 54976)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 62321)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 54153)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 56095)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 64660)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 56825)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 56339)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 57023)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 61111)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 64819)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 64159)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 58949)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 49674)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 51661)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 52927)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 59385)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 57536)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 62152)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 59511)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 50747)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 62111)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 60604)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 52602)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 52991)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 55462)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 50402)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 52570)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 58853)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 52162)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 64277)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 50440)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 59148)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 60493)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 65053)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 57082)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 50060)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 54531)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 51875)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 53182)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 57833)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 49876)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 63978)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 58365)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 54852)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 53032)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 55166)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 53238)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 64570)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 51213)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 57713)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 61989)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 61166)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 65501)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 63429)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 62338)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 55457)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 53313)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 61553)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 64209)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 59148)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 52871)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 64960)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 53283)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 50093)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 64370)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 51367)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 65175)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 53106)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 60433)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 63284)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 62754)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 57477)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 56153)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 53003)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 61853)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 63599)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 57125)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 60813)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 53635)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 51389)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 57345)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 63476)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 52764)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 55987)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 54279)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 51114)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 53672)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 64403)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 64689)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 52328)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 65374)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 61013)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 49737)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 60074)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 63948)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 63967)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 59177)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 57597)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 64012)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 65354)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 51229)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 55249)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 52490)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 56611)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 52726)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 61916)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 64219)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 61600)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 60420)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 64118)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 61468)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Watching for file changes with StatReloader
+- Broken pipe from ('127.0.0.1', 59550)
+- Broken pipe from ('127.0.0.1', 61662)
+"GET / HTTP/1.1" 200 11538
+"GET /static/VoltHub/style.css HTTP/1.1" 200 3083
+"GET /static/VoltHub/charging.css HTTP/1.1" 200 6194
+"GET /static/VoltHub/footer.css HTTP/1.1" 200 3810
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 200 6061
+"GET /static/VoltHub/home.css HTTP/1.1" 200 5615
+"GET /static/VoltHub/contact.css HTTP/1.1" 200 5122
+"GET /static/VoltHub/app.js HTTP/1.1" 200 12
+"GET /static/VoltHub/navbar.css HTTP/1.1" 200 7220
+"GET /static/VoltHub/chart.js HTTP/1.1" 200 1401
+"GET /static/VoltHub/map.js HTTP/1.1" 200 14413
+Not Found: /static/VoltHub/{% static 'VoltHub/image/Night_in_Joburg.jpg' %}
+"GET /static/VoltHub/%7B%%20static%20'VoltHub/image/Night_in_Joburg.jpg'%20%%7D HTTP/1.1" 404 179
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET / HTTP/1.1" 200 11538
+Not Found: /static/VoltHub/{% static 'VoltHub/image/Night_in_Joburg.jpg' %}
+"GET /static/VoltHub/%7B%%20static%20'VoltHub/image/Night_in_Joburg.jpg'%20%%7D HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET / HTTP/1.1" 200 11548
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+Not Found: /static/VoltHub/{% static 'VoltHub/image/Night_in_Joburg.jpg' %}
+"GET /static/VoltHub/%7B%%20static%20'VoltHub/image/Night_in_Joburg.jpg'%20%%7D HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET / HTTP/1.1" 200 11548
+Not Found: /static/VoltHub/{% static 'VoltHub/image/Night_in_Joburg.jpg' %}
+"GET /static/VoltHub/%7B%%20static%20'VoltHub/image/Night_in_Joburg.jpg'%20%%7D HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET / HTTP/1.1" 200 11538
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET / HTTP/1.1" 200 11538
+Not Found: /static/VoltHub/{% static 'VoltHub/image/Night_in_Joburg.jpg' %}
+"GET /static/VoltHub/%7B%%20static%20'VoltHub/image/Night_in_Joburg.jpg'%20%%7D HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET / HTTP/1.1" 200 11538
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET / HTTP/1.1" 200 11548
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+Not Found: /static/VoltHub/{% static 'VoltHub/image/Night_in_Joburg.jpg' %}
+"GET /static/VoltHub/%7B%%20static%20'VoltHub/image/Night_in_Joburg.jpg'%20%%7D HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET / HTTP/1.1" 200 11548
+Not Found: /static/VoltHub/{% static 'VoltHub/image/Night_in_Joburg.jpg' %}
+"GET /static/VoltHub/%7B%%20static%20'VoltHub/image/Night_in_Joburg.jpg'%20%%7D HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /dashboard HTTP/1.1" 200 51567
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 52896)
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 49299)
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /api/stations/nearby/?lat=-26.341069&lng=28.132964 HTTP/1.1" 200 12432
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 61513)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 59445)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 65455)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /dashboard HTTP/1.1" 200 50997
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /api/stations/nearby/?lat=-26.375991&lng=28.155953 HTTP/1.1" 200 6379
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /dashboard HTTP/1.1" 200 50997
+- Broken pipe from ('127.0.0.1', 64086)
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 56263)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /api/stations/nearby/?lat=-26.341069&lng=28.132964 HTTP/1.1" 200 12432
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 63188)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 55991)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 54731)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /dashboard HTTP/1.1" 200 50993
+"GET /static/VoltHub/charging.css HTTP/1.1" 304 0
+"GET /static/VoltHub/contact.css HTTP/1.1" 304 0
+"GET /static/VoltHub/footer.css HTTP/1.1" 304 0
+"GET /static/VoltHub/home.css HTTP/1.1" 304 0
+"GET /static/VoltHub/navbar.css HTTP/1.1" 304 0
+"GET /static/VoltHub/style.css HTTP/1.1" 304 0
+"GET /static/VoltHub/dashboard.css HTTP/1.1" 304 0
+"GET /static/VoltHub/app.js HTTP/1.1" 304 0
+"GET /static/VoltHub/map.js HTTP/1.1" 304 0
+"GET /static/VoltHub/chart.js HTTP/1.1" 304 0
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /cart/count/ HTTP/1.1" 200 12
+"GET /cart/count/ HTTP/1.1" 200 12
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /api/stations/nearby/?lat=-26.375991&lng=28.155953 HTTP/1.1" 200 6379
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 62787)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 51148)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 51156)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 64199)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Internal Server Error: /cart/
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 883, in _resolve_lookup
+    current = current[bit]
+              ~~~~~~~^^^^^
+TypeError: 'Product' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Thato\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Thato\charging\ev_charging\ecommerce\views.py", line 245, in cart_view
+    return render(request, 'ecommerce/cart.html', {
+        'cart_products': cart_products,
+    ...<2 lines>...
+        'cart_total': round(cart_total, 2),
+    })
+  File "C:\Users\Thato\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 1067, in render
+    output = self.filter_expression.resolve(context)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 718, in resolve
+    obj = self.var.resolve(context)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 850, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Users\Thato\Lib\site-packages\django\template\base.py", line 893, in _resolve_lookup
+    current = getattr(current, bit)
+  File "C:\Users\Thato\charging\ev_charging\ecommerce\models.py", line 199, in main_image
+    primary = self.gallery.filter(is_primary=True).first()
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\query.py", line 1097, in first
+    for obj in queryset[:1]:
+               ~~~~~~~~^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+        chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size
+    )
+  File "C:\Users\Thato\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sql, params, many=False, executor=self._execute
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Thato\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Thato\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+django.db.utils.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /cart/ HTTP/1.1" 500 145
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+"GET /api/stations/nearby/?lat=-26.341069&lng=28.132964 HTTP/1.1" 200 12432
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 50300)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 61164)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 61080)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 55148)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 57593)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 56468)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 61254)
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+Not Found: /ws/stations/
+"GET /ws/stations/ HTTP/1.1" 404 179
+- Broken pipe from ('127.0.0.1', 52228)

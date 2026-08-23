@@ -1,0 +1,37 @@
+{% extends "VoltHub/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="card shadow-sm border-0">
+    <div class="card-body">
+      <h2>{{ station.name }}</h2>
+      <p class="text-muted mb-3">Charging station details</p>
+
+      <dl class="row">
+        <dt class="col-sm-3">Location</dt>
+        <dd class="col-sm-9">{{ station.location|default:'Not specified' }}</dd>
+
+        <dt class="col-sm-3">Status</dt>
+        <dd class="col-sm-9">{{ station.status }}</dd>
+
+        <dt class="col-sm-3">Verified</dt>
+        <dd class="col-sm-9">{% if station.is_verified %}Yes{% else %}No{% endif %}</dd>
+
+        <dt class="col-sm-3">Active</dt>
+        <dd class="col-sm-9">{% if station.is_active %}Yes{% else %}No{% endif %}</dd>
+
+        <dt class="col-sm-3">Price / hour</dt>
+        <dd class="col-sm-9">R{{ station.price_per_hour|default:'0.00' }}</dd>
+
+        <dt class="col-sm-3">Charging speed</dt>
+        <dd class="col-sm-9">{{ station.charging_speed_kw|default:'Not specified' }}</dd>
+      </dl>
+
+      <div class="mt-3">
+        <a href="{% url 'stations' %}" class="btn btn-primary">Back to stations</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

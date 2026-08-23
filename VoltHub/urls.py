@@ -32,6 +32,7 @@ urlpatterns = [
 
 
     path('stations/', views.station_locator, name="stations"),
+    path('stations/<int:pk>/', views.station_detail, name="station_detail"),
     path('stations/submit', views.submit_station, name="submit_station"),
     path('stations/verify', views.verify_stations, name="verify_stations"),
 

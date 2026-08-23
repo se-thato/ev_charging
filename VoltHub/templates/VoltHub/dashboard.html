@@ -3,225 +3,1238 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'VoltHub/dashboard.css' %}">
-{% endblock %}
-
-{% block content %}
-
 <style>
-  /* Minimal dashboard styles — only what's used on this page */
   :root {
     --vh-bg: #050512;
-    --vh-surface: rgba(13, 13, 30, 0.55);
+    --vh-surface: rgba(13,13,30,0.85);
     --vh-primary: #7a7cff;
     --vh-accent: #00e5ff;
     --vh-accent-2: #45ffbc;
-    --vh-border: rgba(122, 124, 255, 0.35);
+    --vh-border: rgba(122,124,255,0.35);
     --vh-text: #e6e9ff;
     --vh-text-strong: #ffffff;
     --vh-muted: #c5cdfa;
+    --vh-glow: rgba(0,229,255,0.5);
   }
 
-  /* Ensure dashboard content fits within normal page flow */
-  .dash-main {
-    padding: 1.5rem 1rem 3rem;
-  }
+  /* ── hide top navbar on dashboard ── */
+  header, nav.navbar, .neon-navbar { display: none !important; }
 
-  .dash-wrap {
-    width: 100%;
+  html, body {
     margin: 0;
-    padding: 0;
-    background: transparent;
-    overflow: visible;
+    background: var(--vh-bg);
+    overflow-x: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
-  .dash-header { text-align: left; margin-bottom: 1.5rem; }
-  .dash-header h1 { color: var(--vh-text-strong); font-weight: 800; letter-spacing: .3px; margin-bottom: .25rem; }
-  .dash-header .subtitle { color: whitesmoke; margin: 0 auto .75rem; }
-  .accent-line { position: relative; height: 2px; margin: .75rem 0 0; max-width: 420px; }
-  .accent-line::after {
-    content: ""; position: absolute; left: 0; right: 0; height: 2px; border-radius: 2px;
-    background: linear-gradient(90deg, transparent, var(--vh-accent), var(--vh-primary), transparent);
-    background-size: 200% 100%; animation: lineFlow 8s linear infinite;
+  /* ── animated background blobs ── */
+  body::before, body::after {
+    content: "";
+    position: fixed;
+    width: 60vmax; height: 60vmax;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+    animation: floaty 18s ease-in-out infinite;
   }
-  @keyframes lineFlow { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+  body::before {
+    background: radial-gradient(circle, rgba(122,124,255,0.5), transparent 60%);
+    left: -20vmax; top: -15vmax; animation-delay: -4s;
+  }
+  body::after {
+    background: radial-gradient(circle, rgba(0,229,255,0.4), transparent 60%);
+    right: -25vmax; bottom: -20vmax;
+  }
+  @keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
 
-  /* glass card */
-  .glass-card { border: 1px solid var(--vh-border); background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04)); backdrop-filter: blur(12px) saturate(160%); border-radius: 16px; box-shadow: 0 20px 60px rgba(12,16,50,0.65); color: var(--vh-text); margin: 0 0 1.25rem 0; }
-  .glass-card .card-header { padding: .85rem 1rem; border-bottom: 1px solid var(--vh-border); font-weight: 700; letter-spacing: .3px; color: var(--vh-text-strong); display: flex; align-items: center; justify-content: space-between; }
-  .glass-card .card-body { padding: 1rem; }
+  /* ════════════════════════════════
+     LAYOUT
+  ════════════════════════════════ */
+  .db-layout {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+  }
 
-  /* Chart area */
-  .chart-wrap { padding: 1rem; }
+  /* scrollable helper */
+  .db-scroll {
+    overflow-y: auto;
+    height: 100vh;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(122,124,255,0.2) transparent;
+  }
+  .db-scroll::-webkit-scrollbar { width: 4px; }
+  .db-scroll::-webkit-scrollbar-thumb { background: rgba(122,124,255,0.2); border-radius: 4px; }
 
-  /* neon table styling used across pages */
-  .neon-table .table { color: var(--vh-text-strong) !important; margin: 0; font-size: 0.95rem; }
-  .neon-table .table thead { background: linear-gradient(90deg, rgba(122,124,255,0.45), rgba(0,229,255,0.30)) !important; color: #000000 !important; }
-  .neon-table .table th, .neon-table .table td { border-color: var(--vh-border) !important; vertical-align: middle; }
-  .neon-table .table tbody td, .neon-table .table tbody th { color: #000000 !important; }
+  /* ════════════════════════════════
+     SIDEBAR
+  ════════════════════════════════ */
+  .db-sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    background: rgba(7,7,22,0.97);
+    border-right: 1px solid var(--vh-border);
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    z-index: 100;
+    backdrop-filter: blur(20px);
+  }
 
-  .cell-mono { color: #000000 !important; }
+  /* animated right edge */
+  .db-sidebar::after {
+    content: "";
+    position: absolute;
+    top: 0; right: -1px;
+    width: 1px; height: 100%;
+    background: linear-gradient(180deg, transparent, var(--vh-accent) 40%, var(--vh-primary) 70%, transparent);
+    opacity: .35;
+  }
 
-  /* badges */
-  .badge-success { background-color: #28a745 !important; color: #eafff3; }
-  .badge-danger  { background-color: #dc3545 !important; color: #ffecec; }
-  .badge-warning { background-color: #ffc107 !important; color: #2d2d2d; }
-  .badge-info    { background-color: #17a2b8 !important; color: #eafaff; }
-  .badge-purple  { background-color: #7a7cff !important; color: #fff; }
+  .sidebar-brand {
+    padding: 1.25rem 1.1rem .9rem;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: .4px;
+    background: linear-gradient(90deg, var(--vh-primary), var(--vh-accent) 60%, var(--vh-accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 1px solid var(--vh-border);
+    flex-shrink: 0;
+  }
 
-  /* responsive adjustments */
+  .sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: .85rem 1.1rem;
+    border-bottom: 1px solid var(--vh-border);
+    flex-shrink: 0;
+  }
+  .s-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--vh-primary), var(--vh-accent));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; color: #fff;
+    flex-shrink: 0; overflow: hidden;
+    box-shadow: 0 0 14px rgba(0,229,255,0.25);
+  }
+  .s-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .s-name { font-size: 13px; font-weight: 600; color: var(--vh-text-strong); }
+  .s-role { font-size: 11px; color: var(--vh-muted); margin-top: 1px; }
+
+  .sidebar-nav {
+    flex: 1;
+    padding: .5rem .65rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    overflow-y: auto;
+  }
+
+  .nav-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--vh-muted);
+    padding: .5rem .5rem .2rem;
+    opacity: .7;
+  }
+
+  .nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: .6rem .75rem;
+    border-radius: 9px;
+    border: 1px solid transparent;
+    background: none;
+    color: var(--vh-muted);
+    font-size: 13px; font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all .15s;
+    margin-bottom: 2px;
+  }
+  .nav-btn i { width: 15px; text-align: center; font-size: 13px; flex-shrink: 0; }
+  .nav-btn:hover {
+    background: rgba(122,124,255,0.08);
+    border-color: var(--vh-border);
+    color: var(--vh-text-strong);
+    text-decoration: none;
+  }
+  .nav-btn.active {
+    background: rgba(0,229,255,0.08);
+    border-color: rgba(0,229,255,0.25);
+    color: var(--vh-accent);
+  }
+  .nav-btn .n-badge {
+    margin-left: auto;
+    font-size: 10px; font-weight: 700;
+    background: rgba(0,229,255,0.12);
+    color: var(--vh-accent);
+    padding: 1px 7px;
+    border-radius: 20px;
+    border: 1px solid rgba(0,229,255,0.2);
+  }
+
+  /* cart badge */
+  .cart-badge-count {
+    margin-left: auto;
+    background: var(--vh-accent);
+    color: #000;
+    font-size: 10px; font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 20px;
+    opacity: 0; transform: scale(0);
+    transition: all .2s;
+  }
+  .cart-badge-count.has-items { opacity: 1; transform: scale(1); }
+
+  .sidebar-bottom {
+    padding: .75rem .65rem;
+    border-top: 1px solid var(--vh-border);
+    flex-shrink: 0;
+  }
+  .sidebar-bottom a {
+    display: flex; align-items: center; gap: 8px;
+    padding: .5rem .75rem; border-radius: 9px;
+    color: var(--vh-muted); font-size: 13px;
+    text-decoration: none; transition: all .15s;
+  }
+  .sidebar-bottom a:hover { color: #ff6b6b; background: rgba(220,53,69,0.08); }
+
+  /* ════════════════════════════════
+     MAIN
+  ════════════════════════════════ */
+  .db-main { flex: 1; min-width: 0; padding: 1.5rem 1.5rem 3rem; }
+
+  /* topbar */
+  .db-topbar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .topbar-greeting { font-size: 12px; color: var(--vh-muted); margin-bottom: 2px; }
+  .topbar-title {
+    font-size: 1.6rem; font-weight: 800;
+    background: linear-gradient(135deg, #fff 0%, var(--vh-primary) 50%, var(--vh-accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+  }
+  .topbar-sub { font-size: 13px; color: var(--vh-muted); margin-top: 2px; }
+  .topbar-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+
+  .tb-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: .5rem 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--vh-border);
+    background: rgba(255,255,255,0.05);
+    color: var(--vh-text);
+    font-size: 13px; font-weight: 500;
+    text-decoration: none;
+    transition: all .15s;
+  }
+  .tb-btn:hover { border-color: var(--vh-accent); color: var(--vh-accent); }
+  .tb-btn.primary {
+    background: linear-gradient(135deg, var(--vh-primary), var(--vh-accent));
+    color: #000; border-color: transparent; font-weight: 700;
+  }
+  .tb-btn.primary:hover { opacity: .9; color: #000; }
+
+  /* ws status badge */
+  .ws-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 600;
+    padding: 3px 10px; border-radius: 20px;
+  }
+  .ws-badge.live   { background: rgba(69,255,188,0.12); color: var(--vh-accent-2); border: 1px solid rgba(69,255,188,0.3); }
+  .ws-badge.offline { background: rgba(220,53,69,0.12); color: #ff6b6b; border: 1px solid rgba(220,53,69,0.3); }
+
+  /* ── stat cards ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+  .stat-card {
+    border: 1px solid var(--vh-border);
+    border-radius: 14px;
+    padding: 1.1rem 1.25rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+    backdrop-filter: blur(10px);
+    position: relative; overflow: hidden;
+  }
+  .stat-card::before {
+    content: ""; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    border-radius: 2px 2px 0 0;
+  }
+  .stat-card.c1::before { background: var(--vh-accent); }
+  .stat-card.c2::before { background: var(--vh-primary); }
+  .stat-card.c3::before { background: var(--vh-accent-2); }
+  .stat-card.c4::before { background: #ffc107; }
+
+  .stat-icon {
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; margin-bottom: 8px;
+  }
+  .stat-icon.i1 { background: rgba(0,229,255,0.1); color: var(--vh-accent); }
+  .stat-icon.i2 { background: rgba(122,124,255,0.1); color: var(--vh-primary); }
+  .stat-icon.i3 { background: rgba(69,255,188,0.1); color: var(--vh-accent-2); }
+  .stat-icon.i4 { background: rgba(255,193,7,0.1); color: #ffc107; }
+
+  .stat-value {
+    font-size: 1.8rem; font-weight: 800;
+    color: var(--vh-text-strong); line-height: 1;
+    margin-bottom: 3px;
+  }
+  .stat-label { font-size: 11px; color: var(--vh-muted); text-transform: uppercase; letter-spacing: .5px; }
+  .stat-trend { font-size: 11px; color: var(--vh-accent-2); margin-top: 4px; }
+
+  /* ── quick actions ── */
+  .quick-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .q-btn {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    padding: 1.1rem .5rem;
+    border-radius: 14px;
+    border: 1px solid var(--vh-border);
+    background: linear-gradient(160deg, rgba(122,124,255,0.1), rgba(0,229,255,0.04));
+    color: var(--vh-muted);
+    font-size: 12px; font-weight: 500;
+    text-decoration: none; cursor: pointer;
+    transition: all .2s;
+    position: relative; overflow: hidden;
+  }
+  .q-btn::before {
+    content: "";
+    position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0,229,255,0.1), transparent);
+    transition: left .4s;
+  }
+  .q-btn:hover::before { left: 100%; }
+  .q-btn:hover {
+    border-color: var(--vh-accent);
+    color: var(--vh-text-strong);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,229,255,0.1);
+  }
+  .q-icon {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    background: rgba(122,124,255,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; color: var(--vh-accent);
+    transition: all .2s;
+  }
+  .q-btn:hover .q-icon { background: rgba(0,229,255,0.15); }
+
+  /* ── glass card ── */
+  .glass-card {
+    border: 1px solid var(--vh-border);
+    background: linear-gradient(180deg, rgba(13,13,30,0.9), rgba(5,5,18,0.75));
+    backdrop-filter: blur(16px) saturate(160%);
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .card-header {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--vh-border);
+    font-weight: 700; font-size: 14px;
+    color: var(--vh-text-strong);
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.02);
+  }
+  .card-header i { color: var(--vh-accent); }
+  .card-header .header-right { margin-left: auto; }
+  .card-body { padding: 1.1rem 1.25rem; }
+
+  /* ── two-col layout ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+  }
+  @media (max-width: 1100px) { .two-col { grid-template-columns: 1fr; } }
+
+  /* ── map ── */
+  .map-outer {
+    border-radius: 14px; overflow: hidden;
+    border: 1px solid var(--vh-border);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  }
+  .map-wrapper { display: grid; grid-template-columns: 1fr 280px; min-height: 420px; }
+  @media (max-width: 992px) { .map-wrapper { grid-template-columns: 1fr; } }
+  #map { width: 100%; height: 420px; background: #050512; }
+  .map-sidebar {
+    background: rgba(7,7,22,0.97);
+    border-left: 1px solid var(--vh-border);
+    padding: .85rem;
+    overflow-y: auto;
+    max-height: 420px;
+  }
+  .map-sidebar h6 {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--vh-muted); margin-bottom: .6rem;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .map-sidebar h6 i { color: var(--vh-accent); }
+  .station-list-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: .65rem .75rem;
+    margin-bottom: .4rem;
+    cursor: pointer;
+    transition: all .2s;
+    font-size: .82rem;
+  }
+  .station-list-item:hover {
+    background: rgba(122,124,255,0.08);
+    border-color: var(--vh-primary);
+  }
+  .s-item-name { font-weight: 600; color: var(--vh-text-strong); font-size: .85rem; }
+  .s-item-meta { color: var(--vh-muted); font-size: .75rem; margin-top: 2px; }
+
+  /* ── charts ── */
+  .chart-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 900px) { .chart-grid { grid-template-columns: 1fr; } }
+  .chart-inner { padding: .5rem 0; }
+
+  /* upcoming list */
+  .upcoming-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: .65rem 0;
+    border-bottom: 1px solid rgba(122,124,255,0.1);
+  }
+  .upcoming-item:last-child { border-bottom: none; }
+  .upcoming-icon {
+    width: 32px; height: 32px; border-radius: 9px;
+    background: rgba(0,229,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--vh-accent); font-size: 13px; flex-shrink: 0;
+  }
+  .upcoming-name { font-size: 13px; font-weight: 600; color: var(--vh-text-strong); }
+  .upcoming-meta { font-size: 11px; color: var(--vh-muted); }
+
+  /* ── neon tables ── */
+  .neon-table { overflow-x: auto; }
+  .neon-table .table { color: var(--vh-text-strong) !important; margin: 0; font-size: .88rem; }
+  .neon-table .table thead { background: linear-gradient(90deg, rgba(122,124,255,0.35), rgba(0,229,255,0.2)) !important; }
+  .neon-table .table thead th {
+    border-color: var(--vh-border) !important;
+    color: #fff !important;
+    font-size: 11px; text-transform: uppercase; letter-spacing: .5px;
+    font-weight: 600; padding: .6rem .75rem;
+    position: sticky; top: 0; z-index: 2;
+    backdrop-filter: blur(6px);
+  }
+  .neon-table .table tbody tr { background: transparent !important; }
+  .neon-table .table tbody tr:nth-child(even) { background: rgba(255,255,255,0.02) !important; }
+  .neon-table .table tbody tr:hover { background: rgba(122,124,255,0.06) !important; }
+  .neon-table .table tbody td { color: var(--vh-text) !important; border-color: rgba(122,124,255,0.1) !important; vertical-align: middle; padding: .6rem .75rem; }
+  .neon-table a { color: var(--vh-accent) !important; text-decoration: none; }
+  .neon-table a:hover { color: #fff !important; }
+  .cell-mono { color: var(--vh-muted) !important; font-family: monospace; font-size: .82rem; }
+
+  /* ── badges ── */
+  .badge-success { background: rgba(69,255,188,0.12) !important; color: #45ffbc !important; border: 1px solid rgba(69,255,188,0.3); font-size: 11px; }
+  .badge-danger  { background: rgba(255,107,107,0.12) !important; color: #ff6b6b !important; border: 1px solid rgba(255,107,107,0.3); font-size: 11px; }
+  .badge-warning { background: rgba(255,193,7,0.12) !important;   color: #ffc107 !important;  border: 1px solid rgba(255,193,7,0.3);  font-size: 11px; }
+  .badge-info    { background: rgba(23,162,184,0.12) !important;  color: #17a2b8 !important;  border: 1px solid rgba(23,162,184,0.3); font-size: 11px; }
+
+  /* ── section toggle ── */
+  .db-section { display: none; }
+  .db-section.active { display: block; }
+
+  /* ── toast ── */
+  .toast-container { position: fixed; top: 20px; right: 20px; z-index: 9999; }
+  .toast-item {
+    background: rgba(13,13,30,0.95);
+    border: 1px solid var(--vh-border);
+    border-radius: 12px;
+    color: var(--vh-text);
+    padding: .75rem 1rem;
+    margin-bottom: .5rem;
+    backdrop-filter: blur(10px);
+    font-size: 13px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    animation: slideIn .3s ease;
+    min-width: 260px;
+  }
+  @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+  /* ── pulse ── */
+  @keyframes pulseGlow { 0%,100%{opacity:.4} 50%{opacity:1} }
+  .pulse { animation: pulseGlow 2s ease-in-out infinite; }
+
+  /* mobile */
   @media (max-width: 768px) {
-    .dash-main { padding: 1rem; }
-    .glass-card .card-body { padding: .75rem; }
+    .db-sidebar { display: none; }
+    .db-main { padding: 1rem; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .quick-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
-                        </tr>
-                      
-                  </tbody>
-                </table>
+{% endblock %}
+
+{% block container_classes %}container-fluid p-0{% endblock %}
+
+{% block content %}
+<title>Dashboard — VoltHub</title>
+
+<body>
+<div class="db-layout">
+
+  <!--SIDEBAR-->
+  <aside class="db-sidebar db-scroll">
+
+    <div class="sidebar-brand">VoltHub</div>
+
+    <div class="sidebar-user">
+      <div class="s-avatar">
+        {% if user.charging_profile and user.charging_profile.profile_picture %}
+          <img src="{{ user.charging_profile.profile_picture.url }}" alt="">
+        {% else %}
+          {{ user.username|first|upper }}
+        {% endif %}
+      </div>
+      <div>
+        <div class="s-name">{{ user.get_full_name|default:user.username }}</div>
+        <div class="s-role">EV Driver</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-label">Main</div>
+
+      <button class="nav-btn active" onclick="showSection('overview', this)">
+        <i class="fa fa-home"></i> Overview
+      </button>
+      <button class="nav-btn" onclick="showSection('map', this)">
+        <i class="fa fa-map-marker"></i> Live Map
+      </button>
+      <button class="nav-btn" onclick="showSection('stations', this)">
+        <i class="fa fa-bolt"></i> Stations
+        {% if stations %}<span class="n-badge">{{ stations|length }}</span>{% endif %}
+      </button>
+      <button class="nav-btn" onclick="showSection('sessions', this)">
+        <i class="fa fa-history"></i> Sessions
+        {% if sessions %}<span class="n-badge">{{ sessions|length }}</span>{% endif %}
+      </button>
+      <button class="nav-btn" onclick="showSection('bookings', this)">
+        <i class="fa fa-calendar"></i> Bookings
+        {% if bookings %}<span class="n-badge">{{ bookings|length }}</span>{% endif %}
+      </button>
+
+      <div class="nav-label">Links</div>
+
+      <a href="{% url 'stations' %}" class="nav-btn">
+        <i class="fa fa-search"></i> Find Stations
+      </a>
+      <a href="{% url 'book' %}" class="nav-btn">
+        <i class="fa fa-plus-circle"></i> New Booking
+      </a>
+      <a href="{% url 'shop_home' %}" class="nav-btn">
+        <i class="fa fa-shopping-bag"></i> Shop
+      </a>
+      <a href="{% url 'cart' %}" class="nav-btn">
+        <i class="fa fa-shopping-cart"></i> Cart
+        <span class="cart-badge-count" id="navCartBadge">0</span>+
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="{% url 'profile' %}"><i class="fa fa-user"></i> My Profile</a>
+      <a href="{% url 'authentication:logout-user' %}" style="margin-top:4px;">
+        <i class="fa fa-sign-out"></i> Sign out
+      </a>
+    </div>
+
+  </aside>
+
+
+  <main class="db-main db-scroll">
+
+    <!-- topbar -->
+    <div class="db-topbar">
+      <div>
+        <div class="topbar-greeting">Welcome back </div>
+        <h1 class="topbar-title" id="section-title">{{ user.get_full_name|default:user.username }}</h1>
+        <div class="topbar-sub" id="section-sub">Your complete EV charging overview</div>
+      </div>
+      <div class="topbar-right">
+        <span class="ws-badge live" id="wsStatus">
+          <span class="pulse">●</span> Live
+        </span>
+        <a href="{% url 'book' %}" class="tb-btn primary">
+          <i class="fa fa-bolt"></i> Quick Book
+        </a>
+      </div>
+    </div>
+
+    <!--Overview-->
+    <div id="section-overview" class="db-section active">
+
+      <!-- stat cards -->
+      <div class="stats-row">
+        <div class="stat-card c1">
+          <div class="stat-icon i1"><i class="fa fa-map-marker"></i></div>
+          <div class="stat-value">{{ stations|length }}</div>
+          <div class="stat-label">Stations available</div>
+          <div class="stat-trend">Near you</div>
+        </div>
+        <div class="stat-card c2">
+          <div class="stat-icon i2"><i class="fa fa-bolt"></i></div>
+          <div class="stat-value">{{ sessions|length }}</div>
+          <div class="stat-label">Total sessions</div>
+          <div class="stat-trend">All time</div>
+        </div>
+        <div class="stat-card c3">
+          <div class="stat-icon i3"><i class="fa fa-calendar"></i></div>
+          <div class="stat-value">{{ bookings|length }}</div>
+          <div class="stat-label">Bookings made</div>
+          <div class="stat-trend">Total</div>
+        </div>
+        <div class="stat-card c4">
+          <div class="stat-icon i4"><i class="fa fa-money"></i></div>
+          <div class="stat-value">R{{ total_spent|default:"0" }}</div>
+          <div class="stat-label">Total spent</div>
+          <div class="stat-trend">All sessions</div>
+        </div>
+      </div>
+
+      <!-- quick actions -->
+      <div class="quick-grid">
+        <a href="{% url 'stations' %}" class="q-btn">
+          <div class="q-icon"><i class="fa fa-search"></i></div>
+          Find Station
+        </a>
+        <a href="{% url 'book' %}" class="q-btn">
+          <div class="q-icon"><i class="fa fa-calendar-plus-o"></i></div>
+          Book Now
+        </a>
+        <button class="q-btn" onclick="showSection('sessions', null)">
+          <div class="q-icon"><i class="fa fa-bolt"></i></div>
+          Sessions
+        </button>
+        <button class="q-btn" onclick="showSection('map', null)">
+          <div class="q-icon"><i class="fa fa-map"></i></div>
+          Live Map
+        </button>
+      </div>
+
+      <!-- chart + upcoming -->
+      <div class="two-col">
+        <div class="glass-card" style="margin:0;">
+          <div class="card-header">
+            <i class="fa fa-bar-chart"></i> Energy Analytics
+            <span class="header-right" style="font-size:11px;color:var(--vh-muted);">Last sessions</span>
+          </div>
+          <div class="card-body">
+            <canvas id="energyChart" height="180"></canvas>
+          </div>
+        </div>
+
+        <div class="glass-card" style="margin:0;">
+          <div class="card-header">
+            <i class="fa fa-clock-o"></i> Upcoming Bookings
+          </div>
+          <div class="card-body">
+            {% for booking in bookings|slice:":5" %}
+              <div class="upcoming-item">
+                <div class="upcoming-icon"><i class="fa fa-calendar"></i></div>
+                <div>
+                  <div class="upcoming-name">{{ booking.station.name }}</div>
+                  <div class="upcoming-meta">
+                    {{ booking.booking_date|default:"—" }}
+                    {% if booking.duration %}· {{ booking.duration }}{% endif %}
+                  </div>
+                </div>
+                <div style="margin-left:auto;">
+                  {% if booking.status|lower == 'confirmed' %}
+                    <span class="badge badge-success">Confirmed</span>
+                  {% elif booking.status|lower == 'pending' %}
+                    <span class="badge badge-warning">Pending</span>
+                  {% else %}
+                    <span class="badge badge-info">{{ booking.status }}</span>
+                  {% endif %}
+                </div>
               </div>
-            </div>
+            {% empty %}
+              <p style="color:var(--vh-muted);font-size:13px;text-align:center;padding:1rem 0;">
+                No upcoming bookings.
+                <br><a href="{% url 'book' %}" style="color:var(--vh-accent);">Book a session →</a>
+              </p>
+            {% endfor %}
           </div>
         </div>
       </div>
 
-      <!--Charging Sessions Table-->
-      <div class="row g-3 mb-3">
-        <div class="col-12">
-          <div class="glass-card">
-            <div class="card-header">Your Charging Sessions</div>
-            <div class="card-body">
-              <div class="table-responsive neon-table">
-                <table class="table table-striped table-hover table-bordered align-middle">
-                  <thead>
+      <!-- recent sessions preview -->
+      <div class="glass-card">
+        <div class="card-header">
+          <i class="fa fa-bolt"></i> Recent Sessions
+          <button class="tb-btn header-right" onclick="showSection('sessions',null)" style="font-size:11px;padding:.3rem .7rem;">
+            View all
+          </button>
+        </div>
+        <div class="card-body" style="padding:.5rem 0;">
+          <div class="neon-table">
+            <table class="table table-hover mb-0">
+              <thead>
+                <tr>
+                  <th>Station</th>
+                  <th>Start Time</th>
+                  <th>Energy</th>
+                  <th>Cost</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if sessions|length == 0 %}
+                  <tr><td colspan="5" class="text-center" style="color:var(--vh-muted);padding:1.5rem;">No sessions yet.</td></tr>
+                {% else %}
+                  {% for session in sessions|slice:":5" %}
                     <tr>
-                      <th>ID</th>
-                      <th>Station</th>
-                      <th>Start Time</th>
-                      <th>End Time</th>
-                      <th>Energy (kWh)</th>
-                      <th>Costs</th>
-                      <th>Status</th>
-                      <th>View</th>
+                      <td>{{ session.station.name }}</td>
+                      <td class="cell-mono">{{ session.start_time|date:"d M, H:i" }}</td>
+                      <td>{{ session.energy_consumed_kwh|default:'—' }} kWh</td>
+                      <td>R{{ session.costs|default:'—' }}</td>
+                      <td>
+                        {% if session.status == 'Pending' %}<span class="badge badge-warning">Pending</span>
+                        {% elif session.status == 'Confirmed' %}<span class="badge badge-success">Confirmed</span>
+                        {% elif session.status == 'Canceled' %}<span class="badge badge-danger">Canceled</span>
+                        {% elif session.status == 'Scheduled' %}<span class="badge badge-info">Scheduled</span>
+                        {% else %}{{ session.status }}{% endif %}
+                      </td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {% if sessions|length == 0 %}
-                      <tr><td colspan="8" class="text-center">No charging sessions found.</td></tr>
-                    {% else %}
-                      {% for session in sessions %}
-                        <tr>
-                          <td class="cell-mono">{{ session.id }}</td>
-                          <td>{{ session.station.name }}</td>
-                          <td class="cell-mono">{{ session.start_time }}</td>
-                          <td class="cell-mono">{{ session.end_time|default:'—' }}</td>
-                          <td>{{ session.energy_consumed_kwh|default:'—' }}</td>
-                          <td>R{{ session.costs|default:'—' }}</td>
-                          <td>
-                            {% if session.status == 'Pending' %}
-                              <span class="badge badge-warning">Pending</span>
-                            {% elif session.status == 'Confirmed' %}
-                              <span class="badge badge-success">Confirmed</span>
-                            {% elif session.status == 'Canceled' %}
-                              <span class="badge badge-danger">Canceled</span>
-                            {% elif session.status == 'Scheduled' %}
-                              <span class="badge badge-info">Scheduled</span>
-                            {% else %}
-                              {{ session.status }}
-                            {% endif %}
-                          </td>
-                          <td><a href="{% url 'view_session' session.id %}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-                        </tr>
-                      {% endfor %}
-                    {% endif %}
-                  </tbody>
-                </table>
+                  {% endfor %}
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!--LIVE MAP-->
+    <div id="section-map" class="db-section">
+      <div class="glass-card">
+        <div class="card-header">
+          <i class="fa fa-map"></i> Live Station Map
+          <span class="ws-badge live header-right" id="wsStatus2">
+            <span class="pulse">●</span> Live
+          </span>
+        </div>
+        <div class="card-body" style="padding:0;">
+          <div class="map-outer">
+            <div class="map-wrapper">
+              <div id="map"></div>
+              <div class="map-sidebar">
+                <h6><i class="fa fa-bolt"></i> VoltHub Stations</h6>
+                <div id="our-stations-list">
+                  <p style="color:var(--vh-muted);font-size:.82rem;">Loading...</p>
+                </div>
+                <h6 style="margin-top:1rem;"><i class="fa fa-external-link"></i> External (OCM)</h6>
+                <div id="ocm-stations-list">
+                  <p style="color:var(--vh-muted);font-size:.82rem;">Loading...</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!--Bookings Table-->
-      <div class="row g-3 mb-3">
-        <div class="col-12">
-          <div class="glass-card">
-            <div class="card-header">Your Bookings</div>
-            <div class="card-body">
-              <div class="table-responsive neon-table">
-                <table class="table table-striped table-hover table-bordered align-middle">
-                  <thead>
+    <!--Stations-->
+    <div id="section-stations" class="db-section">
+      <div class="glass-card">
+        <div class="card-header">
+          <i class="fa fa-map-marker"></i> Charging Stations
+          <a href="{% url 'stations' %}" class="tb-btn header-right" style="font-size:11px;padding:.3rem .7rem;">
+            View map →
+          </a>
+        </div>
+        <div class="card-body" style="padding:.5rem 0;">
+          <div class="neon-table">
+            <table class="table table-hover mb-0">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Location</th>
+                  <th>Capacity</th>
+                  <th>Slots</th>
+                  <th>Price/hr</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if stations|length == 0 %}
+                  <tr><td colspan="7" class="text-center" style="color:var(--vh-muted);padding:1.5rem;">No charging stations available.</td></tr>
+                {% else %}
+                  {% for station in stations %}
                     <tr>
-                      <th>ID</th>
-                      <th>Station</th>
-                      <th>Booking Date</th>
-                      <th>Status</th>
-                      <th>Date Booked</th>
-                      <th>Payment Method</th>
-                      <th>Duration</th>
-                      <th>View</th>
+                      <td class="cell-mono">{{ station.id }}</td>
+                      <td style="font-weight:500;">{{ station.name }}</td>
+                      <td class="cell-mono">{{ station.location|default:'—' }}</td>
+                      <td>{{ station.capicity }}</td>
+                      <td>{{ station.available_slots }}</td>
+                      <td>R{{ station.price_per_hour|default:'—' }}</td>
+                      <td>
+                        {% if station.availability %}
+                          <span class="badge badge-success">Available</span>
+                        {% else %}
+                          <span class="badge badge-danger">Unavailable</span>
+                        {% endif %}
+                      </td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {% if bookings|length == 0 %}
-                      <tr><td colspan="8" class="text-center">No bookings available.</td></tr>
-                    {% else %}
-                      {% for booking in bookings %}
-                        <tr>
-                          <td class="cell-mono">{{ booking.id }}</td>
-                          <td>{{ booking.station.name }}</td>
-                          <td class="cell-mono">{{ booking.booking_date }}</td>
-                          <td>
-                            {% if booking.status|lower == 'pending' %}
-                              <span class="badge badge-warning">Pending</span>
-                            {% elif booking.status|lower == 'confirmed' %}
-                              <span class="badge badge-success">Confirmed</span>
-                            {% elif booking.status|lower == 'cancelled' %}
-                              <span class="badge badge-danger">Cancelled</span>
-                            {% else %}
-                              {{ booking.status }}
-                            {% endif %}
-                          </td>
-                          <td class="cell-mono">{{ booking.created_at }}</td>
-                          <td class="cell-mono">{{ booking.payment_method }}</td>
-                          <td>{{ booking.duration|default:'—' }}</td>
-                          <td><a href="{% url 'view_booking' booking.id %}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-                        </tr>
-                      {% endfor %}
-                    {% endif %}
-                  </tbody>
-                </table>
-              </div>
-            </div>
+                  {% endfor %}
+                {% endif %}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
+    </div>
 
-    </section>
+    <!--Sessions-->
+    <div id="section-sessions" class="db-section">
+      <div class="glass-card">
+        <div class="card-header">
+          <i class="fa fa-bolt"></i> Your Charging Sessions
+          <span class="header-right" style="font-size:11px;color:var(--vh-muted);">{{ sessions|length }} total</span>
+        </div>
+        <div class="card-body" style="padding:.5rem 0;">
+          <div class="neon-table">
+            <table class="table table-hover mb-0">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Station</th>
+                  <th>Start Time</th>
+                  <th>End Time</th>
+                  <th>Energy (kWh)</th>
+                  <th>Cost</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if sessions|length == 0 %}
+                  <tr><td colspan="8" class="text-center" style="color:var(--vh-muted);padding:1.5rem;">No sessions yet.</td></tr>
+                {% else %}
+                  {% for session in sessions %}
+                    <tr>
+                      <td class="cell-mono">{{ session.id }}</td>
+                      <td>{{ session.station.name }}</td>
+                      <td class="cell-mono">{{ session.start_time }}</td>
+                      <td class="cell-mono">{{ session.end_time|default:'—' }}</td>
+                      <td>{{ session.energy_consumed_kwh|default:'—' }}</td>
+                      <td>R{{ session.costs|default:'—' }}</td>
+                      <td>
+                        {% if session.status == 'Pending' %}<span class="badge badge-warning">Pending</span>
+                        {% elif session.status == 'Confirmed' %}<span class="badge badge-success">Confirmed</span>
+                        {% elif session.status == 'Canceled' %}<span class="badge badge-danger">Canceled</span>
+                        {% elif session.status == 'Scheduled' %}<span class="badge badge-info">Scheduled</span>
+                        {% else %}{{ session.status }}{% endif %}
+                      </td>
+                      <td>
+                        <a href="{% url 'view_session' session.id %}">
+                          <i class="fa fa-eye"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Bookings-->
+    <div id="section-bookings" class="db-section">
+      <div class="glass-card">
+        <div class="card-header">
+          <i class="fa fa-calendar"></i> Your Bookings
+          <a href="{% url 'book' %}" class="tb-btn header-right" style="font-size:11px;padding:.3rem .7rem;">
+            + New Booking
+          </a>
+        </div>
+        <div class="card-body" style="padding:.5rem 0;">
+          <div class="neon-table">
+            <table class="table table-hover mb-0">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Station</th>
+                  <th>Booking Date</th>
+                  <th>Status</th>
+                  <th>Date Booked</th>
+                  <th>Payment</th>
+                  <th>Duration</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if bookings|length == 0 %}
+                  <tr><td colspan="8" class="text-center" style="color:var(--vh-muted);padding:1.5rem;">No bookings yet.</td></tr>
+                {% else %}
+                  {% for booking in bookings %}
+                    <tr>
+                      <td class="cell-mono">{{ booking.id }}</td>
+                      <td>{{ booking.station.name }}</td>
+                      <td class="cell-mono">{{ booking.booking_date }}</td>
+                      <td>
+                        {% if booking.status|lower == 'pending' %}<span class="badge badge-warning">Pending</span>
+                        {% elif booking.status|lower == 'confirmed' %}<span class="badge badge-success">Confirmed</span>
+                        {% elif booking.status|lower == 'cancelled' %}<span class="badge badge-danger">Cancelled</span>
+                        {% else %}{{ booking.status }}{% endif %}
+                      </td>
+                      <td class="cell-mono">{{ booking.created_at|date:"d M Y" }}</td>
+                      <td class="cell-mono">{{ booking.payment_method|default:"—" }}</td>
+                      <td>{{ booking.duration|default:'—' }}</td>
+                      <td>
+                        <a href="{% url 'view_booking' booking.id %}">
+                          <i class="fa fa-eye"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main>
 </div>
 
+<!-- toast container -->
+<div class="toast-container" id="toast-container"></div>
+</body>
+
+<!-- scripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-(function() {
-    fetch('/cart/count/', {
-        method: 'GET',
-        headers: { 'X-Requested-With': 'XMLHttpRequest' }
-    })
-    .then(function(response) { return response.json(); })
-    .then(function(data) {
-        var badge = document.getElementById('navCartBadge');
-        if (!badge) return;
-        var count = data.count || 0;
-        badge.textContent = count;
-        if (count > 0) {
-            badge.classList.add('has-items');
-        } else {
-            badge.classList.remove('has-items');
+  // energy chart
+  const energyLabels = [
+    {% for session in sessions %}
+      "{{ session.station.name|truncatechars:10 }}"{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ];
+  const energyData = [
+    {% for session in sessions %}
+      {{ session.energy_consumed_kwh|default:0 }}{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ];
+
+  const ctx = document.getElementById('energyChart');
+  if (ctx) {
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: energyLabels.length ? energyLabels : ['No data'],
+        datasets: [{
+          label: 'Energy (kWh)',
+          data: energyData.length ? energyData : [0],
+          backgroundColor: energyData.map(v =>
+            v === Math.max(...energyData)
+              ? 'rgba(0,229,255,0.7)'
+              : 'rgba(122,124,255,0.45)'
+          ),
+          borderColor: energyData.map(v =>
+            v === Math.max(...energyData)
+              ? 'rgba(0,229,255,1)'
+              : 'rgba(122,124,255,0.8)'
+          ),
+          borderWidth: 1,
+          borderRadius: 6,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: c => ` ${c.parsed.y} kWh` } }
+        },
+        scales: {
+          x: { ticks: { color: '#c5cdfa', font: { size: 10 } }, grid: { color: 'rgba(122,124,255,0.08)' } },
+          y: { beginAtZero: true, ticks: { color: '#c5cdfa', font: { size: 10 } }, grid: { color: 'rgba(122,124,255,0.08)' } }
         }
-    })
-    .catch(function() {});
-})();
+      }
+    });
+  }
+
+  //section switching
+  const sectionMeta = {
+    overview: ['Your complete EV charging overview',     'Dashboard Overview'],
+    map:      ['Find and navigate to charging stations', 'Live Station Map'],
+    stations: ['All available charging stations',        'Charging Stations'],
+    sessions: ['Your full charging session history',     'Charging Sessions'],
+    bookings: ['View and manage all your bookings',      'Your Bookings'],
+  };
+
+  function showSection(name, btn) {
+    document.querySelectorAll('.db-section').forEach(el => el.classList.remove('active'));
+    const t = document.getElementById('section-' + name);
+    if (t) t.classList.add('active');
+
+    document.getElementById('section-sub').textContent   = sectionMeta[name][0];
+    document.getElementById('section-title').textContent = sectionMeta[name][1];
+
+    document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+  }
+
+  //cart badge
+  (function() {
+    fetch('/cart/count/', { method: 'GET', headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+      .then(r => r.json())
+      .then(data => {
+        const badge = document.getElementById('navCartBadge');
+        if (!badge) return;
+        const count = data.count || 0;
+        badge.textContent = count;
+        if (count > 0) badge.classList.add('has-items');
+        else badge.classList.remove('has-items');
+      }).catch(() => {});
+  })();
+
+  //toast helper
+  function showToast(msg, type = 'info') {
+    const c = document.getElementById('toast-container');
+    const t = document.createElement('div');
+    t.className = 'toast-item';
+    t.innerHTML = msg;
+    c.appendChild(t);
+    setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 300); }, 4000);
+  }
+
+  //Google Maps
+  function initMap() {
+    const mapEl = document.getElementById('map');
+    if (!mapEl) return;
+
+    const map = new google.maps.Map(mapEl, {
+      zoom: 12,
+      center: { lat: -26.341069, lng: 28.132964 },
+      mapTypeControl: false,
+      streetViewControl: false,
+      fullscreenControl: true,
+      styles: [
+        { elementType: 'geometry', stylers: [{ color: '#0d0d22' }] },
+        { elementType: 'labels.text.stroke', stylers: [{ color: '#050512' }] },
+        { elementType: 'labels.text.fill', stylers: [{ color: '#c5cdfa' }] },
+        { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#1a1a3e' }] },
+        { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#050520' }] },
+        { featureType: 'poi', elementType: 'geometry', stylers: [{ color: '#161632' }] },
+        { elementType: 'labels.icon', stylers: [{ visibility: 'off' }] }
+      ]
+    });
+
+    const ocmMarkers = [];
+    const ourMarkers = {};
+    let userPosition = null;
+
+    const directionsService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer({ suppressMarkers: true });
+    directionsRenderer.setMap(map);
+
+    window.getDirectionsToStation = function(lat, lng) {
+      const origin = userPosition || map.getCenter();
+      directionsService.route(
+        { origin, destination: { lat, lng }, travelMode: google.maps.TravelMode.DRIVING },
+        (response, status) => { if (status === 'OK') directionsRenderer.setDirections(response); }
+      );
+    };
+
+    function getOurIcon(station) {
+      const color = station.available_slots > 2 ? '#45ffbc'
+                  : station.available_slots > 0 ? '#ffc107' : '#ff6b6b';
+      return { path: google.maps.SymbolPath.CIRCLE, scale: 11, fillColor: color, fillOpacity: 1, strokeColor: '#fff', strokeWeight: 2 };
+    }
+
+    function getOcmIcon(status) {
+      const urls = { online: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png', partial: 'https://maps.google.com/mapfiles/ms/icons/yellow-dot.png', offline: 'https://maps.google.com/mapfiles/ms/icons/red-dot.png' };
+      return { url: urls[status] || urls.offline };
+    }
+
+    function buildOurInfo(s) {
+      return `<div style="min-width:200px;background:#0d0d1e;padding:.85rem;border-radius:10px;border:1px solid rgba(122,124,255,0.3)">
+        <h5 style="color:#00e5ff;margin:0 0 .3rem;">${s.name}</h5>
+        <p style="color:#c5cdfa;font-size:.82rem;margin:.2rem 0">${s.address || ''}</p>
+        <p style="color:#fff;font-size:.82rem;margin:.2rem 0">${s.available_slots}/${s.total_slots} slots · ${s.price_per_hour ? 'R'+s.price_per_hour+'/hr' : 'N/A'}</p>
+        <button onclick="getDirectionsToStation(${s.lat},${s.lng})" style="width:100%;margin-top:.5rem;padding:.4rem;background:rgba(0,229,255,.12);border:1px solid rgba(0,229,255,.3);color:#00e5ff;border-radius:8px;cursor:pointer;">Get Directions</button>
+        ${s.bookable ? `<a href="/book/?station_id=${s.id}" style="display:block;margin-top:.4rem;padding:.4rem;background:linear-gradient(90deg,#7a7cff,#00e5ff);color:#000;border-radius:8px;text-align:center;font-weight:700;text-decoration:none;">Book Now</a>` : ''}
+      </div>`;
+    }
+
+    function buildOcmInfo(s) {
+      return `<div style="min-width:200px;background:#0d0d1e;padding:.85rem;border-radius:10px;border:1px solid rgba(122,124,255,0.3)">
+        <h5 style="color:#fff;margin:0 0 .3rem;">${s.name}</h5>
+        <p style="color:#c5cdfa;font-size:.82rem;margin:.2rem 0">${s.address || ''}</p>
+        <p style="color:#c5cdfa;font-size:.78rem;margin:.2rem 0">${s.connector_types ? s.connector_types.join(', ') : ''} · ${s.num_points || '?'} points</p>
+        <button onclick="getDirectionsToStation(${s.lat},${s.lng})" style="width:100%;margin-top:.5rem;padding:.4rem;background:rgba(0,229,255,.12);border:1px solid rgba(0,229,255,.3);color:#00e5ff;border-radius:8px;cursor:pointer;">Get Directions</button>
+      </div>`;
+    }
+
+    function placeOurMarker(s) {
+      if (ourMarkers[s.id]) ourMarkers[s.id].marker.setMap(null);
+      const marker = new google.maps.Marker({ position: { lat: s.lat, lng: s.lng }, map, title: s.name, icon: getOurIcon(s), zIndex: 10 });
+      const iw = new google.maps.InfoWindow({ content: buildOurInfo(s) });
+      marker.addListener('click', () => iw.open(map, marker));
+      ourMarkers[s.id] = { marker, iw, data: s };
+    }
+
+    function placeOcmMarkers(stations) {
+      ocmMarkers.forEach(m => m.setMap(null)); ocmMarkers.length = 0;
+      stations.forEach(s => {
+        if (!s.lat || !s.lng) return;
+        const marker = new google.maps.Marker({ position: { lat: s.lat, lng: s.lng }, map, title: s.name, icon: getOcmIcon(s.status), zIndex: 1 });
+        const iw = new google.maps.InfoWindow({ content: buildOcmInfo(s) });
+        marker.addListener('click', () => iw.open(map, marker));
+        ocmMarkers.push(marker);
+      });
+    }
+
+    function updateOurSidebar(stations) {
+      const el = document.getElementById('our-stations-list');
+      if (!el) return;
+      if (!stations || !stations.length) { el.innerHTML = '<p style="color:var(--vh-muted);font-size:.8rem">No VoltHub stations nearby.</p>'; return; }
+      el.innerHTML = stations.map(s => {
+        const c = s.available_slots > 2 ? '#45ffbc' : s.available_slots > 0 ? '#ffc107' : '#ff6b6b';
+        return `<div onclick="focusOurStation(${s.id})" class="station-list-item">
+          <div class="s-item-name"><span style="width:8px;height:8px;border-radius:50%;background:${c};display:inline-block;margin-right:5px;"></span>${s.name}</div>
+          <div class="s-item-meta">${s.address || ''} · ${s.available_slots}/${s.total_slots} slots</div>
+        </div>`;
+      }).join('');
+    }
+
+    function updateOcmSidebar(stations) {
+      const el = document.getElementById('ocm-stations-list');
+      if (!el) return;
+      if (!stations || !stations.length) { el.innerHTML = '<p style="color:var(--vh-muted);font-size:.8rem">No external stations found.</p>'; return; }
+      el.innerHTML = stations.slice(0, 15).map(s => {
+        const c = s.status === 'online' ? '#45ffbc' : s.status === 'partial' ? '#ffc107' : '#ff6b6b';
+        return `<div class="station-list-item">
+          <div class="s-item-name"><span style="width:8px;height:8px;border-radius:50%;background:${c};display:inline-block;margin-right:5px;"></span>${s.name}</div>
+          <div class="s-item-meta">${s.address || ''}</div>
+        </div>`;
+      }).join('');
+    }
+
+    window.focusOurStation = function(id) {
+      if (ourMarkers[id]) {
+        const { marker, iw } = ourMarkers[id];
+        map.panTo(marker.getPosition()); map.setZoom(15);
+        iw.open(map, marker);
+      }
+    };
+
+    let wsConnected = false;
+
+    function connectWS() {
+      const proto = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const ws = new WebSocket(`${proto}//${window.location.host}/ws/stations/`);
+
+      ws.onopen = () => {
+        wsConnected = true;
+        ['wsStatus', 'wsStatus2'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) { el.innerHTML = '<span class="pulse">●</span> Live'; el.className = 'ws-badge live' + (id === 'wsStatus' ? '' : ' header-right'); }
+        });
+      };
+      ws.onmessage = (e) => {
+        const msg = JSON.parse(e.data);
+        if (msg.type === 'snapshot') { msg.stations.forEach(placeOurMarker); updateOurSidebar(msg.stations); }
+        else if (msg.type === 'station_update') { placeOurMarker(msg.station); }
+      };
+      ws.onclose = () => {
+        wsConnected = false;
+        ['wsStatus','wsStatus2'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) { el.innerHTML = '● Offline'; el.className = 'ws-badge offline' + (id === 'wsStatus' ? '' : ' header-right'); }
+        });
+        setTimeout(connectWS, 5000);
+      };
+      ws.onerror = () => ws.close();
+    }
+
+    connectWS();
+
+    function fetchStations(center) {
+      const lat = typeof center.lat === 'function' ? center.lat() : center.lat;
+      const lng = typeof center.lng === 'function' ? center.lng() : center.lng;
+      fetch(`/api/stations/nearby/?lat=${lat}&lng=${lng}`)
+        .then(r => r.json())
+        .then(data => {
+          placeOcmMarkers(data.ocm_stations || []);
+          updateOcmSidebar(data.ocm_stations || []);
+          if (!wsConnected && data.our_stations) {
+            data.our_stations.forEach(placeOurMarker);
+            updateOurSidebar(data.our_stations);
+          }
+        }).catch(console.error);
+    }
+
+    let mapMoveTimer;
+    map.addListener('idle', () => { clearTimeout(mapMoveTimer); mapMoveTimer = setTimeout(() => fetchStations(map.getCenter()), 800); });
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(pos => {
+        userPosition = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        new google.maps.Marker({ position: userPosition, map, title: 'You', icon: { url: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png' }, animation: google.maps.Animation.DROP, zIndex: 20 });
+        map.setCenter(userPosition); map.setZoom(13);
+        fetchStations(userPosition);
+      }, () => fetchStations(map.getCenter()), { enableHighAccuracy: true, timeout: 8000 });
+    } else { fetchStations(map.getCenter()); }
+  }
+
+  (function() {
+    const s = document.createElement('script');
+    s.src = `https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_KEY }}&libraries=places&callback=initMap`;
+    s.async = true; s.defer = true;
+    document.head.appendChild(s);
+  })();
 </script>
 
-</body>
 {% include 'VoltHub/footer.html' %}
 {% endblock %}
