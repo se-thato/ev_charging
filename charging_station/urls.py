@@ -15,7 +15,8 @@ from .views import (
     UserSubscriptionViewSet,
     ChargingStationAnaliticsViewSet,
     PostViewSet,
-    StationOwnerDashboardView
+    StationOwnerDashboardView,
+     FavouriteStationViewSet, 
 )
 
 urlpatterns = [
@@ -29,6 +30,28 @@ urlpatterns = [
             {"get": "retrieve", "put": "update", "patch": "partial_update", "delete": "destroy"}
         ),
         name="stations_list_details",
+    ),
+
+    #favourite stations
+    path(
+        "favourites/",
+        FavouriteStationViewSet.as_view({"get": "list", "post": "create"}),
+        name="favourites",
+    ),
+    path(
+        "favourites/<int:pk>/",
+        FavouriteStationViewSet.as_view({"get": "retrieve", "delete": "destroy"}),
+        name="favourites_details",
+    ),
+    path(
+        "favourites/toggle/",
+        FavouriteStationViewSet.as_view({"post": "toggle"}),
+        name="favourites_toggle",
+    ),
+    path(
+        "favourites/check/<int:station_id>/",
+        FavouriteStationViewSet.as_view({"get": "check"}),
+        name="favourites_check",
     ),
 
     # charging sessions

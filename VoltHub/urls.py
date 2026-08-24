@@ -52,5 +52,10 @@ urlpatterns = [
     # comment reactions
     path('comments/<int:comment_id>/upvote/', views.comment_upvote, name='comment_upvote'),
     path('comments/<int:comment_id>/downvote/', views.comment_downvote, name='comment_downvote'),
+
+    path('notifications/<int:pk>/read/', views.mark_notification_read, name='mark_notification_read'),
+    path('notifications/mark-all-read/', views.mark_all_notifications_read, name='mark_all_notifications_read'),
+    path('vehicle/update/', views.update_vehicle, name='update_vehicle'),
+    path('report-issue/', views.report_issue, name='report_issue'),
     
     ]

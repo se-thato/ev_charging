@@ -17,9 +17,6 @@
     --vh-glow: rgba(0,229,255,0.5);
   }
 
-  /* ── hide top navbar on dashboard ── */
-  header, nav.navbar, .neon-navbar { display: none !important; }
-
   html, body {
     margin: 0;
     background: var(--vh-bg);
@@ -27,7 +24,6 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
-  /* ── animated background blobs ── */
   body::before, body::after {
     content: "";
     position: fixed;
@@ -49,9 +45,6 @@
   }
   @keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
 
-  /* ════════════════════════════════
-     LAYOUT
-  ════════════════════════════════ */
   .db-layout {
     display: flex;
     min-height: 100vh;
@@ -59,7 +52,6 @@
     z-index: 1;
   }
 
-  /* scrollable helper */
   .db-scroll {
     overflow-y: auto;
     height: 100vh;
@@ -70,7 +62,8 @@
   .db-scroll::-webkit-scrollbar-thumb { background: rgba(122,124,255,0.2); border-radius: 4px; }
 
   /* ════════════════════════════════
-     SIDEBAR
+     SIDEBAR (dashboard-local section switcher — separate from the
+     site-wide top navbar in base.html)
   ════════════════════════════════ */
   .db-sidebar {
     width: 240px;
@@ -85,8 +78,6 @@
     z-index: 100;
     backdrop-filter: blur(20px);
   }
-
-  /* animated right edge */
   .db-sidebar::after {
     content: "";
     position: absolute;
@@ -95,7 +86,6 @@
     background: linear-gradient(180deg, transparent, var(--vh-accent) 40%, var(--vh-primary) 70%, transparent);
     opacity: .35;
   }
-
   .sidebar-brand {
     padding: 1.25rem 1.1rem .9rem;
     font-size: 1.15rem;
@@ -108,52 +98,27 @@
     border-bottom: 1px solid var(--vh-border);
     flex-shrink: 0;
   }
-
-  .sidebar-user {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: .85rem 1.1rem;
-    border-bottom: 1px solid var(--vh-border);
-    flex-shrink: 0;
-  }
-  .s-avatar {
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--vh-primary), var(--vh-accent));
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px; font-weight: 700; color: #fff;
-    flex-shrink: 0; overflow: hidden;
-    box-shadow: 0 0 14px rgba(0,229,255,0.25);
-  }
-  .s-avatar img { width: 100%; height: 100%; object-fit: cover; }
-  .s-name { font-size: 13px; font-weight: 600; color: var(--vh-text-strong); }
-  .s-role { font-size: 11px; color: var(--vh-muted); margin-top: 1px; }
-
   .sidebar-nav {
     flex: 1;
     padding: .5rem .65rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     overflow-y: auto;
   }
-
   .nav-label {
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 1.2px;
     color: var(--vh-muted);
-    padding: .5rem .5rem .2rem;
+    padding: .8rem .5rem .2rem;
     opacity: .7;
   }
-
   .nav-btn {
     display: flex;
     align-items: center;
     gap: 10px;
     width: 100%;
-    padding: .6rem .75rem;
+    padding: .55rem .75rem;
     border-radius: 9px;
     border: 1px solid transparent;
     background: none;
@@ -186,20 +151,6 @@
     border-radius: 20px;
     border: 1px solid rgba(0,229,255,0.2);
   }
-
-  /* cart badge */
-  .cart-badge-count {
-    margin-left: auto;
-    background: var(--vh-accent);
-    color: #000;
-    font-size: 10px; font-weight: 700;
-    padding: 1px 7px;
-    border-radius: 20px;
-    opacity: 0; transform: scale(0);
-    transition: all .2s;
-  }
-  .cart-badge-count.has-items { opacity: 1; transform: scale(1); }
-
   .sidebar-bottom {
     padding: .75rem .65rem;
     border-top: 1px solid var(--vh-border);
@@ -211,14 +162,11 @@
     color: var(--vh-muted); font-size: 13px;
     text-decoration: none; transition: all .15s;
   }
-  .sidebar-bottom a:hover { color: #ff6b6b; background: rgba(220,53,69,0.08); }
+  .sidebar-bottom a:hover { color: var(--vh-accent); background: rgba(122,124,255,0.08); }
 
-  /* ════════════════════════════════
-     MAIN
-  ════════════════════════════════ */
   .db-main { flex: 1; min-width: 0; padding: 1.5rem 1.5rem 3rem; }
+  .db-main.db-scroll { height: 100vh; overflow-y: auto; }
 
-  /* topbar */
   .db-topbar {
     display: flex;
     align-items: flex-start;
@@ -249,6 +197,7 @@
     font-size: 13px; font-weight: 500;
     text-decoration: none;
     transition: all .15s;
+    cursor: pointer;
   }
   .tb-btn:hover { border-color: var(--vh-accent); color: var(--vh-accent); }
   .tb-btn.primary {
@@ -257,7 +206,6 @@
   }
   .tb-btn.primary:hover { opacity: .9; color: #000; }
 
-  /* ws status badge */
   .ws-badge {
     display: inline-flex; align-items: center; gap: 5px;
     font-size: 11px; font-weight: 600;
@@ -266,7 +214,6 @@
   .ws-badge.live   { background: rgba(69,255,188,0.12); color: var(--vh-accent-2); border: 1px solid rgba(69,255,188,0.3); }
   .ws-badge.offline { background: rgba(220,53,69,0.12); color: #ff6b6b; border: 1px solid rgba(220,53,69,0.3); }
 
-  /* ── stat cards ── */
   .stats-row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -310,7 +257,6 @@
   .stat-label { font-size: 11px; color: var(--vh-muted); text-transform: uppercase; letter-spacing: .5px; }
   .stat-trend { font-size: 11px; color: var(--vh-accent-2); margin-top: 4px; }
 
-  /* ── quick actions ── */
   .quick-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -352,7 +298,6 @@
   }
   .q-btn:hover .q-icon { background: rgba(0,229,255,0.15); }
 
-  /* ── glass card ── */
   .glass-card {
     border: 1px solid var(--vh-border);
     background: linear-gradient(180deg, rgba(13,13,30,0.9), rgba(5,5,18,0.75));
@@ -374,7 +319,6 @@
   .card-header .header-right { margin-left: auto; }
   .card-body { padding: 1.1rem 1.25rem; }
 
-  /* ── two-col layout ── */
   .two-col {
     display: grid;
     grid-template-columns: 1fr 340px;
@@ -383,7 +327,6 @@
   }
   @media (max-width: 1100px) { .two-col { grid-template-columns: 1fr; } }
 
-  /* ── map ── */
   .map-outer {
     border-radius: 14px; overflow: hidden;
     border: 1px solid var(--vh-border);
@@ -422,7 +365,6 @@
   .s-item-name { font-weight: 600; color: var(--vh-text-strong); font-size: .85rem; }
   .s-item-meta { color: var(--vh-muted); font-size: .75rem; margin-top: 2px; }
 
-  /* ── charts ── */
   .chart-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -431,7 +373,6 @@
   @media (max-width: 900px) { .chart-grid { grid-template-columns: 1fr; } }
   .chart-inner { padding: .5rem 0; }
 
-  /* upcoming list */
   .upcoming-item {
     display: flex; align-items: center; gap: 10px;
     padding: .65rem 0;
@@ -447,7 +388,6 @@
   .upcoming-name { font-size: 13px; font-weight: 600; color: var(--vh-text-strong); }
   .upcoming-meta { font-size: 11px; color: var(--vh-muted); }
 
-  /* ── neon tables ── */
   .neon-table { overflow-x: auto; }
   .neon-table .table { color: var(--vh-text-strong) !important; margin: 0; font-size: .88rem; }
   .neon-table .table thead { background: linear-gradient(90deg, rgba(122,124,255,0.35), rgba(0,229,255,0.2)) !important; }
@@ -467,17 +407,14 @@
   .neon-table a:hover { color: #fff !important; }
   .cell-mono { color: var(--vh-muted) !important; font-family: monospace; font-size: .82rem; }
 
-  /* ── badges ── */
   .badge-success { background: rgba(69,255,188,0.12) !important; color: #45ffbc !important; border: 1px solid rgba(69,255,188,0.3); font-size: 11px; }
   .badge-danger  { background: rgba(255,107,107,0.12) !important; color: #ff6b6b !important; border: 1px solid rgba(255,107,107,0.3); font-size: 11px; }
   .badge-warning { background: rgba(255,193,7,0.12) !important;   color: #ffc107 !important;  border: 1px solid rgba(255,193,7,0.3);  font-size: 11px; }
   .badge-info    { background: rgba(23,162,184,0.12) !important;  color: #17a2b8 !important;  border: 1px solid rgba(23,162,184,0.3); font-size: 11px; }
 
-  /* ── section toggle ── */
   .db-section { display: none; }
   .db-section.active { display: block; }
 
-  /* ── toast ── */
   .toast-container { position: fixed; top: 20px; right: 20px; z-index: 9999; }
   .toast-item {
     background: rgba(13,13,30,0.95);
@@ -494,13 +431,66 @@
   }
   @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
-  /* ── pulse ── */
   @keyframes pulseGlow { 0%,100%{opacity:.4} 50%{opacity:1} }
   .pulse { animation: pulseGlow 2s ease-in-out infinite; }
 
-  /* mobile */
+  /* ── new: favourite heart button ── */
+  .fav-btn {
+    background: none; border: none; cursor: pointer;
+    font-size: 16px; color: var(--vh-muted);
+    transition: all .15s; padding: 2px 4px;
+  }
+  .fav-btn.is-fav { color: #ff6b8b; }
+  .fav-btn:hover { transform: scale(1.15); }
+
+  /* ── new: notification item ── */
+  .notif-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: .7rem 0; border-bottom: 1px solid rgba(122,124,255,0.1);
+  }
+  .notif-item:last-child { border-bottom: none; }
+  .notif-item.unread { background: rgba(0,229,255,0.03); }
+  .notif-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--vh-accent); margin-top: 6px; flex-shrink: 0; }
+  .notif-dot.read { background: transparent; }
+  .notif-text { font-size: 13px; color: var(--vh-text); }
+  .notif-time { font-size: 11px; color: var(--vh-muted); margin-top: 2px; }
+
+  /* ── new: simple inline form styling (vehicle / support) ── */
+  .db-form label { font-size: 12px; color: var(--vh-muted); margin-bottom: 4px; display: block; }
+  .db-form .form-control, .db-form select, .db-form textarea {
+    width: 100%; background: rgba(255,255,255,0.04);
+    border: 1px solid var(--vh-border); border-radius: 8px;
+    color: var(--vh-text); padding: .5rem .7rem; margin-bottom: .9rem;
+    font-size: 13px;
+  }
+  .db-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 700px) { .db-form .form-row { grid-template-columns: 1fr; } }
+
+  /* ── mobile sidebar drawer ── */
+  .db-sidebar-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 199;
+  }
+  .db-sidebar-overlay.open { display: block; }
+  .mobile-menu-btn { display: none; }
+
   @media (max-width: 768px) {
-    .db-sidebar { display: none; }
+    .db-sidebar {
+      position: fixed; top: 0; left: 0;
+      height: 100vh; z-index: 200;
+      transform: translateX(-100%);
+      transition: transform .25s ease;
+    }
+    .db-sidebar.open { transform: translateX(0); }
+    .mobile-menu-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      border-radius: 9px; border: 1px solid var(--vh-border);
+      background: rgba(255,255,255,0.05); color: var(--vh-text);
+      cursor: pointer; font-size: 15px;
+    }
     .db-main { padding: 1rem; }
     .stats-row { grid-template-columns: 1fr 1fr; }
     .quick-grid { grid-template-columns: repeat(2, 1fr); }
@@ -513,76 +503,45 @@
 {% block content %}
 <title>Dashboard — VoltHub</title>
 
-<body>
 <div class="db-layout">
 
-  <!--SIDEBAR-->
-  <aside class="db-sidebar db-scroll">
-
+  <!-- ═══════ DASHBOARD SIDEBAR ═══════ -->
+  <aside class="db-sidebar">
     <div class="sidebar-brand">VoltHub</div>
-
-    <div class="sidebar-user">
-      <div class="s-avatar">
-        {% if user.charging_profile and user.charging_profile.profile_picture %}
-          <img src="{{ user.charging_profile.profile_picture.url }}" alt="">
-        {% else %}
-          {{ user.username|first|upper }}
-        {% endif %}
-      </div>
-      <div>
-        <div class="s-name">{{ user.get_full_name|default:user.username }}</div>
-        <div class="s-role">EV Driver</div>
-      </div>
-    </div>
-
     <nav class="sidebar-nav">
-      <div class="nav-label">Main</div>
+      <div class="nav-label">Overview</div>
+      <button class="nav-btn active" onclick="showSection('overview', this)"><i class="fa fa-th-large"></i> Dashboard</button>
+      <a href="{% url 'stations' %}" class="nav-btn"><i class="fa fa-search"></i> Find Stations</a>
+      <button class="nav-btn" onclick="showSection('map', this)"><i class="fa fa-map"></i> Live Map</button>
 
-      <button class="nav-btn active" onclick="showSection('overview', this)">
-        <i class="fa fa-home"></i> Overview
+      <div class="nav-label">My Charging</div>
+      <button class="nav-btn" onclick="showSection('favourites', this)"><i class="fa fa-heart"></i> Favourites
+        {% if favourites|length > 0 %}<span class="n-badge">{{ favourites|length }}</span>{% endif %}
       </button>
-      <button class="nav-btn" onclick="showSection('map', this)">
-        <i class="fa fa-map-marker"></i> Live Map
-      </button>
-      <button class="nav-btn" onclick="showSection('stations', this)">
-        <i class="fa fa-bolt"></i> Stations
-        {% if stations %}<span class="n-badge">{{ stations|length }}</span>{% endif %}
-      </button>
-      <button class="nav-btn" onclick="showSection('sessions', this)">
-        <i class="fa fa-history"></i> Sessions
-        {% if sessions %}<span class="n-badge">{{ sessions|length }}</span>{% endif %}
-      </button>
-      <button class="nav-btn" onclick="showSection('bookings', this)">
-        <i class="fa fa-calendar"></i> Bookings
-        {% if bookings %}<span class="n-badge">{{ bookings|length }}</span>{% endif %}
+      <button class="nav-btn" onclick="showSection('current-session', this)"><i class="fa fa-bolt"></i> Current Session</button>
+      <button class="nav-btn" onclick="showSection('sessions', this)"><i class="fa fa-history"></i> My Sessions</button>
+      <button class="nav-btn" onclick="showSection('bookings', this)"><i class="fa fa-calendar"></i> My Bookings</button>
+
+      <div class="nav-label">Account</div>
+      <button class="nav-btn" onclick="showSection('payments', this)"><i class="fa fa-credit-card"></i> Payments</button>
+      <button class="nav-btn" onclick="showSection('analytics', this)"><i class="fa fa-bar-chart"></i> Analytics</button>
+      <button class="nav-btn" onclick="showSection('reviews', this)"><i class="fa fa-star"></i> My Reviews</button>
+      <button class="nav-btn" onclick="showSection('vehicle', this)"><i class="fa fa-car"></i> My Vehicle</button>
+      <button class="nav-btn" onclick="showSection('notifications', this)"><i class="fa fa-bell"></i> Notifications
+        {% if unread_notifications_count > 0 %}<span class="n-badge">{{ unread_notifications_count }}</span>{% endif %}
       </button>
 
-      <div class="nav-label">Links</div>
-
-      <a href="{% url 'stations' %}" class="nav-btn">
-        <i class="fa fa-search"></i> Find Stations
-      </a>
-      <a href="{% url 'book' %}" class="nav-btn">
-        <i class="fa fa-plus-circle"></i> New Booking
-      </a>
-      <a href="{% url 'shop_home' %}" class="nav-btn">
-        <i class="fa fa-shopping-bag"></i> Shop
-      </a>
-      <a href="{% url 'cart' %}" class="nav-btn">
-        <i class="fa fa-shopping-cart"></i> Cart
-        <span class="cart-badge-count" id="navCartBadge">0</span>+
-      </a>
+      <div class="nav-label">More</div>
+      <a href="{% url 'profile' %}" class="nav-btn"><i class="fa fa-user"></i> Profile Settings</a>
+      <button class="nav-btn" onclick="showSection('support', this)"><i class="fa fa-life-ring"></i> Help &amp; Support</a>
+      <!-- Point this at your shop app's url name once confirmed -->
+      <a href="#" class="nav-btn"><i class="fa fa-shopping-bag"></i> VoltHub Shop</a>
     </nav>
-
     <div class="sidebar-bottom">
-      <a href="{% url 'profile' %}"><i class="fa fa-user"></i> My Profile</a>
-      <a href="{% url 'authentication:logout-user' %}" style="margin-top:4px;">
-        <i class="fa fa-sign-out"></i> Sign out
-      </a>
+      <a href="{% url 'contact_us' %}"><i class="fa fa-envelope"></i> Contact Us</a>
     </div>
-
   </aside>
-
+  <div class="db-sidebar-overlay" id="sidebarOverlay" onclick="toggleDashboardSidebar()"></div>
 
   <main class="db-main db-scroll">
 
@@ -594,6 +553,7 @@
         <div class="topbar-sub" id="section-sub">Your complete EV charging overview</div>
       </div>
       <div class="topbar-right">
+        <button class="mobile-menu-btn" onclick="toggleDashboardSidebar()"><i class="fa fa-bars"></i></button>
         <span class="ws-badge live" id="wsStatus">
           <span class="pulse">●</span> Live
         </span>
@@ -606,7 +566,6 @@
     <!--Overview-->
     <div id="section-overview" class="db-section active">
 
-      <!-- stat cards -->
       <div class="stats-row">
         <div class="stat-card c1">
           <div class="stat-icon i1"><i class="fa fa-map-marker"></i></div>
@@ -634,7 +593,6 @@
         </div>
       </div>
 
-      <!-- quick actions -->
       <div class="quick-grid">
         <a href="{% url 'stations' %}" class="q-btn">
           <div class="q-icon"><i class="fa fa-search"></i></div>
@@ -654,7 +612,6 @@
         </button>
       </div>
 
-      <!-- chart + upcoming -->
       <div class="two-col">
         <div class="glass-card" style="margin:0;">
           <div class="card-header">
@@ -701,7 +658,6 @@
         </div>
       </div>
 
-      <!-- recent sessions preview -->
       <div class="glass-card">
         <div class="card-header">
           <i class="fa fa-bolt"></i> Recent Sessions
@@ -943,17 +899,354 @@
       </div>
     </div>
 
+    <!-- ═══════ NEW: FAVOURITES ═══════ -->
+    <div id="section-favourites" class="db-section">
+      <div class="glass-card">
+        <div class="card-header">
+          <i class="fa fa-heart"></i> Favourite Stations
+          <span class="header-right" style="font-size:11px;color:var(--vh-muted);">{{ favourites|length }} saved</span>
+        </div>
+        <div class="card-body" style="padding:.5rem 0;">
+          {% if favourites|length == 0 %}
+            <p style="color:var(--vh-muted);font-size:13px;text-align:center;padding:1.5rem;">
+              No favourite stations yet.
+              <br><a href="{% url 'stations' %}" style="color:var(--vh-accent);">Browse stations →</a>
+            </p>
+          {% else %}
+            <div class="neon-table">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th>Station</th><th>Connectors</th><th>Speed</th><th>Price/hr</th><th>Status</th><th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for fav in favourites %}
+                    <tr>
+                      <td>{{ fav.station.name }}</td>
+                      <td class="cell-mono">
+                        {% for c in fav.station.connector_types %}{{ c }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                      </td>
+                      <td>{{ fav.station.charging_speed_kw|default:'—' }} kW</td>
+                      <td>R{{ fav.station.price_per_hour|default:'—' }}</td>
+                      <td>
+                        {% if fav.station.availability %}
+                          <span class="badge badge-success">Available</span>
+                        {% else %}
+                          <span class="badge badge-danger">Unavailable</span>
+                        {% endif %}
+                      </td>
+                      <td>
+                        <button class="fav-btn is-fav" data-station-id="{{ fav.station.id }}" onclick="toggleFavourite(this)">
+                          <i class="fa fa-heart"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ NEW: CURRENT SESSION ═══════ -->
+    <div id="section-current-session" class="db-section">
+      <div class="glass-card">
+        <div class="card-header"><i class="fa fa-bolt"></i> Current Charging Session</div>
+        <div class="card-body">
+          {% if current_session %}
+            <div class="stats-row" style="margin-bottom:0;">
+              <div class="stat-card c1">
+                <div class="stat-icon i1"><i class="fa fa-map-marker"></i></div>
+                <div class="stat-value" style="font-size:1.1rem;">{{ current_session.station.name }}</div>
+                <div class="stat-label">Station</div>
+              </div>
+              <div class="stat-card c2">
+                <div class="stat-icon i2"><i class="fa fa-bolt"></i></div>
+                <div class="stat-value">{{ current_session.energy_consumed_kwh|default:'0' }}</div>
+                <div class="stat-label">kWh consumed</div>
+              </div>
+              <div class="stat-card c3">
+                <div class="stat-icon i3"><i class="fa fa-clock-o"></i></div>
+                <div class="stat-value" style="font-size:1.1rem;">{{ current_session.start_time|timesince }}</div>
+                <div class="stat-label">Charging for</div>
+              </div>
+              <div class="stat-card c4">
+                <div class="stat-icon i4"><i class="fa fa-money"></i></div>
+                <div class="stat-value">R{{ current_session.costs|default:'0' }}</div>
+                <div class="stat-label">Cost so far</div>
+              </div>
+            </div>
+          {% else %}
+            <p style="color:var(--vh-muted);font-size:13px;text-align:center;padding:1.5rem;">
+              No active charging session.
+              <br><a href="{% url 'book' %}" style="color:var(--vh-accent);">Start a session →</a>
+            </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ NEW: PAYMENTS ═══════ -->
+    <div id="section-payments" class="db-section">
+      <div class="glass-card" style="margin-bottom:1rem;">
+        <div class="card-body" style="display:flex;gap:2rem;align-items:center;">
+          <div>
+            <div class="stat-value">R{{ total_spent|default:'0' }}</div>
+            <div class="stat-label">Total spent (completed)</div>
+          </div>
+        </div>
+      </div>
+      <div class="glass-card">
+        <div class="card-header"><i class="fa fa-credit-card"></i> Recent Transactions</div>
+        <div class="card-body" style="padding:.5rem 0;">
+          <div class="neon-table">
+            <table class="table table-hover mb-0">
+              <thead><tr><th>Date</th><th>Amount</th><th>Currency</th><th>Status</th></tr></thead>
+              <tbody>
+                {% if payments|length == 0 %}
+                  <tr><td colspan="4" class="text-center" style="color:var(--vh-muted);padding:1.5rem;">No transactions yet.</td></tr>
+                {% else %}
+                  {% for p in payments %}
+                    <tr>
+                      <td class="cell-mono">{{ p.created_at|date:"d M Y, H:i" }}</td>
+                      <td>{{ p.amount }}</td>
+                      <td class="cell-mono">{{ p.currency }}</td>
+                      <td>
+                        {% if p.status == 'completed' %}<span class="badge badge-success">Completed</span>
+                        {% elif p.status == 'pending' %}<span class="badge badge-warning">Pending</span>
+                        {% elif p.status == 'refunded' %}<span class="badge badge-info">Refunded</span>
+                        {% else %}<span class="badge badge-danger">Failed</span>{% endif %}
+                      </td>
+                    </tr>
+                  {% endfor %}
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ NEW: ANALYTICS ═══════ -->
+    <div id="section-analytics" class="db-section">
+      <div class="stats-row">
+        <div class="stat-card c1">
+          <div class="stat-icon i1"><i class="fa fa-bolt"></i></div>
+          <div class="stat-value">{{ total_energy|floatformat:1 }}</div>
+          <div class="stat-label">Total energy (kWh)</div>
+        </div>
+        <div class="stat-card c2">
+          <div class="stat-icon i2"><i class="fa fa-history"></i></div>
+          <div class="stat-value">{{ total_sessions_count }}</div>
+          <div class="stat-label">Total sessions</div>
+        </div>
+        <div class="stat-card c4">
+          <div class="stat-icon i4"><i class="fa fa-money"></i></div>
+          <div class="stat-value">R{{ total_spent|default:'0' }}</div>
+          <div class="stat-label">Total spending</div>
+        </div>
+      </div>
+      <div class="glass-card">
+        <div class="card-header"><i class="fa fa-bar-chart"></i> Energy Over Time</div>
+        <div class="card-body">
+          <canvas id="analyticsChart" height="180"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ NEW: MY REVIEWS ═══════ -->
+    <div id="section-reviews" class="db-section">
+      <div class="glass-card">
+        <div class="card-header"><i class="fa fa-star"></i> My Reviews</div>
+        <div class="card-body" style="padding:.5rem 0;">
+          {% if ratings|length == 0 %}
+            <p style="color:var(--vh-muted);font-size:13px;text-align:center;padding:1.5rem;">You haven't reviewed any stations yet.</p>
+          {% else %}
+            <div class="neon-table">
+              <table class="table table-hover mb-0">
+                <thead><tr><th>Station</th><th>Rating</th><th>Comment</th><th>Date</th></tr></thead>
+                <tbody>
+                  {% for r in ratings %}
+                    <tr>
+                      <td>{{ r.station.name }}</td>
+                      <td>{% for i in "12345" %}{% if forloop.counter <= r.rating %}★{% else %}☆{% endif %}{% endfor %}</td>
+                      <td>{{ r.comment_text|default:'—' }}</td>
+                      <td class="cell-mono">{{ r.created_at|date:"d M Y" }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ NEW: MY VEHICLE ═══════ -->
+    <div id="section-vehicle" class="db-section">
+      <div class="glass-card">
+        <div class="card-header"><i class="fa fa-car"></i> My Vehicle</div>
+        <div class="card-body">
+          <form method="post" action="{% url 'update_vehicle' %}" class="db-form">
+            {% csrf_token %}
+            <div class="form-row">
+              <div>
+                <label>Make</label>
+                <input type="text" name="vehicle_make" class="form-control" value="{{ vehicle_profile.vehicle_make|default:'' }}" placeholder="e.g. Tesla">
+              </div>
+              <div>
+                <label>Model</label>
+                <input type="text" name="vehicle_model" class="form-control" value="{{ vehicle_profile.vehicle_model|default:'' }}" placeholder="e.g. Model 3">
+              </div>
+            </div>
+            <div class="form-row">
+              <div>
+                <label>Year</label>
+                <input type="number" name="vehicle_year" class="form-control" value="{{ vehicle_profile.vehicle_year|default:'' }}" min="1990" max="2100">
+              </div>
+              <div>
+                <label>Connector Type</label>
+                <select name="connector_type" class="form-control">
+                  <option value="">—</option>
+                  {% for value, label in vehicle_profile.CONNECTOR_TYPE_CHOICES %}
+                    <option value="{{ value }}" {% if vehicle_profile.connector_type == value %}selected{% endif %}>{{ label }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            <!-- These hidden fields are required because update_vehicle reuses ProfileForm,
+                 which also validates username/first_name/last_name/email -->
+            <input type="hidden" name="username" value="{{ vehicle_profile.username }}">
+            <input type="hidden" name="first_name" value="{{ vehicle_profile.first_name }}">
+            <input type="hidden" name="last_name" value="{{ vehicle_profile.last_name }}">
+            <input type="hidden" name="email" value="{{ vehicle_profile.email }}">
+            <input type="hidden" name="location" value="{{ vehicle_profile.location|default:'' }}">
+            <button type="submit" class="tb-btn primary">Save Vehicle Details</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ NEW: NOTIFICATIONS ═══════ -->
+    <div id="section-notifications" class="db-section">
+      <div class="glass-card">
+        <div class="card-header">
+          <i class="fa fa-bell"></i> Notifications
+          {% if unread_notifications_count > 0 %}
+            <a href="{% url 'mark_all_notifications_read' %}" class="tb-btn header-right" style="font-size:11px;padding:.3rem .7rem;">
+              Mark all read
+            </a>
+          {% endif %}
+        </div>
+        <div class="card-body" style="padding:.5rem 0;">
+          {% if notifications|length == 0 %}
+            <p style="color:var(--vh-muted);font-size:13px;text-align:center;padding:1.5rem;">No notifications yet.</p>
+          {% else %}
+            {% for n in notifications %}
+              <div class="notif-item {% if not n.is_read %}unread{% endif %}">
+                <span class="notif-dot {% if n.is_read %}read{% endif %}"></span>
+                <div style="flex:1;">
+                  <div class="notif-text">{{ n.message }}</div>
+                  <div class="notif-time">{{ n.created_at|timesince }} ago</div>
+                </div>
+                {% if not n.is_read %}
+                  <a href="{% url 'mark_notification_read' n.id %}" class="tb-btn" style="font-size:11px;padding:.25rem .6rem;">Mark read</a>
+                {% endif %}
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ NEW: RECOMMENDED STATIONS (shown at bottom of overview area logically, own section) ═══════ -->
+    <div id="section-recommended" class="db-section">
+      <div class="glass-card">
+        <div class="card-header"><i class="fa fa-magic"></i> Recommended For Your Vehicle</div>
+        <div class="card-body" style="padding:.5rem 0;">
+          {% if recommended_stations|length == 0 %}
+            <p style="color:var(--vh-muted);font-size:13px;text-align:center;padding:1.5rem;">
+              Add your vehicle's connector type under "My Vehicle" to see matching stations.
+            </p>
+          {% else %}
+            <div class="neon-table">
+              <table class="table table-hover mb-0">
+                <thead><tr><th>Station</th><th>Connectors</th><th>Speed</th><th>Price/hr</th></tr></thead>
+                <tbody>
+                  {% for s in recommended_stations %}
+                    <tr>
+                      <td>{{ s.name }}</td>
+                      <td class="cell-mono">{% for c in s.connector_types %}{{ c }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                      <td>{{ s.charging_speed_kw|default:'—' }} kW</td>
+                      <td>R{{ s.price_per_hour|default:'—' }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ NEW: SUPPORT ═══════ -->
+    <div id="section-support" class="db-section">
+      <div class="glass-card">
+        <div class="card-header"><i class="fa fa-life-ring"></i> Report an Issue</div>
+        <div class="card-body">
+          <form method="post" action="{% url 'report_issue' %}" class="db-form">
+            {% csrf_token %}
+            <label>Station</label>
+            <select name="station" class="form-control">
+              {% for s in stations %}
+                <option value="{{ s.id }}">{{ s.name }}</option>
+              {% endfor %}
+            </select>
+            <label>Describe the issue</label>
+            <textarea name="issue_description" rows="4" class="form-control" placeholder="What went wrong?"></textarea>
+            <button type="submit" class="tb-btn primary">Submit Report</button>
+          </form>
+        </div>
+      </div>
+      <div class="glass-card">
+        <div class="card-header"><i class="fa fa-list"></i> Your Reported Issues</div>
+        <div class="card-body" style="padding:.5rem 0;">
+          {% if issues|length == 0 %}
+            <p style="color:var(--vh-muted);font-size:13px;text-align:center;padding:1.5rem;">No issues reported yet.</p>
+          {% else %}
+            <div class="neon-table">
+              <table class="table table-hover mb-0">
+                <thead><tr><th>Station</th><th>Description</th><th>Status</th><th>Date</th></tr></thead>
+                <tbody>
+                  {% for issue in issues %}
+                    <tr>
+                      <td>{{ issue.station.name }}</td>
+                      <td>{{ issue.issue_description|truncatechars:60 }}</td>
+                      <td>
+                        {% if issue.resolved %}<span class="badge badge-success">Resolved</span>
+                        {% else %}<span class="badge badge-warning">Open</span>{% endif %}
+                      </td>
+                      <td class="cell-mono">{{ issue.created_at|date:"d M Y" }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
   </main>
 </div>
 
-<!-- toast container -->
 <div class="toast-container" id="toast-container"></div>
-</body>
-
-<!-- scripts -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-  // energy chart
+  // energy chart (unchanged)
   const energyLabels = [
     {% for session in sessions %}
       "{{ session.station.name|truncatechars:10 }}"{% if not forloop.last %},{% endif %}
@@ -1003,13 +1296,48 @@
     });
   }
 
-  //section switching
+  // NEW: analytics section reuses the same session data in its own canvas
+  const analyticsCtx = document.getElementById('analyticsChart');
+  if (analyticsCtx) {
+    new Chart(analyticsCtx, {
+      type: 'line',
+      data: {
+        labels: energyLabels.length ? energyLabels : ['No data'],
+        datasets: [{
+          label: 'Energy (kWh)',
+          data: energyData.length ? energyData : [0],
+          borderColor: 'rgba(0,229,255,1)',
+          backgroundColor: 'rgba(0,229,255,0.1)',
+          fill: true, tension: 0.35,
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { color: '#c5cdfa', font: { size: 10 } }, grid: { color: 'rgba(122,124,255,0.08)' } },
+          y: { beginAtZero: true, ticks: { color: '#c5cdfa', font: { size: 10 } }, grid: { color: 'rgba(122,124,255,0.08)' } }
+        }
+      }
+    });
+  }
+
+  // section switching — extended with the new sections
   const sectionMeta = {
-    overview: ['Your complete EV charging overview',     'Dashboard Overview'],
-    map:      ['Find and navigate to charging stations', 'Live Station Map'],
-    stations: ['All available charging stations',        'Charging Stations'],
-    sessions: ['Your full charging session history',     'Charging Sessions'],
-    bookings: ['View and manage all your bookings',      'Your Bookings'],
+    overview:          ['Your complete EV charging overview',     'Dashboard Overview'],
+    map:                ['Find and navigate to charging stations', 'Live Station Map'],
+    stations:           ['All available charging stations',        'Charging Stations'],
+    sessions:           ['Your full charging session history',     'Charging Sessions'],
+    bookings:           ['View and manage all your bookings',      'Your Bookings'],
+    favourites:         ['Stations you\'ve saved',                 'Favourite Stations'],
+    'current-session':  ['Your active charging session',           'Current Session'],
+    payments:           ['Your spending and transaction history',  'Payments'],
+    analytics:          ['Your charging analytics',                'Analytics'],
+    reviews:            ['Stations you\'ve rated and reviewed',    'My Reviews'],
+    vehicle:            ['Manage your EV details',                 'My Vehicle'],
+    notifications:      ['Stay up to date',                        'Notifications'],
+    recommended:        ['Stations that match your vehicle',       'Recommended For You'],
+    support:            ['Report issues and track your reports',   'Help & Support'],
   };
 
   function showSection(name, btn) {
@@ -1017,14 +1345,34 @@
     const t = document.getElementById('section-' + name);
     if (t) t.classList.add('active');
 
-    document.getElementById('section-sub').textContent   = sectionMeta[name][0];
-    document.getElementById('section-title').textContent = sectionMeta[name][1];
+    if (sectionMeta[name]) {
+      document.getElementById('section-sub').textContent   = sectionMeta[name][0];
+      document.getElementById('section-title').textContent = sectionMeta[name][1];
+    }
 
     document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
     if (btn) btn.classList.add('active');
   }
 
-  //cart badge
+  // NEW: mobile sidebar drawer toggle
+  function toggleDashboardSidebar() {
+    document.querySelector('.db-sidebar').classList.toggle('open');
+    document.getElementById('sidebarOverlay').classList.toggle('open');
+  }
+
+  // close the drawer whenever a section is chosen on mobile —
+  // only if it's actually open (quick-grid buttons also call showSection
+  // and shouldn't accidentally open the drawer)
+  const _origShowSection = showSection;
+  showSection = function(name, btn) {
+    _origShowSection(name, btn);
+    const sidebarEl = document.querySelector('.db-sidebar');
+    if (window.innerWidth <= 768 && sidebarEl.classList.contains('open')) {
+      toggleDashboardSidebar();
+    }
+  };
+
+  //cart badge (unchanged)
   (function() {
     fetch('/cart/count/', { method: 'GET', headers: { 'X-Requested-With': 'XMLHttpRequest' } })
       .then(r => r.json())
@@ -1038,7 +1386,7 @@
       }).catch(() => {});
   })();
 
-  //toast helper
+  //toast helper (unchanged)
   function showToast(msg, type = 'info') {
     const c = document.getElementById('toast-container');
     const t = document.createElement('div');
@@ -1048,7 +1396,37 @@
     setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 300); }, 4000);
   }
 
-  //Google Maps
+  // NEW: CSRF helper for the favourites API call
+  function getCookie(name) {
+    const v = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return v ? v.pop() : '';
+  }
+
+  // NEW: favourite toggle — calls the existing FavouriteStationViewSet.toggle action
+  function toggleFavourite(el) {
+    const stationId = el.dataset.stationId;
+    fetch('/api/favourites/toggle/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': getCookie('csrftoken'),
+      },
+      body: JSON.stringify({ station: stationId }),
+    })
+      .then(r => r.json())
+      .then(data => {
+        showToast(data.message || 'Updated favourites.');
+        el.classList.toggle('is-fav', !!data.favourite);
+        // If removed from the favourites section, hide its row
+        if (!data.favourite) {
+          const row = el.closest('tr');
+          if (row && row.closest('#section-favourites')) row.remove();
+        }
+      })
+      .catch(() => showToast('Could not update favourites. Try again.'));
+  }
+
+  //Google Maps (unchanged)
   function initMap() {
     const mapEl = document.getElementById('map');
     if (!mapEl) return;
@@ -1236,5 +1614,5 @@
   })();
 </script>
 
-{% include 'VoltHub/footer.html' %}
+{% comment %} {% include 'VoltHub/footer.html' %} {% endcomment %}
 {% endblock %}

@@ -25,6 +25,7 @@ from .models import (
     UserSubscription,
     ChargingStationAnalitics,
     Post,
+    FavouriteStation
 )
 
 from .serializers import (
@@ -42,6 +43,7 @@ from .serializers import (
     UserSubscriptionSerializer,
     ChargingStationAnaliticsSerializer,
     StationOwnerProfileSerializer,
+    FavouriteStationSerializer
 )
 
 
@@ -159,6 +161,118 @@ class ChargingPointViewSet(viewsets.ModelViewSet):
             'booked_slots':  list(bookings),
             'available_bays': station.available_slots,
         })
+
+
+
+class FavouriteStationViewSet(viewsets.ModelViewSet):
+    serializer_class = FavouriteStationSerializer
+    permission_classes = [IsAuthenticated]
+    pagination_class = DefaultPageNumberPagination
+    filter_backends = [OrderingFilter, SearchFilter]
+    ordering_fields = ["created_at"]
+    search_fields = ["station__name", "station__location"]
+
+    def get_queryset(self):
+        # Admins can see all favourites
+        if self.request.user.is_staff:
+            return FavouriteStation.objects.all().select_related(
+                'user',
+                'station'
+            )
+
+        # Normal users can only see their own favourites
+        return FavouriteStation.objects.filter(
+            user=self.request.user
+        ).select_related('station')
+
+    def perform_create(self, serializer):
+        station = serializer.validated_data['station']
+
+        # Making sure the station is active and verified
+        if not station.is_active or not station.is_verified:
+            raise ValidationError(
+                "You cannot favourite an inactive or unverified station."
+            )
+
+        # Preventing duplicate favourites
+        if FavouriteStation.objects.filter(
+            user=self.request.user,
+            station=station
+        ).exists():
+            raise ValidationError(
+                "This station is already in your favourites."
+            )
+
+        serializer.save(user=self.request.user)
+
+    def destroy(self, request, *args, **kwargs):
+        favourite = self.get_object()
+
+        #users can only remove their own favourites
+        if favourite.user != request.user and not request.user.is_staff:
+            raise PermissionDenied(
+                "You can only remove your own favourite stations."
+            )
+
+        favourite.delete()
+
+        return Response(
+            {"message": "Station removed from favourites."},
+            status=status.HTTP_204_NO_CONTENT
+        )
+
+    @action(detail=False, methods=['post'], url_path='toggle')
+    def toggle(self, request):
+        station_id = request.data.get('station')
+
+        if not station_id:
+            return Response(
+                {"error": "station is required."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        try:
+            station = ChargingPoint.objects.get(
+                id=station_id,
+                is_active=True,
+                is_verified=True
+            )
+        except ChargingPoint.DoesNotExist:
+            return Response(
+                {"error": "Charging station not found."},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        favourite = FavouriteStation.objects.filter(
+            user=request.user,
+            station=station
+        ).first()
+
+        if favourite:
+            favourite.delete()
+
+            return Response({
+                "favourite": False,
+                "message": "Station removed from favourites."
+            })
+
+        favourite = FavouriteStation.objects.create(user=request.user, station=station)
+
+        return Response({
+            "favourite": True,
+            "message": "Station added to favourites.",
+            "station": station.id
+        }, status=status.HTTP_201_CREATED)
+
+    @action(detail=False, methods=['get'], url_path='check/(?P<station_id>[^/.]+)')
+    def check(self, request, station_id=None):
+        is_favourite = FavouriteStation.objects.filter(
+            user=request.user,
+            station_id=station_id
+        ).exists()
+
+        return Response({"station": station_id,"is_favourite": is_favourite})
+
 
     
   

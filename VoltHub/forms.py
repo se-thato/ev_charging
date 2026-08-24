@@ -44,18 +44,39 @@ class UpdateBookingForm(forms.ModelForm):
         fields = ['email', 'station', 'booking_date', 'start_time', 'duration', 'payment_method']
 
 
+# class ProfileForm(forms.ModelForm):
+#     class Meta:
+#         model = Profile
+#         fields = ['username', 'first_name', 'last_name', 'email', 'location', 'profile_picture']
+#         widgets = {
+            
+#             'username': forms.TextInput(attrs={'class': 'form-control', 'readonly': 'readonly'}),
+#             'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+#             'last_name': forms.TextInput(attrs={'class': 'form-control'}),
+#             'email': forms.EmailInput(attrs={'class': 'form-control'}),
+#             'location': forms.TextInput(attrs={'class': 'form-control'}),
+#             'profile_picture': forms.ClearableFileInput(attrs={'class': 'form-control', 'accept': 'image/*'}),
+#         }
+
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['username', 'first_name', 'last_name', 'email', 'location', 'profile_picture']
+        fields = [
+            'username', 'first_name', 'last_name', 'email', 'location',
+            'profile_picture',
+            'vehicle_make', 'vehicle_model', 'vehicle_year', 'connector_type',
+        ]
         widgets = {
-            
             'username': forms.TextInput(attrs={'class': 'form-control', 'readonly': 'readonly'}),
             'first_name': forms.TextInput(attrs={'class': 'form-control'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control'}),
             'email': forms.EmailInput(attrs={'class': 'form-control'}),
             'location': forms.TextInput(attrs={'class': 'form-control'}),
             'profile_picture': forms.ClearableFileInput(attrs={'class': 'form-control', 'accept': 'image/*'}),
+            'vehicle_make': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'e.g. Tesla'}),
+            'vehicle_model': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'e.g. Model 3'}),
+            'vehicle_year': forms.NumberInput(attrs={'class': 'form-control', 'min': 1990, 'max': 2100}),
+            'connector_type': forms.Select(attrs={'class': 'form-control'}),
         }
 
 # this form is for adding a new charging station

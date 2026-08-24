@@ -15,9 +15,17 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.utils import timezone as dj_timezone
+#  from django.db.models import Sum
 
 from .forms import BookingForm, UpdateBookingForm, ProfileForm, ChargingPointForm, CommentForm
-from charging_station.models import ChargingPoint, ChargingSession, Booking, Profile, Comment, Post, Payment, StationOwnerProfile, OwnerPayout
+from charging_station.models import (
+    ChargingPoint,
+    ChargingSession, 
+    Booking, Profile, 
+    Comment, Post, Payment,
+    StationOwnerProfile,
+    OwnerPayout, Notification, 
+    Rating, IssueReport, FavouriteStation)
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -42,23 +50,196 @@ def home(request):
 
 
 # # Dashboard view
+# @login_required(login_url='authentication:login')
+# def dashboard(request):
+#     try:
+#         stations = ChargingPoint.objects.filter(is_active=True)  # olny active stations
+#         sessions = ChargingSession.objects.filter(user=request.user).select_related('station')
+#         bookings = Booking.objects.filter(user=request.user).select_related('station')  # This will fetch user specific bookings
+
+#         context = {
+#             'stations': stations,
+#             'sessions': sessions,
+#             'bookings': bookings,
+#         }
+#         return render(request, 'VoltHub/dashboard.html', context)
+
+#     except Exception as e:
+#         # 
+#         return HttpResponse(f"An error occurred: {str(e)}", status=500)
+
+ 
 @login_required(login_url='authentication:login')
 def dashboard(request):
     try:
-        stations = ChargingPoint.objects.filter(is_active=True)  # olny active stations
+        stations = ChargingPoint.objects.filter(is_active=True)
         sessions = ChargingSession.objects.filter(user=request.user).select_related('station')
-        bookings = Booking.objects.filter(user=request.user).select_related('station')  # This will fetch user specific bookings
-
+        bookings = Booking.objects.filter(user=request.user).select_related('station')
+ 
+        # --- Current / active charging session -----------------------
+        # There's no explicit "in progress" status on ChargingSession
+        # (choices are Canceled/Scheduled/Confirmed/Pending), so "active"
+        # is treated as: belongs to the user, confirmed, and has no
+        # end_time yet. Adjust this filter if you add an explicit status
+        # later (e.g. 'InProgress').
+        current_session = sessions.filter(
+            end_time__isnull=True,
+            status='Confirmed'
+        ).order_by('-start_time').first()
+ 
+        # --- Favourite stations -----------------------------------------
+        favourites = FavouriteStation.objects.filter(
+            user=request.user
+        ).select_related('station')
+ 
+        # --- Notifications -----------------------------------------------
+        notifications = Notification.objects.filter(
+            user=request.user
+        ).order_by('-created_at')
+        unread_notifications_count = notifications.filter(is_read=False).count()
+ 
+        # --- Vehicle / EV profile -----------------------------------------
+        # Reuses the same get-or-create pattern as the existing profile() view
+        try:
+            vehicle_profile = Profile.objects.get(username=request.user.username)
+        except Profile.DoesNotExist:
+            vehicle_profile = Profile.objects.create(
+                username=request.user.username,
+                first_name=request.user.first_name,
+                last_name=request.user.last_name,
+                email=request.user.email,
+            )
+ 
+        # --- Payments -----------------------------------------------------
+        # Only non-sensitive fields are ever passed to the template:
+        # amount, currency, status, created_at. Never gateway_response,
+        # card numbers, or full gateway_transaction_id.
+        payments = Payment.objects.filter(
+            user=request.user
+        ).order_by('-created_at')[:10]
+        total_spent = Payment.objects.filter(
+            user=request.user, status='completed'
+        ).aggregate(total=Sum('amount'))['total'] or 0
+ 
+        # --- Analytics ------------------------------------------------------
+        total_energy = sessions.aggregate(
+            total=Sum('energy_consumed_kwh')
+        )['total'] or 0
+        total_sessions_count = sessions.count()
+ 
+        # --- My reviews -----------------------------------------------------
+        ratings = Rating.objects.filter(
+            user=request.user
+        ).select_related('station').order_by('-created_at')
+ 
+        # --- Support / issue reports ------------------------------------------
+        issues = IssueReport.objects.filter(
+            user=request.user
+        ).select_related('station').order_by('-created_at')
+ 
+        # --- Recommended stations --------------------------------------------
+        # Connector-compatibility match against the user's vehicle.
+        # No stored lat/lng on Profile yet, so this is compatibility +
+        # availability based rather than distance based — the existing
+        # /api/stations-list/nearby/ endpoint already does distance if you
+        # want to layer that in client-side later.
+        favourite_ids = favourites.values_list('station_id', flat=True)
+        recommended_stations = []
+        if vehicle_profile.connector_type:
+            candidates = stations.filter(is_verified=True).exclude(id__in=favourite_ids)
+            for s in candidates:
+                types = s.connector_types or []
+                if any(vehicle_profile.connector_type.lower() in str(t).lower() for t in types):
+                    recommended_stations.append(s)
+            recommended_stations = recommended_stations[:5]
+ 
         context = {
             'stations': stations,
             'sessions': sessions,
             'bookings': bookings,
+            'current_session': current_session,
+            'favourites': favourites,
+            'notifications': notifications,
+            'unread_notifications_count': unread_notifications_count,
+            'vehicle_profile': vehicle_profile,
+            'payments': payments,
+            'total_spent': total_spent,
+            'total_energy': total_energy,
+            'total_sessions_count': total_sessions_count,
+            'ratings': ratings,
+            'issues': issues,
+            'recommended_stations': recommended_stations,
         }
         return render(request, 'VoltHub/dashboard.html', context)
-
+ 
     except Exception as e:
-        # 
         return HttpResponse(f"An error occurred: {str(e)}", status=500)
+ 
+ 
+# ============================================================
+# NEW VIEWS — add these below dashboard()
+# ============================================================
+ 
+@login_required(login_url='authentication:login')
+def mark_notification_read(request, pk):
+    # Scoped to request.user so nobody can mark someone else's notification read
+    notification = get_object_or_404(Notification, pk=pk, user=request.user)
+    notification.is_read = True
+    notification.save(update_fields=['is_read'])
+    return redirect(request.META.get('HTTP_REFERER', 'dashboard'))
+ 
+ 
+@login_required(login_url='authentication:login')
+def mark_all_notifications_read(request):
+    Notification.objects.filter(user=request.user, is_read=False).update(is_read=True)
+    return redirect(request.META.get('HTTP_REFERER', 'dashboard'))
+ 
+ 
+@login_required(login_url='authentication:login')
+def update_vehicle(request):
+    # Reuses the same Profile + ProfileForm as the profile() view, so the
+    # vehicle fields added to ProfileForm (see forms patch) are picked up
+    # automatically — no separate form class needed.
+    try:
+        user_profile = Profile.objects.get(username=request.user.username)
+    except Profile.DoesNotExist:
+        user_profile = Profile.objects.create(
+            username=request.user.username,
+            first_name=request.user.first_name,
+            last_name=request.user.last_name,
+            email=request.user.email,
+        )
+ 
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=user_profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Vehicle details updated.")
+        else:
+            messages.error(request, "Please correct the errors below.")
+ 
+    return redirect('dashboard')
+ 
+ 
+@login_required(login_url='authentication:login')
+def report_issue(request):
+    if request.method == 'POST':
+        station_id = request.POST.get('station')
+        description = (request.POST.get('issue_description') or '').strip()
+ 
+        if not station_id or not description:
+            messages.error(request, "Please select a station and describe the issue.")
+            return redirect('dashboard')
+ 
+        station = get_object_or_404(ChargingPoint, pk=station_id)
+        IssueReport.objects.create(
+            user=request.user,
+            station=station,
+            issue_description=description,
+        )
+        messages.success(request, "Issue reported. Thanks for the heads up.")
+ 
+    return redirect('dashboard')
 
 
 

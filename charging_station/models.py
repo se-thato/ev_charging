@@ -245,6 +245,25 @@ class ChargingPoint(models.Model):
         return f"{self.name} ({self.address})"
 
 
+
+
+class FavouriteStation(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favourite_stations')
+    station = models.ForeignKey(ChargingPoint, on_delete=models.CASCADE, related_name='favourite_by')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [ models.UniqueConstraint(
+            fields=['user', 'station'], name='unique_user_favourite_station')]
+        ordering = ['-created_at']
+
+    
+    def __str__(self):
+        return f"{self.user.username} - {self.station.name}"
+
+
+
+
 class ChargingSession(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     station = models.ForeignKey(ChargingPoint, on_delete=models.CASCADE)

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import (ChargingPoint, ChargingSession, Booking, Profile, PaymentMethod,
                     Payment, Rating, IssueReport, Comment, SubscriptionPlan, 
-                    UserSubscription, ChargingStationAnalitics, Post, StationOwnerProfile)
+                    UserSubscription, ChargingStationAnalitics, Post, StationOwnerProfile, FavouriteStation)
 from dj_rest_auth.registration.serializers import RegisterSerializer
 from allauth.account import app_settings as allauth_account_settings
 
@@ -25,6 +25,27 @@ class ChargingPointSerializer(serializers.ModelSerializer):
                              "is_active", "is_verified", "capacity", "available_slots", "availability",
                              "price_per_hour", "booking_url", "connector_types", "charging_speed_kW",
                              "photos", "created_at", "distance"]
+
+
+
+class FavouriteStationSerializer(serializers.ModelSerializer):
+    station_name = serializers.CharField(source='station.name', read_only=True)
+    station_address = serializers.CharField(source='station.address',read_only=True)
+
+    class Meta:
+        model = FavouriteStation
+        fields = [
+            'id',
+            'station',
+            'station_name',
+            'station_address',
+            'created_at',
+        ]
+        read_only_fields = [
+            'id',
+            'created_at',
+        ]
+
         
 
 
