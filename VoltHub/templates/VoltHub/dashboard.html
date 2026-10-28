@@ -463,8 +463,13 @@
     color: var(--vh-text); padding: .5rem .7rem; margin-bottom: .9rem;
     font-size: 13px;
   }
+
   .db-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   @media (max-width: 700px) { .db-form .form-row { grid-template-columns: 1fr; } }
+
+  #sc-battery-bar.high   { background: var(--vh-accent-2); }
+  #sc-battery-bar.medium { background: #ffc107; }
+  #sc-battery-bar.low    { background: #ff6b6b; }
 
   /* ── mobile sidebar drawer ── */
   .db-sidebar-overlay {
@@ -1030,7 +1035,7 @@
       </div>
     </div>
 
-    <!-- ═══════ NEW: ANALYTICS ═══════ -->
+    <!--ANALYTICS-->
     <div id="section-analytics" class="db-section">
       <div class="stats-row">
         <div class="stat-card c1">
@@ -1085,10 +1090,95 @@
       </div>
     </div>
 
-    <!-- ═══════ NEW: MY VEHICLE ═══════ -->
-    <div id="section-vehicle" class="db-section">
-      <div class="glass-card">
-        <div class="card-header"><i class="fa fa-car"></i> My Vehicle</div>
+    <!--User vehicle-->
+<div id="section-vehicle" class="db-section">
+
+  <!-- Smartcar live status card -->
+  <div class="glass-card" id="smartcar-card" style="margin-bottom:1.5rem;">
+    <div class="card-header">
+      <i class="fa fa-plug"></i> Live Vehicle Status
+      <span id="smartcar-status-badge" class="ws-badge live header-right">
+        <span class="pulse">●</span> Connected
+      </span>
+    </div>
+    <div class="card-body" id="smartcar-body">
+
+      <!-- connected state ,shown when Smartcar returns data -->
+      <div id="smartcar-connected" style="display:none;">
+        <div class="stats-row" style="margin-bottom:1.25rem;">
+          <div class="stat-card c1">
+            <div class="stat-icon i1"><i class="fa fa-battery-three-quarters"></i></div>
+            <div class="stat-value" id="sc-battery">—</div>
+            <div class="stat-label">Battery level</div>
+            <div class="stat-trend" id="sc-charge-status">—</div>
+          </div>
+          <div class="stat-card c2">
+            <div class="stat-icon i2"><i class="fa fa-road"></i></div>
+            <div class="stat-value" id="sc-range" style="font-size:1.4rem;">—</div>
+            <div class="stat-label">Range remaining</div>
+            <div class="stat-trend">km</div>
+          </div>
+          <div class="stat-card c3">
+            <div class="stat-icon i3"><i class="fa fa-car"></i></div>
+            <div class="stat-value" id="sc-make" style="font-size:1rem;">—</div>
+            <div class="stat-label">Vehicle</div>
+            <div class="stat-trend" id="sc-year">—</div>
+          </div>
+          <div class="stat-card c4">
+            <div class="stat-icon i4"><i class="fa fa-clock-o"></i></div>
+            <div class="stat-value" id="sc-updated" style="font-size:.85rem;line-height:1.3;">—</div>
+            <div class="stat-label">Last updated</div>
+          </div>
+        </div>
+
+        <!-- battery progress bar -->
+        <div style="margin-bottom:1.25rem;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+            <span style="font-size:12px;color:var(--vh-muted);">Battery</span>
+            <span style="font-size:12px;font-weight:600;color:var(--vh-text-strong);" id="sc-battery-pct">—</span>
+          </div>
+          <div style="height:10px;border-radius:5px;background:rgba(255,255,255,0.08);overflow:hidden;">
+            <div id="sc-battery-bar" style="height:100%;border-radius:5px;width:0%;transition:width .6s ease,background .4s ease;background:var(--vh-accent-2);"></div>
+          </div>
+        </div>
+
+        <!-- reconnect button -->
+        <a href="{% url 'smartcar_connect' %}" class="tb-btn" style="font-size:12px;">
+          <i class="fa fa-refresh"></i> Reconnect Vehicle
+        </a>
+      </div>
+
+      <!-- not connected state -->
+      <div id="smartcar-not-connected">
+        <p style="color:var(--vh-muted);font-size:13px;margin-bottom:1rem;">
+          Connect your EV to see live battery level, range, and charging status directly from your car.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1rem;">
+          <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.2);color:var(--vh-accent);">BMW</span>
+          <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.2);color:var(--vh-accent);">Volvo</span>
+          <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.2);color:var(--vh-accent);">Mercedes</span>
+          <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.2);color:var(--vh-accent);">Ford</span>
+          <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.2);color:var(--vh-accent);">Hyundai</span>
+          <span style="font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.2);color:var(--vh-accent);">VW</span>
+        </div>
+        <a href="{% url 'smartcar_connect' %}" class="tb-btn primary" style="font-size:13px;">
+          <i class="fa fa-plug"></i> Connect My Vehicle
+        </a>
+      </div>
+
+      <!-- loading state -->
+      <div id="smartcar-loading" style="text-align:center;padding:1.5rem 0;">
+        <div class="pulse" style="color:var(--vh-accent);font-size:13px;">
+          <i class="fa fa-circle-o-notch fa-spin"></i> Fetching vehicle data...
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="glass-card">
+    <div class="card-header"><i class="fa fa-car"></i> My Vehicle</div>
+
         <div class="card-body">
           <form method="post" action="{% url 'update_vehicle' %}" class="db-form">
             {% csrf_token %}
@@ -1608,10 +1698,112 @@
 
   (function() {
     const s = document.createElement('script');
-    s.src = `https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_MAPS_KEY }}&libraries=places&callback=initMap`;
+    s.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyC6RCLJT5k3SVic4HZNe0y2MumLXuLNc0M&callback=initMap&libraries=places&libraries=places&callback=initMap`;
     s.async = true; s.defer = true;
     document.head.appendChild(s);
   })();
+
+
+//Smartcar live vehicle status section
+async function fetchVehicleStatus() {
+  const loadingEl      = document.getElementById('smartcar-loading');
+  const connectedEl    = document.getElementById('smartcar-connected');
+  const notConnectedEl = document.getElementById('smartcar-not-connected');
+  const badgeEl        = document.getElementById('smartcar-status-badge');
+
+  //showing loading only on first call
+  if (connectedEl.style.display === 'none' && notConnectedEl.style.display === 'none') {
+    loadingEl.style.display = 'block';
+  }
+
+  try {
+    const res  = await fetch('/smartcar/status/');
+    const data = await res.json();
+
+    loadingEl.style.display = 'none';
+
+    if (!data.connected) {
+      // no vehicle connected
+      connectedEl.style.display    = 'none';
+      notConnectedEl.style.display = 'block';
+      if (badgeEl) {
+        badgeEl.innerHTML   = '● Not connected';
+        badgeEl.className   = 'ws-badge offline header-right';
+      }
+      return;
+    }
+
+    if (data.error) {
+      // connected but token issue then show reconnect
+      connectedEl.style.display    = 'none';
+      notConnectedEl.style.display = 'block';
+      showToast('Could not reach your vehicle. Please reconnect.', 'warning');
+      return;
+    }
+
+  
+    connectedEl.style.display    = 'block';
+    notConnectedEl.style.display = 'none';
+
+    const pct   = Math.round(data.battery_level || 0);
+    const range = Math.round(data.battery_range_km || 0);
+
+    //battery percentage
+    document.getElementById('sc-battery').textContent     = pct + '%';
+    document.getElementById('sc-battery-pct').textContent = pct + '%';
+
+    //battery bar width and colour
+    const bar = document.getElementById('sc-battery-bar');
+    bar.style.width = pct + '%';
+    bar.className   = pct > 50 ? 'high' : pct > 20 ? 'medium' : 'low';
+
+    //range
+    document.getElementById('sc-range').textContent = range;
+
+    //vehicle make/model/year
+    const makeModel = [data.make, data.model].filter(Boolean).join(' ') || '—';
+    document.getElementById('sc-make').textContent  = makeModel;
+    document.getElementById('sc-year').textContent  = data.year || '—';
+
+    //charge status
+    const chargeText = data.is_charging
+      ? ' Charging'
+      : data.is_plugged_in
+        ? ' Plugged in'
+        : ' Driving';
+    document.getElementById('sc-charge-status').textContent = chargeText;
+
+    //last updated
+    const updated = data.last_updated
+      ? new Date(data.last_updated).toLocaleTimeString()
+      : '—';
+    document.getElementById('sc-updated').textContent = updated;
+
+    // status badge
+    if (badgeEl) {
+      badgeEl.innerHTML = '<span class="pulse">●</span> Connected';
+      badgeEl.className = 'ws-badge live header-right';
+    }
+
+  } catch (err) {
+    loadingEl.style.display = 'none';
+    connectedEl.style.display = 'none';
+    notConnectedEl.style.display = 'block';
+    console.error('Smartcar fetch error:', err);
+  }
+}
+
+//fetch on page load and refresh every 60 seconds
+fetchVehicleStatus();
+setInterval(fetchVehicleStatus, 60000);
+
+//also fetch when user navigates to the vehicle section
+const _origShowSection2 = showSection;
+showSection = function(name, btn) {
+  _origShowSection2(name, btn);
+  if (name === 'vehicle') fetchVehicleStatus();
+};
+
 </script>
 
 {% comment %} {% include 'VoltHub/footer.html' %} {% endcomment %}

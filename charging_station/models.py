@@ -529,3 +529,38 @@ class ChargingStationAnalitics(models.Model):
 
     def __str__(self):
         return f"Analytics for {self.station} - {self.total_sessions} sessions"
+
+
+
+
+class ConnectedVehicle(models.Model):
+    """
+    Stores the Smartcar connection for a user's vehicle.
+    One user can connect multiple vehicles.
+    """
+    user = models.ForeignKey(
+            settings.AUTH_USER_MODEL,
+            on_delete=models.CASCADE,
+            related_name='connected_vehicles'
+        )
+    smartcar_vehicle_id = models.CharField(max_length=100, unique=True)
+    access_token = models.TextField()  #encrypted
+    refresh_token = models.TextField()  #encrypted
+    token_expires_at = models.DateTimeField()
+
+    # populated from Smartcar on first connect
+    make = models.CharField(max_length=50, blank=True)
+    model = models.CharField(max_length=50, blank=True)
+    year = models.PositiveIntegerField(null=True, blank=True)
+    vin = models.CharField(max_length=50, blank=True)
+
+    # live data
+    battery_level = models.FloatField(null=True, blank=True)  #in percentage
+    battery_range_km = models.FloatField(null=True, blank=True)
+    is_charging = models.BooleanField(default=False)
+    is_plugged_in = models.BooleanField(default=False)
+    last_updated = models.DateTimeField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.year} {self.make} {self.model} — {self.user.username}"

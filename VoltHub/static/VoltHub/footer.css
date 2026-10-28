@@ -13,7 +13,7 @@
   /* Neon/Glass footer aligned to navbar style */
   .neon-footer {
     position: relative;
-    background: linear-gradient(135deg, #0a0a1f 0%, #06061a 50%, #0a0a1f 100%);
+    /* background: linear-gradient(135deg, #0a0a1f 0%, #06061a 50%, #0a0a1f 100%); */
     color: var(--vh-text);
     border-top: 1px solid var(--vh-border);
     box-shadow: 0 -10px 30px rgba(10, 12, 45, 0.55), inset 0 0 20px rgba(0, 229, 255, 0.05);

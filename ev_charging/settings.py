@@ -276,7 +276,7 @@ if DATABASE_URL:
     database_url = DATABASE_URL
     if 'sslmode=' not in database_url:
         separator = '&' if '?' in database_url else '?'
-        database_url = f"{database_url}{separator}sslmode=require"
+        database_url = f"{database_url}{separator}sslmode=disable"
 
     DATABASES = {
         'default': dj_database_url.parse(
@@ -295,7 +295,7 @@ else:
             'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
             'HOST': os.environ.get('POSTGRES_HOST'),
             'PORT': os.environ.get('POSTGRES_PORT', '5432'),
-            'OPTIONS': {'sslmode': os.environ.get('PGSSLMODE', 'require')},
+            'OPTIONS': {'sslmode': os.environ.get('PGSSLMODE', 'disable')},
         }
     }
 
@@ -525,3 +525,9 @@ SOCIALACCOUNT_PROVIDERS = {
         'AUTH_PARAMS': {'access_type': 'online'},
     }
 }
+
+
+
+SMARTCAR_CLIENT_ID     = os.environ.get('SMARTCAR_CLIENT_ID')
+SMARTCAR_CLIENT_SECRET = os.environ.get('SMARTCAR_CLIENT_SECRET')
+SMARTCAR_REDIRECT_URI  = os.environ.get('SMARTCAR_REDIRECT_URI')

@@ -1,5 +1,5 @@
 from datetime import datetime, time, timedelta
-import json
+import json, smartcar
 import logging
 
 from django.conf import settings
@@ -16,6 +16,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.utils import timezone as dj_timezone
 #  from django.db.models import Sum
+from django.http import JsonResponse
 
 from .forms import BookingForm, UpdateBookingForm, ProfileForm, ChargingPointForm, CommentForm
 from charging_station.models import (
@@ -25,7 +26,7 @@ from charging_station.models import (
     Comment, Post, Payment,
     StationOwnerProfile,
     OwnerPayout, Notification, 
-    Rating, IssueReport, FavouriteStation)
+    Rating, IssueReport, FavouriteStation, ConnectedVehicle)
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -747,4 +748,115 @@ def comment_downvote(request, comment_id):
         comment = get_object_or_404(Comment, pk=comment_id)
         Comment.objects.filter(pk=comment.pk).update(downvotes=F('downvotes') + 1)
     return redirect(request.META.get('HTTP_REFERER', '/'))
+
+
+
+
+def get_smartcar_client():
+    return smartcar.AuthClient(
+        client_id=settings.SMARTCAR_CLIENT_ID,
+        client_secret=settings.SMARTCAR_CLIENT_SECRET,
+        redirect_uri=settings.SMARTCAR_REDIRECT_URI,
+        test_mode=settings.DEBUG,
+    )
+
+
+@login_required
+def smartcar_connect(request):
+    """
+    Redirects user to Smartcar OAuth to connect their car.
+    Scopes define what data we can read.
+    """
+    client = get_smartcar_client()
+    auth_url = client.get_auth_url(
+        scope=[
+            'read_vehicle_info',
+            'read_battery',
+            'read_charge',
+            'read_location',
+            'read_odometer',
+        ]
+    )
+    return redirect(auth_url)
+
+
+@login_required
+def smartcar_callback(request):
+    """
+    Handles the OAuth callback after user authorises.
+    Exchanges the code for tokens and stores them.
+    Then reads the vehicle info immediately.
+    """
+    code = request.GET.get('code')
+    if not code:
+        return redirect('dashboard')
+
+    client  = get_smartcar_client()
+    tokens  = client.exchange_code(code)
+    vehicles = smartcar.get_vehicles(tokens.access_token)
+
+    for vehicle_id in vehicles.vehicles:
+        vehicle = smartcar.Vehicle(vehicle_id, tokens.access_token)
+
+        # get vehicle info
+        info = vehicle.attributes()
+
+        ConnectedVehicle.objects.update_or_create(
+            smartcar_vehicle_id=vehicle_id,
+            defaults={
+                'user': request.user,
+                'access_token': tokens.access_token,
+                'refresh_token': tokens.refresh_token,
+                'token_expires_at': tokens.expiration,
+                'make': info.make,
+                'model': info.model,
+                'year': info.year,
+            }
+        )
+
+    return redirect('dashboard')
+
+
+@login_required
+def vehicle_status(request):
+    """
+    This will Return live vehicle data for the dashboard.
+    """
+    try:
+        connected = ConnectedVehicle.objects.get(user=request.user)
+    except ConnectedVehicle.DoesNotExist:
+        return JsonResponse({'connected': False})
+
+    client  = get_smartcar_client()
+    vehicle = smartcar.Vehicle(
+        connected.smartcar_vehicle_id,
+        connected.access_token
+    )
+
+    try:
+        battery = vehicle.battery()
+        charge  = vehicle.charge()
+
+        # update stored values
+        connected.battery_level = battery.percent_remaining * 100
+        connected.battery_range_km = battery.range
+        connected.is_charging = charge.is_plugged_in and charge.state == 'CHARGING'
+        connected.is_plugged_in = charge.is_plugged_in
+        connected.last_updated = timezone.now()
+        connected.save()
+
+        return JsonResponse({
+            'connected': True,
+            'make': connected.make,
+            'model': connected.model,
+            'year': connected.year,
+            'battery_level': connected.battery_level,
+            'battery_range_km': connected.battery_range_km,
+            'is_charging': connected.is_charging,
+            'is_plugged_in': connected.is_plugged_in,
+            'last_updated': str(connected.last_updated),
+        })
+
+    except Exception as e:
+        return JsonResponse({'connected': True, 'error': str(e)})
         

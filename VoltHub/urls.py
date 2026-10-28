@@ -57,5 +57,11 @@ urlpatterns = [
     path('notifications/mark-all-read/', views.mark_all_notifications_read, name='mark_all_notifications_read'),
     path('vehicle/update/', views.update_vehicle, name='update_vehicle'),
     path('report-issue/', views.report_issue, name='report_issue'),
+
+
+    #smartcar
+    path('smartcar/connect/',  views.smartcar_connect,  name='smartcar_connect'),
+    path('smartcar/callback/', views.smartcar_callback, name='smartcar_callback'),
+    path('smartcar/status/',   views.vehicle_status,    name='vehicle_status'),
     
     ]

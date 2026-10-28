@@ -205,7 +205,7 @@
 .testimonial-card p  { margin: 0 0 .35rem; font-style: italic; color: #e6e9ff; }
 .testimonial-card small { color: var(--vh-muted); }
 
-/* add comment button area */
+/*add comment button area*/
 .comment-cta {
   text-align: center;
   margin-top: 1.75rem;

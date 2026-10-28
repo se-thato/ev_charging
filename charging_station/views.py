@@ -10,6 +10,7 @@ from django.db.models import F, Sum
 from django.db.models.functions import ACos, Cos, Radians, Sin
 from django.utils import timezone
 
+
 from .models import (
     ChargingPoint,
     ChargingSession,
@@ -25,7 +26,8 @@ from .models import (
     UserSubscription,
     ChargingStationAnalitics,
     Post,
-    FavouriteStation
+    FavouriteStation,
+    ConnectedVehicle
 )
 
 from .serializers import (
@@ -609,3 +611,5 @@ class StationOwnerDashboardView(APIView):
                 total=Sum('station_earnings')
             )['total'] or 0
         })
+
+

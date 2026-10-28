@@ -84,7 +84,7 @@ function initMap() {
       : `<div style="margin-top:.5rem;color:#a9b1ff;font-size:.8rem">Not yet bookable</div>`;
     return `
       <div style="min-width:220px;font-family:sans-serif">
-        <h5 style="margin:0 0 .25rem;color:#7a7cff">⚡ ${s.name}</h5>
+        <h5 style="margin:0 0 .25rem;color:#7a7cff"> ${s.name}</h5>
         <p style="margin:0 0 .2rem;font-size:.85rem">${s.address || ''}</p>
         <p style="margin:0 0 .2rem;font-size:.85rem">${slots} · ${price}</p>
         <p style="margin:0 0 .4rem;font-size:.8rem;color:${s.status === 'online' ? '#45ffbc' : '#ff7b88'}">${s.status.toUpperCase()}</p>
@@ -258,7 +258,6 @@ function initMap() {
   }
 
   //WebSocket for live VoltHub station updates
-
   let wsConnected = false;
   let wsReconnectTimer = null;
 
@@ -281,7 +280,7 @@ function initMap() {
       const msg = JSON.parse(event.data);
 
       if (msg.type === 'snapshot') {
-        // Initial full load — placing all VoltHub stations at once
+        // Initial full load placing all VoltHub stations at once
         msg.stations.forEach(placeOurMarker);
         updateOurSidebar(msg.stations);
 
@@ -342,7 +341,7 @@ function initMap() {
     });
   }
 
-  // Re-fetch OCM stations when map stops moving
+  // Refetch OCM stations when map stops moving
   // Using 'idle' event with a short debounce to avoid hammering the API
   let mapMoveTimer = null;
   map.addListener('idle', () => {
