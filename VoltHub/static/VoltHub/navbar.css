@@ -12,7 +12,7 @@
 
   .custom-navbar.neon-navbar,
   .navbar.neon-navbar {
-    background: linear-gradient(135deg, #0a0a1f 0%, #06061a 50%, #0a0a1f 100%);
+    background: linear-gradient rgb(2, 11, 56);
     border: 1px solid var(--vh-border);
     box-shadow: 0 10px 30px rgba(10, 12, 45, 0.55), inset 0 0 20px rgba(0, 229, 255, 0.05);
     backdrop-filter: saturate(160%) blur(10px);
@@ -63,10 +63,10 @@
   .dropdown-item { color: var(--vh-text); transition: background .2s ease, color .2s ease, padding-left .2s ease; }
   .dropdown-item:hover, .dropdown-item:focus {
     color: #ffffff;
-    background: linear-gradient(90deg, rgba(122, 124, 255, 0.15), rgba(0, 229, 255, 0.10));
+    background: linear-gradient(90deg, rgb(2, 11, 56)), rgb(2, 11, 56));
     padding-left: 1.15rem;
   }
-  .dropdown-divider { border-top-color: rgba(122, 124, 255, 0.25); }
+  .dropdown-divider { border-top-color: rgba(5, 220, 5, 0.97); }
 
   .navbar-dark .navbar-toggler {
     border-color: var(--vh-border); border-width: 1px; outline: none;
