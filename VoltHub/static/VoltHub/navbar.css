@@ -96,7 +96,7 @@
   .btn-neon-outline.btn:hover, .btn.btn-outline-light:hover {
     color: #fff; border-color: rgba(0, 229, 255, 0.65);
     box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.25), 0 0 22px rgba(0, 229, 255, 0.2);
-    background: linear-gradient(180deg, rgb(15, 243, 7), rgba(8, 12, 243, 1));
+    background: linear-gradient(180deg, rgb(15, 243, 7), rgb(15, 243, 7));
   }
 
   .navbar-nav .nav-item { margin: 0 0.6rem; }
