@@ -15,9 +15,8 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(180deg, rgb(0, 0, 0), rgb(0, 0, 0));
+  background: linear-gradient(180deg, rgb(24, 151, 21), rgb(24, 151, 21));
 }
-
 
 /* Hero overlay above background */
 .home-hero {
