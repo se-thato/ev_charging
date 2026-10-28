@@ -15,7 +15,7 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(180deg, rgb(225, 225, 225), rgb(255, 255, 255));
+  background: linear-gradient(180deg, rgba(29, 126, 58, 0.42), rgba(29, 126, 58, 0.42));
 }
 
 /* Hero overlay above background */
