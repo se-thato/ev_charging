@@ -14,7 +14,7 @@
   .navbar.neon-navbar {
     background: linear-gradient rgb(2, 11, 56);
     border: 1px solid var(--vh-border);
-    box-shadow: 0 10px 30px rgba(10, 12, 45, 0.55), inset 0 0 20px rgba(0, 229, 255, 0.05);
+    box-shadow: 0 10px 30px rgb(2, 11, 56), inset 0 0 20px rgb(2, 11, 56);
     backdrop-filter: saturate(160%) blur(10px);
     -webkit-backdrop-filter: saturate(160%) blur(10px);
     position: sticky; top: 0; z-index: 1030;
