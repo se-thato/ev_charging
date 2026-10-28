@@ -39,7 +39,7 @@ nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: hsl(0, 0%, 0%);
+    background-color: rgb(2, 11, 56);
 }
 nav .logo{
     width: 100px;
