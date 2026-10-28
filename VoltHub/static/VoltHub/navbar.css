@@ -111,7 +111,7 @@
     top: -6px;
     right: -10px;
     background: var(--vh-accent);
-    color: #000;
+    color: #ffffff;
     border-radius: 50%;
     width: 18px;
     height: 18px;
@@ -121,7 +121,7 @@
     align-items: center;
     justify-content: center;
     line-height: 1;
-    box-shadow: 0 0 8px rgba(0,229,255,0.6);
+    box-shadow: 0 0 8px rgba(13, 255, 0, 0.6);
     /* Hidden by default — shown when count > 0 */
     opacity: 0;
     transform: scale(0);
