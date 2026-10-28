@@ -43,7 +43,7 @@
   }
   .navbar-nav .nav-link:hover, .navbar-nav .nav-link:focus {
     color: #ffffff !important;
-    text-shadow: 0 0 8px var(--vh-glow), 0 0 18px rgba(122, 124, 255, 0.35);
+    text-shadow: 0 0 8px var(--vh-glow), 0 0 18px rgb(2, 11, 56);
   }
   .navbar-nav .nav-link::after {
     content: ""; position: absolute; left: 0.9rem; right: 0.9rem; bottom: 0.35rem;
@@ -96,7 +96,7 @@
   .btn-neon-outline.btn:hover, .btn.btn-outline-light:hover {
     color: #fff; border-color: rgba(0, 229, 255, 0.65);
     box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.25), 0 0 22px rgba(0, 229, 255, 0.2);
-    background: linear-gradient(180deg, rgba(0,229,255,0.15), rgba(122,124,255,0.10));
+    background: linear-gradient(180deg, rgb(15, 243, 7), rgba(8, 12, 243, 1));
   }
 
   .navbar-nav .nav-item { margin: 0 0.6rem; }
