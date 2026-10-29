@@ -1,4 +1,4 @@
-  /* :root {
+  :root {
     --vh-bg: #050512;
     --vh-surface: rgba(13, 13, 30, 0.55);
     --vh-primary: #7a7cff; /* electric violet */
@@ -8,7 +8,7 @@
     --vh-text: #e6e9ff;
     --vh-muted: #a9b1ff;
     --vh-glow: rgba(0, 229, 255, 0.5);
-  } */
+  }
 
   body,
   html {
@@ -87,7 +87,7 @@
   }
 
   .auth-subtitle {
-    color: var(--vh-muted);
+    color: whitesmoke;
     font-size: .95rem;
     margin-bottom: 1.25rem;
   }
