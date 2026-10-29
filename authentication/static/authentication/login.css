@@ -77,7 +77,7 @@
     font-size: 1.25rem;
     background: linear-gradient(90deg, var(--vh-primary), var(--vh-accent) 60%, var(--vh-accent-2));
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 12px rgba(12, 207, 237, 0.99), 0 0 26px rgba(12, 207, 237, 0.99);
+    /* text-shadow: 0 0 12px rgba(12, 207, 237, 0.99), 0 0 26px rgba(12, 207, 237, 0.99); */
   }
 
   .auth-title {
