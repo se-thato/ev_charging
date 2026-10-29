@@ -23,17 +23,17 @@
   }
 
   /* Animated gradient background */
-  /* .auth-wrap {
+  .auth-wrap {
     position: relative;
     min-height: calc(100vh - 56px);
     padding: 6vh 0;
     display: grid;
     place-items: center;
-    background: radial-gradient(1200px 600px at 10% -20%, rgba(122,124,255,0.22), transparent 60%),
-                radial-gradient(1000px 800px at 120% 10%, rgba(0,229,255,0.18), transparent 50%),
+    background: radial-gradient(1200px 600px at 10% -20%, rgb(2, 11, 56), transparent 60%),
+                radial-gradient(1000px 800px at 120% 10%, rgba(2, 11, 56), transparent 50%),
                 linear-gradient(135deg, #070718 0%, #040414 45%, #09091f 100%);
     overflow: hidden;
-  } */
+  }
 
   .auth-wrap::before,
   .auth-wrap::after {
