@@ -76,7 +76,7 @@
     font-weight: 800;
     letter-spacing: .6px;
     font-size: 1.25rem;
-    background: linear-gradient(90deg, var(--vh-primary), var(--vh-accent) 60%, var(--vh-accent-2));
+    background: linear-gradient(90deg, var(--vh-text), var(--vh-accent) 60%, var(--vh-accent-2));
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     text-shadow: 0 0 12px rgba(122,124,255,0.25), 0 0 26px rgba(0,229,255,0.15);
   }
