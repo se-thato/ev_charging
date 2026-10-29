@@ -83,7 +83,7 @@
   .auth-title {
     margin: 0 0 .5rem;
     font-weight: 700;
-    color: var(--vh-text);
+    color: whitesmoke;
   }
 
   .auth-subtitle {
