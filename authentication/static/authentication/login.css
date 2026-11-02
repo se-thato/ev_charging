@@ -31,7 +31,7 @@
     place-items: center;
     background: radial-gradient(1200px 600px at 10% -20%, rgb(214, 215, 219), transparent 60%),
                 radial-gradient(1000px 800px at 120% 10%, rgb(211, 212, 217), transparent 50%),
-                linear-gradient(135deg, #c1c1cb 0%, #dadadf 45%, #c4c4cc 100%);
+                linear-gradient(135deg, #dedee7 0%, #dedee7 45%, #dedee7 100%);
     overflow: hidden;
   }
 
