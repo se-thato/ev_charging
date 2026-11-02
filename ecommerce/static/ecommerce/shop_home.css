@@ -44,11 +44,11 @@
   .shop-title {
     margin: 0 0 .5rem; font-weight: 800;
     font-size: clamp(1.3rem, 5vw, 3rem);
-    background: linear-gradient(90deg, var(--vh-primary), var(--vh-accent) 60%, var(--vh-accent-2));
+    background: linear-gradient(90deg, var(--vh-accent), var(--vh-accent) 60%, var(--vh-accent-2));
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     letter-spacing: .4px;
   }
-  .shop-subtitle { color: var(--vh-muted); font-size: clamp(0.78rem, 3vw, 1rem); }
+  .shop-subtitle { color: var(--vh-text); font-size: clamp(0.78rem, 3vw, 1rem); }
 
   .accent-line { position: relative; height: 2px; margin: 0.75rem auto 1.5rem; max-width: 520px; }
   .accent-line::after {
