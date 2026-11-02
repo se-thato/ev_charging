@@ -34,14 +34,14 @@
   margin: 0 auto;
   text-align: center;
   color: var(--vh-text);
-  background: linear-gradient(180deg, rgba(8,8,25,0.58), rgba(8,8,25,0.28));
+  background: linear-gradient(180deg, rgb(2, 11, 56), rgb(2, 11, 56));
   border: 1px solid var(--vh-border);
   border-radius: 20px;
   backdrop-filter: blur(8px) saturate(140%);
   -webkit-backdrop-filter: blur(8px) saturate(140%);
   padding: 2rem 1.5rem;
-  box-shadow: 0 20px 60px rgba(12, 16, 50, 0.55),
-              inset 0 0 24px rgba(0, 229, 255, 0.08);
+  box-shadow: 0 20px 60px rgb(2, 11, 56),
+              inset 0 0 24px rgb(2, 11, 56);
 }
 
 .hero-title {
