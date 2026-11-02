@@ -10,8 +10,8 @@
     --vh-glow: rgba(0, 229, 255, 0.5);
   }
 
-  body, html { background-color: #000000 !important; margin: 0; }
-  .container-fluid { background-color: #000000 !important; padding: 0 !important; margin: 0 !important; }
+  body, html { background-color: #ffffff !important; margin: 0; }
+  .container-fluid { background-color: #ffffff !important; padding: 0 !important; margin: 0 !important; }
 
   .shop-wrap {
     position: relative;
@@ -20,7 +20,7 @@
     margin-right: calc(50% - 50vw);
     background: radial-gradient(1200px 600px at 10% -20%, rgb(211, 212, 217), transparent 60%),
                 radial-gradient(1000px 800px at 120% 10%, rgb(211, 212, 217), transparent 50%),
-                linear-gradient(135deg, #000000 0%, #000000 45%, #000000 100%);
+                linear-gradient(135deg, #ffffff 0%, #ffffff 45%, #ffffff 100%);
     overflow: hidden;
   }
   .shop-wrap::before, .shop-wrap::after {
@@ -44,7 +44,7 @@
   .shop-title {
     margin: 0 0 .5rem; font-weight: 800;
     font-size: clamp(1.3rem, 5vw, 3rem);
-    background: linear-gradient(90deg, var(--vh-accent), var(--vh-accent) 60%, var(--vh-accent-2));
+    background: linear-gradient(90deg, #000000, #000000 60%, #000000);
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     letter-spacing: .4px;
   }
