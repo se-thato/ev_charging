@@ -85,12 +85,12 @@
 
   .product-card {
     position: relative;
-    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    background: linear-gradient(180deg, rgb(2, 11, 56), rgb(2, 11, 56));
     border: 1px solid var(--vh-border);
     border-radius: 14px;
     backdrop-filter: blur(10px) saturate(160%);
     -webkit-backdrop-filter: blur(10px) saturate(160%);
-    box-shadow: 0 10px 30px rgba(12,16,50,0.45), inset 0 0 16px rgba(0,229,255,0.04);
+    box-shadow: 0 10px 30px rgb(2, 11, 56), inset 0 0 16px rgb(2, 11, 56);
     color: var(--vh-text);
     height: 100%; display: flex; flex-direction: column;
     transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease;
