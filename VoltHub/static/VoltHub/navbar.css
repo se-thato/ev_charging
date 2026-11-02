@@ -63,7 +63,7 @@
   .dropdown-item { color: var(--vh-text); transition: background .2s ease, color .2s ease, padding-left .2s ease; }
   .dropdown-item:hover, .dropdown-item:focus {
     color: #ffffff;
-    background: linear-gradient(90deg, rgb(2, 11, 56)), rgb(2, 11, 56));
+    background: linear-gradient(90deg, rgb(2, 11, 56)), rgb(2, 11, 56);
     padding-left: 1.15rem;
   }
   .dropdown-divider { border-top-color: rgba(5, 220, 5, 0.97); }
@@ -81,7 +81,7 @@
     background: rgba(255, 255, 255, 0.05); border: 1px solid var(--vh-border);
     color: var(--vh-text); border-radius: 999px; padding-left: 1rem; padding-right: 1rem;
   }
-  .neon-search .form-control::placeholder { color: var(--vh-muted); }
+  .neon-search .form-control::placeholder { color: var(--vh-text); }
   .neon-search .form-control:focus {
     background: rgba(255, 255, 255, 0.075);
     box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.20), 0 0 24px rgba(0, 229, 255, 0.15);
