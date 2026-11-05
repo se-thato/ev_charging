@@ -159,7 +159,7 @@
   grid-column: span 12;
   border: 1px solid var(--vh-border);
   border-radius: 16px;
-  background: linear-gradient(180deg, rgba(8,8,25,0.6), rgba(8,8,25,0.35));
+  background: linear-gradient(180deg, rgb(2, 11, 56), rgb(2, 11, 56));
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   padding: 1rem;
