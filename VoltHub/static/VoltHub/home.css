@@ -193,12 +193,12 @@
   grid-column: span 12;
   border: 1px solid var(--vh-border);
   border-radius: 18px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  background: linear-gradient(180deg, rgb(2, 11, 56), rgb(2, 11, 56));
   backdrop-filter: blur(8px) saturate(140%);
   -webkit-backdrop-filter: blur(8px) saturate(140%);
   padding: 1rem 1.25rem;
   color: var(--vh-text);
-  box-shadow: 0 20px 50px rgb(2, 11, 56), inset 0 0 24px rgb(2, 11, 56);
+  box-shadow: 0 20px 50px rgb(12,16,50,0.45), inset 0 0 24px rgba(0,229,255,0.06);
 }
 @media (min-width: 768px)  { .testimonial-card { grid-column: span 6; } }
 @media (min-width: 1200px) { .testimonial-card { grid-column: span 4; } }
